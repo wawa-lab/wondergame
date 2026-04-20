@@ -30,5 +30,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3001"
+  "proxy": "https://confident-bravery-production-6854.up.railway.app"
 }

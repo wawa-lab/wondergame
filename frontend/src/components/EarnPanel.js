@@ -3,7 +3,7 @@ import axios from 'axios';
 import riddleBg from './pic/猜灯谜.jpg';
 import culinaryBg from './pic/厨艺大赛.jpg';
 
-const API_BASE = 'http://localhost:3001/api';
+const API_BASE = 'https://confident-bravery-production-6854.up.railway.app/api';
 
 // ─────────────────────────────────────────
 // 基础积分小游戏 —— 点击金币积分

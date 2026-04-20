@@ -24,7 +24,7 @@ import deepForestNpcImage from './components/pic/深林-npc.jpg';
 import wailingSandImage from './components/pic/呜沙沟.jpg';
 import wailingSandNpcImage from './components/pic/呜沙沟-npc.jpg';
 
-const API_BASE = 'http://localhost:3001/api';
+const API_BASE = 'https://confident-bravery-production-6854.up.railway.app/api';
 
 // ==================== 账号系统（JWT） ====================
 const TOKEN_KEY = 'wondergame_token';
