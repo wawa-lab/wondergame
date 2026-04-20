@@ -11,7 +11,7 @@ const { heroCharacter, wardrobe, scenes, npcs, courses, skillConfig, shopItems, 
 const JWT_SECRET = process.env.JWT_SECRET || 'wondergame_dev_secret';
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 // ==================== Supabase 客户端 ====================
 const supabase = createClient(
