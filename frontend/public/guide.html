@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>奇境游记 · 新手指引</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Noto Serif SC', 'SimSun', serif;
+      background: linear-gradient(135deg, #1a0a0f 0%, #2d1520 50%, #1a0a0f 100%);
+      color: #F5E6EC;
+      min-height: 100vh;
+      padding: 40px 20px 80px;
+    }
+    .container { max-width: 760px; margin: 0 auto; }
+    .title {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 8px;
+      background: linear-gradient(135deg, #C9A84C, #F4A0C0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      text-align: center;
+      color: rgba(244,160,192,0.5);
+      font-size: 14px;
+      letter-spacing: 4px;
+      margin-bottom: 48px;
+    }
+    .section {
+      background: rgba(30,10,20,0.7);
+      border: 1px solid rgba(212,81,122,0.3);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-bottom: 24px;
+    }
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #C9A84C;
+      letter-spacing: 3px;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    .section-title .icon { margin-right: 8px; }
+    p { color: rgba(245,230,236,0.75); font-size: 14px; line-height: 2; margin-bottom: 8px; }
+    ul { padding-left: 0; list-style: none; }
+    ul li { color: rgba(245,230,236,0.75); font-size: 14px; line-height: 1.9; padding: 4px 0; }
+    ul li::before { content: '✦ '; color: #C9A84C; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(212,81,122,0.2);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .card-title { font-size: 13px; color: #F4A0C0; font-weight: 700; margin-bottom: 6px; letter-spacing: 1px; }
+    .card p { font-size: 12px; margin: 0; }
+    .ending-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .ending-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 10px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+    .ending-emoji { font-size: 28px; margin-bottom: 6px; }
+    .ending-name { font-size: 13px; color: #C9A84C; font-weight: 700; margin-bottom: 4px; }
+    .ending-hint { font-size: 11px; color: rgba(245,230,236,0.45); line-height: 1.6; }
+    .tip {
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-top: 12px;
+      font-size: 13px;
+      color: rgba(201,168,76,0.9);
+      line-height: 1.8;
+    }
+    .back-btn {
+      display: block;
+      width: fit-content;
+      margin: 0 auto;
+      padding: 12px 36px;
+      background: linear-gradient(135deg, #c0526a, #a03050);
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      margin-top: 32px;
+      font-family: inherit;
+    }
+    @media (max-width: 600px) {
+      .grid, .ending-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">奇境游记</div>
+    <div class="subtitle">✦ 凌若雪的传奇人生 · 新手指引 ✦</div>
+
+    <!-- 游戏目标 -->
+    <div class="section">
+      <div class="section-title"><span class="icon">🎯</span>游戏目标</div>
+      <p>你扮演凌若雪，一位出身书香门第的少女。从16岁开始，用<strong style="color:#F4A0C0">36个月（3年）</strong>的时间，通过课程、劳动、结交NPC、探险等方式提升自身属性，最终在18岁时触发属于你的<strong style="color:#F4A0C0">人生结局</strong>。</p>
+      <p>不同的技能组合和NPC情缘，将通往截然不同的结局——没有固定的正确答案，只有属于你的传奇。</p>
+    </div>
+
+    <!-- 核心玩法 -->
+    <div class="section">
+      <div class="section-title"><span class="icon">🎮</span>核心玩法</div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-title">📚 课程学习</div>
+          <p>每月选择3门课程，消耗疲劳，提升对应属性。部分课程附带小游戏，成绩影响额外奖励。</p>
+        </div>
+        <div class="card">
+          <div class="card-title">⚒️ 劳动赚钱</div>
+          <p>选3项劳动任务，赚取金币，同时提升体力等属性。金币可在云锦坊购买道具。</p>
+        </div>
+        <div class="card">
+          <div class="card-title">💬 结交NPC</div>
+          <p>外出拜访各场景NPC，提升好感度，解锁专属剧情和子场景，部分NPC可触发情缘结局。</p>
+        </div>
+        <div class="card">
+          <div class="card-title">🗺️ 探险</div>
+          <p>选择探险课程，踏上奇遇之旅，获得稀有道具和意外收获，提升胆识与野性。</p>
+        </div>
+      </div>
+      <div class="tip">💡 每月只能选择课程、劳动、休息三者之一。休息可恢复30点疲劳，疲劳满100时必须去百草堂就医（需花费百两金币）。</div>
+    </div>
+
+    <!-- 主要属性 -->
+    <div class="section">
+      <div class="section-title"><span class="icon">⭐</span>主要属性</div>
+      <ul>
+        <li><strong style="color:#F4A0C0">才学 / 诗才 / 口才</strong> — 影响文官类结局（女相、大儒）</li>
+        <li><strong style="color:#F4A0C0">武术 / 统帅 / 胆识</strong> — 影响武将类结局（护国女将）</li>
+        <li><strong style="color:#F4A0C0">医术 / 道德 / 灵气</strong> — 影响医者类结局（悬壶济世）</li>
+        <li><strong style="color:#F4A0C0">乐艺 / 魅力 / 声望</strong> — 影响表演类结局（梨园大家）</li>
+        <li><strong style="color:#F4A0C0">算数 / 手工</strong> — 影响奇技类结局（升外星）</li>
+        <li><strong style="color:#F4A0C0">野性 / 胆识</strong> — 影响自由类结局（逍遥散人、万兽之王）</li>
+      </ul>
+    </div>
+
+    <!-- 结局路线 -->
+    <div class="section">
+      <div class="section-title"><span class="icon">🌸</span>结局路线（部分）</div>
+      <div class="ending-grid">
+        <div class="ending-card">
+          <div class="ending-emoji">⚕️</div>
+          <div class="ending-name">悬壶济世</div>
+          <div class="ending-hint">医术≥65<br>道德≥55<br>多次行医</div>
+        </div>
+        <div class="ending-card">
+          <div class="ending-emoji">⚔️</div>
+          <div class="ending-name">护国女将</div>
+          <div class="ending-hint">武术≥65<br>统帅≥50<br>多次战斗</div>
+        </div>
+        <div class="ending-card">
+          <div class="ending-emoji">🎭</div>
+          <div class="ending-name">梨园大家</div>
+          <div class="ending-hint">乐艺≥60<br>魅力≥55<br>多次演出</div>
+        </div>
+        <div class="ending-card">
+          <div class="ending-emoji">👑</div>
+          <div class="ending-name">母仪天下</div>
+          <div class="ending-hint">皇上好感≥80<br>多次入宫<br>才学兼备</div>
+        </div>
+        <div class="ending-card">
+          <div class="ending-emoji">📜</div>
+          <div class="ending-name">一代女相</div>
+          <div class="ending-hint">才学≥70<br>政治≥55<br>口才≥50</div>
+        </div>
+        <div class="ending-card">
+          <div class="ending-emoji">🌿</div>
+          <div class="ending-name">逍遥散人</div>
+          <div class="ending-hint">野性≥50<br>胆识≥45<br>无深度情缘</div>
+        </div>
+      </div>
+      <div class="tip">💡 情缘NPC好感度≥80，且满足对应职业条件，可触发情缘结局（如「王文玉×悬壶济世」）。</div>
+    </div>
+
+    <!-- 实用提示 -->
+    <div class="section">
+      <div class="section-title"><span class="icon">💡</span>实用提示</div>
+      <ul>
+        <li>每月可外出拜访<strong style="color:#F4A0C0">一个场景</strong>，与NPC对话提升好感，选择对话选项可解锁子场景。</li>
+        <li>NPC子场景<strong style="color:#F4A0C0">并非每次都能成功</strong>，对方可能不在，多尝试几次。</li>
+        <li>劳动赚来的金币可在<strong style="color:#F4A0C0">云锦坊</strong>购买提升属性的道具。</li>
+        <li>连续3次上同一门课可触发<strong style="color:#F4A0C0">连击加成</strong>，属性额外提升50%。</li>
+        <li>疲劳度满100后无法上课，需休息或去<strong style="color:#F4A0C0">百草堂</strong>就医（需100金币）。</li>
+        <li>每次推进月份时，系统会自动检查是否达成结局条件，满足即触发结局。</li>
+        <li>存档自动保存在云端，换设备登录后进度不会丢失。</li>
+      </ul>
+    </div>
+
+    <a href="/" class="back-btn">开始游戏</a>
+  </div>
+</body>
+</html>

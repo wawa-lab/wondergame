@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "skills": {
+    "3d-model-generation": {
+      "source": "eachlabs/skills",
+      "sourceType": "github",
+      "computedHash": "d015694d42e5361f2aeff8308b84b82b8ce50afc01ef778c8fca76ab2ebf296c"
+    },
+    "3d-web-experience": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "computedHash": "113dd25935bcd9e54bbc8cc1f7001f08575341f59135930e5320e997523ad065"
+    },
+    "ai-image-generation": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "computedHash": "e45c0ee94791e67e355130109fd827bd8b4bd0fb1d6b2ff8f782eb566d435174"
+    },
+    "computer-vision-opencv": {
+      "source": "mindrally/skills",
+      "sourceType": "github",
+      "computedHash": "07d2f35a381b86991164e77833f661e55420a92c8d879473b504dce1fc945af5"
+    },
+    "game-development": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "computedHash": "fd5dd549789cd196f2238b56bfc71b4b7eb1944f5d29fe0c2933a6f8ce82167c"
+    },
+    "game-engine": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "computedHash": "20057f62cf7a8b2d9f940b3de0b18e5426e8f4bb50e236d36b1033aa0d42c4d8"
+    },
+    "godot-2d-animation": {
+      "source": "thedivergentai/gd-agentic-skills",
+      "sourceType": "github",
+      "computedHash": "24ff5ba264e9fad16d188fe852a474135e2fc1efa891bea936531b039e7bbb16"
+    },
+    "qwen-image-2-pro": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "computedHash": "137f84f88a87e71bcc41081b1674e1b76e4309a9fcbdd1bf24c59eb94f780fe4"
+    },
+    "ui-animation": {
+      "source": "mblode/agent-skills",
+      "sourceType": "github",
+      "computedHash": "c0df66c159771b0a92f74d9b2a3c6653bb75a35c31e5a7f82a866af52b23f651"
+    }
+  }
+}

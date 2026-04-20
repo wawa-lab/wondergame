@@ -1,0 +1,31 @@
+# Claude Code internal files
+.agents/
+.claude/
+
+# Environment variables (NEVER commit these)
+.env
+.env.local
+.env.production
+backend/.env
+
+# Dependencies
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+# Build output
+frontend/build/
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# IDE
+.idea/
+*.iml
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
