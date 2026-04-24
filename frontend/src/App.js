@@ -2651,6 +2651,50 @@ function RoomActivityModal({ data, skillConfig, onClose }) {
 }
 
 // ==================== 课程弹窗：下滑动画展示学习收获 ====================
+// 课程过程小任务题库（仅用于没有专属小游戏的课程）
+const COURSE_MINI_TASKS = {
+  '农耕技术': [
+    { prompt: '播种时，种子深度多少最合适？', options: ['约一指深，覆土压实', '越深越好', '撒在表面即可'], correct: 0, bonus: { key: 'wisdom', label: '才学', delta: 3 } },
+    { prompt: '发现庄稼叶子发黄，可能是？', options: ['缺水或缺肥，需浇水施肥', '光照太强', '种得太密'], correct: 0, bonus: { key: 'spirit', label: '灵气', delta: 2 } },
+  ],
+  '编织与刺绣': [
+    { prompt: '绣花时针脚不均匀，怎么办？', options: ['拆掉重绣，保持间距一致', '将就继续', '用布遮住'], correct: 0, bonus: { key: 'painting', label: '画艺', delta: 3 } },
+    { prompt: '丝线打结了，你会？', options: ['耐心顺着线结慢慢解开', '直接剪断', '硬拉扯'], correct: 0, bonus: { key: 'charm', label: '魅力', delta: 2 } },
+  ],
+  '木工': [
+    { prompt: '锯木头时锯条发热，应该？', options: ['放慢速度，适当涂油润滑', '加快速度锯完', '换把新锯'], correct: 0, bonus: { key: 'wisdom', label: '才学', delta: 2 } },
+    { prompt: '两块木板拼接不平整，如何处理？', options: ['用刨子打磨平整后再拼', '用钉子钉死', '填木屑遮盖'], correct: 0, bonus: { key: 'crafting', label: '手工', delta: 3 } },
+  ],
+  '建筑营造': [
+    { prompt: '砌墙时砖缝不均匀，影响是？', options: ['影响美观和稳固，需重砌', '只影响美观', '无所谓'], correct: 0, bonus: { key: 'arithmetic', label: '算数', delta: 3 } },
+    { prompt: '测量地基时，如何确保水平？', options: ['用水平仪或水盆检验', '目测估计', '拉绳子看'], correct: 0, bonus: { key: 'wisdom', label: '才学', delta: 2 } },
+  ],
+  '珠算': [
+    { prompt: '拨珠时上档一颗代表多少？', options: ['五', '一', '十'], correct: 0, bonus: { key: 'arithmetic', label: '算数', delta: 4 } },
+    { prompt: '算盘清零时，你会？', options: ['将所有珠子拨向框边归位', '随意拨一下', '从左往右逐一清零'], correct: 0, bonus: { key: 'wisdom', label: '才学', delta: 2 } },
+  ],
+  '烹饪艺术': [
+    { prompt: '爆炒时油烟太大，应该？', options: ['开窗通风，调小火候', '继续大火', '加水压烟'], correct: 0, bonus: { key: 'culinary', label: '厨艺', delta: 4 } },
+    { prompt: '炖汤时何时加盐最佳？', options: ['出锅前加，保留鲜味', '一开始就加', '中途多次加'], correct: 0, bonus: { key: 'wisdom', label: '才学', delta: 2 } },
+  ],
+  '酿酒工艺': [
+    { prompt: '酒坛密封后发现漏气，你会？', options: ['用蜡或泥重新密封', '忽略继续等待', '打开重新酿'], correct: 0, bonus: { key: 'spirit', label: '灵气', delta: 3 } },
+    { prompt: '判断酒是否酿好，最直接的方法？', options: ['观察颜色，闻香气，少量品尝', '只看时间', '摇晃坛子听声音'], correct: 0, bonus: { key: 'culinary', label: '厨艺', delta: 3 } },
+  ],
+  '航海技术': [
+    { prompt: '夜间航行如何辨别方向？', options: ['观察北极星或使用罗盘', '跟着海浪走', '凭感觉'], correct: 0, bonus: { key: 'courage', label: '胆识', delta: 3 } },
+    { prompt: '船帆破损漏风，临时如何处理？', options: ['用备用布料缝补遮盖', '降帆改用桨划', '弃船'], correct: 0, bonus: { key: 'wisdom', label: '才学', delta: 2 } },
+  ],
+  '雕刻技艺': [
+    { prompt: '木雕时刻刀打滑，原因是？', options: ['木料太硬或刀刃钝了，需磨刀', '力气不够', '姿势不对'], correct: 0, bonus: { key: 'painting', label: '画艺', delta: 3 } },
+    { prompt: '雕刻细节时，如何保持稳定？', options: ['固定木料，屏气凝神，小刀细刻', '快速刻完', '用大刀一气呵成'], correct: 0, bonus: { key: 'wisdom', label: '才学', delta: 2 } },
+  ],
+  '探险': [
+    { prompt: '迷路时，如何判断方向？', options: ['观察苔藓生长方向（朝北面多）或太阳位置', '随便走', '大声呼救'], correct: 0, bonus: { key: 'courage', label: '胆识', delta: 3 } },
+    { prompt: '发现未知植物，你会？', options: ['先记录特征，不随意触碰', '直接摘下研究', '踩掉继续走'], correct: 0, bonus: { key: 'spirit', label: '灵气', delta: 2 } },
+  ],
+};
+
 function CourseScheduleModal({ courseModal, character, onClose, onAdvanceMonth, onAddInventory }) {
   // phase: 'title' → 展示标题 → 'slide' → 逐个下滑展示课程 → 'done'
   const [phase, setPhase] = useState('title');
@@ -2677,6 +2721,10 @@ function CourseScheduleModal({ courseModal, character, onClose, onAdvanceMonth, 
   const [herbItems, setHerbItems] = useState([]);
   const [herbSelected, setHerbSelected] = useState([]);
   const [herbSubmitted, setHerbSubmitted] = useState(false);
+  // 课程过程小任务（无专属小游戏时触发）
+  const [courseMiniTask, setCourseMiniTask] = useState(null);
+  const [courseMiniTaskAnswered, setCourseMiniTaskAnswered] = useState(false);
+  const [courseMiniTaskBonus, setCourseMiniTaskBonus] = useState(null);
   const SLIDE_DURATION = 5000; // 5秒内滑完所有课程
 
   // 判断是否有小游戏课程
@@ -2696,6 +2744,9 @@ function CourseScheduleModal({ courseModal, character, onClose, onAdvanceMonth, 
     setMemoryAnswer(null);
     setHerbSelected([]);
     setHerbSubmitted(false);
+    setCourseMiniTask(null);
+    setCourseMiniTaskAnswered(false);
+    setCourseMiniTaskBonus(null);
     // 判断小游戏类型
     const courses = courseModal.courses || [];
     if (courses.some(c => RHYTHM_COURSES.includes(c))) {
@@ -2705,6 +2756,12 @@ function CourseScheduleModal({ courseModal, character, onClose, onAdvanceMonth, 
     } else if (courses.some(c => HERB_COURSES.includes(c))) {
       setMiniGameType('herb');
     } else {
+      // 无专属小游戏：随机从本次课程中抽取一道小任务（70%概率）
+      const allCourseTasks = courses.flatMap(c => COURSE_MINI_TASKS[c] || []);
+      if (allCourseTasks.length > 0 && Math.random() < 0.7) {
+        const task = allCourseTasks[Math.floor(Math.random() * allCourseTasks.length)];
+        setCourseMiniTask(task);
+      }
       setMiniGameType(null);
     }
     // 0.5s 后开始展示内容（加快结算弹窗显示）
@@ -2984,6 +3041,61 @@ function CourseScheduleModal({ courseModal, character, onClose, onAdvanceMonth, 
                     }}
                   />
                 )}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* ── 课程过程小任务（无专属小游戏时，phase=done时展示） ── */}
+        {phase === 'done' && !miniGameType && courseMiniTask && (
+          <div style={{
+            marginTop: '4px', marginBottom: '4px',
+            background: 'linear-gradient(135deg, rgba(212,81,122,0.12), rgba(30,8,20,0.9))',
+            border: `1.5px solid ${courseMiniTaskAnswered ? 'rgba(212,81,122,0.7)' : 'rgba(212,81,122,0.4)'}`,
+            borderRadius: '18px', padding: '16px 18px',
+            animation: 'randomEventFadeIn 0.4s ease forwards',
+          }}>
+            <div style={{ fontSize: '12px', color: '#F4A0C0', letterSpacing: '2px', marginBottom: '8px' }}>
+              📝 课堂小考验
+            </div>
+            <div style={{ fontSize: '14px', fontWeight: '600', color: 'rgba(245,230,236,0.9)', marginBottom: '12px', lineHeight: 1.6 }}>
+              {courseMiniTask.prompt}
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {courseMiniTask.options.map((opt, i) => {
+                const isCorrect = i === courseMiniTask.correct;
+                return (
+                  <button
+                    key={i}
+                    disabled={courseMiniTaskAnswered}
+                    onClick={() => {
+                      if (courseMiniTaskAnswered) return;
+                      setCourseMiniTaskAnswered(true);
+                      if (isCorrect) setCourseMiniTaskBonus(courseMiniTask.bonus);
+                    }}
+                    style={{
+                      padding: '9px 14px',
+                      background: !courseMiniTaskAnswered ? 'rgba(212,81,122,0.1)' : isCorrect ? 'rgba(212,81,122,0.25)' : 'rgba(255,255,255,0.04)',
+                      border: `1px solid ${!courseMiniTaskAnswered ? 'rgba(212,81,122,0.3)' : isCorrect ? 'rgba(212,81,122,0.8)' : 'rgba(255,255,255,0.1)'}`,
+                      borderRadius: '10px',
+                      color: !courseMiniTaskAnswered ? 'rgba(245,230,236,0.85)' : isCorrect ? '#F4A0C0' : 'rgba(245,230,236,0.35)',
+                      fontSize: '13px', cursor: courseMiniTaskAnswered ? 'default' : 'pointer',
+                      textAlign: 'left', fontFamily: 'inherit', transition: 'all 0.2s',
+                    }}
+                  >
+                    {!courseMiniTaskAnswered ? `${['A','B','C'][i]}. ${opt}` : isCorrect ? `✅ ${opt}` : `${['A','B','C'][i]}. ${opt}`}
+                  </button>
+                );
+              })}
+            </div>
+            {courseMiniTaskAnswered && courseMiniTaskBonus && (
+              <div style={{ marginTop: '10px', fontSize: '13px', color: '#F4A0C0', fontWeight: '700', animation: 'randomEventFadeIn 0.4s ease forwards' }}>
+                🎉 答对了！{courseMiniTaskBonus.label} +{courseMiniTaskBonus.delta}
+              </div>
+            )}
+            {courseMiniTaskAnswered && !courseMiniTaskBonus && (
+              <div style={{ marginTop: '10px', fontSize: '13px', color: 'rgba(245,230,236,0.45)' }}>
+                没关系，继续努力！
               </div>
             )}
           </div>
@@ -3840,6 +3952,91 @@ function LaborPanelWithPositioning({ laborSelections, onLaborSelect, onConfirm, 
 }
 
 // ==================== 劳动弹窗：下滑动画展示劳动收获 ====================
+// 劳动过程小任务题库（key 与 LABOR_NAMES 完全对应）
+const LABOR_MINI_TASKS = {
+  '织布纺纱': [
+    { prompt: '纺线时线断了，你该怎么办？', options: ['停下来重新接线', '继续硬拉扯', '换一根新线'], correct: 0, bonus: { key: 'vitality', label: '体力', delta: 2 } },
+    { prompt: '梭子卡住了，你会？', options: ['轻轻拨动梭子', '用力敲打', '叫人来帮忙'], correct: 0, bonus: { key: 'painting', label: '画艺', delta: 2 } },
+  ],
+  '制陶烧窑': [
+    { prompt: '泥坯开裂了，原因最可能是？', options: ['晾干太快，水分不均', '泥土太多', '窑火太旺'], correct: 0, bonus: { key: 'wisdom', label: '才学', delta: 2 } },
+    { prompt: '烧窑时火候如何判断？', options: ['观察火焰颜色和陶器光泽', '凭感觉估计', '看时间长短'], correct: 0, bonus: { key: 'spirit', label: '灵气', delta: 2 } },
+  ],
+  '打铁锻造': [
+    { prompt: '铁器锻打时，何时淬火最佳？', options: ['烧至红热时迅速入水', '冷却后再入水', '随时都行'], correct: 0, bonus: { key: 'vitality', label: '体力', delta: 2 } },
+    { prompt: '铁锤挥下，力道该如何？', options: ['稳而有力，集中一点', '越猛越好', '轻轻敲打'], correct: 0, bonus: { key: 'courage', label: '胆识', delta: 2 } },
+  ],
+  '捕鱼捞虾': [
+    { prompt: '撒网时应注意什么？', options: ['顺水流方向，均匀展开', '逆水流方向', '随意撒出'], correct: 0, bonus: { key: 'spirit', label: '灵气', delta: 2 } },
+    { prompt: '发现鱼群在深水，你会？', options: ['换用重坠网，沉到底部', '继续浅水捞', '放弃转移'], correct: 0, bonus: { key: 'vitality', label: '体力', delta: 2 } },
+  ],
+  '采药收草': [
+    { prompt: '采到一株不认识的草药，你会？', options: ['先记下特征，请教郎中再确认', '直接尝一口', '随手丢弃'], correct: 0, bonus: { key: 'medical', label: '医术', delta: 3 } },
+    { prompt: '采药时遇到蜂巢，你会？', options: ['缓慢退开，绕道而行', '挥手驱赶', '大声呼救'], correct: 0, bonus: { key: 'spirit', label: '灵气', delta: 2 } },
+  ],
+  '牧羊放牛': [
+    { prompt: '牛羊走散了，最好的办法是？', options: ['吹口哨或摇铃，等它们回来', '大声呼喊追赶', '立刻报官'], correct: 0, bonus: { key: 'wildness', label: '野性', delta: 2 } },
+    { prompt: '暴风雨来临，如何安置牲畜？', options: ['提前赶入圈舍避风', '继续放牧', '任由它们躲避'], correct: 0, bonus: { key: 'spirit', label: '灵气', delta: 2 } },
+  ],
+  '伐木搬柴': [
+    { prompt: '砍树时，切口应朝哪个方向？', options: ['朝向树倒的方向，先斜切再直切', '随意方向', '从顶部往下砍'], correct: 0, bonus: { key: 'courage', label: '胆识', delta: 2 } },
+    { prompt: '扛柴时腰酸，你会？', options: ['调整姿势，用腿部发力', '咬牙硬撑', '直接放下休息'], correct: 0, bonus: { key: 'vitality', label: '体力', delta: 2 } },
+  ],
+  '制绳编筐': [
+    { prompt: '编筐时藤条断了，如何接续？', options: ['将新藤条压入旧藤下方编入', '直接绑一个结', '换新藤条重编'], correct: 0, bonus: { key: 'wisdom', label: '才学', delta: 2 } },
+  ],
+  '酿造蜂蜜': [
+    { prompt: '蜂蜜结晶了，这说明什么？', options: ['质量好，纯度高', '变质了', '水分太多'], correct: 0, bonus: { key: 'culinary', label: '厨艺', delta: 3 } },
+    { prompt: '取蜜时如何避免被蜂蛰？', options: ['穿戴防护，用烟雾驱蜂', '快速取完', '徒手取蜜'], correct: 0, bonus: { key: 'spirit', label: '灵气', delta: 2 } },
+  ],
+  '修缮房屋': [
+    { prompt: '屋顶漏雨，最先检查什么？', options: ['瓦片是否移位或破损', '墙壁是否裂缝', '地基是否松动'], correct: 0, bonus: { key: 'wisdom', label: '才学', delta: 2 } },
+  ],
+  '挖井引水': [
+    { prompt: '挖井时遇到坚硬岩层，你会？', options: ['换用铁钎凿开，再清理碎石', '直接放弃', '绕开另挖'], correct: 0, bonus: { key: 'vitality', label: '体力', delta: 3 } },
+  ],
+  '驾车赶路': [
+    { prompt: '马车轮子陷入泥坑，如何脱困？', options: ['在轮下垫木板，再驱马拉出', '猛抽马鞭', '等人来帮'], correct: 0, bonus: { key: 'courage', label: '胆识', delta: 2 } },
+  ],
+  '传递信件': [
+    { prompt: '信件被雨淋湿，你会？', options: ['立刻放入干燥处摊开晾干', '用手甩干', '继续赶路不管'], correct: 0, bonus: { key: 'morality', label: '道德', delta: 2 } },
+  ],
+  '守夜巡逻': [
+    { prompt: '深夜发现可疑人影，你会？', options: ['提灯靠近查看，保持警惕', '大声呼喊', '立刻逃跑'], correct: 0, bonus: { key: 'courage', label: '胆识', delta: 3 } },
+  ],
+  '摆摊售货': [
+    { prompt: '客人嫌价格贵，你会？', options: ['说明货品品质，适当让利', '立刻降价', '拒绝还价'], correct: 0, bonus: { key: 'rhetoric', label: '口才', delta: 3 } },
+    { prompt: '货物快卖完，有人想全买，你会？', options: ['留一部分给其他顾客，维护口碑', '全卖给他', '涨价再卖'], correct: 0, bonus: { key: 'affinity', label: '亲和', delta: 2 } },
+  ],
+  '浣洗衣物': [
+    { prompt: '衣物有顽固污渍，如何处理？', options: ['用皂角反复揉搓后浸泡', '用力拧扯', '直接晾干'], correct: 0, bonus: { key: 'morality', label: '道德', delta: 2 } },
+  ],
+  '腌制咸菜': [
+    { prompt: '腌菜坛子里出现白沫，你会？', options: ['撇去白沫，加盐压实再密封', '直接丢弃', '继续腌制不管'], correct: 0, bonus: { key: 'culinary', label: '厨艺', delta: 3 } },
+  ],
+  '编制灯笼': [
+    { prompt: '竹丝太硬不好弯曲，你会？', options: ['用水浸泡后再编', '用火烤软', '换细竹丝'], correct: 0, bonus: { key: 'painting', label: '画艺', delta: 3 } },
+  ],
+  '种桑养蚕': [
+    { prompt: '蚕宝宝不吃桑叶，可能是？', options: ['桑叶太老或太湿，需换新鲜嫩叶', '蚕生病了', '温度太低'], correct: 0, bonus: { key: 'spirit', label: '灵气', delta: 3 } },
+  ],
+  '磨粮制粉': [
+    { prompt: '磨盘转动费力，原因是？', options: ['粮食放太多，需减量', '磨盘太重', '人力不够'], correct: 0, bonus: { key: 'vitality', label: '体力', delta: 2 } },
+  ],
+  '晒盐制卤': [
+    { prompt: '盐田里盐分不够浓，如何改善？', options: ['扩大蒸发面积，延长晾晒时间', '加更多海水', '加热煮沸'], correct: 0, bonus: { key: 'wisdom', label: '才学', delta: 2 } },
+  ],
+  '制作陶器': [
+    { prompt: '陶器烧好后出现裂纹，原因是？', options: ['降温太快，应缓慢冷却', '泥土质量差', '水分太少'], correct: 0, bonus: { key: 'spirit', label: '灵气', delta: 2 } },
+  ],
+  '挑担运货': [
+    { prompt: '挑担走远路，如何保持体力？', options: ['步伐均匀，定时换肩休息', '一口气冲到终点', '放慢速度磨蹭'], correct: 0, bonus: { key: 'vitality', label: '体力', delta: 3 } },
+  ],
+  '烧炭制薪': [
+    { prompt: '炭窑封口后，如何判断炭已烧好？', options: ['烟色由浓转淡，再等两个时辰', '烟停了就好', '随时可以开窑'], correct: 0, bonus: { key: 'wildness', label: '野性', delta: 2 } },
+  ],
+};
+
 function LaborScheduleModal({ laborModal, character, onClose }) {
   const [phase, setPhase] = useState('title');
   const [visibleCount, setVisibleCount] = useState(0);
@@ -3862,33 +4059,6 @@ function LaborScheduleModal({ laborModal, character, onClose }) {
     const t1 = setTimeout(() => setPhase('slide'), 500);
     return () => clearTimeout(t1);
   }, [laborModal]);
-
-  // 劳动小任务题库（按劳动类型）
-  const LABOR_MINI_TASKS = {
-    '织布纺纱': [
-      { prompt: '纺线时线断了，你该怎么办？', options: ['停下来重新接线', '继续硬拉', '换一根线'], correct: 0, bonus: { key: 'crafting', label: '工艺', delta: 3 } },
-      { prompt: '梭子卡住了，你会？', options: ['轻轻拨动梭子', '用力敲打', '叫人来帮忙'], correct: 0, bonus: { key: 'crafting', label: '工艺', delta: 3 } },
-    ],
-    '灶台烹饪': [
-      { prompt: '汤汁快烧干了，你会？', options: ['加水并调小火', '直接关火', '继续大火'], correct: 0, bonus: { key: 'culinary', label: '厨艺', delta: 3 } },
-      { prompt: '菜肴偏咸，如何补救？', options: ['加一点糖或米', '多加水', '重新做'], correct: 0, bonus: { key: 'culinary', label: '厨艺', delta: 3 } },
-    ],
-    '采摘蔬果': [
-      { prompt: '发现一株不认识的果实，你会？', options: ['先观察再请教长辈', '直接尝一口', '随手摘走'], correct: 0, bonus: { key: 'medical', label: '医术', delta: 2 } },
-      { prompt: '采摘时遇到蜂巢，你会？', options: ['缓慢退开，绕道而行', '挥手驱赶', '大声呼救'], correct: 0, bonus: { key: 'vitality', label: '体力', delta: 2 } },
-    ],
-    '劈柴挑水': [
-      { prompt: '挑水时扁担压肩，如何减轻？', options: ['调整重心，稳步前行', '一口气跑完', '放下来休息'], correct: 0, bonus: { key: 'vitality', label: '体力', delta: 3 } },
-      { prompt: '劈柴时木头裂纹方向怎么判断？', options: ['顺着木纹方向劈', '随意方向', '从中间劈'], correct: 0, bonus: { key: 'crafting', label: '工艺', delta: 2 } },
-    ],
-    '刺绣缝纫': [
-      { prompt: '绣花时针线打结，你会？', options: ['耐心解开线结', '直接剪断重穿', '硬拉扯'], correct: 0, bonus: { key: 'crafting', label: '工艺', delta: 3 } },
-      { prompt: '针脚不均匀怎么办？', options: ['拆掉重绣', '将就继续', '用布遮住'], correct: 0, bonus: { key: 'crafting', label: '工艺', delta: 3 } },
-    ],
-    '磨豆制浆': [
-      { prompt: '豆浆煮沸后有泡沫，你会？', options: ['撇去泡沫再饮用', '直接喝', '倒掉重做'], correct: 0, bonus: { key: 'culinary', label: '厨艺', delta: 2 } },
-    ],
-  };
 
   useEffect(() => {
     if (phase !== 'slide') return;
