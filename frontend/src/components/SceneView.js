@@ -1295,6 +1295,15 @@ function ActiveSceneView({ scene, npcsMap, character, wardrobe, onNpcChoice, onS
         dialogues: set.dialogues || npc.dialogues,
         dialogueWithChoice: set.dialogueWithChoice || null,
       });
+    } else if (npc && npc.dialogues && npc.dialogues.length > 1) {
+      // 没有 dialogueSets 但有多句对话：随机打乱顺序，每次展示不同内容
+      const shuffled = [...npc.dialogues].sort(() => Math.random() - 0.5);
+      // 取前1~2句展示（保留 dialogueWithChoice）
+      const sliceLen = Math.min(2, shuffled.length);
+      setActiveNpcData({
+        ...npc,
+        dialogues: shuffled.slice(0, sliceLen),
+      });
     } else {
       setActiveNpcData(null);
     }

@@ -61,53 +61,53 @@ const COURSE_NAMES = [
 // 课程学习收获（icon, desc, cost=学费金币, skills=[{key,label,delta}×3种属性]）
 const COURSE_CONTENTS = {
   '农耕技术':  { icon: '🌾', desc: '学习耕种技巧，了解四时节气，掌握了农作物种植之道。', cost: 30,
-    skills: [{ key: 'vitality', label: '体力', delta: 4 }, { key: 'wisdom', label: '才学', delta: 2 }, { key: 'spirit', label: '灵气', delta: 2 }] },
+    skills: [{ key: 'vitality', label: '体力', delta: 2 }, { key: 'wisdom', label: '才学', delta: 1 }, { key: 'spirit', label: '灵气', delta: 1 }] },
   '编织与刺绣':{ icon: '🧵', desc: '绣出一幅精美的花鸟图，针法细腻入微，手艺精湛。', cost: 25,
-    skills: [{ key: 'painting', label: '画艺', delta: 4 }, { key: 'charm', label: '魅力', delta: 2 }, { key: 'wisdom', label: '才学', delta: 2 }] },
+    skills: [{ key: 'painting', label: '画艺', delta: 2 }, { key: 'charm', label: '魅力', delta: 1 }, { key: 'wisdom', label: '才学', delta: 1 }] },
   '马术':      { icon: '🐎', desc: '骑术精进，能在马背上自如驰骋，人马合一。', cost: 50,
-    skills: [{ key: 'command', label: '统帅', delta: 4 }, { key: 'wildness', label: '野性', delta: 3 }, { key: 'martial', label: '武术', delta: 2 }] },
+    skills: [{ key: 'command', label: '统帅', delta: 2 }, { key: 'wildness', label: '野性', delta: 2 }, { key: 'martial', label: '武术', delta: 1 }] },
   '舞蹈':      { icon: '💃', desc: '跟随宫廷舞师学习古典舞蹈，水袖翩翩，步步生莲。', cost: 35,
-    skills: [{ key: 'charm', label: '魅力', delta: 4 }, { key: 'reputation', label: '声望', delta: 2 }, { key: 'affinity', label: '亲和', delta: 2 }] },
+    skills: [{ key: 'charm', label: '魅力', delta: 2 }, { key: 'reputation', label: '声望', delta: 1 }, { key: 'affinity', label: '亲和', delta: 1 }] },
   '木工':      { icon: '🪚', desc: '掌握木工技艺，能制作精美的家具和器具。', cost: 20,
-    skills: [{ key: 'crafting', label: '手工', delta: 4 }, { key: 'vitality', label: '体力', delta: 2 }, { key: 'wisdom', label: '才学', delta: 2 }] },
+    skills: [{ key: 'crafting', label: '手工', delta: 2 }, { key: 'vitality', label: '体力', delta: 1 }, { key: 'wisdom', label: '才学', delta: 1 }] },
   '建筑营造':  { icon: '🏛️', desc: '学习建筑原理，了解营造法式，眼界大开。', cost: 45,
-    skills: [{ key: 'crafting', label: '手工', delta: 4 }, { key: 'arithmetic', label: '算数', delta: 3 }, { key: 'wisdom', label: '才学', delta: 2 }] },
+    skills: [{ key: 'crafting', label: '手工', delta: 2 }, { key: 'arithmetic', label: '算数', delta: 2 }, { key: 'wisdom', label: '才学', delta: 1 }] },
   '法术':      { icon: '✨', desc: '研习神秘法术，掌握了一些神奇的咒语和仪式。', cost: 60,
-    skills: [{ key: 'spirit', label: '灵气', delta: 6 }, { key: 'wisdom', label: '才学', delta: 2 }, { key: 'courage', label: '胆识', delta: 2 }] },
+    skills: [{ key: 'spirit', label: '灵气', delta: 3 }, { key: 'wisdom', label: '才学', delta: 1 }, { key: 'courage', label: '胆识', delta: 1 }] },
   '书画':      { icon: '🖌️', desc: '临摹名家真迹，笔法渐入佳境，作品得到赞赏。', cost: 40,
-    skills: [{ key: 'painting', label: '画艺', delta: 5 }, { key: 'poetry', label: '诗才', delta: 2 }, { key: 'rhetoric', label: '口才', delta: 2 }] },
+    skills: [{ key: 'painting', label: '画艺', delta: 3 }, { key: 'poetry', label: '诗才', delta: 1 }, { key: 'rhetoric', label: '口才', delta: 1 }] },
   '文学':      { icon: '📚', desc: '熟读经典文学，能写出优美的诗文，文采斐然。', cost: 35,
-    skills: [{ key: 'poetry', label: '诗才', delta: 5 }, { key: 'wisdom', label: '才学', delta: 3 }, { key: 'rhetoric', label: '口才', delta: 2 }] },
+    skills: [{ key: 'poetry', label: '诗才', delta: 3 }, { key: 'wisdom', label: '才学', delta: 2 }, { key: 'rhetoric', label: '口才', delta: 1 }] },
   '珠算':      { icon: '🔢', desc: '精通珠算，能快速计算复杂账目，算无遗漏。', cost: 25,
-    skills: [{ key: 'arithmetic', label: '算数', delta: 6 }, { key: 'wisdom', label: '才学', delta: 3 }, { key: 'spirit', label: '灵气', delta: 2 }] },
+    skills: [{ key: 'arithmetic', label: '算数', delta: 3 }, { key: 'wisdom', label: '才学', delta: 2 }, { key: 'spirit', label: '灵气', delta: 1 }] },
   '狩猎':      { icon: '🎯', desc: '学习狩猎技巧，追踪猎物，百发百中。', cost: 45,
-    skills: [{ key: 'courage', label: '胆识', delta: 4 }, { key: 'wildness', label: '野性', delta: 3 }, { key: 'vitality', label: '体力', delta: 2 }] },
+    skills: [{ key: 'courage', label: '胆识', delta: 2 }, { key: 'wildness', label: '野性', delta: 2 }, { key: 'vitality', label: '体力', delta: 1 }] },
   '蹴鞠':      { icon: '⚽', desc: '练习蹴鞠技艺，身手矫健，配合默契。', cost: 20,
-    skills: [{ key: 'vitality', label: '体力', delta: 4 }, { key: 'affinity', label: '亲和', delta: 2 }, { key: 'wildness', label: '野性', delta: 2 }] },
+    skills: [{ key: 'vitality', label: '体力', delta: 2 }, { key: 'affinity', label: '亲和', delta: 1 }, { key: 'wildness', label: '野性', delta: 1 }] },
   '中医本草':  { icon: '🌿', desc: '熟记各种草药功效，能诊治常见病症。', cost: 50,
-    skills: [{ key: 'medical', label: '医术', delta: 5 }, { key: 'wisdom', label: '才学', delta: 2 }, { key: 'spirit', label: '灵气', delta: 2 }] },
+    skills: [{ key: 'medical', label: '医术', delta: 3 }, { key: 'wisdom', label: '才学', delta: 1 }, { key: 'spirit', label: '灵气', delta: 1 }] },
   '针灸推拿':  { icon: '💉', desc: '掌握针灸推拿之术，能调理身体，疏通经络。', cost: 55,
-    skills: [{ key: 'medical', label: '医术', delta: 6 }, { key: 'spirit', label: '灵气', delta: 2 }, { key: 'affinity', label: '亲和', delta: 2 }] },
+    skills: [{ key: 'medical', label: '医术', delta: 3 }, { key: 'spirit', label: '灵气', delta: 1 }, { key: 'affinity', label: '亲和', delta: 1 }] },
   '烹饪艺术':  { icon: '🍳', desc: '学会了几道精致的菜肴，厨艺大有长进。', cost: 30,
-    skills: [{ key: 'culinary', label: '厨艺', delta: 5 }, { key: 'charm', label: '魅力', delta: 2 }, { key: 'affinity', label: '亲和', delta: 2 }] },
+    skills: [{ key: 'culinary', label: '厨艺', delta: 3 }, { key: 'charm', label: '魅力', delta: 1 }, { key: 'affinity', label: '亲和', delta: 1 }] },
   '酿酒工艺':  { icon: '🍶', desc: '学习酿酒技艺，酿出香醇美酒，回味无穷。', cost: 35,
-    skills: [{ key: 'culinary', label: '厨艺', delta: 4 }, { key: 'wisdom', label: '才学', delta: 2 }, { key: 'spirit', label: '灵气', delta: 2 }] },
+    skills: [{ key: 'culinary', label: '厨艺', delta: 2 }, { key: 'wisdom', label: '才学', delta: 1 }, { key: 'spirit', label: '灵气', delta: 1 }] },
   '天文历法':  { icon: '🔭', desc: '观星望月，通晓天文历法，预知节气变化。', cost: 45,
-    skills: [{ key: 'arithmetic', label: '算数', delta: 4 }, { key: 'wisdom', label: '才学', delta: 3 }, { key: 'spirit', label: '灵气', delta: 2 }] },
+    skills: [{ key: 'arithmetic', label: '算数', delta: 2 }, { key: 'wisdom', label: '才学', delta: 2 }, { key: 'spirit', label: '灵气', delta: 1 }] },
   '航海技术':  { icon: '⛵', desc: '学习航海知识，懂得观星定位，乘风破浪。', cost: 50,
-    skills: [{ key: 'statecraft', label: '政治', delta: 4 }, { key: 'courage', label: '胆识', delta: 3 }, { key: 'wildness', label: '野性', delta: 2 }] },
+    skills: [{ key: 'statecraft', label: '政治', delta: 2 }, { key: 'courage', label: '胆识', delta: 2 }, { key: 'wildness', label: '野性', delta: 1 }] },
   '武术器械':  { icon: '⚔️', desc: '习练各种兵器，武艺大进，招式纯熟。', cost: 55,
-    skills: [{ key: 'martial', label: '武术', delta: 5 }, { key: 'command', label: '统帅', delta: 2 }, { key: 'courage', label: '胆识', delta: 2 }] },
+    skills: [{ key: 'martial', label: '武术', delta: 3 }, { key: 'command', label: '统帅', delta: 1 }, { key: 'courage', label: '胆识', delta: 1 }] },
   '弓箭制造':  { icon: '🏹', desc: '学习制弓技术，能打造精良的弓箭。', cost: 40,
-    skills: [{ key: 'martial', label: '武术', delta: 4 }, { key: 'crafting', label: '手工', delta: 3 }, { key: 'courage', label: '胆识', delta: 2 }] },
+    skills: [{ key: 'martial', label: '武术', delta: 2 }, { key: 'crafting', label: '手工', delta: 2 }, { key: 'courage', label: '胆识', delta: 1 }] },
   '丝竹乐器':  { icon: '🪕', desc: '习练琴瑟笛箫，丝竹之声绕梁三日，心旷神怡。', cost: 55,
-    skills: [{ key: 'music', label: '乐艺', delta: 6 }, { key: 'charm', label: '魅力', delta: 3 }, { key: 'spirit', label: '灵气', delta: 2 }] },
+    skills: [{ key: 'music', label: '乐艺', delta: 3 }, { key: 'charm', label: '魅力', delta: 2 }, { key: 'spirit', label: '灵气', delta: 1 }] },
   '茶艺文化':  { icon: '🍵', desc: '品茶论道，领悟茶中三昧，心境澄明。', cost: 30,
-    skills: [{ key: 'reputation', label: '声望', delta: 4 }, { key: 'rhetoric', label: '口才', delta: 3 }, { key: 'statecraft', label: '政治', delta: 2 }] },
+    skills: [{ key: 'reputation', label: '声望', delta: 2 }, { key: 'rhetoric', label: '口才', delta: 2 }, { key: 'statecraft', label: '政治', delta: 1 }] },
   '雕刻技艺':  { icon: '🗿', desc: '学习雕刻艺术，作品栩栩如生，巧夺天工。', cost: 35,
-    skills: [{ key: 'crafting', label: '手工', delta: 5 }, { key: 'painting', label: '画艺', delta: 2 }, { key: 'wisdom', label: '才学', delta: 2 }] },
+    skills: [{ key: 'crafting', label: '手工', delta: 3 }, { key: 'painting', label: '画艺', delta: 1 }, { key: 'wisdom', label: '才学', delta: 1 }] },
   '探险':      { icon: '🗺️', desc: '踏上探险之旅，见识广博，胆识过人。', cost: 50,
-    skills: [{ key: 'courage', label: '胆识', delta: 5 }, { key: 'wildness', label: '野性', delta: 3 }, { key: 'spirit', label: '灵气', delta: 2 }] },
+    skills: [{ key: 'courage', label: '胆识', delta: 3 }, { key: 'wildness', label: '野性', delta: 2 }, { key: 'spirit', label: '灵气', delta: 1 }] },
 };
 
 // 对基础金币值做 ±20% 随机浮动
@@ -125,53 +125,53 @@ const LABOR_NAMES = [
 
 const LABOR_CONTENTS = {
   '织布纺纱': { icon: '🪡', desc: '手指灵巧穿梭于丝线间，织出精美布匹。', gold: 35,
-    skills: [{ key: 'vitality', label: '体力', delta: 4 }, { key: 'painting', label: '画艺', delta: 2 }, { key: 'affinity', label: '亲和', delta: 2 }] },
+    skills: [{ key: 'vitality', label: '体力', delta: 2 }, { key: 'painting', label: '画艺', delta: 1 }, { key: 'affinity', label: '亲和', delta: 1 }] },
   '制陶烧窑': { icon: '🏺', desc: '揉捏泥土，精心雕琢，烧制出精美陶器。', gold: 40,
-    skills: [{ key: 'vitality', label: '体力', delta: 4 }, { key: 'wisdom', label: '才学', delta: 2 }, { key: 'spirit', label: '灵气', delta: 2 }] },
+    skills: [{ key: 'vitality', label: '体力', delta: 2 }, { key: 'wisdom', label: '才学', delta: 1 }, { key: 'spirit', label: '灵气', delta: 1 }] },
   '打铁锻造': { icon: '🔨', desc: '挥舞铁锤，火花四溅，锻造出坚韧的器具。', gold: 55,
-    skills: [{ key: 'martial', label: '武术', delta: 4 }, { key: 'vitality', label: '体力', delta: 3 }, { key: 'crafting', label: '手工', delta: 2 }] },
+    skills: [{ key: 'martial', label: '武术', delta: 2 }, { key: 'vitality', label: '体力', delta: 2 }, { key: 'crafting', label: '手工', delta: 1 }] },
   '捕鱼捞虾': { icon: '🎣', desc: '撒网入江，静候收获，鱼虾满舱而归。', gold: 30,
-    skills: [{ key: 'vitality', label: '体力', delta: 4 }, { key: 'spirit', label: '灵气', delta: 2 }, { key: 'affinity', label: '亲和', delta: 2 }] },
+    skills: [{ key: 'vitality', label: '体力', delta: 2 }, { key: 'spirit', label: '灵气', delta: 1 }, { key: 'affinity', label: '亲和', delta: 1 }] },
   '采药收草': { icon: '🌿', desc: '翻山越岭采集草药，为乡民备下良方。', gold: 35,
-    skills: [{ key: 'medical', label: '医术', delta: 4 }, { key: 'spirit', label: '灵气', delta: 2 }, { key: 'vitality', label: '体力', delta: 2 }] },
+    skills: [{ key: 'medical', label: '医术', delta: 2 }, { key: 'spirit', label: '灵气', delta: 1 }, { key: 'vitality', label: '体力', delta: 1 }] },
   '牧羊放牛': { icon: '🐑', desc: '悠然放牧于山野之间，与牲畜相伴而行。', gold: 28,
-    skills: [{ key: 'vitality', label: '体力', delta: 4 }, { key: 'spirit', label: '灵气', delta: 2 }, { key: 'wildness', label: '野性', delta: 2 }] },
+    skills: [{ key: 'vitality', label: '体力', delta: 2 }, { key: 'spirit', label: '灵气', delta: 1 }, { key: 'wildness', label: '野性', delta: 1 }] },
   '伐木搬柴': { icon: '🪓', desc: '挥斧入林，伐取木材，肩扛重担归来。', gold: 48,
-    skills: [{ key: 'vitality', label: '体力', delta: 5 }, { key: 'wildness', label: '野性', delta: 2 }, { key: 'courage', label: '胆识', delta: 2 }] },
+    skills: [{ key: 'vitality', label: '体力', delta: 3 }, { key: 'wildness', label: '野性', delta: 1 }, { key: 'courage', label: '胆识', delta: 1 }] },
   '制绳编筐': { icon: '🧺', desc: '手工编制实用绳索与竹筐，精巧耐用。', gold: 30,
-    skills: [{ key: 'vitality', label: '体力', delta: 3 }, { key: 'wisdom', label: '才学', delta: 2 }, { key: 'affinity', label: '亲和', delta: 2 }] },
+    skills: [{ key: 'vitality', label: '体力', delta: 2 }, { key: 'wisdom', label: '才学', delta: 1 }, { key: 'affinity', label: '亲和', delta: 1 }] },
   '烧炭制薪': { icon: '🔥', desc: '窑火通明，烧制优质木炭，供冬日取暖。', gold: 42,
-    skills: [{ key: 'vitality', label: '体力', delta: 4 }, { key: 'wildness', label: '野性', delta: 2 }, { key: 'spirit', label: '灵气', delta: 2 }] },
+    skills: [{ key: 'vitality', label: '体力', delta: 2 }, { key: 'wildness', label: '野性', delta: 1 }, { key: 'spirit', label: '灵气', delta: 1 }] },
   '酿造蜂蜜': { icon: '🍯', desc: '采集山花蜜蜂之蜜，酿造甜美香醇蜂蜜。', gold: 55,
-    skills: [{ key: 'culinary', label: '厨艺', delta: 4 }, { key: 'spirit', label: '灵气', delta: 2 }, { key: 'affinity', label: '亲和', delta: 2 }] },
+    skills: [{ key: 'culinary', label: '厨艺', delta: 2 }, { key: 'spirit', label: '灵气', delta: 1 }, { key: 'affinity', label: '亲和', delta: 1 }] },
   '修缮房屋': { icon: '🏚️', desc: '修葺邻里房屋，砌砖铺瓦，助人为乐。', gold: 60,
-    skills: [{ key: 'morality', label: '道德', delta: 4 }, { key: 'crafting', label: '手工', delta: 3 }, { key: 'vitality', label: '体力', delta: 2 }] },
+    skills: [{ key: 'morality', label: '道德', delta: 2 }, { key: 'crafting', label: '手工', delta: 2 }, { key: 'vitality', label: '体力', delta: 1 }] },
   '挖井引水': { icon: '🪣', desc: '凿开坚硬岩层，引甘泉入村，造福百姓。', gold: 65,
-    skills: [{ key: 'vitality', label: '体力', delta: 5 }, { key: 'wisdom', label: '才学', delta: 2 }, { key: 'courage', label: '胆识', delta: 2 }] },
+    skills: [{ key: 'vitality', label: '体力', delta: 3 }, { key: 'wisdom', label: '才学', delta: 1 }, { key: 'courage', label: '胆识', delta: 1 }] },
   '驾车赶路': { icon: '🛤️', desc: '驾马车往来于城镇之间，代人运送物资。', gold: 48,
-    skills: [{ key: 'vitality', label: '体力', delta: 4 }, { key: 'wildness', label: '野性', delta: 3 }, { key: 'courage', label: '胆识', delta: 2 }] },
+    skills: [{ key: 'vitality', label: '体力', delta: 2 }, { key: 'wildness', label: '野性', delta: 2 }, { key: 'courage', label: '胆识', delta: 1 }] },
   '传递信件': { icon: '📜', desc: '奔走于街巷间，将书信及时送达。', gold: 30,
-    skills: [{ key: 'rhetoric', label: '口才', delta: 4 }, { key: 'affinity', label: '亲和', delta: 3 }, { key: 'morality', label: '道德', delta: 2 }] },
+    skills: [{ key: 'rhetoric', label: '口才', delta: 2 }, { key: 'affinity', label: '亲和', delta: 2 }, { key: 'morality', label: '道德', delta: 1 }] },
   '守夜巡逻': { icon: '🏮', desc: '手持灯笼，守护村庄一夜安宁。', gold: 42,
-    skills: [{ key: 'morality', label: '道德', delta: 4 }, { key: 'courage', label: '胆识', delta: 2 }, { key: 'vitality', label: '体力', delta: 2 }] },
+    skills: [{ key: 'morality', label: '道德', delta: 2 }, { key: 'courage', label: '胆识', delta: 1 }, { key: 'vitality', label: '体力', delta: 1 }] },
   '摆摊售货': { icon: '🛍️', desc: '在集市摆摊叫卖，与客周旋，锻炼口才。', gold: 55,
-    skills: [{ key: 'rhetoric', label: '口才', delta: 4 }, { key: 'affinity', label: '亲和', delta: 2 }, { key: 'reputation', label: '声望', delta: 2 }] },
+    skills: [{ key: 'rhetoric', label: '口才', delta: 2 }, { key: 'affinity', label: '亲和', delta: 1 }, { key: 'reputation', label: '声望', delta: 1 }] },
   '浣洗衣物': { icon: '👘', desc: '溪边浣衣，清洗污渍，衣物洁净如新。', gold: 22,
-    skills: [{ key: 'morality', label: '道德', delta: 3 }, { key: 'affinity', label: '亲和', delta: 2 }, { key: 'spirit', label: '灵气', delta: 2 }] },
+    skills: [{ key: 'morality', label: '道德', delta: 2 }, { key: 'affinity', label: '亲和', delta: 1 }, { key: 'spirit', label: '灵气', delta: 1 }] },
   '腌制咸菜': { icon: '🥒', desc: '用盐腌制时令蔬菜，美味可口耐久存。', gold: 28,
-    skills: [{ key: 'culinary', label: '厨艺', delta: 4 }, { key: 'wisdom', label: '才学', delta: 2 }, { key: 'spirit', label: '灵气', delta: 2 }] },
+    skills: [{ key: 'culinary', label: '厨艺', delta: 2 }, { key: 'wisdom', label: '才学', delta: 1 }, { key: 'spirit', label: '灵气', delta: 1 }] },
   '编制灯笼': { icon: '🏮', desc: '竹丝编骨，裱上彩纸，制成精美灯笼。', gold: 35,
-    skills: [{ key: 'painting', label: '画艺', delta: 4 }, { key: 'wisdom', label: '才学', delta: 2 }, { key: 'affinity', label: '亲和', delta: 2 }] },
+    skills: [{ key: 'painting', label: '画艺', delta: 2 }, { key: 'wisdom', label: '才学', delta: 1 }, { key: 'affinity', label: '亲和', delta: 1 }] },
   '种桑养蚕': { icon: '🐛', desc: '种植桑树，悉心养蚕，缫出细腻生丝。', gold: 48,
-    skills: [{ key: 'vitality', label: '体力', delta: 4 }, { key: 'spirit', label: '灵气', delta: 3 }, { key: 'wisdom', label: '才学', delta: 2 }] },
+    skills: [{ key: 'vitality', label: '体力', delta: 2 }, { key: 'spirit', label: '灵气', delta: 2 }, { key: 'wisdom', label: '才学', delta: 1 }] },
   '磨粮制粉': { icon: '🌾', desc: '推动石磨，将谷物研磨成细腻粉末。', gold: 30,
-    skills: [{ key: 'vitality', label: '体力', delta: 4 }, { key: 'culinary', label: '厨艺', delta: 2 }, { key: 'spirit', label: '灵气', delta: 2 }] },
+    skills: [{ key: 'vitality', label: '体力', delta: 2 }, { key: 'culinary', label: '厨艺', delta: 1 }, { key: 'spirit', label: '灵气', delta: 1 }] },
   '晒盐制卤': { icon: '🧂', desc: '引海水入田，经日晒风吹，结出白盐。', gold: 60,
-    skills: [{ key: 'wisdom', label: '才学', delta: 4 }, { key: 'vitality', label: '体力', delta: 3 }, { key: 'spirit', label: '灵气', delta: 2 }] },
+    skills: [{ key: 'wisdom', label: '才学', delta: 2 }, { key: 'vitality', label: '体力', delta: 2 }, { key: 'spirit', label: '灵气', delta: 1 }] },
   '制作陶器': { icon: '🏺', desc: '拉坯成型，精心烧制，造出各式陶碗瓦罐。', gold: 42,
-    skills: [{ key: 'crafting', label: '手工', delta: 4 }, { key: 'painting', label: '画艺', delta: 2 }, { key: 'vitality', label: '体力', delta: 2 }] },
+    skills: [{ key: 'crafting', label: '手工', delta: 2 }, { key: 'painting', label: '画艺', delta: 1 }, { key: 'vitality', label: '体力', delta: 1 }] },
   '挑担运货': { icon: '⚖️', desc: '肩挑重担，往返于山路之间，运送货物。', gold: 55,
-    skills: [{ key: 'vitality', label: '体力', delta: 4 }, { key: 'command', label: '统帅', delta: 3 }, { key: 'courage', label: '胆识', delta: 2 }] },
+    skills: [{ key: 'vitality', label: '体力', delta: 2 }, { key: 'command', label: '统帅', delta: 2 }, { key: 'courage', label: '胆识', delta: 1 }] },
 };
 
 // ==================== 课程道具奖励配置 ====================
@@ -486,7 +486,8 @@ export default function App() {
       try {
         const res = await axios.post(`${API_BASE}/age/check`);
         if (res.data.data.grew) {
-          setCharacter(res.data.data.character);
+          // 保留 monthInfo/gameMonth，只合并年龄增长带来的变化
+          setCharacter(prev => prev ? { ...prev, ...res.data.data.character, monthInfo: prev.monthInfo, gameMonth: prev.gameMonth } : prev);
           setAgeGrowthModal(res.data.data);
         }
         const ageRes = await axios.get(`${API_BASE}/age-status`);
@@ -590,12 +591,12 @@ export default function App() {
   };
 
   const handleAttendCourse = async (courseId) => {
-    try { const res = await axios.post(`${API_BASE}/course/attend`, { courseId }); setCharacter(res.data.data.character); setCourseResult(res.data.data); showToast(res.data.message, 'success'); } catch (err) { showToast('课程参加失败', 'error'); }
+    try { const res = await axios.post(`${API_BASE}/course/attend`, { courseId }); setCharacter(prev => prev ? { ...prev, ...res.data.data.character, monthInfo: prev.monthInfo, gameMonth: prev.gameMonth } : prev); setCourseResult(res.data.data); showToast(res.data.message, 'success'); } catch (err) { showToast('课程参加失败', 'error'); }
   };
   const handleTalkToNpc = async (npcId) => {
     try {
       const res = await axios.post(`${API_BASE}/npc/talk`, { npcId });
-      setCharacter(res.data.data.character);
+      setCharacter(prev => prev ? { ...prev, ...res.data.data.character, monthInfo: prev.monthInfo, gameMonth: prev.gameMonth } : prev);
       showToast(`${res.data.data.npc.name}："${res.data.data.dialogue}"`, 'dialogue');
     } catch (err) { showToast('对话失败', 'error'); }
   };
@@ -717,10 +718,10 @@ export default function App() {
   };
 
   const handleNpcChoice = async (npcId, choiceId) => {
-    try { const res = await axios.post(`${API_BASE}/npc/choice`, { npcId, choiceId }); setCharacter(res.data.data.character); return res.data.data; } catch (err) { showToast('选择失败', 'error'); return null; }
+    try { const res = await axios.post(`${API_BASE}/npc/choice`, { npcId, choiceId }); setCharacter(prev => prev ? { ...prev, ...res.data.data.character, monthInfo: prev.monthInfo, gameMonth: prev.gameMonth } : prev); return res.data.data; } catch (err) { showToast('选择失败', 'error'); return null; }
   };
   const handleBuyShopItem = async (itemId) => {
-    try { const res = await axios.post(`${API_BASE}/shop/buy`, { itemId }); setCharacter(res.data.data.character); showToast(res.data.message, 'success'); } catch (err) { showToast('购买失败', 'error'); }
+    try { const res = await axios.post(`${API_BASE}/shop/buy`, { itemId }); setCharacter(prev => prev ? { ...prev, ...res.data.data.character, monthInfo: prev.monthInfo, gameMonth: prev.gameMonth } : prev); showToast(res.data.message, 'success'); } catch (err) { showToast('购买失败', 'error'); }
   };
   const handleItemGift = async (giftItem) => {
     try {
@@ -1606,7 +1607,7 @@ export default function App() {
           onClose={() => { setCourseModal(null); setCourseSelections([]); }}
         />
       )}
-      {laborModal && <LaborScheduleModal laborModal={laborModal} character={character} onClose={() => { setLaborModal(null); setLaborSelections([]); }} />}
+      <LaborScheduleModal laborModal={laborModal} character={character} onClose={() => { setLaborModal(null); setLaborSelections([]); }} />
 
 
       {/* 礼仪院考试预告弹窗 */}
@@ -4093,8 +4094,9 @@ function LaborScheduleModal({ laborModal, character, onClose }) {
     }
   }, [phase]);
 
+  // 始终挂载，laborModal 为 null 时不渲染内容（避免条件挂载导致闪烁）
   if (!laborModal) return null;
-  const labors = laborModal.labors || [];
+  const labors = laborModal?.labors || [];
 
   const SKILL_COLORS = {
     charm: '#DB2777', wisdom: '#2563EB', spirit: '#7C3AED',
@@ -4104,8 +4106,9 @@ function LaborScheduleModal({ laborModal, character, onClose }) {
   };
 
   return (
-    <div style={{ position: 'fixed', inset: 0, background: 'rgba(5,2,5,0.92)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1200, backdropFilter: 'blur(12px)' }}>
+    <div style={{ position: 'fixed', inset: 0, background: 'rgba(5,2,5,0.92)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1200, backdropFilter: 'blur(12px)', animation: 'laborFadeIn 0.2s ease' }}>
       <style>{`
+        @keyframes laborFadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes laborSlideIn { from { opacity: 0; transform: translateY(-40px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes goldGlow { 0%,100% { box-shadow: 0 0 10px rgba(52,211,153,0.3); } 50% { box-shadow: 0 0 24px rgba(52,211,153,0.7); } }
         @keyframes laborMilestoneFlash { 0%{transform:scale(0.85);opacity:0} 40%{transform:scale(1.06);opacity:1} 70%{transform:scale(0.97)} 100%{transform:scale(1);opacity:1} }

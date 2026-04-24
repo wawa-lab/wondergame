@@ -226,7 +226,34 @@ function updateActivityCounts(gameState, courseId) {
 }
 
 function computeEnding(gameState) {
-  const sorted = [...ENDINGS].sort((a, b) => b.priority - a.priority);
+  const fav = gameState.favorability || {};
+  const visits = gameState.subSceneVisits || {};
+  const ac = gameState.activityCounts || {};
+
+  // ── 婚恋结局：最多只能嫁一个人 ──
+  // 条件：好感≥60 且见面≥5次 且主动互动≥2次
+  const ROMANCE_NPCS = [
+    { id: 'wangwenyu',    endingId: 'marry_wangwenyu' },
+    { id: 'mufengongzi', endingId: 'marry_mufengongzi' },
+    { id: 'sitouqian',   endingId: 'marry_sitouqian' },
+    { id: 'desert_friend', endingId: 'marry_desert_friend' },
+  ];
+  const eligible = ROMANCE_NPCS.filter(n =>
+    (fav[n.id] || 0) >= 60
+    && (visits[n.id] || 0) >= 5
+    && (ac[`active_${n.id}`] || 0) >= 2
+  );
+  if (eligible.length > 0) {
+    // 选好感度最高的；若相同则随机选一个
+    const maxFav = Math.max(...eligible.map(n => fav[n.id] || 0));
+    const topCandidates = eligible.filter(n => (fav[n.id] || 0) === maxFav);
+    const chosen = topCandidates[Math.floor(Math.random() * topCandidates.length)];
+    const ending = ENDINGS.find(e => e.id === chosen.endingId);
+    if (ending) return ending;
+  }
+
+  // ── 其他结局按优先级排序 ──
+  const sorted = [...ENDINGS].filter(e => !e.id.startsWith('marry_')).sort((a, b) => b.priority - a.priority);
   for (const ending of sorted) {
     try {
       if (ending.check(gameState)) return ending;

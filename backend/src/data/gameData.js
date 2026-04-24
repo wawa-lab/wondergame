@@ -3029,6 +3029,51 @@ const ENDINGS = [
     priority: 100,  // 最高优先级（坏结局先判断）
   },
   // ==================== 婚恋结局 ====================
+  // 注：NPC婚恋结局由 computeEnding 中的专属逻辑处理（选好感度最高者），不走普通 check
+  {
+    id: 'marry_wangwenyu',
+    title: '商海伉俪',
+    emoji: '💍',
+    rarity: 'epic',
+    image: '/assets/endings/ordinary.jpeg',
+    description: '18岁那年，王文玉亲自登门提亲，带来了一匣子江南绸缎和一封情深意重的手书。你嫁给了这位走南闯北的布商，从此随他游历四方，见识了无数山川风物，日子过得有滋有味。',
+    flavor: '执子之手，与子偕老，此生无憾。',
+    check: () => false, // 由 computeEnding 专属逻辑处理
+    priority: 88,
+  },
+  {
+    id: 'marry_mufengongzi',
+    title: '草原双骑',
+    emoji: '🐎',
+    rarity: 'epic',
+    image: '/assets/endings/hermit.jpeg',
+    description: '18岁那年，幕风公子策马而来，在将军府门前单膝跪地，递上一枚草原上最珍贵的银鹰羽。你随他纵马草原，策马天涯，成为了人人称羡的侠侣。',
+    flavor: '草原辽阔，策马天涯，此生无憾。',
+    check: () => false,
+    priority: 87,
+  },
+  {
+    id: 'marry_sitouqian',
+    title: '书画鸳鸯',
+    emoji: '🖌️',
+    rarity: 'epic',
+    image: '/assets/endings/art_studio.jpeg',
+    description: '18岁那年，司徒仟在书画院摆下文房四宝，亲手为你绘了一幅肖像，落款处写着：「此生唯愿与君共研墨，笔墨相伴，白首不离。」你点头应允，从此相伴书画院，留下了无数传世佳作。',
+    flavor: '笔墨相伴，白首不离，此生无憾。',
+    check: () => false,
+    priority: 86,
+  },
+  {
+    id: 'marry_desert_friend',
+    title: '丝路伴侣',
+    emoji: '🏜️',
+    rarity: 'epic',
+    image: '/assets/endings/hermit.jpeg',
+    description: '18岁那年，沐风在沙漠绿洲边等候，将一枚西域护符挂在你颈间，说：「这是我走过千山万水带回来的，从今往后，我用它护你。」你随他踏上丝路，见识了大漠孤烟、西域风情。',
+    flavor: '大漠孤烟，丝路相伴，此生无憾。',
+    check: () => false,
+    priority: 85,
+  },
   {
     id: 'empress',
     title: '母仪天下',
