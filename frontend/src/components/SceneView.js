@@ -1286,10 +1286,22 @@ function ActiveSceneView({ scene, npcsMap, character, wardrobe, onNpcChoice, onS
       setActiveNpcData(null);
       return;
     }
-    // 若 NPC 有 dialogueSets，每次激活随机选一套对话
+    // 若 NPC 有 dialogueSets，每次激活随机选一套对话（支持 condition 按故事进度筛选）
     const npc = npcsMap?.[npcId];
     if (npc && npc.dialogueSets && npc.dialogueSets.length > 0) {
-      const set = npc.dialogueSets[Math.floor(Math.random() * npc.dialogueSets.length)];
+      const fav = character?.favorability || {};
+      const visits = character?.subSceneVisits || {};
+      // 筛选满足 condition 的 set；无 condition 的 set 始终可选
+      const eligible = npc.dialogueSets.filter(s => {
+        if (!s.condition) return true;
+        const c = s.condition;
+        if (c.minFav && Object.entries(c.minFav).some(([k, v]) => (fav[k] || 0) < v)) return false;
+        if (c.maxFav && Object.entries(c.maxFav).some(([k, v]) => (fav[k] || 0) > v)) return false;
+        if (c.minVisits && Object.entries(c.minVisits).some(([k, v]) => (visits[k] || 0) < v)) return false;
+        return true;
+      });
+      const pool = eligible.length > 0 ? eligible : npc.dialogueSets;
+      const set = pool[Math.floor(Math.random() * pool.length)];
       setActiveNpcData({
         ...npc,
         dialogues: set.dialogues || npc.dialogues,
