@@ -504,7 +504,7 @@ const npcs = {
     avatar: "/assets/npc_avatars/inn_keeper.png",
     dialogues: [
       "哎呦，凌小姐大驾光临！今日蓬荜生辉，快里边请，上等客房已给您留着呢！",
-      "小姐来得巧，今日新到了一批西湖龙井，泡出来清香扑鼻，要不要来一壶？",
+      { text: "小姐来得巧，今日新到了一批西湖龙井，泡出来清香扑鼻，要不要来一壶？", image: "/assets/scenes_active/inn_new.jpg" },
       "说起来，前几日您父亲的旧友赵老爷也在此落脚，留了话说若见到小姐，请小姐务必留步。",
       "这客栈里卧虎藏龙，小姐若有空，掌柜我给您细细说说那些奇人异事！",
       "生意好做，就是这些年来往的人越来越少了，听说城外修了新路，唉……"
@@ -558,8 +558,8 @@ const npcs = {
               {
                 minVisit: 1, maxVisit: 1,
                 subSceneDialogues: [
-                  "王文玉（转身微笑）：'久闻凌小姐大名，今日得幸相识，果然名不虚传。我刚从江南带回新款的花粉，特别适合您这样肤色的佳人。'",
-                  "王文玉（轻轻拿起一支玉簪）：'这支簪子是我亲手挑选的，您瞧这雕工，是不是与您气质极为相符？'"
+                  { text: "王文玉（转身微笑）：'久闻凌小姐大名，今日得幸相识，果然名不虚传。我刚从江南带回新款的花粉，特别适合您这样肤色的佳人。'", image: "/assets/character/outfits/npc_wangwenyu_s1.png" },
+                  { text: "王文玉（轻轻拿起一支玉簪）：'这支簪子是我亲手挑选的，您瞧这雕工，是不是与您气质极为相符？'", image: "/assets/character/outfits/npc_wangwenyu_s1.png" }
                 ],
                 subSceneChoices: {
                   text: "王文玉（忽然伸出手，语气温柔中带着几分大胆）：'凌小姐，不知你可愿随我去前面的茶馆坐坐？'",
@@ -601,24 +601,24 @@ const npcs = {
               {
                 minVisit: 2, maxVisit: 4,
                 subSceneDialogues: [
-                  "王文玉（眼中闪过一丝惊喜）：'凌小姐，没想到这么快又见到你。我还以为你不会再来了。'",
-                  "王文玉（低声，语气比上次亲近了几分）：'我最近一直在想，上次你离开时的眼神……说不清，但我觉得，你心里也有些什么。'"
+                  { text: "王文玉（眼中闪过一丝惊喜）：'凌小姐，没想到这么快又见到你。我还以为你不会再来了。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" },
+                  { text: "王文玉（低声，语气比上次亲近了几分）：'我最近一直在想，上次你离开时的眼神……说不清，但我觉得，你心里也有些什么。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" }
                 ],
                 dialogueVariants: [
                   // visit 2：上次刚认识，提起上次的选择
                   [
-                    "王文玉（见你走来，眼中闪过一丝惊喜，随即收敛成从容的笑）：'凌小姐，没想到这么快又见到你。上次你「[[lastChoice]]」……我想了很久。'",
-                    "王文玉（低声，语气比上次亲近了几分）：'说实话，我以为你不会再来了。但你来了，我很高兴。'"
+                    { text: "王文玉（见你走来，眼中闪过一丝惊喜，随即收敛成从容的笑）：'凌小姐，没想到这么快又见到你。上次你「[[lastChoice]]」……我想了很久。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" },
+                    { text: "王文玉（低声，语气比上次亲近了几分）：'说实话，我以为你不会再来了。但你来了，我很高兴。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" }
                   ],
                   // visit 3：已经有了一定默契
                   [
-                    "王文玉（远远看见你，停下脚步等你走近，嘴角带着淡淡的笑）：'又来了。'他说得很自然，像是早就知道你会来。",
-                    "王文玉（轻声）：'上次你「[[lastChoice]]」——我一直记着。你知道吗，我在江南做生意那么多年，从来没有人让我这样在意过一句话。'"
+                    { text: "王文玉（远远看见你，停下脚步等你走近，嘴角带着淡淡的笑）：'又来了。'他说得很自然，像是早就知道你会来。", image: "/assets/character/outfits/npc_wangwenyu_s2.png" },
+                    { text: "王文玉（轻声）：'上次你「[[lastChoice]]」——我一直记着。你知道吗，我在江南做生意那么多年，从来没有人让我这样在意过一句话。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" }
                   ],
                   // visit 4：情感已经明显加深
                   [
-                    "王文玉（见你推开铺子的门，放下手里的账册，眼神直接落在你身上）：'我就知道你今天会来。'他说完自己也笑了，'说出来有点奇怪，但我就是知道。'",
-                    "王文玉（走近一步，声音放低）：'上次你「[[lastChoice]]」，那之后我想了很多……若雪，你对我来说，已经不只是一个过客了。'"
+                    { text: "王文玉（见你推开铺子的门，放下手里的账册，眼神直接落在你身上）：'我就知道你今天会来。'他说完自己也笑了，'说出来有点奇怪，但我就是知道。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" },
+                    { text: "王文玉（走近一步，声音放低）：'上次你「[[lastChoice]]」，那之后我想了很多……若雪，你对我来说，已经不只是一个过客了。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" }
                   ]
                 ],
                 subSceneChoices: {
@@ -661,8 +661,8 @@ const npcs = {
               {
                 minVisit: 5, maxVisit: 5,
                 subSceneDialogues: [
-                  "王文玉（停下脚步，转身直视你，眼神前所未有的认真）：'若雪，我走南闯北见过许多人，但从未有人让我如此放不下。上次你「[[lastChoice]]」——那之后，我就知道，这是最后一次机会了。'",
-                  "王文玉（轻轻握住你的手，声音低沉）：'我不是在说笑，也不是一时冲动。我想……陪你走很长很长的路。'"
+                  { text: "王文玉（停下脚步，转身直视你，眼神前所未有的认真）：'若雪，我走南闯北见过许多人，但从未有人让我如此放不下。上次你「[[lastChoice]]」——那之后，我就知道，这是最后一次机会了。'", image: "/assets/character/outfits/npc_wangwenyu_s3.png" },
+                  { text: "王文玉（轻轻握住你的手，声音低沉）：'我不是在说笑，也不是一时冲动。我想……陪你走很长很长的路。'", image: "/assets/character/outfits/npc_wangwenyu_s4.png" }
                 ],
                 subSceneChoices: {
                   text: "王文玉从怀中取出一枚精致的玉佩，那是他随身多年的护身符：'这是我母亲留给我的，我想把它交给最重要的人。'",
@@ -1371,8 +1371,8 @@ const npcs = {
               {
                 minVisit: 1, maxVisit: 1,
                 subSceneDialogues: [
-                  "幕风公子（骑马而来，洒脱如风）：'凌若雪？久闻大名。你的故事在草原上也传开了。不如一起骑马如何？'他笑容自信而神秘。",
-                  "幕风公子（翻身下马，随手将缰绳递给你）：'别怕，这匹马性子温顺，跟着我的节奏就好。'他靠得很近，带着草原特有的风沙气息。"
+                  { text: "幕风公子（骑马而来，洒脱如风）：'凌若雪？久闻大名。你的故事在草原上也传开了。不如一起骑马如何？'他笑容自信而神秘。", image: "/assets/character/outfits/npc_mufeng_s1.png" },
+                  { text: "幕风公子（翻身下马，随手将缰绳递给你）：'别怕，这匹马性子温顺，跟着我的节奏就好。'他靠得很近，带着草原特有的风沙气息。", image: "/assets/character/outfits/npc_mufeng_s1.png" }
                 ],
                 subSceneChoices: {
                   text: "幕风公子忽然单膝跪地，仰头看着你，洒脱的脸上难得露出一丝认真：'凌若雪，我想陪你走一段，你愿意吗？'",
@@ -1414,21 +1414,21 @@ const npcs = {
               {
                 minVisit: 2, maxVisit: 4,
                 subSceneDialogues: [
-                  "幕风公子（远远看到你，勒马而立，嘴角带笑）：'你又来了。我就知道草原会把你召回来的。'",
-                  "幕风公子（策马与你并行，侧头打量你）：'上次骑马，你进步不小。但那眼神……比骑术更让我在意。'"
+                  { text: "幕风公子（远远看到你，勒马而立，嘴角带笑）：'你又来了。我就知道草原会把你召回来的。'", image: "/assets/character/outfits/npc_mufeng_s2.png" },
+                  { text: "幕风公子（策马与你并行，侧头打量你）：'上次骑马，你进步不小。但那眼神……比骑术更让我在意。'", image: "/assets/character/outfits/npc_mufeng_s2.png" }
                 ],
                 dialogueVariants: [
                   [
-                    "幕风公子（远远看见你，勒马等你走近，嘴角带着一丝笑）：'来了。'他说，'上次你「[[lastChoice]]」——我骑马回去之后想了很久，你这人，真的不一样。'",
-                    "幕风公子（策马与你并行，侧头看你）：'草原上的风今天很好，适合骑马。跟上我。'"
+                    { text: "幕风公子（远远看见你，勒马等你走近，嘴角带着一丝笑）：'来了。'他说，'上次你「[[lastChoice]]」——我骑马回去之后想了很久，你这人，真的不一样。'", image: "/assets/character/outfits/npc_mufeng_s2.png" },
+                    { text: "幕风公子（策马与你并行，侧头看你）：'草原上的风今天很好，适合骑马。跟上我。'", image: "/assets/character/outfits/npc_mufeng_s2.png" }
                   ],
                   [
-                    "幕风公子（见你来了，从马背上跳下，大步走来）：'若雪，上次你「[[lastChoice]]」——我那之后，一直在想这件事。'",
-                    "幕风公子（停下，认真地看着你）：'你知道吗，草原上的人说，能让游侠停下来想的人，就是值得停下来的人。'"
+                    { text: "幕风公子（见你来了，从马背上跳下，大步走来）：'若雪，上次你「[[lastChoice]]」——我那之后，一直在想这件事。'", image: "/assets/character/outfits/npc_mufeng_s2.png" },
+                    { text: "幕风公子（停下，认真地看着你）：'你知道吗，草原上的人说，能让游侠停下来想的人，就是值得停下来的人。'", image: "/assets/character/outfits/npc_mufeng_s2.png" }
                   ],
                   [
-                    "幕风公子（今天没有骑马，就站在草原上等你，远远看见你来，眼神亮了一下）：'我昨天就想，你今天会不会来。'",
-                    "幕风公子（低声）：'上次你「[[lastChoice]]」……我没说，但我记着。若雪，你每次来，我都记着。'"
+                    { text: "幕风公子（今天没有骑马，就站在草原上等你，远远看见你来，眼神亮了一下）：'我昨天就想，你今天会不会来。'", image: "/assets/character/outfits/npc_mufeng_s2.png" },
+                    { text: "幕风公子（低声）：'上次你「[[lastChoice]]」……我没说，但我记着。若雪，你每次来，我都记着。'", image: "/assets/character/outfits/npc_mufeng_s2.png" }
                   ]
                 ],
                 subSceneChoices: {
@@ -1471,8 +1471,8 @@ const npcs = {
               {
                 minVisit: 5, maxVisit: 5,
                 subSceneDialogues: [
-                  "幕风公子（下马走近，眼神深邃而专注，今天没有笑）：'若雪，上次你「[[lastChoice]]」——我知道，这是最后一次见面了。所以我要把话说清楚。'",
-                  "幕风公子（低声，带着草原特有的直接）：'我走遍了北地，从没有一个人让我想停下来。直到遇见你。我不想让你就这样离开。'"
+                  { text: "幕风公子（下马走近，眼神深邃而专注，今天没有笑）：'若雪，上次你「[[lastChoice]]」——我知道，这是最后一次见面了。所以我要把话说清楚。'", image: "/assets/character/outfits/npc_mufeng_s3.png" },
+                  { text: "幕风公子（低声，带着草原特有的直接）：'我走遍了北地，从没有一个人让我想停下来。直到遇见你。我不想让你就这样离开。'", image: "/assets/character/outfits/npc_mufeng_s3.png" }
                 ],
                 subSceneChoices: {
                   text: "幕风公子从腰间解下一枚银制的草原图腾挂坠，那是北地部族赠予英雄的信物：'这是我最珍贵的东西，我想给你。'",
@@ -1648,8 +1648,8 @@ const npcs = {
               {
                 minVisit: 1, maxVisit: 1,
                 subSceneDialogues: [
-                  "司徒仟（抬头，眼神清亮）：'凌若雪姑娘，久仰大名。我观你的画作，笔力不凡，意境深远，实乃难得的才女。'",
-                  "司徒仟（起身，引你到画架旁）：'你看这幅《芙蓉出水》，我画了三遍都不满意。总觉得少了一点……说不清的灵气。'他停顿片刻，转头看你。"
+                  { text: "司徒仟（抬头，眼神清亮）：'凌若雪姑娘，久仰大名。我观你的画作，笔力不凡，意境深远，实乃难得的才女。'", image: "/assets/character/outfits/npc_sitouqian_s1.png" },
+                  { text: "司徒仟（起身，引你到画架旁）：'你看这幅《芙蓉出水》，我画了三遍都不满意。总觉得少了一点……说不清的灵气。'他停顿片刻，转头看你。", image: "/assets/character/outfits/npc_sitouqian_s1.png" }
                 ],
                 subSceneChoices: {
                   text: "司徒仟将笔轻轻放下，走到你面前，认真地说：'若雪姑娘，我愿以画为媒，为你作一幅专属的肖像，你可愿意？'",
@@ -1685,21 +1685,21 @@ const npcs = {
               {
                 minVisit: 2, maxVisit: 4,
                 subSceneDialogues: [
-                  "司徒仟（放下画笔，眼中有一丝惊喜）：'你又来了。我一直在想，上次的那幅肖像……我觉得还差一点，想重新画。'",
-                  "司徒仟（将一张未完成的画轻轻展开）：'你看，这是你的眼睛。我画了很多次，但总觉得没能画出……那种感觉。'他顿了顿，低声说：'也许是因为我太在意了。'"
+                  { text: "司徒仟（放下画笔，眼中有一丝惊喜）：'你又来了。我一直在想，上次的那幅肖像……我觉得还差一点，想重新画。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" },
+                  { text: "司徒仟（将一张未完成的画轻轻展开）：'你看，这是你的眼睛。我画了很多次，但总觉得没能画出……那种感觉。'他顿了顿，低声说：'也许是因为我太在意了。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" }
                 ],
                 dialogueVariants: [
                   [
-                    "司徒仟（见你推开画室的门，放下笔，眼中闪过一丝惊喜）：'你来了。'他顿了顿，'上次你「[[lastChoice]]」……我那之后，把那幅画又改了三遍。'",
-                    "司徒仟（将一张未完成的画展开）：'你看，这是你的眼睛。我一直觉得没画出来那种感觉，现在我知道是为什么了。'"
+                    { text: "司徒仟（见你推开画室的门，放下笔，眼中闪过一丝惊喜）：'你来了。'他顿了顿，'上次你「[[lastChoice]]」……我那之后，把那幅画又改了三遍。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" },
+                    { text: "司徒仟（将一张未完成的画展开）：'你看，这是你的眼睛。我一直觉得没画出来那种感觉，现在我知道是为什么了。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" }
                   ],
                   [
-                    "司徒仟（今天没有在画画，只是坐在窗边发呆，见你来了，有些不好意思）：'在想上次的事。你「[[lastChoice]]」——我一直在想，你当时心里是什么感受。'",
-                    "司徒仟（低声）：'画画的人有个习惯，总想把看不懂的东西画出来。你，是我最想画、也最画不出来的。'"
+                    { text: "司徒仟（今天没有在画画，只是坐在窗边发呆，见你来了，有些不好意思）：'在想上次的事。你「[[lastChoice]]」——我一直在想，你当时心里是什么感受。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" },
+                    { text: "司徒仟（低声）：'画画的人有个习惯，总想把看不懂的东西画出来。你，是我最想画、也最画不出来的。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" }
                   ],
                   [
-                    "司徒仟（今天在画一幅新画，见你来了，把画挡住）：'别看，还没画完。'他停顿，'上次你「[[lastChoice]]」，那之后我一直想给你看这幅。等画完了。'",
-                    "司徒仟（放下笔，认真地看你）：'若雪，你每次来，我都会画一幅。你不知道，但我的画里，有你的每一次。'"
+                    { text: "司徒仟（今天在画一幅新画，见你来了，把画挡住）：'别看，还没画完。'他停顿，'上次你「[[lastChoice]]」，那之后我一直想给你看这幅。等画完了。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" },
+                    { text: "司徒仟（放下笔，认真地看你）：'若雪，你每次来，我都会画一幅。你不知道，但我的画里，有你的每一次。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" }
                   ]
                 ],
                 subSceneChoices: {
@@ -1742,8 +1742,8 @@ const npcs = {
               {
                 minVisit: 5, maxVisit: 5,
                 subSceneDialogues: [
-                  "司徒仟（放下画笔，长久地看着你，今天的神情比任何一次都要认真）：'若雪，上次你「[[lastChoice]]」——我知道，这是最后一次见面了。我有话想说。'",
-                  "司徒仟（轻声，带着一点颤抖）：'我画了这么多年的画，从来没有一个人，让我觉得——无论画多少遍，都想再画一次。你是我的例外，也是我最后的遗憾。'"
+                  { text: "司徒仟（放下画笔，长久地看着你，今天的神情比任何一次都要认真）：'若雪，上次你「[[lastChoice]]」——我知道，这是最后一次见面了。我有话想说。'", image: "/assets/character/outfits/npc_sitouqian_s3.png" },
+                  { text: "司徒仟（轻声，带着一点颤抖）：'我画了这么多年的画，从来没有一个人，让我觉得——无论画多少遍，都想再画一次。你是我的例外，也是我最后的遗憾。'", image: "/assets/character/outfits/npc_sitouqian_s3.png" }
                 ],
                 subSceneChoices: {
                   text: "司徒仟从书案上取出一方精致的砚台，那是他用了十年的旧物，上面有他名字的刻字：'这方砚台陪了我很多年，我想把它送给你。'",
@@ -1844,8 +1844,8 @@ const npcs = {
               {
                 minVisit: 1, maxVisit: 1,
                 subSceneDialogues: [
-                  "沐风（踏上沙丘，回首一笑）：'来，跟上。沙漠的日落只有一瞬，错过了就要再等一天。'",
-                  "夕阳将沙丘染成金红色，沐风站在最高处，衣袂飘扬，像是这片沙漠的主人。他说：'你是第一个陪我看这个的人。'"
+                  { text: "沐风（踏上沙丘，回首一笑）：'来，跟上。沙漠的日落只有一瞬，错过了就要再等一天。'", image: "/assets/character/outfits/npc_desert_friend_s1.png" },
+                  { text: "夕阳将沙丘染成金红色，沐风站在最高处，衣袂飘扬，像是这片沙漠的主人。他说：'你是第一个陪我看这个的人。'", image: "/assets/character/outfits/npc_desert_friend_s1.png" }
                 ],
                 subSceneChoices: {
                   text: "沐风（从腰间解下一枚铜质护符，递到你面前）：'这是西域的平安符，走过千里沙漠的人都带着它。送给你。'",
@@ -1886,21 +1886,21 @@ const npcs = {
               {
                 minVisit: 2, maxVisit: 4,
                 subSceneDialogues: [
-                  "沐风（见你再来，眼中闪过一丝意外的惊喜）：'你回来了。我以为你不会再来这片沙漠了。'",
-                  "沐风（在篝火旁坐下，声音低沉）：'我走过西域三十六国，从没有一个地方让我想停下来。直到在这里遇见了你。'"
+                  { text: "沐风（见你再来，眼中闪过一丝意外的惊喜）：'你回来了。我以为你不会再来这片沙漠了。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" },
+                  { text: "沐风（在篝火旁坐下，声音低沉）：'我走过西域三十六国，从没有一个地方让我想停下来。直到在这里遇见了你。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" }
                 ],
                 dialogueVariants: [
                   [
-                    "沐风（见你走来，从沙丘上站起身，眼神里有一丝意外的惊喜）：'你回来了。'他说，'上次你「[[lastChoice]]」——我以为你不会再来了。'",
-                    "沐风（在篝火旁坐下，声音低沉）：'沙漠里的人说，走过一次的路，不会再走第二遍。但你来了，我很高兴你来了。'"
+                    { text: "沐风（见你走来，从沙丘上站起身，眼神里有一丝意外的惊喜）：'你回来了。'他说，'上次你「[[lastChoice]]」——我以为你不会再来了。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" },
+                    { text: "沐风（在篝火旁坐下，声音低沉）：'沙漠里的人说，走过一次的路，不会再走第二遍。但你来了，我很高兴你来了。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" }
                   ],
                   [
-                    "沐风（今天在绿洲边磨刀，见你来了，把刀收起来）：'若雪。'他直接叫你的名字，'上次你「[[lastChoice]]」，那之后我想了很久。'",
-                    "沐风（抬头看你）：'沙漠里有句话——回头的人，心里有东西放不下。你放不下什么？'"
+                    { text: "沐风（今天在绿洲边磨刀，见你来了，把刀收起来）：'若雪。'他直接叫你的名字，'上次你「[[lastChoice]]」，那之后我想了很久。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" },
+                    { text: "沐风（抬头看你）：'沙漠里有句话——回头的人，心里有东西放不下。你放不下什么？'", image: "/assets/character/outfits/npc_desert_friend_s2.png" }
                   ],
                   [
-                    "沐风（今天没有生篝火，就坐在沙地上看星星，见你来了，拍拍旁边的沙地）：'坐。'他说，'上次你「[[lastChoice]]」……我一直在想，你是什么样的人。'",
-                    "沐风（低声）：'走遍西域，我见过很多人。但像你这样的，只有一个。'"
+                    { text: "沐风（今天没有生篝火，就坐在沙地上看星星，见你来了，拍拍旁边的沙地）：'坐。'他说，'上次你「[[lastChoice]]」……我一直在想，你是什么样的人。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" },
+                    { text: "沐风（低声）：'走遍西域，我见过很多人。但像你这样的，只有一个。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" }
                   ]
                 ],
                 subSceneChoices: {
@@ -1942,8 +1942,8 @@ const npcs = {
               {
                 minVisit: 5, maxVisit: 5,
                 subSceneDialogues: [
-                  "沐风（今天在绿洲边等候，没有骆驼，没有篝火，只是静静地站着。见你来了，走近，低声）：'上次你「[[lastChoice]]」——我知道，这是最后一次了。'",
-                  "沐风（望着你，声音罕见地柔和）：'我这辈子走过千山万水，从不曾为任何人停留。但若雪，我愿意为你，在这片沙漠扎根。'"
+                  { text: "沐风（今天在绿洲边等候，没有骆驼，没有篝火，只是静静地站着。见你来了，走近，低声）：'上次你「[[lastChoice]]」——我知道，这是最后一次了。'", image: "/assets/character/outfits/npc_desert_friend_s3.png" },
+                  { text: "沐风（望着你，声音罕见地柔和）：'我这辈子走过千山万水，从不曾为任何人停留。但若雪，我愿意为你，在这片沙漠扎根。'", image: "/assets/character/outfits/npc_desert_friend_s3.png" }
                 ],
                 subSceneChoices: {
                   text: "沐风从怀中取出一枚镶嵌着蓝宝石的戒指，那是西域王族才有的信物：'这是我家族传下来的。我想……把它交给你。'",

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function TopBar({ character, onReset, onLogout, username }) {
+export default function TopBar({ character, onReset, onResetNpcVisits, onLogout, username }) {
   const [showMenu, setShowMenu] = useState(false);
 
   const levelProgress = () => {
@@ -128,6 +128,20 @@ export default function TopBar({ character, onReset, onLogout, username }) {
                   👤 {username}
                 </div>
               )}
+              <button
+                onClick={() => { onResetNpcVisits?.(); setShowMenu(false); }}
+                style={{
+                  display: 'block', width: '100%', padding: '10px 14px',
+                  background: 'transparent', border: 'none',
+                  color: '#F6AD55', cursor: 'pointer', fontFamily: 'inherit',
+                  fontSize: '13px', textAlign: 'left', borderRadius: '6px',
+                  transition: 'background 0.2s'
+                }}
+                onMouseEnter={e => e.target.style.background = 'rgba(246,173,85,0.15)'}
+                onMouseLeave={e => e.target.style.background = 'transparent'}
+              >
+                🔁 重置NPC记录
+              </button>
               <button
                 onClick={() => { onReset(); setShowMenu(false); }}
                 style={{

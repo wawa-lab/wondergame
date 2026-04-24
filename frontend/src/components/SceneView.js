@@ -1,5 +1,13 @@
 import React, {useCallback, useEffect, useRef, useState, useMemo, memo} from 'react';
 
+// 兼容字符串和 {text, image} 两种对话格式
+function getDialogueText(d) {
+  return typeof d === 'string' ? d : (d?.text ?? '');
+}
+function getDialogueImage(d) {
+  return typeof d === 'string' ? null : (d?.image ?? null);
+}
+
 // ─────────────────────────────────────────
 // 场景粒子配置：每种场景对应的粒子类型
 // ─────────────────────────────────────────
@@ -408,7 +416,7 @@ function SceneAvatarCircle({ sceneAvatar, size = 38 }) {
   );
 }
 
-function NpcBubble({ npc, position, onClose, onChoice, containerRef, onSceneChange, onItemGift }) {
+function NpcBubble({ npc, position, onClose, onChoice, containerRef, onSceneChange, onItemGift, onDialogueImage }) {
   const [phase, setPhase] = useState('dialogues'); // 'dialogues' | 'choice' | 'consequence'
   const [dialogueIdx, setDialogueIdx] = useState(0);
   const [avatarErr, setAvatarErr] = useState(false);
@@ -425,7 +433,10 @@ function NpcBubble({ npc, position, onClose, onChoice, containerRef, onSceneChan
   const handleNext = useCallback(() => {
     if (phase === 'dialogues') {
       if (dialogueIdx < npc.dialogues.length - 1) {
-        setDialogueIdx(i => i + 1);
+        const nextIdx = dialogueIdx + 1;
+        setDialogueIdx(nextIdx);
+        const img = getDialogueImage(npc.dialogues[nextIdx]);
+        if (img) onDialogueImage?.(img);
       } else if (hasChoice) {
         setPhase('choice');
       } else {
@@ -434,7 +445,7 @@ function NpcBubble({ npc, position, onClose, onChoice, containerRef, onSceneChan
     } else if (phase === 'consequence') {
       onClose();
     }
-  }, [phase, dialogueIdx, npc.dialogues.length, hasChoice, onClose]);
+  }, [phase, dialogueIdx, npc.dialogues, hasChoice, onClose, onDialogueImage]);
 
   // ESC 关闭
   useEffect(() => {
@@ -560,7 +571,7 @@ function NpcBubble({ npc, position, onClose, onChoice, containerRef, onSceneChan
           <div style={{ height: '1px', background: 'rgba(201,168,76,0.3)', marginBottom: '8px', borderRadius: '1px' }} />
 
           <div style={{ fontSize: '13px', color: '#2D1500', lineHeight: '1.7', fontWeight: '500', letterSpacing: '0.02em' }}>
-            「{npc.dialogues[dialogueIdx]}」
+            「{getDialogueText(npc.dialogues[dialogueIdx])}」
           </div>
 
           <div style={{
@@ -886,7 +897,7 @@ const NpcHotspot = memo(function NpcHotspot({ npc, position, onActivate }) {
 // 子场景对话框 —— 底部自动弹出，支持多轮对话 + ABCD选项
 // subScene: { subSceneDialogues: [], subSceneChoices: {text, options: [{id,label,text}]} }
 // ─────────────────────────────────────────
-function SubSceneDialogueBox({ subScene, onClose, onChoiceSelect, onItemGift }) {
+function SubSceneDialogueBox({ subScene, onClose, onChoiceSelect, onItemGift, onDialogueImage }) {
   const dialogues = subScene.subSceneDialogues || [];
   const choicesData = subScene.subSceneChoices;
 
@@ -906,6 +917,13 @@ function SubSceneDialogueBox({ subScene, onClose, onChoiceSelect, onItemGift }) 
     return () => window.removeEventListener('keydown', handler);
   }, [onClose]);
 
+  // 挂载时初始化第一句的立绘图片
+  useEffect(() => {
+    const img = getDialogueImage(dialogues[0]);
+    if (img) onDialogueImage?.(img);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // 好感浮动动画自动消失
   useEffect(() => {
     if (affinityGain !== null) {
@@ -917,7 +935,10 @@ function SubSceneDialogueBox({ subScene, onClose, onChoiceSelect, onItemGift }) 
   const handleNext = () => {
     if (phase === 'dialogue') {
       if (step < dialogues.length - 1) {
-        setStep(prev => prev + 1);
+        const nextStep = step + 1;
+        setStep(nextStep);
+        const img = getDialogueImage(dialogues[nextStep]);
+        if (img) onDialogueImage?.(img);
       } else if (choicesData) {
         setPhase('choices');
       } else {
@@ -953,9 +974,14 @@ function SubSceneDialogueBox({ subScene, onClose, onChoiceSelect, onItemGift }) 
        'ww_c','ww_d','ww2_c','ww2_d','ww3_c','ww3_d',
        'st_c','st_d','st2_c','st2_d','st3_c','st3_d',
        'df_c','df_d','df2_c','df2_d','df3_c','df3_d'].includes(opt.id);
+    const isNegative = opt.id.endsWith('_a') || opt.id.endsWith('_b') ||
+      /_(a|b)_/.test(opt.id);
     if (isPositive) {
       const gain = subScene.storyStage >= 3 ? 15 : subScene.storyStage === 2 ? 10 : 8;
       setAffinityGain(gain);
+    } else if (isNegative) {
+      const loss = subScene.storyStage >= 3 ? -8 : subScene.storyStage === 2 ? -5 : -3;
+      setAffinityGain(loss);
     }
 
     // 若有反应台词则进入 response 阶段，否则若有后续对话进入 followup，否则关闭
@@ -985,9 +1011,9 @@ function SubSceneDialogueBox({ subScene, onClose, onChoiceSelect, onItemGift }) 
   const isResponsePhase = phase === 'response';
   const isFollowUpPhase = phase === 'followup';
 
-  const currentDialogue = isDialoguePhase ? dialogues[step]
-    : isResponsePhase ? responseLines[responseStep]
-    : isFollowUpPhase ? followUpLines[followUpStep]
+  const currentDialogue = isDialoguePhase ? getDialogueText(dialogues[step])
+    : isResponsePhase ? getDialogueText(responseLines[responseStep])
+    : isFollowUpPhase ? getDialogueText(followUpLines[followUpStep])
     : null;
 
   const isNarratorLine = currentDialogue && !currentDialogue.includes('：') && !currentDialogue.includes(':');
@@ -1005,13 +1031,13 @@ function SubSceneDialogueBox({ subScene, onClose, onChoiceSelect, onItemGift }) 
         <div key={affinityGain + Date.now()} style={{
           position: 'absolute', top: '-10px', right: '24px',
           fontSize: '18px', fontWeight: '700',
-          color: '#FFB8D0',
-          textShadow: '0 0 12px rgba(255,120,160,0.8)',
+          color: affinityGain > 0 ? '#FFB8D0' : '#FF7070',
+          textShadow: affinityGain > 0 ? '0 0 12px rgba(255,120,160,0.8)' : '0 0 12px rgba(255,80,80,0.8)',
           pointerEvents: 'none',
           animation: 'affinityFloat 2.2s ease forwards',
           zIndex: 10,
         }}>
-          好感 +{affinityGain} 💕
+          {affinityGain > 0 ? `好感 +${affinityGain} 💕` : `好感 ${affinityGain} 💔`}
         </div>
       )}
 
@@ -1194,6 +1220,9 @@ function ActiveSceneView({ scene, npcsMap, character, wardrobe, onNpcChoice, onS
   const [absentNotice, setAbsentNotice] = useState(null); // NPC 不在时的提示文字
   // 子场景数据：{ image, cells } — 直接替换底图，不叠加
   const [subScene, setSubScene] = useState(null);
+  // 对话驱动的图片覆盖
+  const [bubbleOverrideImg, setBubbleOverrideImg] = useState(null);
+  const [subSceneOverrideImg, setSubSceneOverrideImg] = useState(null);
   // 场景内图容器 ref（供气泡安全定位使用）
   const sceneImgRef = useRef(null);
   const outerRef = useRef(null);
@@ -1238,8 +1267,8 @@ function ActiveSceneView({ scene, npcsMap, character, wardrobe, onNpcChoice, onS
     img.src = scene.activeImage;
   }, [scene.activeImage]);
 
-  // 底图始终使用父场景图（子场景不替换背景）
-  const currentImg = scene.activeImage;
+  // 底图：气泡对话时可被对话图片覆盖
+  const currentImg = bubbleOverrideImg || scene.activeImage;
   const hasImg = currentImg && !bgError;
   const positions = scene.npcPositions || {};
 
@@ -1356,20 +1385,23 @@ function ActiveSceneView({ scene, npcsMap, character, wardrobe, onNpcChoice, onS
         )}
 
         {/* ── 子场景：NPC 立绘叠加（透明PNG叠在父场景图上） ── */}
-        {subScene && subScene.image && (
-          <img
-            key={subScene.image}
-            src={subScene.image}
-            alt={subScene.npcName || 'NPC'}
-            style={{
-              position: 'absolute', inset: 0,
-              width: '100%', height: '100%',
-              objectFit: 'contain', objectPosition: 'center bottom',
-              animation: 'overlayFadeIn 0.4s ease both',
-              pointerEvents: 'none',
-            }}
-          />
-        )}
+        {subScene && subScene.image && (() => {
+          const displayImg = subSceneOverrideImg || subScene.image;
+          return (
+            <img
+              key={displayImg}
+              src={displayImg}
+              alt={subScene.npcName || 'NPC'}
+              style={{
+                position: 'absolute', inset: 0,
+                width: '100%', height: '100%',
+                objectFit: 'fill',
+                animation: 'overlayFadeIn 0.4s ease both',
+                pointerEvents: 'none',
+              }}
+            />
+          );
+        })()}
 
         {/* ── 粒子系统 Canvas ── */}
         {containerSize.w > 0 && !subScene && (
@@ -1432,7 +1464,7 @@ function ActiveSceneView({ scene, npcsMap, character, wardrobe, onNpcChoice, onS
         {/* ── 子场景：返回按钮（仅在场景图内部的左上角） ── */}
         {subScene && (
           <button
-            onClick={() => { setSubScene(null); onInteractionEnd?.(); }}
+            onClick={() => { setSubScene(null); setSubSceneOverrideImg(null); onInteractionEnd?.(); }}
             style={{
               position: 'absolute', top: '10px', left: '10px',
               background: 'rgba(0,0,0,0.65)', border: '1px solid rgba(255,255,255,0.2)',
@@ -1505,11 +1537,12 @@ function ActiveSceneView({ scene, npcsMap, character, wardrobe, onNpcChoice, onS
             key={activeBubble}
             npc={npc}
             position={pos}
-            onClose={() => { onNpcBubbleClose?.(activeBubble); setActiveBubble(null); setActiveNpcData(null); }}
+            onClose={() => { onNpcBubbleClose?.(activeBubble); setActiveBubble(null); setActiveNpcData(null); setBubbleOverrideImg(null); }}
             onChoice={handleNpcChoiceResult}
             containerRef={sceneImgRef}
             onSceneChange={onSceneChange}
             onItemGift={onItemGift}
+            onDialogueImage={img => setBubbleOverrideImg(img)}
           />
         );
       })()}
@@ -1518,7 +1551,7 @@ function ActiveSceneView({ scene, npcsMap, character, wardrobe, onNpcChoice, onS
       {subScene && (
         <SubSceneDialogueBox
           subScene={subScene}
-          onClose={() => { if (subScene.sourceNpcId) onNpcBubbleClose?.(subScene.sourceNpcId); setSubScene(null); onInteractionEnd?.(); }}
+          onClose={() => { if (subScene.sourceNpcId) onNpcBubbleClose?.(subScene.sourceNpcId); setSubScene(null); setSubSceneOverrideImg(null); onInteractionEnd?.(); }}
           onChoiceSelect={(optionId, opt) => {
             if (!subScene.npcId) return;
             import('axios').then(({ default: axios }) => {
@@ -1527,22 +1560,32 @@ function ActiveSceneView({ scene, npcsMap, character, wardrobe, onNpcChoice, onS
                 eventType: 'npc_last_choice',
                 payload: { npcId: subScene.npcId, optionId, text: opt?.text || '' }
               }).catch(() => {});
-              // C/D选项（主动型）上报好感度
-              if (optionId.endsWith('_c') || optionId.endsWith('_d') ||
+              // C/D选项（主动型）上报好感度增加，A/B选项上报减少
+              const isPos = optionId.endsWith('_c') || optionId.endsWith('_d') ||
                   optionId.includes('_c_') || optionId.includes('_d_') ||
                   ['mf_c','mf_d','mf2_c','mf2_d','mf3_c','mf3_d',
                    'ww_c','ww_d','ww2_c','ww2_d','ww3_c','ww3_d',
                    'st_c','st_d','st2_c','st2_d','st3_c','st3_d',
-                   'df_c','df_d','df2_c','df2_d','df3_c','df3_d'].includes(optionId)) {
+                   'df_c','df_d','df2_c','df2_d','df3_c','df3_d'].includes(optionId);
+              const isNeg = !isPos && (optionId.endsWith('_a') || optionId.endsWith('_b') ||
+                  optionId.includes('_a_') || optionId.includes('_b_'));
+              if (isPos) {
                 const gain = subScene.storyStage >= 3 ? 15 : subScene.storyStage === 2 ? 10 : 8;
                 axios.post('/api/game/event', {
                   eventType: 'npc_affection',
                   payload: { npcId: subScene.npcId, value: gain }
                 }).catch(() => {});
+              } else if (isNeg) {
+                const loss = subScene.storyStage >= 3 ? -8 : subScene.storyStage === 2 ? -5 : -3;
+                axios.post('/api/game/event', {
+                  eventType: 'npc_affection',
+                  payload: { npcId: subScene.npcId, value: loss }
+                }).catch(() => {});
               }
             });
           }}
           onItemGift={onItemGift}
+          onDialogueImage={img => setSubSceneOverrideImg(img)}
         />
       )}
 

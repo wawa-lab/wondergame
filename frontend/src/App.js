@@ -24,7 +24,7 @@ import deepForestNpcImage from './components/pic/深林-npc.jpg';
 import wailingSandImage from './components/pic/呜沙沟.jpg';
 import wailingSandNpcImage from './components/pic/呜沙沟-npc.jpg';
 
-const API_BASE = 'https://confident-bravery-production-6854.up.railway.app/api';
+const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:3001/api';
 
 // ==================== 账号系统（JWT） ====================
 const TOKEN_KEY = 'wondergame_token';
@@ -832,6 +832,7 @@ export default function App() {
     return monthInfo;
   }, []);
   const handleResetGame = async () => { if (!window.confirm('确定要重置游戏吗？')) return; try { const res = await axios.post(`${API_BASE}/character/reset`); const resetData = res.data.data; gameMonthRef.current = 1; setCharacter({ ...resetData, monthInfo: resetData.monthInfo, gameMonth: 1 }); setCurrentScene('bedroom'); setHomeSubTab('room'); const [configRes, ageRes] = await Promise.all([axios.get(`${API_BASE}/game-config`), axios.get(`${API_BASE}/age-status`)]); setGameConfig(configRes.data.data); setAgeStatus(ageRes.data.data); showToast(res.data.message, 'success'); } catch (err) { showToast('重置失败', 'error'); } };
+  const handleResetNpcVisits = async () => { if (!window.confirm('重置所有NPC的拜访记录？（剧情进度和好感度不受影响）')) return; try { await axios.post(`${API_BASE}/character/reset-npc-visits`); showToast('NPC拜访记录已重置，可以重新拜访啦', 'success'); } catch (err) { showToast('重置失败', 'error'); } };
 
   const handleLogout = () => {
     clearAuth();
@@ -1410,7 +1411,7 @@ export default function App() {
         {bgmMuted ? '🔇' : '🎵'}
       </button>
       <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0, background: 'radial-gradient(ellipse at 10% 20%, rgba(212,81,122,0.08) 0%, transparent 40%)' }} />
-      <TopBar character={character} onReset={handleResetGame} onLogout={handleLogout} username={username} />
+      <TopBar character={character} onReset={handleResetGame} onResetNpcVisits={handleResetNpcVisits} onLogout={handleLogout} username={username} />
       <div style={{ paddingTop: '65px', position: 'relative', zIndex: 1 }}>
         {homeSubTab === 'outdoor' && sceneData && !showStreet ? (
           <div style={{ margin: '0 auto', padding: '20px 16px 100px' }}>

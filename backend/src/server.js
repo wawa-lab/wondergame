@@ -363,6 +363,16 @@ app.post('/api/character/reset', async (req, res) => {
   } catch (err) { res.status(500).json({ success: false, message: 'DB错误', error: err.message }); }
 });
 
+app.post('/api/character/reset-npc-visits', async (req, res) => {
+  try {
+    const { gameState, activityLog } = await loadState(req.playerId);
+    gameState.subSceneVisits = {};
+    gameState.npcLastChoice = {};
+    await saveState(req.playerId, gameState, activityLog);
+    res.json({ success: true, message: 'NPC拜访记录已重置' });
+  } catch (err) { res.status(500).json({ success: false, message: 'DB错误', error: err.message }); }
+});
+
 // 换装 - 更换服装
 app.post('/api/character/change-dress', async (req, res) => {
   try {
@@ -645,10 +655,13 @@ app.post('/api/npc/choice', async (req, res) => {
         dialogues = stage.subSceneDialogues;
       }
 
-      // 将上次选项文本注入台词（替换占位符 {lastChoice} 或直接注入首句）
+      // 将上次选项文本注入台词（替换占位符 [[lastChoice]]，兼容字符串和 {text,image} 格式）
       const lastChoiceText = gameState.npcLastChoice[consequence.npcId]?.text || null;
       if (lastChoiceText && dialogues && dialogues.length > 0) {
-        dialogues = dialogues.map(line => line.replace('[[lastChoice]]', lastChoiceText));
+        dialogues = dialogues.map(line => {
+          if (typeof line === 'string') return line.replace('[[lastChoice]]', lastChoiceText);
+          return { ...line, text: line.text.replace('[[lastChoice]]', lastChoiceText) };
+        });
       }
 
       // 选取本次选项变体
@@ -661,7 +674,9 @@ app.post('/api/npc/choice', async (req, res) => {
       resolvedConsequence = { ...consequence, subSceneDialogues: dialogues, subSceneChoices: choices, visitCount: visits, storyStage: stageIndex + 1 };
       delete resolvedConsequence.storyStages;
     }
-    addLogEntry(activityLog, `${npc.name}：选择了"${choice.text}"`, resolvedConsequence.subSceneDialogues?.[0] || resolvedConsequence.nextDialogue || '剧情推进中...');
+    const firstDialogue = resolvedConsequence.subSceneDialogues?.[0];
+    const firstDialogueText = typeof firstDialogue === 'string' ? firstDialogue : (firstDialogue?.text || resolvedConsequence.nextDialogue || '剧情推进中...');
+    addLogEntry(activityLog, `${npc.name}：选择了"${choice.text}"`, firstDialogueText);
     await saveState(req.playerId, gameState, activityLog);
     res.json({ success: true, data: { choice, consequence: resolvedConsequence, character: gameState, favorability: consequence.reward?.favorability ? gameState.favorability[consequence.reward.favorability] : null }, message: consequence.type === 'scene_character' ? `✨ 剧情推进！遭遇了新角色！` : `💬 对话继续...` });
   } catch (err) { res.status(500).json({ success: false, message: 'DB错误', error: err.message }); }
@@ -1198,6 +1213,17 @@ app.get('/api/wardrobe', async (req, res) => {
 app.get('/api/health', (req, res) => {
   res.json({ success: true, message: '皇女成长计划后端服务运行中！', version: '2.0.0' });
 });
+
+// 托管前端静态文件
+const path = require('path');
+const fs = require('fs');
+const frontendBuild = path.join(__dirname, '../../frontend/build');
+if (fs.existsSync(frontendBuild)) {
+  app.use(express.static(frontendBuild));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(frontendBuild, 'index.html'));
+  });
+}
 
 // 启动服务器
 app.listen(PORT, () => {
