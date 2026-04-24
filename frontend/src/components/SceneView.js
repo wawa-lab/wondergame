@@ -259,17 +259,23 @@ function useSafePosition(position, containerRef, bubbleMaxW = 300) {
 // ─────────────────────────────────────────
 // consequence 阶段 —— 独立组件（修复 hooks 规则报错）
 // ─────────────────────────────────────────
-function ConsequenceView({ consequenceData, onClose, safeStyle, onSceneChange }) {
+function ConsequenceView({ consequenceData, onClose, safeStyle, onSceneChange, currentSceneId }) {
   const [charImgErr, setCharImgErr] = useState(false);
   const { consequence } = consequenceData;
 
-  // 关闭时若 consequence 含 scene 字段则触发场景跳转
+  // 目标场景与当前场景相同时不跳转（宫廷内遇到宫廷人物，无需再跳转）
+  const needsSceneChange = consequence?.type === 'scene_character'
+    && consequence.scene
+    && onSceneChange
+    && consequence.scene !== currentSceneId;
+
+  // 关闭时若 consequence 含 scene 字段且需要跳转则触发场景跳转
   const handleClose = useCallback(() => {
     onClose();
-    if (consequence?.type === 'scene_character' && consequence.scene && onSceneChange) {
+    if (needsSceneChange) {
       onSceneChange(consequence.scene);
     }
-  }, [onClose, consequence, onSceneChange]);
+  }, [onClose, consequence, onSceneChange, needsSceneChange]);
   const isSceneChar = consequence.type === 'scene_character';
   const { tailLeft, tailSide } = safeStyle;
 
@@ -360,7 +366,7 @@ function ConsequenceView({ consequenceData, onClose, safeStyle, onSceneChange })
           onMouseEnter={e => { e.currentTarget.style.background = 'rgba(201,168,76,0.35)'; }}
           onMouseLeave={e => { e.currentTarget.style.background = isSceneChar ? 'linear-gradient(135deg, rgba(201,168,76,0.3), rgba(201,168,76,0.15))' : 'rgba(201,168,76,0.2)'; }}
         >
-          {isSceneChar && consequence.scene ? '✨ 前往相见' : '✨ 明白了'}
+          {needsSceneChange ? '✨ 前往相见' : '✨ 明白了'}
         </button>
         {/* 气泡尾 */}
         <div style={{
@@ -416,7 +422,7 @@ function SceneAvatarCircle({ sceneAvatar, size = 38 }) {
   );
 }
 
-function NpcBubble({ npc, position, onClose, onChoice, containerRef, onSceneChange, onItemGift, onDialogueImage }) {
+function NpcBubble({ npc, position, onClose, onChoice, containerRef, onSceneChange, onItemGift, onDialogueImage, currentSceneId }) {
   const [phase, setPhase] = useState('dialogues'); // 'dialogues' | 'choice' | 'consequence'
   const [dialogueIdx, setDialogueIdx] = useState(0);
   const [avatarErr, setAvatarErr] = useState(false);
@@ -483,7 +489,7 @@ function NpcBubble({ npc, position, onClose, onChoice, containerRef, onSceneChan
 
   // ── consequence 阶段交由独立组件渲染（规避 hooks 规则） ──
   if (phase === 'consequence' && consequenceData) {
-    return <ConsequenceView consequenceData={consequenceData} onClose={onClose} safeStyle={safeStyle} onSceneChange={onSceneChange} />;
+    return <ConsequenceView consequenceData={consequenceData} onClose={onClose} safeStyle={safeStyle} onSceneChange={onSceneChange} currentSceneId={currentSceneId} />;
   }
 
   const { tailLeft, tailSide } = safeStyle;
@@ -1543,6 +1549,7 @@ function ActiveSceneView({ scene, npcsMap, character, wardrobe, onNpcChoice, onS
             onSceneChange={onSceneChange}
             onItemGift={onItemGift}
             onDialogueImage={img => setBubbleOverrideImg(img)}
+            currentSceneId={scene.id}
           />
         );
       })()}

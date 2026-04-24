@@ -2707,8 +2707,8 @@ function CourseScheduleModal({ courseModal, character, onClose, onAdvanceMonth, 
     } else {
       setMiniGameType(null);
     }
-    // 1.5s 后开始展示内容
-    const t1 = setTimeout(() => setPhase('slide'), 1500);
+    // 0.5s 后开始展示内容（加快结算弹窗显示）
+    const t1 = setTimeout(() => setPhase('slide'), 500);
     return () => clearTimeout(t1);
   }, [courseModal]);
 
@@ -3844,16 +3844,51 @@ function LaborScheduleModal({ laborModal, character, onClose }) {
   const [phase, setPhase] = useState('title');
   const [visibleCount, setVisibleCount] = useState(0);
   const [progressWidth, setProgressWidth] = useState(0);
-  const SLIDE_DURATION = 5000;
+  const SLIDE_DURATION = 4000;
+
+  // 劳动过程小任务状态
+  const [miniTask, setMiniTask] = useState(null); // { type, prompt, options, answered, bonus }
+  const [taskAnswered, setTaskAnswered] = useState(false);
+  const [taskBonus, setTaskBonus] = useState(null);
 
   useEffect(() => {
     if (!laborModal) return;
     setPhase('title');
     setVisibleCount(0);
     setProgressWidth(0);
-    const t1 = setTimeout(() => setPhase('slide'), 1500);
+    setMiniTask(null);
+    setTaskAnswered(false);
+    setTaskBonus(null);
+    const t1 = setTimeout(() => setPhase('slide'), 500);
     return () => clearTimeout(t1);
   }, [laborModal]);
+
+  // 劳动小任务题库（按劳动类型）
+  const LABOR_MINI_TASKS = {
+    '织布纺纱': [
+      { prompt: '纺线时线断了，你该怎么办？', options: ['停下来重新接线', '继续硬拉', '换一根线'], correct: 0, bonus: { key: 'crafting', label: '工艺', delta: 3 } },
+      { prompt: '梭子卡住了，你会？', options: ['轻轻拨动梭子', '用力敲打', '叫人来帮忙'], correct: 0, bonus: { key: 'crafting', label: '工艺', delta: 3 } },
+    ],
+    '灶台烹饪': [
+      { prompt: '汤汁快烧干了，你会？', options: ['加水并调小火', '直接关火', '继续大火'], correct: 0, bonus: { key: 'culinary', label: '厨艺', delta: 3 } },
+      { prompt: '菜肴偏咸，如何补救？', options: ['加一点糖或米', '多加水', '重新做'], correct: 0, bonus: { key: 'culinary', label: '厨艺', delta: 3 } },
+    ],
+    '采摘蔬果': [
+      { prompt: '发现一株不认识的果实，你会？', options: ['先观察再请教长辈', '直接尝一口', '随手摘走'], correct: 0, bonus: { key: 'medical', label: '医术', delta: 2 } },
+      { prompt: '采摘时遇到蜂巢，你会？', options: ['缓慢退开，绕道而行', '挥手驱赶', '大声呼救'], correct: 0, bonus: { key: 'vitality', label: '体力', delta: 2 } },
+    ],
+    '劈柴挑水': [
+      { prompt: '挑水时扁担压肩，如何减轻？', options: ['调整重心，稳步前行', '一口气跑完', '放下来休息'], correct: 0, bonus: { key: 'vitality', label: '体力', delta: 3 } },
+      { prompt: '劈柴时木头裂纹方向怎么判断？', options: ['顺着木纹方向劈', '随意方向', '从中间劈'], correct: 0, bonus: { key: 'crafting', label: '工艺', delta: 2 } },
+    ],
+    '刺绣缝纫': [
+      { prompt: '绣花时针线打结，你会？', options: ['耐心解开线结', '直接剪断重穿', '硬拉扯'], correct: 0, bonus: { key: 'crafting', label: '工艺', delta: 3 } },
+      { prompt: '针脚不均匀怎么办？', options: ['拆掉重绣', '将就继续', '用布遮住'], correct: 0, bonus: { key: 'crafting', label: '工艺', delta: 3 } },
+    ],
+    '磨豆制浆': [
+      { prompt: '豆浆煮沸后有泡沫，你会？', options: ['撇去泡沫再饮用', '直接喝', '倒掉重做'], correct: 0, bonus: { key: 'culinary', label: '厨艺', delta: 2 } },
+    ],
+  };
 
   useEffect(() => {
     if (phase !== 'slide') return;
@@ -3865,7 +3900,18 @@ function LaborScheduleModal({ laborModal, character, onClose }) {
     const timer = setInterval(() => {
       shown += 1;
       setVisibleCount(shown);
-      if (shown >= count) { clearInterval(timer); setPhase('done'); }
+      if (shown >= count) {
+        clearInterval(timer);
+        // 随机触发一个小任务（60%概率）
+        const allTasks = labors.flatMap(l => LABOR_MINI_TASKS[l] || []);
+        if (allTasks.length > 0 && Math.random() < 0.6) {
+          const task = allTasks[Math.floor(Math.random() * allTasks.length)];
+          setMiniTask(task);
+          setPhase('task'); // 进入小任务阶段
+        } else {
+          setPhase('done');
+        }
+      }
     }, interval);
     return () => clearInterval(timer);
   }, [phase, laborModal]);
@@ -3993,6 +4039,71 @@ function LaborScheduleModal({ laborModal, character, onClose }) {
                 </div>
               );
             })}
+
+            {/* ── 劳动过程小任务（phase=task时显示） ── */}
+            {(phase === 'task' || (phase === 'done' && taskAnswered)) && miniTask && (
+              <div style={{
+                marginTop: '8px',
+                background: 'linear-gradient(135deg, rgba(52,211,153,0.12), rgba(10,30,20,0.9))',
+                border: `1.5px solid ${taskAnswered ? 'rgba(52,211,153,0.6)' : 'rgba(52,211,153,0.4)'}`,
+                borderRadius: '18px', padding: '16px 18px',
+                animation: 'laborRandomFade 0.4s ease forwards',
+              }}>
+                <div style={{ fontSize: '12px', color: 'rgba(52,211,153,0.7)', letterSpacing: '2px', marginBottom: '8px' }}>
+                  ✨ 劳动小考验
+                </div>
+                <div style={{ fontSize: '14px', fontWeight: '600', color: 'rgba(245,230,236,0.9)', marginBottom: '12px', lineHeight: 1.6 }}>
+                  {miniTask.prompt}
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  {miniTask.options.map((opt, i) => {
+                    const isCorrect = i === miniTask.correct;
+                    const isSelected = taskAnswered;
+                    return (
+                      <button
+                        key={i}
+                        disabled={taskAnswered}
+                        onClick={() => {
+                          if (taskAnswered) return;
+                          setTaskAnswered(true);
+                          if (isCorrect) {
+                            setTaskBonus(miniTask.bonus);
+                          }
+                          // 答题后短暂停留再进入done
+                          setTimeout(() => setPhase('done'), 1200);
+                        }}
+                        style={{
+                          padding: '9px 14px',
+                          background: !taskAnswered
+                            ? 'rgba(52,211,153,0.1)'
+                            : isCorrect
+                              ? 'rgba(52,211,153,0.25)'
+                              : 'rgba(255,255,255,0.04)',
+                          border: `1px solid ${!taskAnswered ? 'rgba(52,211,153,0.3)' : isCorrect ? 'rgba(52,211,153,0.8)' : 'rgba(255,255,255,0.1)'}`,
+                          borderRadius: '10px',
+                          color: !taskAnswered ? 'rgba(245,230,236,0.85)' : isCorrect ? '#6EE7B7' : 'rgba(245,230,236,0.35)',
+                          fontSize: '13px', cursor: taskAnswered ? 'default' : 'pointer',
+                          textAlign: 'left', fontFamily: 'inherit',
+                          transition: 'all 0.2s',
+                        }}
+                      >
+                        {!taskAnswered ? `${['A','B','C'][i]}. ${opt}` : isCorrect ? `✅ ${opt}` : `${['A','B','C'][i]}. ${opt}`}
+                      </button>
+                    );
+                  })}
+                </div>
+                {taskAnswered && taskBonus && (
+                  <div style={{ marginTop: '10px', fontSize: '13px', color: '#6EE7B7', fontWeight: '700', animation: 'laborRandomFade 0.4s ease forwards' }}>
+                    🎉 答对了！{taskBonus.label} +{taskBonus.delta}
+                  </div>
+                )}
+                {taskAnswered && !taskBonus && (
+                  <div style={{ marginTop: '10px', fontSize: '13px', color: 'rgba(245,230,236,0.45)' }}>
+                    没关系，下次会更好！
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         )}
 
@@ -4073,6 +4184,11 @@ function LaborScheduleModal({ laborModal, character, onClose }) {
                   {laborModal.bonusGold > 0 && (
                     <span style={{ fontSize: '11px', color: '#FFD700', fontWeight: '700', paddingLeft: '8px', borderLeft: '1px solid rgba(201,168,76,0.3)' }}>
                       🎮 游戏奖励 +{laborModal.bonusGold}
+                    </span>
+                  )}
+                  {taskBonus && (
+                    <span style={{ fontSize: '11px', color: '#6EE7B7', fontWeight: '700', paddingLeft: '8px', borderLeft: '1px solid rgba(52,211,153,0.3)' }}>
+                      ✨ {taskBonus.label} +{taskBonus.delta}
                     </span>
                   )}
                 </div>
