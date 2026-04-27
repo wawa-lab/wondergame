@@ -1,0 +1,38 @@
+services:
+  # 后端 API 服务
+  - type: web
+    name: wondergame-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node src/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: INFSH_PATH
+        value: /opt/render/project/.local/bin/infsh
+
+  # 前端静态站点
+  - type: web
+    name: wondergame-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: build
+    envVars:
+      - key: REACT_APP_API_BASE
+        sync: false
+      - key: CI
+        value: "false"
+      - key: DISABLE_ESLINT_PLUGIN
+        value: "true"
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
