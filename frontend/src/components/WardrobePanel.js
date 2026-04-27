@@ -397,7 +397,7 @@ export default function WardrobePanel({ wardrobe, character, onChangeDress, onCh
               key={id}
               onClick={() => setAgeFilter(id)}
               style={{
-                padding: '5px 12px', border: 'none', borderRadius: '20px',
+                padding: '5px 12px', borderRadius: '20px',
                 cursor: 'pointer', fontFamily: 'inherit', fontSize: '12px',
                 background: active ? `${color}25` : 'rgba(40,15,25,0.5)',
                 color: active ? color : 'rgba(245,230,236,0.4)',
@@ -436,7 +436,7 @@ export default function WardrobePanel({ wardrobe, character, onChangeDress, onCh
               key={id}
               onClick={() => setSeasonFilter(id)}
               style={{
-                padding: '6px 14px', border: 'none', borderRadius: '20px',
+                padding: '6px 14px', borderRadius: '20px',
                 cursor: 'pointer', fontFamily: 'inherit', fontSize: '12px',
                 background: active ? `${cfg.color}28` : 'rgba(40,15,25,0.6)',
                 color: active ? cfg.color : 'rgba(245,230,236,0.5)',
