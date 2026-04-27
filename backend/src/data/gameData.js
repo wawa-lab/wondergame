@@ -110,11 +110,12 @@ const wardrobe = {
       name: "粉黛罗裙",
       subtitle: "初始服装",
       season: "spring",
+      storyTag: "civilian",
       description: "轻盈粉嫩，如春日桃花，罗裙飘飘，温婉动人，配以碧玉簪与南珠耳环，清雅脱俗",
       color: "#FFB7C5",
       rarity: "common",
       unlocked: true,
-      bonus: { charm: 5, affinity: 3 },
+      bonus: { charm: 3, affinity: 3 },
       emoji: "🌸",
       image: "/assets/outfits/outfit_04.png"
     },
@@ -123,11 +124,12 @@ const wardrobe = {
       name: "秋水长裙",
       subtitle: "初始可换服装",
       season: "autumn",
+      storyTag: "noble",
       description: "如秋水般澄澈，淡雅素净，举手投足间自有风韵，配以金凤冠更显华贵",
       color: "#87CEEB",
       rarity: "uncommon",
       unlocked: true,
-      bonus: { wisdom: 4, charm: 5 },
+      bonus: { wisdom: 4, charm: 3 },
       emoji: "🌊",
       image: "/assets/outfits/outfit_06.png"
     },
@@ -138,11 +140,12 @@ const wardrobe = {
       subtitle: "16岁·自动解锁",
       ageRequired: 16,
       season: "spring",
+      storyTag: "civilian",
       description: "少女最初的粉嫩，如含苞待放的桃花，罗裳轻盈飘逸，初入京城的青涩与灵动",
       color: "#FFB7C5",
       rarity: "uncommon",
       unlocked: false,
-      bonus: { charm: 5, affinity: 4 },
+      bonus: { charm: 3, affinity: 4 },
       emoji: "🌸",
       image: "/assets/character/outfits/age15_dress1.png"
     },
@@ -152,6 +155,7 @@ const wardrobe = {
       subtitle: "16岁·自动解锁",
       ageRequired: 16,
       season: "summer",
+      storyTag: "scholar",
       description: "书香墨香与草木清香共织，碧绿如翠，适合流连于书画院与课堂的才女初装",
       color: "#27AE60",
       rarity: "uncommon",
@@ -168,6 +172,7 @@ const wardrobe = {
       ageRequired: 16,
       purchasePrice: 300,
       season: "winter",
+      storyTag: "scholar",
       description: "蓝色庭院中傲雪梅香，清冷而高洁，随寒风而来的坚韧与从容，尽显成熟魅力",
       color: "#2980B9",
       rarity: "rare",
@@ -183,11 +188,12 @@ const wardrobe = {
       ageRequired: 16,
       purchasePrice: 300,
       season: "summer",
+      storyTag: "mystical",
       description: "淡雅莲花与丹红点缀，出淤泥而不染，品格高洁，亭亭玉立如出水芙蓉",
       color: "#E91E8C",
       rarity: "rare",
       unlocked: false,
-      bonus: { spirit: 7, charm: 6 },
+      bonus: { spirit: 7, charm: 3 },
       emoji: "🌺",
       image: "/assets/character/outfits/age16_dress2.png"
     },
@@ -198,6 +204,7 @@ const wardrobe = {
       subtitle: "17岁·自动解锁",
       ageRequired: 17,
       season: "autumn",
+      storyTag: "mystical",
       description: "神秘紫色如暮霭，飘逸若云端，少女的慧黠与灵气跃然其中",
       color: "#9B59B6",
       rarity: "uncommon",
@@ -212,11 +219,12 @@ const wardrobe = {
       subtitle: "17岁·自动解锁",
       ageRequired: 17,
       season: "autumn",
+      storyTag: "noble",
       description: "朱红如山间枫叶，华贵端庄，随年岁增长而渐显风华，气质脱俗令人心折",
       color: "#E74C3C",
       rarity: "rare",
       unlocked: false,
-      bonus: { charm: 8, affinity: 5 },
+      bonus: { charm: 4, affinity: 5 },
       emoji: "🔴",
       image: "/assets/character/outfits/age16_dress1.png"
     },
@@ -228,11 +236,12 @@ const wardrobe = {
       ageRequired: 17,
       purchasePrice: 400,
       season: "spring",
+      storyTag: "noble",
       description: "兰香清幽，玉质温润，竹节刚直，集幽雅与坚韧于一身，是芳华盛放时最美的见证",
       color: "#8E44AD",
       rarity: "epic",
       unlocked: false,
-      bonus: { charm: 10, wisdom: 8, spirit: 6 },
+      bonus: { charm: 5, wisdom: 8, spirit: 6 },
       emoji: "🌿",
       image: "/assets/character/outfits/age17_dress1.png"
     },
@@ -243,11 +252,12 @@ const wardrobe = {
       ageRequired: 17,
       purchasePrice: 400,
       season: "spring",
+      storyTag: "civilian",
       description: "粉翠相映，萝蔓轻绕，彩雀飞翔其间，命运的羽翼已然张开，这是最灿烂的年华",
       color: "#FF6B9D",
       rarity: "epic",
       unlocked: false,
-      bonus: { charm: 12, affinity: 8, courage: 5 },
+      bonus: { charm: 6, affinity: 8, courage: 5 },
       emoji: "🌸",
       image: "/assets/character/outfits/age17_dress2.png"
     },
@@ -262,7 +272,7 @@ const wardrobe = {
       description: "温润碧玉制成，简约而不简单，清雅脱俗",
       rarity: "common",
       unlocked: true,
-      bonus: { charm: 3 },
+      bonus: { charm: 2 },
       emoji: "💚",
       image: "/assets/accessories/jade_hairpin.png"
     },
@@ -273,7 +283,7 @@ const wardrobe = {
       description: "纯金打造凤凰冠，镶嵌红宝石，富丽堂皇，贵气十足",
       rarity: "legendary",
       unlocked: false,
-      bonus: { charm: 12, affinity: 5 },
+      bonus: { charm: 6, affinity: 5 },
       emoji: "👑",
       image: "/assets/accessories/gold_phoenix_crown.png"
     },
@@ -284,7 +294,7 @@ const wardrobe = {
       description: "南海珍珠制成，圆润光泽，点缀耳侧，灵动可爱",
       rarity: "rare",
       unlocked: true,
-      bonus: { charm: 5, affinity: 3 },
+      bonus: { charm: 3, affinity: 3 },
       emoji: "🔮",
       image: "/assets/accessories/pearl_earrings.png"
     },
@@ -295,7 +305,7 @@ const wardrobe = {
       description: "通透翡翠，碧绿如春水，戴上如仙女下凡",
       rarity: "rare",
       unlocked: false,
-      bonus: { spirit: 5, charm: 4 },
+      bonus: { spirit: 5, charm: 2 },
       emoji: "💎",
       image: "/assets/accessories/jade_bracelet.png"
     }
@@ -308,7 +318,7 @@ const wardrobe = {
       description: "手工绣花布鞋，精巧细腻，步步生莲",
       rarity: "common",
       unlocked: true,
-      bonus: { charm: 2 },
+      bonus: { charm: 1 },
       emoji: "👟"
     }
   ]
@@ -334,6 +344,7 @@ const scenes = [
       bedroom_maid: { left: 22, top: 55 }
     },
     entryBonus: { charm: 1 },
+    entryImagePrompt: "Elegant ancient Chinese lady's chamber interior, soft morning light through lattice windows, silk embroidery and bronze mirror on vanity table, delicate hanfu, petals floating, anime illustration style, warm golden tones, ultra-wide 16:9 horizontal",
     unlocked: true,
     icon: "🪟"
   },
@@ -350,9 +361,11 @@ const scenes = [
     npcs: ["street_cloth", "street_candy"],
     npcPositions: {
       street_cloth:  { left: 27.5, top: 52.5 },
-      street_candy:  { left: 92.5, top: 57.5 }
+      street_candy:  { left: 92.5, top: 57.5 },
     },
+    subSceneNpcs: ["wangwenyu"],
     entryBonus: { rhetoric: 1, charm: 1 },
+    entryImagePrompt: "Bustling ancient Chinese market street, colorful silk banners and lanterns, merchants calling out wares, elegant young woman in hanfu walking through vibrant crowd, warm afternoon light, anime illustration style, ultra-wide 16:9 horizontal cinematic",
     unlocked: true,
     icon: "🏪"
   },
@@ -372,6 +385,7 @@ const scenes = [
       inn_father_friend: { left: 42.5, top: 62.5 }
     },
     entryBonus: { spirit: 1, wisdom: 1 },
+    entryImagePrompt: "Cozy ancient Chinese inn interior, warm lantern light, scholars and travelers chatting at wooden tables, steam rising from tea cups, wooden beams overhead, anime illustration style, warm amber tones, ultra-wide 16:9 horizontal cinematic",
     unlocked: true,
     icon: "🏠"
   },
@@ -385,13 +399,17 @@ const scenes = [
     activeImage: "/assets/scenes_active/royal_court.jpg",
     ambience: "威严华贵",
     availableActivities: ["audience", "court_dance", "poetry_contest"],
-    npcs: ["royal_official", "royal_guard_captain", "royal_lady"],
+    npcs: ["royal_official", "royal_guard_captain", "royal_lady", "royal_emperor"],
     npcPositions: {
       royal_lady:          { left: 12.5, top: 82.5 },
       royal_official:      { left: 37.5, top: 82.5 },
       royal_guard_captain: { left: 47.5, top: 67.5 },
+      royal_emperor:       { left: 65, top: 55 },
     },
+    subSceneNpcs: ["royal_emperor"],
     entryBonus: { reputation: 1, morality: 1 },
+    entryImagePrompt: "Magnificent ancient Chinese imperial palace courtyard, golden glazed roof tiles gleaming in sunlight, court ladies and officials in formal attire, majestic stone steps and red pillars, anime illustration style, regal golden tones, ultra-wide 16:9 horizontal cinematic",
+    jadeReward: 1,
     unlocked: true,
     requiredCharm: 0,
     icon: "🏛️"
@@ -408,9 +426,15 @@ const scenes = [
     availableActivities: ["nature_study", "herb_picking", "sky_gazing"],
     npcs: ["outdoor_son"],
     npcPositions: {
-      outdoor_son: { left: 57.5, top: 62.5 }
+      outdoor_son:   { left: 57.5, top: 62.5 },
     },
+    subSceneNpcs: ["mufengongzi"],
     entryBonus: { wildness: 1, courage: 1 },
+    entryImagePrompt: "Vast ancient Chinese autumn grassland, golden wheat fields swaying in wind, horses galloping freely, young woman in hanfu riding with flowing hair, dramatic open sky, anime illustration style, warm amber tones, ultra-wide 16:9 horizontal cinematic",
+    jadeReward: 1,
+    conditionalActivities: [
+      { id: 'star_navigation', label: '星图导航', icon: '🌟', requiredItem: 'silk_starmap', desc: '持西域星图，在草原上按星象骑行，天地豁然开朗', skillGains: { wildness: 8, spirit: 6 }, triggerNpc: 'mufengongzi', triggerFavBonus: 5 }
+    ],
     unlocked: true,
     icon: "🌾"
   },
@@ -430,6 +454,7 @@ const scenes = [
       class_student: { left: 42.5, top: 52.5 }
     },
     entryBonus: { music: 1, charm: 1 },
+    entryImagePrompt: "Elegant ancient Chinese dance academy hall, graceful dancers in colorful hanfu practicing with flowing sleeves, silk ribbons in the air, soft lantern light, anime illustration style, soft pink and gold tones, ultra-wide 16:9 horizontal cinematic",
     unlocked: true,
     icon: "💃"
   },
@@ -448,6 +473,7 @@ const scenes = [
       med_doctor: { left: 37.5, top: 42.5 }
     },
     entryBonus: { medical: 1, morality: 1 },
+    entryImagePrompt: "Ancient Chinese herbal medicine hall interior, rows of wooden medicine drawers, dried herbs hanging from ceiling, elderly doctor examining patient, warm candlelight, anime illustration style, green and amber tones, ultra-wide 16:9 horizontal cinematic",
     unlocked: true,
     icon: "⚕️"
   },
@@ -465,9 +491,13 @@ const scenes = [
     npcPositions: {
       art_master:  { left: 32.5, top: 47.5 },
       art_friend:  { left: 42.5, top: 72.5 },
-      art_prince:  { left: 72.5, top: 62.5 }
+      art_prince:  { left: 72.5, top: 62.5 },
     },
     entryBonus: { painting: 1, wisdom: 1 },
+    entryImagePrompt: "Ancient Chinese art studio filled with scrolls and ink paintings, scholar painting mountains at large desk, calligraphy brushes and inkstones arranged neatly, morning light through paper windows, anime illustration style, ink wash tones, ultra-wide 16:9 horizontal cinematic",
+    conditionalActivities: [
+      { id: 'imperial_calligraphy', label: '御题临摹', icon: '🪨', requiredItem: 'imperial_inkstone', desc: '以御赐端砚临摹御题，笔力大进，声名远播', skillGains: { wisdom: 8, statecraft: 5, reputation: 6 } }
+    ],
     unlocked: true,
     icon: "🎨"
   },
@@ -486,13 +516,577 @@ const scenes = [
       desert_friend: { left: 55, top: 58 }
     },
     entryBonus: { courage: 1, spirit: 1 },
+    entryImagePrompt: "Mystical desert oasis at dusk, ancient silk road caravans resting near palm trees, golden sand dunes stretching to horizon, crescent moon rising, exotic lanterns glowing, anime illustration style, warm desert tones, ultra-wide 16:9 horizontal cinematic",
     unlocked: true,
     icon: "🏜️"
+  },
+  {
+    id: "general_mansion",
+    name: "将军府衙",
+    description: "威严肃穆的将军府邸，朱漆大门镌刻金龙，石狮雄踞两侧，演武场上旌旗猎猎，传闻年轻将军宇文拓文武双全、英姿飒爽，是京城最令人敬仰的少年英雄",
+    bgColor: "from-red-900 to-slate-800",
+    bgEmoji: "⚔️",
+    bgImage: "/assets/scenes/general_mansion_anime.png",
+    activeImage: "/assets/scenes_active/general_mansion_anime.png",
+    ambience: "威严肃穆",
+    availableActivities: ["watch_training", "discuss_strategy", "archery_lesson"],
+    npcs: ["yuwentuo"],
+    npcPositions: {
+      yuwentuo: { left: 58, top: 52 }
+    },
+    entryBonus: { courage: 2, martial: 1, command: 1 },
+    entryImagePrompt: "Imposing ancient Chinese general's mansion training ground, armored soldiers drilling in formation, stone lions flanking red gate, young general in armor observing, dramatic afternoon light, anime illustration style, deep red and steel tones, ultra-wide 16:9 horizontal cinematic",
+    jadeReward: 1,
+    conditionalActivities: [
+      { id: 'eagle_training', label: '驯鹰训练', icon: '🦅', requiredItem: 'steppe_feather', desc: '持草原鹰羽，与宇文拓一同训练猎鹰，野性大增', skillGains: { wildness: 8, command: 5 }, triggerNpc: 'yuwentuo', triggerFavBonus: 5 }
+    ],
+    unlocked: false,
+    unlockCost: 200,
+    icon: "⚔️"
+  },
+  {
+    id: "lakeside_pavilion",
+    name: "碧波亭台",
+    description: "月色如水的湖边长廊，垂柳依依映照波光，石拱桥上萤火虫翩翩起舞，文人雅士在此吟诗作赋，是京城最负盛名的诗会雅集之所",
+    bgColor: "from-cyan-900 to-blue-800",
+    bgEmoji: "🌙",
+    bgImage: "/assets/scenes/lakeside_pavilion.jpg",
+    activeImage: "/assets/scenes_active/lakeside_pavilion.jpg",
+    ambience: "月色清幽",
+    availableActivities: ["poetry_recital", "moonlit_stroll", "fishing"],
+    npcs: ["pavilion_poet"],
+    npcPositions: {
+      pavilion_poet: { left: 38, top: 55 }
+    },
+    entryBonus: { poetry: 2, music: 1, wisdom: 1 },
+    entryImagePrompt: "Serene ancient Chinese lakeside pavilion at moonrise, weeping willows reflecting in still water, scholars composing poetry by lantern light, fireflies dancing over lotus flowers, anime illustration style, cool blue and silver tones, ultra-wide 16:9 horizontal cinematic",
+    conditionalActivities: [
+      { id: 'art_recital', label: '诗画雅集', icon: '🖼️', requiredItem: 'st_inkstone', desc: '携司徒仟传世砚台，与白鹭先生诗画唱和，相得益彰', skillGains: { painting: 6, poetry: 6 }, triggerNpc: 'pavilion_poet', triggerFavBonus: 8 }
+    ],
+    unlocked: false,
+    unlockCost: 200,
+    icon: "🌙"
+  },
+  {
+    id: "mountain_monastery",
+    name: "云顶禅院",
+    description: "云雾缭绕的山巅古寺，晨钟暮鼓涤荡尘心，松柏苍翠之间禅意悠长，高僧在此讲经说法，习武修文皆可在此寻得内心的宁静与力量",
+    bgColor: "from-stone-700 to-amber-900",
+    bgEmoji: "🏔️",
+    bgImage: "/assets/scenes/mountain_monastery.jpg",
+    activeImage: "/assets/scenes_active/mountain_monastery.jpg",
+    ambience: "禅意悠远",
+    availableActivities: ["meditation", "martial_training", "scripture_study"],
+    npcs: ["zen_master"],
+    npcPositions: {
+      zen_master: { left: 42, top: 48 }
+    },
+    entryBonus: { spirit: 2, wisdom: 1, morality: 1 },
+    entryImagePrompt: "Ancient Chinese mountain monastery shrouded in mist, pine trees and stone steps leading to temple gates, monks in gray robes meditating, morning bell echoing through clouds, anime illustration style, misty gray and gold tones, ultra-wide 16:9 horizontal cinematic",
+    jadeReward: 1,
+    conditionalActivities: [
+      { id: 'desert_meditation', label: '西域冥想', icon: '🔱', requiredItem: 'desert_amulet', desc: '以西域护符引导，修习西域冥想法，灵气大增', skillGains: { spirit: 10, courage: 5 } }
+    ],
+    unlocked: false,
+    unlockCost: 200,
+    icon: "🏔️"
   }
 ];
 
 // NPC数据（每个场景专属人物，含头像路径）
 const npcs = {
+
+  // ───── 将军府衙 NPC ─────
+  yuwentuo: {
+    id: "yuwentuo",
+    name: "宇文拓",
+    role: "镇国大将军",
+    description: "年轻英俊的镇国大将军，文武双全、铁骨柔情，外表冷峻实则心怀天下，对凌若雪将军之女的身份颇为好奇",
+    image: "/assets/character/outfits/npc_yuwentuo_s1.png",
+    imageClose: "/assets/character/outfits/npc_yuwentuo_s1.png",
+    avatar: "/assets/character/outfits/npc_yuwentuo.png",
+    favorabilityKey: "yuwentuo",
+    dialogueSets: [
+      // Chain 4: 龙凤定情玉佩 → 宇文拓特殊对话
+      {
+        condition: { hasItem: "dragon_phoenix_jade" },
+        stageImage: '/assets/stage_images/yuwentuo_s1.png',
+        dialogues: [
+          { text: "宇文拓（目光定在玉佩上，神色复杂）：'龙凤玉佩……皇上把这个给你了？'", image: "/assets/character/outfits/npc_yuwentuo_s1.png" },
+          { text: "（低声）'此物一出，你已无退路。皇上不是轻易动情的人。'", image: "/assets/character/outfits/npc_yuwentuo_s2.png" },
+          { text: "'好自为之。'（转身，背对着你，声音有些僵硬）", image: "/assets/character/outfits/npc_yuwentuo_s1.png" },
+        ],
+        dialogueWithChoice: {
+          question: "宇文拓沉默片刻，语气平静地问：'你……是自愿的吗？'",
+          options: [
+            { id: "ywt_jade_a", text: "「若雪自有打算，将军不必担心。」", positive: true },
+            { id: "ywt_jade_b", text: "「我也不知道……」", positive: false },
+          ],
+          consequences: {
+            ywt_jade_a: {
+              type: "dialogue",
+              text: "宇文拓（转过身，目光复杂地看了你一眼）：'你有主见，这很好。'他顿了顿，'若有一日你需要人，记得还有我在。'",
+              favorability: -5,
+              skillBonus: { statecraft: 8 },
+              npcId: "yuwentuo",
+              characterImage: "/assets/character/outfits/npc_yuwentuo_s2.png",
+            },
+            ywt_jade_b: {
+              type: "dialogue",
+              text: "宇文拓（皱眉，沉默良久）：'糊涂。'他没有再说什么，转身离去，背影在夕阳下拉得很长。",
+              favorability: -5,
+              skillBonus: { statecraft: 4 },
+              npcId: "yuwentuo",
+              characterImage: "/assets/character/outfits/npc_yuwentuo_s1.png",
+            },
+          },
+        },
+      },
+      {
+        visitRange: [1, 1],
+        stageImage: '/assets/stage_images/yuwentuo_s1.png',
+        dialogues: [
+          { text: "宇文拓正在演武场练剑，见你走来，收剑回鞘，目光如炬：「来者何人？此地乃将军府，闲杂人等不得擅入。」", image: "/assets/character/outfits/npc_yuwentuo_s1.png" },
+          { text: "你报上凌将军之女的名号，他神色微变，拱手道：「原来是凌将军的千金，失礼了。宇文拓，见过凌姑娘。」", image: "/assets/character/outfits/npc_yuwentuo_s1.png" },
+          { text: "他侧身相让，语气稍缓：「既是故人之后，请进。府中简陋，凌姑娘莫要见怪。」", image: "/assets/character/outfits/npc_yuwentuo_s2.png" },
+        ],
+        dialogueWithChoice: {
+          question: "你好奇地打量着演武场，开口问道：「将军每日都在此练武吗？」",
+          options: [
+            { id: "ask_training", text: "「将军武艺如此精湛，可否指点一二？」", positive: true },
+            { id: "compliment", text: "「将军年纪轻轻便身居高位，真是令人敬佩。」", positive: true },
+            { id: "leave_quickly", text: "「打扰了，我这便告辞。」", positive: false },
+          ],
+          consequences: {
+            ask_training: {
+              type: "dialogue",
+              text: "宇文拓眉峰微挑，难得露出一丝赞赏：「凌姑娘有此心志？好，改日有暇，本将军可指点你几式防身之术。」",
+              favorability: 8,
+              skillBonus: { courage: 3, martial: 2 },
+              npcId: "yuwentuo",
+              characterImage: "/assets/character/outfits/npc_yuwentuo_s2.png",
+            },
+            compliment: {
+              type: "dialogue",
+              text: "他淡然摆手：「不过是尽忠职守。凌将军戍边多年，才是真正的英雄。你父亲可好？」语气中透着几分真诚。",
+              favorability: 5,
+              skillBonus: { rhetoric: 2, affinity: 2 },
+              npcId: "yuwentuo",
+              characterImage: "/assets/character/outfits/npc_yuwentuo_s2.png",
+            },
+            leave_quickly: {
+              type: "npc_absent",
+              text: "宇文拓微微颔首，目送你离去，眼神中有一丝若有若无的遗憾。",
+              favorability: -2,
+              npcId: "yuwentuo",
+            },
+          },
+        },
+      },
+      {
+        visitRange: [2, 2],
+        stageImage: '/assets/stage_images/yuwentuo_s2.png',
+        dialogues: [
+          { text: "宇文拓正与幕僚商议军情，见你来访，挥退众人，神色比初见时柔和了几分：「凌姑娘又来了。」", image: "/assets/character/outfits/npc_yuwentuo_s2.png" },
+          { text: "他亲手倒了杯热茶推到你面前：「边疆近日不太平，你父亲的消息可有？」眼中有淡淡的担忧。", image: "/assets/character/outfits/npc_yuwentuo_s2.png" },
+        ],
+        dialogueWithChoice: {
+          question: "宇文拓展开一幅地图，若有所思：「凌姑娘，你觉得若敌军从北路入侵，当如何应对？」",
+          options: [
+            { id: "strategy_answer", text: "「可在险要处设伏，以逸待劳，分兵断其粮道。」", positive: true },
+            { id: "honest_admit", text: "「我对军事不甚了解，不敢妄言。」", positive: true },
+            { id: "change_topic", text: "「将军，我今日来是想请教另一件事……」", positive: false },
+          ],
+          consequences: {
+            strategy_answer: {
+              type: "dialogue",
+              text: "宇文拓眼神一亮，将地图往你面前推了推：「说得有理！凌将军的兵法果然传给了你。若你生为男儿，必是一代名将。」",
+              favorability: 12,
+              skillBonus: { command: 4, statecraft: 3, courage: 2 },
+              npcId: "yuwentuo",
+              characterImage: "/assets/character/outfits/npc_yuwentuo_s2.png",
+            },
+            honest_admit: {
+              type: "dialogue",
+              text: "他收起地图，微微一笑：「坦诚也是一种智慧。你父亲说过，知己知彼方能百战不殆——知道自己不足，才能进步。」",
+              favorability: 6,
+              skillBonus: { wisdom: 3, morality: 2 },
+              npcId: "yuwentuo",
+              characterImage: "/assets/character/outfits/npc_yuwentuo_s2.png",
+            },
+            change_topic: {
+              type: "dialogue",
+              text: "宇文拓将地图卷起，平静道：「无妨，凌姑娘请说。」语气虽如常，眉间却掠过一丝淡淡的失落。",
+              favorability: 0,
+              skillBonus: {},
+              npcId: "yuwentuo",
+              characterImage: "/assets/character/outfits/npc_yuwentuo_s1.png",
+            },
+          },
+        },
+      },
+      {
+        visitRange: [3, 3],
+        stageImage: '/assets/stage_images/yuwentuo_s3.png',
+        dialogues: [
+          { text: "宇文拓独自立于演武场中央，手握长枪，见你来，缓缓收势，侧目道：「来得正好，我正想找人切磋。」", image: "/assets/character/outfits/npc_yuwentuo_s3.png" },
+          { text: "他将长枪横置，语气难得轻松：「你父亲当年与我对练，总说我出手太重。」他顿了顿，「如今看来，我确实该收着些。」", image: "/assets/character/outfits/npc_yuwentuo_s2.png" },
+        ],
+        dialogueWithChoice: {
+          question: "宇文拓忽然将一柄木剑抛向你：「接着——试试这套剑法，看你悟性如何。」",
+          options: [
+            { id: "willing_fight", text: "「好！若雪接招了！」稳稳接住，摆出架势。", positive: true },
+            { id: "express_worry", text: "「将军手下留情……」接住木剑，却有些紧张。", positive: true },
+            { id: "decline_gently", text: "「若雪学艺不精，怕是要让将军失望了。」婉拒道。", positive: false },
+          ],
+          consequences: {
+            willing_fight: {
+              type: "dialogue",
+              text: "宇文拓眼中闪过一丝赞赏：「好！有你父亲的气魄。」他上前轻轻扶正你握剑的手，声音低沉：「手腕要稳，力从腰起。」",
+              favorability: 15,
+              skillBonus: { martial: 4, courage: 3, wildness: 2 },
+              npcId: "yuwentuo",
+              characterImage: "/assets/character/outfits/npc_yuwentuo_s3.png",
+            },
+            express_worry: {
+              type: "dialogue",
+              text: "宇文拓走近，将你握剑的姿势轻轻调整：「别怕，我会护着你。」话出口，他自己也似乎愣了一下，随即移开目光。",
+              favorability: 12,
+              skillBonus: { martial: 2, courage: 2, charm: 2 },
+              npcId: "yuwentuo",
+              characterImage: "/assets/character/outfits/npc_yuwentuo_s2.png",
+            },
+            decline_gently: {
+              type: "dialogue",
+              text: "宇文拓接回木剑，神色平静：「无妨。」他停顿片刻，「你父亲第一次练剑时，也说过同样的话。」",
+              favorability: 2,
+              skillBonus: { wisdom: 2 },
+              npcId: "yuwentuo",
+              characterImage: "/assets/character/outfits/npc_yuwentuo_s1.png",
+            },
+          },
+        },
+      },
+      // Feature 5d: 宇文拓提及皇上（当玩家与皇上好感>=30时）
+      {
+        condition: { minFav: { royal_emperor: 30 } },
+        stageImage: '/assets/stage_images/yuwentuo_s3.png',
+        dialogues: [
+          { text: "宇文拓（沉默片刻）：'你见过皇上了？'", image: "/assets/character/outfits/npc_yuwentuo_s2.png" },
+          { text: "宇文拓：'皇上……是个明君。只是庙堂之上，有些事情，并非表面看起来那么简单。'", image: "/assets/character/outfits/npc_yuwentuo_s2.png" },
+          { text: "宇文拓（低声）：'你若与他有所往来，凡事多留个心眼。'", image: "/assets/character/outfits/npc_yuwentuo_s3.png" },
+        ],
+      },
+      {
+        visitRange: [4, 99],
+        stageImage: '/assets/stage_images/yuwentuo_s4.png',
+        dialogues: [
+          { text: "宇文拓似乎已在等你，演武场旁摆着两张茶案。他见你来，嘴角微扬：「今日来得比往常早。」", image: "/assets/character/outfits/npc_yuwentuo_s2.png" },
+          { text: "他亲自演示了一套剑法，收势时望向你：「你父亲当年教我这套剑法时，说过一句话——剑法如人，心正则剑正。」", image: "/assets/character/outfits/npc_yuwentuo_s3.png" },
+          { text: "沉默片刻后，他轻声道：「凌姑娘，你与令尊很像——眼中有光，心中有义。」语气罕见地带着几分温柔。", image: "/assets/character/outfits/npc_yuwentuo_s2.png" },
+        ],
+        dialogueWithChoice: {
+          question: "夕阳西下，宇文拓望着远方若有所思，忽然低声问：「凌姑娘，若有一日边疆战事再起，你可愿随军出征？」",
+          options: [
+            { id: "willing_fight", text: "「若国家有难，凌若雪义不容辞，愿与将军并肩而战！」", positive: true },
+            { id: "express_worry", text: "「我……我会担心将军的安危。」", positive: true },
+            { id: "decline_gently", text: "「我只是一介女子，恐怕帮不上什么忙。」", positive: false },
+          ],
+          consequences: {
+            willing_fight: {
+              type: "dialogue",
+              text: "宇文拓猛地转头看你，眼中有什么东西在燃烧。半晌，他缓缓道：「好。」只一个字，却重若千钧。他解下腰间的一块玉佩递给你：「这是我的信物，若有危险，持此玉可调动府中三千精兵。」",
+              favorability: 20,
+              skillBonus: { courage: 5, command: 5, martial: 3 },
+              npcId: "yuwentuo",
+              characterImage: "/assets/character/outfits/npc_yuwentuo_s3.png",
+              giftItem: { id: "general_jade", name: "宇文拓信物玉佩", emoji: "💚", category: "信物", desc: "将军亲赠，可调动精兵三千" },
+            },
+            express_worry: {
+              type: "dialogue",
+              text: "宇文拓愣了一下，随即低头轻笑，声音有些哑：「……谢谢你。」他将视线移向别处，耳根却微微泛红。「我会平安回来的。」",
+              favorability: 15,
+              skillBonus: { affinity: 4, charm: 3 },
+              npcId: "yuwentuo",
+              characterImage: "/assets/character/outfits/npc_yuwentuo_s2.png",
+            },
+            decline_gently: {
+              type: "dialogue",
+              text: "宇文拓沉默了一会儿，轻声道：「无妨。每个人有自己的路。」他重新望向远方，神情平静，只是再未开口。",
+              favorability: -3,
+              skillBonus: {},
+              npcId: "yuwentuo",
+              characterImage: "/assets/character/outfits/npc_yuwentuo_s1.png",
+            },
+          },
+        },
+      },
+    ],
+  },
+
+  // ───── 碧波亭台 NPC ─────
+  pavilion_poet: {
+    id: "pavilion_poet",
+    name: "白鹭先生",
+    role: "隐居诗人",
+    description: "一位淡泊名利的隐逸诗人，曾是朝廷翰林，因不满官场而归隐湖畔，学识渊博、诗才横溢",
+    image: "/assets/character/outfits/npc_pavilion_poet_s1.png",
+    imageClose: "/assets/character/outfits/npc_pavilion_poet_s1.png",
+    avatar: "/assets/character/outfits/npc_pavilion_poet_s1.png",
+    favorabilityKey: "pavilion_poet",
+    dialogueSets: [
+      // Chain 7: 梧桐古琴 → 白鹭先生特殊对话
+      {
+        condition: { hasItem: "tool_guqin" },
+        stageImage: '/assets/stage_images/pavilion_poet_s1.png',
+        dialogues: [
+          { text: "白鹭先生（听见琴声，缓缓走来）：'这把琴……梧桐木的纹理，像极了我年轻时在终南山见过的那棵老树。'", image: "/assets/character/outfits/npc_pavilion_poet_s1.png" },
+          { text: "'那棵树被雷劈了半边，却还活着，每年春天还会开花。后来听说被人伐了做琴。'", image: "/assets/character/outfits/npc_pavilion_poet_s1.png" },
+          { text: "'没想到，那棵树的声音，今天又让我听见了。'", image: "/assets/character/outfits/npc_pavilion_poet_s1.png" },
+        ],
+        dialogueWithChoice: {
+          question: "白鹭先生（轻抚琴弦，抬眸看你）：'姑娘可愿为老夫弹上一曲？'",
+          options: [
+            { id: "pp_guqin_a", text: "「若雪愿意，请先生指点。」", positive: true },
+            { id: "pp_guqin_b", text: "「学艺不精，恐污了先生耳目。」", positive: false },
+          ],
+          consequences: {
+            pp_guqin_a: {
+              type: "dialogue",
+              text: "白鹭先生（闭目聆听，良久后睁眼）：'音律中有情意，这比技巧更难得。'他从书案上取出一卷曲谱，'这是老夫年轻时写的，今日便传给你。'",
+              favorability: 10,
+              skillBonus: { poetry: 6, music: 4 },
+              npcId: "pavilion_poet",
+              characterImage: "/assets/character/outfits/npc_pavilion_poet_s1.png",
+            },
+            pp_guqin_b: {
+              type: "dialogue",
+              text: "白鹭先生（摇头微笑）：'弹琴不是为了给人听，是为了与自己说话。姑娘，莫要用别人的眼光束缚自己。'",
+              favorability: 5,
+              skillBonus: { poetry: 3, music: 2 },
+              npcId: "pavilion_poet",
+              characterImage: "/assets/character/outfits/npc_pavilion_poet_s1.png",
+            },
+          },
+        },
+      },
+      {
+        visitRange: [1, 3],
+        stageImage: '/assets/stage_images/pavilion_poet_s2.png',
+        dialogues: [
+          { text: "白鹭先生正倚栏望月，见你到来，捋须微笑：「月色如此，正好赋诗，姑娘可有雅兴？」" },
+          { text: "他缓缓道：「诗者，言志也。心中所感，皆可入诗。姑娘不必拘谨，信笔写来便是。」" },
+        ],
+        dialogueWithChoice: {
+          question: "白鹭先生吟出上半句：「疏影横斜水清浅……」微笑看向你：「姑娘可能续出下半句？」",
+          options: [
+            { id: "answer_correct", text: "「暗香浮动月黄昏。」（林逋《山园小梅》）", positive: true },
+            { id: "answer_own", text: "「夜风轻送桂花香。」（自己续句）", positive: true },
+            { id: "admit_unknown", text: "「学识浅薄，不知下句，请先生赐教。」", positive: false },
+          ],
+          consequences: {
+            answer_correct: {
+              type: "dialogue",
+              text: "白鹭先生拍掌称善：「好！正是林和靖此句！姑娘博览群书，老夫甚慰。」他取出一卷珍藏诗集相赠。",
+              favorability: 10,
+              skillBonus: { poetry: 5, wisdom: 4 },
+              npcId: "pavilion_poet",
+            },
+            answer_own: {
+              type: "dialogue",
+              text: "白鹭先生沉吟片刻：「虽非原句，意境却别有清新。姑娘有自己的诗心，这比死记硬背更难得。」",
+              favorability: 8,
+              skillBonus: { poetry: 4, spirit: 3 },
+              npcId: "pavilion_poet",
+            },
+            admit_unknown: {
+              type: "dialogue",
+              text: "白鹭先生点头：「知之为知之，不知为不知——这正是为学之道。」他耐心将典故讲与你听。",
+              favorability: 4,
+              skillBonus: { poetry: 2, wisdom: 2 },
+              npcId: "pavilion_poet",
+            },
+          },
+        },
+      },
+      {
+        visitRange: [4, 6],
+        stageImage: '/assets/stage_images/pavilion_poet_s1.png',
+        dialogues: [
+          { text: "白鹭先生正在湖边抚琴，琴声悠扬，随风散入水面。他见你来，手指轻停：「姑娘来得正好，老夫正想有人听曲。」", image: "/assets/character/outfits/npc_pavilion_poet_s1.png" },
+          { text: "他缓缓道：「这首曲子，是老夫二十年前在江南所作。彼时年少，以为功名是一切，如今想来，不如这一湖月色。」", image: "/assets/character/outfits/npc_pavilion_poet_s1.png" },
+        ],
+        dialogueWithChoice: {
+          question: "白鹭先生将琴推到你面前：「姑娘可愿试弹一曲？老夫想听听年轻人的心声。」",
+          options: [
+            { id: "answer_correct", text: "「若雪献丑了。」大方接过，轻拨琴弦。", positive: true },
+            { id: "answer_own", text: "「学艺不精，弹得不好，先生莫笑。」", positive: true },
+            { id: "admit_unknown", text: "「若雪不会弹琴，只能聆听先生妙音。」", positive: false },
+          ],
+          consequences: {
+            answer_correct: {
+              type: "dialogue",
+              text: "白鹭先生静静聆听，良久后微笑：「音律中有真情，这比技巧更难得。」他将一本珍藏曲谱递给你，「留着，慢慢练。」",
+              favorability: 12,
+              skillBonus: { music: 6, poetry: 3, charm: 2 },
+              npcId: "pavilion_poet",
+              characterImage: "/assets/character/outfits/npc_pavilion_poet_s1.png",
+            },
+            answer_own: {
+              type: "dialogue",
+              text: "白鹭先生摇头微笑：「弹琴不是为了给人听，是为了与自己说话。姑娘，莫要用别人的眼光束缚自己。」",
+              favorability: 8,
+              skillBonus: { music: 3, spirit: 3 },
+              npcId: "pavilion_poet",
+              characterImage: "/assets/character/outfits/npc_pavilion_poet_s1.png",
+            },
+            admit_unknown: {
+              type: "dialogue",
+              text: "白鹭先生颔首：「不会弹琴，能听懂琴声，也是一种天赋。」他又抚了一曲，你只觉心境澄明。",
+              favorability: 5,
+              skillBonus: { spirit: 4, music: 1 },
+              npcId: "pavilion_poet",
+              characterImage: "/assets/character/outfits/npc_pavilion_poet_s1.png",
+            },
+          },
+        },
+      },
+      {
+        visitRange: [7, 99],
+        stageImage: '/assets/stage_images/pavilion_poet_s2.png',
+        dialogues: [
+          { text: "白鹭先生正对着湖面作画，听见脚步声，头也不回：「是姑娘来了，老夫认得你的步伐。」", image: "/assets/character/outfits/npc_pavilion_poet_s1.png" },
+          { text: "他搁下笔，转身将画递给你看——画中是碧波亭台，亭中有一位少女凭栏远眺：「老夫画了许多人，唯独这一幅，觉得最有意思。」", image: "/assets/character/outfits/npc_pavilion_poet_s1.png" },
+        ],
+        dialogueWithChoice: {
+          question: "白鹭先生问：「姑娘，你觉得人这一生，最值得留下的是什么？」",
+          options: [
+            { id: "answer_correct", text: "「是走过的路，见过的人，以及那些让心动过的瞬间。」", positive: true },
+            { id: "answer_own", text: "「是做过的事，留下的痕迹，哪怕只有一首诗、一幅画。」", positive: true },
+            { id: "admit_unknown", text: "「若雪还年轻，尚未想清楚。」", positive: false },
+          ],
+          consequences: {
+            answer_correct: {
+              type: "dialogue",
+              text: "白鹭先生久久不语，最后将那幅画卷好递给你：「拿去吧，这画本就是为你画的。」他转身望向湖面，声音轻了许多：「老夫年轻时，也有过这样的眼神。」",
+              favorability: 15,
+              skillBonus: { poetry: 6, spirit: 5, charm: 3 },
+              npcId: "pavilion_poet",
+              characterImage: "/assets/character/outfits/npc_pavilion_poet_s1.png",
+            },
+            answer_own: {
+              type: "dialogue",
+              text: "白鹭先生微笑：「姑娘有慧根。」他将画卷好，「这幅画，就留给你作念想吧。诗与画，都是时间的影子。」",
+              favorability: 12,
+              skillBonus: { poetry: 5, painting: 4, wisdom: 2 },
+              npcId: "pavilion_poet",
+              characterImage: "/assets/character/outfits/npc_pavilion_poet_s1.png",
+            },
+            admit_unknown: {
+              type: "dialogue",
+              text: "白鹭先生点头：「年轻时想不清楚，是好事。老夫当年想得太清楚，反而少了许多意外之喜。」他将画收起，「等你想清楚了，再来告诉我。」",
+              favorability: 7,
+              skillBonus: { wisdom: 3, spirit: 3 },
+              npcId: "pavilion_poet",
+              characterImage: "/assets/character/outfits/npc_pavilion_poet_s1.png",
+            },
+          },
+        },
+      },
+    ],
+  },
+
+  // ───── 云顶禅院 NPC ─────
+  zen_master: {
+    id: "zen_master",
+    name: "了尘禅师",
+    role: "云顶禅院住持",
+    description: "德高望重的云顶禅院住持，精通佛法与武学，看破世事却不离世事，以智慧点化有缘之人",
+    image: "/assets/character/outfits/npc_zen_master_s1.png",
+    imageClose: "/assets/character/outfits/npc_zen_master_s1.png",
+    avatar: "/assets/character/outfits/npc_zen_master_s1.png",
+    favorabilityKey: "zen_master",
+    dialogueSets: [
+      {
+        visitRange: [1, 1],
+        stageImage: '/assets/stage_images/zen_master_s1.png',
+        dialogues: [
+          { text: "了尘禅师正在蒲团上打坐，听到脚步声，缓缓睁眼：「施主远道而来，所求为何？」" },
+          { text: "他抬手示意你坐下，平静道：「禅院清净，但心不清净，来此亦无益。姑娘心中有何困惑？」" },
+        ],
+        dialogueWithChoice: {
+          question: "了尘禅师问：「施主觉得，人生最难之事是什么？」",
+          options: [
+            { id: "answer_self", text: "「认清自己，不为外物所迷。」", positive: true },
+            { id: "answer_choice", text: "「在名利与本心之间做出取舍。」", positive: true },
+            { id: "answer_unsure", text: "「弟子尚浅，不知如何作答。」", positive: false },
+          ],
+          consequences: {
+            answer_self: {
+              type: "dialogue",
+              text: "了尘禅师微微颔首：「善。知己者明，胜己者强。施主慧根不浅，老衲有一偈赠你：心如明镜台，何处惹尘埃。」",
+              favorability: 10,
+              skillBonus: { spirit: 5, wisdom: 4, morality: 3 },
+              npcId: "zen_master",
+            },
+            answer_choice: {
+              type: "dialogue",
+              text: "了尘禅师合掌道：「阿弥陀佛。名利如浮云，本心如磐石——施主已知答案，只是尚未笃定。」",
+              favorability: 8,
+              skillBonus: { spirit: 4, morality: 4 },
+              npcId: "zen_master",
+            },
+            answer_unsure: {
+              type: "dialogue",
+              text: "了尘禅师微笑道：「不知，便是知的开始。施主诚实，已胜过许多人。」他为你讲了一段禅语故事。",
+              favorability: 5,
+              skillBonus: { spirit: 2, wisdom: 3 },
+              npcId: "zen_master",
+            },
+          },
+        },
+      },
+      {
+        visitRange: [2, 99],
+        stageImage: '/assets/stage_images/zen_master_s2.png',
+        dialogues: [
+          { text: "了尘禅师见你再来，微微颔首：「施主又来了。上次那个问题，可有新的感悟？」" },
+          { text: "他沉默片刻，道：「修行无终点，每一次来，都是新的开始。」" },
+        ],
+        dialogueWithChoice: {
+          question: "了尘禅师问：「施主此番来，心中可还有疑惑？」",
+          options: [
+            { id: "zen2_a", text: "「有些事，越想越乱，不知如何取舍。」", positive: true },
+            { id: "zen2_b", text: "「上次的偈语，弟子一直在想。」", positive: true },
+            { id: "zen2_c", text: "「只是来看看，无事。」", positive: false },
+          ],
+          consequences: {
+            zen2_a: {
+              type: "dialogue",
+              text: "了尘禅师道：「乱，是因为你在乎。在乎，说明你有心。有心，便有解法。」他赠你一句：「随缘不是随便，而是尽力之后的坦然。」",
+              favorability: 12,
+              skillBonus: { spirit: 5, morality: 4, wisdom: 3 },
+              npcId: "zen_master",
+            },
+            zen2_b: {
+              type: "dialogue",
+              text: "了尘禅师欣慰地点头：「能记住，便是缘分。今日再赠你一句：「菩提本无树，明镜亦非台。本来无一物，何处惹尘埃。」",
+              favorability: 10,
+              skillBonus: { spirit: 6, wisdom: 4 },
+              npcId: "zen_master",
+            },
+            zen2_c: {
+              type: "dialogue",
+              text: "了尘禅师微微一笑：「无事便是福。」他递给你一杯清茶，「坐吧，喝杯茶。」",
+              favorability: 5,
+              skillBonus: { spirit: 3 },
+              npcId: "zen_master",
+            },
+          },
+        },
+      },
+    ],
+  },
 
   // ───── 客栈专属 NPC ─────
   inn_keeper: {
@@ -631,6 +1225,7 @@ const npcs = {
               // 第1阶段：初次相识（第1次）
               {
                 minVisit: 1, maxVisit: 1,
+                stageImage: '/assets/stage_images/wangwenyu_s1.png',
                 subSceneDialogues: [
                   { text: "王文玉（转身微笑）：'久闻凌小姐大名，今日得幸相识，果然名不虚传。我刚从江南带回新款的花粉，特别适合您这样肤色的佳人。'", image: "/assets/character/outfits/npc_wangwenyu_s1.png" },
                   { text: "王文玉（轻轻拿起一支玉簪）：'这支簪子是我亲手挑选的，您瞧这雕工，是不是与您气质极为相符？'", image: "/assets/character/outfits/npc_wangwenyu_s1.png" }
@@ -640,14 +1235,17 @@ const npcs = {
                   options: [
                     {
                       id: "ww_a", label: "A", text: "婉言谢绝，转身离开",
+                      recallText: "婉言谢绝了我的邀请",
                       responseDialogue: "王文玉（微微一怔，随即笑着收回手）：'无妨，凌小姐若有空，随时欢迎。'他的眼神里藏着一丝说不清的遗憾。"
                     },
                     {
                       id: "ww_b", label: "B", text: "驻足不动，微微摇头",
+                      recallText: "没有接受我的邀请，只是轻轻摇了摇头",
                       responseDialogue: "王文玉（轻叹一声，语气温柔）：'看来今日缘分未到。'他将那支玉簪轻轻放回原处，'下次再见，我还在这里。'"
                     },
                     {
                       id: "ww_c", label: "C", text: "点头应允，随他而去",
+                      recallText: "答应了我，随我去了茶馆",
                       giftItem: { id: "jade_hairpin", name: "白玉簪", emoji: "📍", category: "妆饰",
                         description: "王文玉从江南带回的精致白玉发簪，雕工精美，玉质温润。",
                         effect: { charm: 3 }, rarity: "uncommon" },
@@ -659,6 +1257,7 @@ const npcs = {
                     },
                     {
                       id: "ww_d", label: "D", text: "红着脸低声道：'……好。'",
+                      recallText: "红着脸低声说了个'好'",
                       giftItem: { id: "jade_hairpin", name: "白玉簪", emoji: "📍", category: "妆饰",
                         description: "王文玉从江南带回的精致白玉发簪，雕工精美，玉质温润。",
                         effect: { charm: 3 }, rarity: "uncommon" },
@@ -674,6 +1273,12 @@ const npcs = {
               // 第2阶段：渐生情愫（第2-4次）
               {
                 minVisit: 2, maxVisit: 4,
+                stageImage: '/assets/stage_images/wangwenyu_s2.png',
+                outfitTagDialogue: {
+                  scholar: { text: "王文玉目光在你身上停了一瞬：'今天这身……书卷气十足。'他顿了顿，'走南闯北见过许多人，像你这样的不多。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" },
+                  noble:   { text: "王文玉轻声道：'这身打扮……比上次更像京城的大家闺秀了。'他说完，自己先笑了，'但我还是觉得，你不只是这样。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" },
+                  mystical: { text: "王文玉凝视你片刻，轻声道：'这颜色……像极了江南雨后的荷花。你是故意选的？'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" },
+                },
                 subSceneDialogues: [
                   { text: "王文玉（眼中闪过一丝惊喜）：'凌小姐，没想到这么快又见到你。我还以为你不会再来了。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" },
                   { text: "王文玉（低声，语气比上次亲近了几分）：'我最近一直在想，上次你离开时的眼神……说不清，但我觉得，你心里也有些什么。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" }
@@ -700,14 +1305,17 @@ const npcs = {
                   options: [
                     {
                       id: "ww2_a", label: "A", text: "将信推回：'此事不妥，请收回。'",
+                      recallText: "把我的信推了回来",
                       responseDialogue: "王文玉（沉默片刻，收回信，神情平静）：'是我唐突了。'他低头将信折好，重新藏入袖中，却没有再说什么。"
                     },
                     {
                       id: "ww2_b", label: "B", text: "犹豫片刻，没有接也没有拒绝",
+                      recallText: "对那封信犹豫了很久，既没有接，也没有拒绝",
                       responseDialogue: "王文玉（看着你，轻轻笑了）：'不接也不拒……你这人，真是让我猜不透。'他将信收回，'那就先放着，等你想看的时候，再来找我。'"
                     },
                     {
                       id: "ww2_c", label: "C", text: "接过信，轻轻打开来看",
+                      recallText: "接过了那封信，轻轻打开来看",
                       giftItem: { id: "ww_letter", name: "王文玉手书", emoji: "📜", category: "信物",
                         description: "王文玉亲笔手书，字里行间藏着说不出口的情意。",
                         effect: { charm: 2, affinity: 2 }, rarity: "rare" },
@@ -719,6 +1327,7 @@ const npcs = {
                     },
                     {
                       id: "ww2_d", label: "D", text: "微笑着接过，轻声说：'谢谢你告诉我。'",
+                      recallText: "微笑着接过，说了声谢谢",
                       giftItem: { id: "ww_letter", name: "王文玉手书", emoji: "📜", category: "信物",
                         description: "王文玉亲笔手书，字里行间藏着说不出口的情意。",
                         effect: { charm: 2, affinity: 2 }, rarity: "rare" },
@@ -734,6 +1343,7 @@ const npcs = {
               // 第3阶段：情定（第5次，最后一次）
               {
                 minVisit: 5, maxVisit: 5,
+                stageImage: '/assets/stage_images/wangwenyu_s3.png',
                 subSceneDialogues: [
                   { text: "王文玉（停下脚步，转身直视你，眼神前所未有的认真）：'若雪，我走南闯北见过许多人，但从未有人让我如此放不下。上次你「[[lastChoice]]」——那之后，我就知道，这是最后一次机会了。'", image: "/assets/character/outfits/npc_wangwenyu_s3.png" },
                   { text: "王文玉（轻轻握住你的手，声音低沉）：'我不是在说笑，也不是一时冲动。我想……陪你走很长很长的路。'", image: "/assets/character/outfits/npc_wangwenyu_s4.png" }
@@ -743,14 +1353,17 @@ const npcs = {
                   options: [
                     {
                       id: "ww3_a", label: "A", text: "轻轻摇头：'我还没准备好。'",
+                      recallText: "轻轻摇头，说还没准备好",
                       responseDialogue: "王文玉（静静看着你，没有失落，只是轻轻点头）：'没关系，我等你。'他将玉佩重新握入掌心，'什么时候准备好了，我还在。'"
                     },
                     {
                       id: "ww3_b", label: "B", text: "低头沉默，久久说不出话",
+                      recallText: "低头沉默，久久没有说话",
                       responseDialogue: "王文玉（没有催促，就那样陪着你沉默）：'不用说话。'他轻声道，'我能感觉到。'"
                     },
                     {
                       id: "ww3_c", label: "C", text: "双手接过，眼眶微微泛红",
+                      recallText: "双手接过了那枚玉佩",
                       giftItem: { id: "ww_jade", name: "王文玉传家玉佩", emoji: "🏵️", category: "信物",
                         description: "王文玉母亲留下的传家玉佩，温润如水，承载着他最深的情意。",
                         effect: { charm: 5, affinity: 4, spirit: 2 }, rarity: "epic" },
@@ -762,6 +1375,7 @@ const npcs = {
                     },
                     {
                       id: "ww3_d", label: "D", text: "伸手握住他的手，连同玉佩一起",
+                      recallText: "伸手握住了我的手，连同那枚玉佩",
                       giftItem: { id: "ww_jade", name: "王文玉传家玉佩", emoji: "🏵️", category: "信物",
                         description: "王文玉母亲留下的传家玉佩，温润如水，承载着他最深的情意。",
                         effect: { charm: 5, affinity: 4, spirit: 2 }, rarity: "epic" },
@@ -856,19 +1470,21 @@ const npcs = {
     role: "皇上贴身宫女",
     description: "皇上身旁最得宠的贴身宫女，机敏聪慧，深得圣心，消息灵通，偶尔会悄悄透露宫中秘辛",
     emoji: "🌙",
-    avatar: "/assets/npc_avatars/royal_lady.png",
+    avatar: "/assets/npc_avatars/bedroom_maid.png",
+    image: "/assets/character/outfits/npc_royal_lady_s1.jpg",
+    imageClose: "/assets/character/outfits/npc_royal_lady_s2.jpg",
     // dialogueSets：每次随机选一套，支持 giftItem 触发道具
     dialogueSets: [
       {
         dialogues: [
-          "凌小姐，您今日气色真好，比上回入宫更显几分风华。",
-          "皇上今早心情极好，早朝退后还特意问起您的名字呢。"
+          { text: "凌小姐，您今日气色真好，比上回入宫更显几分风华。", image: "/assets/character/outfits/npc_royal_lady_s1.jpg" },
+          { text: "皇上今早心情极好，早朝退后还特意问起您的名字呢。", image: "/assets/character/outfits/npc_royal_lady_s2.jpg" }
         ]
       },
       {
         dialogues: [
-          "小姐，您来得正巧，皇上刚赏了一盒贡品龙井，奴婢斗胆留了一包，想转赠给您。",
-          "这茶是江南进贡，皇上亲口说过'香得很'，您拿去尝尝吧。"
+          { text: "小姐，您来得正巧，皇上刚赏了一盒贡品龙井，奴婢斗胆留了一包，想转赠给您。", image: "/assets/character/outfits/npc_royal_lady_s1.jpg" },
+          { text: "这茶是江南进贡，皇上亲口说过'香得很'，您拿去尝尝吧。", image: "/assets/character/outfits/npc_royal_lady_s2.jpg" }
         ],
         dialogueWithChoice: {
           text: "映月从袖中取出一个精致锦盒，微微欠身递来：'小姐若不嫌弃，请笑纳。'",
@@ -903,20 +1519,20 @@ const npcs = {
       },
       {
         dialogues: [
-          "小姐，奴婢有句话不知当讲不当讲……",
-          "宫里近来有几位贵人对小姐颇为留意，小姐行事还需多加小心，莫要落人口实。"
+          { text: "小姐，奴婢有句话不知当讲不当讲……", image: "/assets/character/outfits/npc_royal_lady_s2.jpg" },
+          { text: "宫里近来有几位贵人对小姐颇为留意，小姐行事还需多加小心，莫要落人口实。", image: "/assets/character/outfits/npc_royal_lady_s2.jpg" }
         ]
       },
       {
         dialogues: [
-          "皇上昨日在御花园里驻足良久，说那株白梅让他想起了一个人。",
-          "奴婢不敢多问，只是……皇上望向宫门方向时，眼神里有些不一样的东西。"
+          { text: "皇上昨日在御花园里驻足良久，说那株白梅让他想起了一个人。", image: "/assets/character/outfits/npc_royal_lady_s1.jpg" },
+          { text: "奴婢不敢多问，只是……皇上望向宫门方向时，眼神里有些不一样的东西。", image: "/assets/character/outfits/npc_royal_lady_s2.jpg" }
         ]
       },
       {
         dialogues: [
-          "凌小姐，您上次在御前弹的那首曲子，皇上散朝后还哼了几句。",
-          "奴婢从未见皇上对哪位小姐如此上心，您可要好好珍惜这份缘分。"
+          { text: "凌小姐，您上次在御前弹的那首曲子，皇上散朝后还哼了几句。", image: "/assets/character/outfits/npc_royal_lady_s1.jpg" },
+          { text: "奴婢从未见皇上对哪位小姐如此上心，您可要好好珍惜这份缘分。", image: "/assets/character/outfits/npc_royal_lady_s2.jpg" }
         ],
         dialogueWithChoice: {
           text: "映月从腰间取下一枚精巧的香囊，递到若雪面前：'这是皇上赏给奴婢的，奴婢不敢自留，想着转赠小姐，保个平安。'",
@@ -971,23 +1587,27 @@ const npcs = {
                   // 第1次：初见
                   {
                     minVisit: 1, maxVisit: 1,
+                    stageImage: '/assets/stage_images/royal_emperor_s1.png',
                     subSceneDialogues: [
-                      "御花园中，一位身着常服的男子负手而立，望着池中锦鲤出神。映月轻声道：'皇上，凌小姐来了。'",
-                      "皇上（转身，目光沉静地打量若雪片刻）：'将军府的女儿？朕听说过你，今日一见，倒比传言更……从容。'"
+                      { text: "御花园中，一位身着常服的男子负手而立，望着池中锦鲤出神。映月轻声道：'皇上，凌小姐来了。'", image: "/assets/stage_images/royal_emperor_s1.png" },
+                      { text: "皇上（转身，目光沉静地打量若雪片刻）：'将军府的女儿？朕听说过你，今日一见，倒比传言更……从容。'", image: "/assets/stage_images/royal_emperor_s1.png" }
                     ],
                     subSceneChoices: {
                       text: "皇上（淡淡一笑）：'朕难得出来走走，你若无事，便陪朕在这园中走一段？'",
                       options: [
                         {
                           id: "emp1_a", label: "A", text: "惶恐跪拜：'臣女不敢逾矩，告退。'",
+                          recallText: "惶恐跪拜，说不敢逾矩，告退离去",
                           responseDialogue: "皇上（微微颔首，目送若雪离去，眼中有一丝不易察觉的惋惜）：'……倒是守礼。'"
                         },
                         {
                           id: "emp1_b", label: "B", text: "垂首肃立，不置可否",
+                          recallText: "垂首肃立，不置可否",
                           responseDialogue: "皇上（看了你片刻，轻声）：'你这人……有意思。'他没有再说什么，转身望向远处的锦鲤。"
                         },
                         {
                           id: "emp1_c", label: "C", text: "从容行礼：'能陪皇上赏花，是若雪的荣幸。'",
+                          recallText: "从容行礼，说能陪朕赏花是她的荣幸",
                           giftItem: { id: "imperial_osmanthus", name: "御苑桂花枝", emoji: "🌼", category: "信物",
                             description: "皇上亲折的御苑桂花，香气清远，是难得一见的皇恩信物。",
                             effect: { charm: 3, reputation: 4 }, rarity: "rare" },
@@ -999,6 +1619,7 @@ const npcs = {
                         },
                         {
                           id: "emp1_d", label: "D", text: "抬眸直视，微笑应道：'皇上相邀，若雪恭敬不如从命。'",
+                          recallText: "抬眸直视，微笑着说恭敬不如从命",
                           giftItem: { id: "imperial_osmanthus", name: "御苑桂花枝", emoji: "🌼", category: "信物",
                             description: "皇上亲折的御苑桂花，香气清远，是难得一见的皇恩信物。",
                             effect: { charm: 3, reputation: 4 }, rarity: "rare" },
@@ -1014,23 +1635,27 @@ const npcs = {
                   // 第2次：情深
                   {
                     minVisit: 2, maxVisit: 2,
+                    stageImage: '/assets/stage_images/royal_emperor_s2.png',
                     subSceneDialogues: [
-                      "皇上（搁下御笔，抬头，见是若雪，眼中有一丝不加掩饰的欣喜）：'你来了。朕昨日还在想，你会不会再来。'",
-                      "皇上（起身踱步，语气比上次少了几分帝王威仪）：'上次你「[[lastChoice]]」——朕回去想了很久。朝中大臣说话，十句里有八句是废话。你不同。'"
+                      { text: "皇上（搁下御笔，抬头，见是若雪，眼中有一丝不加掩饰的欣喜）：'你来了。朕昨日还在想，你会不会再来。'", image: "/assets/stage_images/royal_emperor_s2.png" },
+                      { text: "皇上（起身踱步，语气比上次少了几分帝王威仪）：'上次你「[[lastChoice]]」——朕回去想了很久。朝中大臣说话，十句里有八句是废话。你不同。'", image: "/assets/stage_images/royal_emperor_s2.png" }
                     ],
                     subSceneChoices: {
                       text: "皇上（停步，侧目看向若雪）：'朕想听你说说，若你是朕，这江山该如何治？'",
                       options: [
                         {
                           id: "emp2_a", label: "A", text: "惶恐低头：'臣女不敢妄议朝政。'",
+                          recallText: "惶恐低头，说不敢妄议朝政",
                           responseDialogue: "皇上（轻叹）：'又来这句。'他走近一步，'若雪，在朕面前，不必如此。朕问的，是你心里真正的想法。'"
                         },
                         {
                           id: "emp2_b", label: "B", text: "沉默片刻，轻声说：'臣女见识浅薄……'",
+                          recallText: "沉默了片刻，轻声说见识浅薄",
                           responseDialogue: "皇上（摇头，带着一点无奈的笑）：'你不浅薄。'他说，'朕见过真正浅薄的人，不是你这样的。'"
                         },
                         {
                           id: "emp2_c", label: "C", text: "从容作答：'若雪以为，治国先治心，民心所向，江山自稳。'",
+                          recallText: "从容作答，说治国先治心，民心所向江山自稳",
                           giftItem: { id: "imperial_inkstone", name: "御赐端砚", emoji: "🪨", category: "文房",
                             description: "皇上御案上的端砚，石质细腻，赐予有识之人，寓意器重。",
                             effect: { wisdom: 4, statecraft: 5 }, rarity: "rare" },
@@ -1042,6 +1667,7 @@ const npcs = {
                         },
                         {
                           id: "emp2_d", label: "D", text: "直言道：'皇上问得好——百姓饱暖，便是天下太平。'",
+                          recallText: "直言道，百姓饱暖便是天下太平",
                           giftItem: { id: "imperial_inkstone", name: "御赐端砚", emoji: "🪨", category: "文房",
                             description: "皇上御案上的端砚，石质细腻，赐予有识之人，寓意器重。",
                             effect: { wisdom: 4, statecraft: 5 }, rarity: "rare" },
@@ -1057,23 +1683,27 @@ const npcs = {
                   // 第3次：情定（最后一次，姻缘达成）
                   {
                     minVisit: 3, maxVisit: 3,
+                    stageImage: '/assets/stage_images/royal_emperor_s3.png',
                     subSceneDialogues: [
-                      "皇上（于御花园梅树下等候，见若雪来，唇角微扬）：'朕今日特意早退了朝，就是想在这里等你。上次你「[[lastChoice]]」——那之后，朕想了很多。'",
-                      "皇上（走近，目光深沉而温柔）：'朕见过许多聪慧的女子，但像你这样——既有才学，又有风骨，还不失温柔——朕只见过你一个。'"
+                      { text: "皇上（于御花园梅树下等候，见若雪来，唇角微扬）：'朕今日特意早退了朝，就是想在这里等你。上次你「[[lastChoice]]」——那之后，朕想了很多。'", image: "/assets/stage_images/royal_emperor_s3.png" },
+                      { text: "皇上（走近，目光深沉而温柔）：'朕见过许多聪慧的女子，但像你这样——既有才学，又有风骨，还不失温柔——朕只见过你一个。'", image: "/assets/stage_images/royal_emperor_s3.png" }
                     ],
                     subSceneChoices: {
                       text: "皇上（从袖中取出一枚龙凤玉佩，单膝跪地——这是天子向人低头，千古仅此一次）：'若雪，朕在等你的答案。'",
                       options: [
                         {
                           id: "emp3_a", label: "A", text: "颤声道：'皇上……臣女需要时间想想。'",
+                          recallText: "颤声说需要时间想想",
                           responseDialogue: "皇上（静静看着你，收回玉佩，站起身）：'朕等。'他只说了两个字，'不管多久，朕都在这里。'"
                         },
                         {
                           id: "emp3_b", label: "B", text: "泪眼朦胧，久久说不出话",
+                          recallText: "泪眼朦胧，久久说不出话",
                           responseDialogue: "皇上（没有催促，轻声）：'不用说话。'他把玉佩放在你掌心，'先拿着，什么时候想好了，再来告诉朕。'"
                         },
                         {
                           id: "emp3_c", label: "C", text: "双手接过玉佩，盈盈下拜：'若雪，愿意。'",
+                          recallText: "双手接过玉佩，盈盈下拜，说了声愿意",
                           giftItem: { id: "dragon_phoenix_jade", name: "龙凤定情玉佩", emoji: "💎", category: "信物",
                             description: "皇上亲赐的龙凤玉佩，天子定情之物，世间唯此一枚，象征中宫之位。",
                             effect: { charm: 10, reputation: 10, statecraft: 6, morality: 5, wisdom: 4 }, rarity: "legendary" },
@@ -1085,6 +1715,7 @@ const npcs = {
                         },
                         {
                           id: "emp3_d", label: "D", text: "俯身将皇上扶起，轻声说：'皇上快起来……若雪答应你。'",
+                          recallText: "俯身将朕扶起，轻声说答应了",
                           giftItem: { id: "dragon_phoenix_jade", name: "龙凤定情玉佩", emoji: "💎", category: "信物",
                             description: "皇上亲赐的龙凤定情玉佩，天子定情之物，世间唯此一枚，象征中宫之位。",
                             effect: { charm: 10, reputation: 10, statecraft: 6, morality: 5, wisdom: 4 }, rarity: "legendary" },
@@ -1170,9 +1801,10 @@ const npcs = {
             storyStages: [
               {
                 minVisit: 1, maxVisit: 1,
+                stageImage: '/assets/stage_images/royal_emperor_s1.png',
                 subSceneDialogues: [
-                  "御花园中，一位身着常服的男子负手而立，望着池中锦鲤出神。映月轻声道：'皇上，凌小姐来了。'",
-                  "皇上（转身，目光沉静地打量若雪片刻）：'将军府的女儿？朕听说过你，今日一见，倒比传言更……从容。'"
+                  { text: "御花园中，一位身着常服的男子负手而立，望着池中锦鲤出神。映月轻声道：'皇上，凌小姐来了。'", image: "/assets/stage_images/royal_emperor_s1.png" },
+                  { text: "皇上（转身，目光沉静地打量若雪片刻）：'将军府的女儿？朕听说过你，今日一见，倒比传言更……从容。'", image: "/assets/stage_images/royal_emperor_s1.png" }
                 ],
                 subSceneChoices: {
                   text: "皇上（淡淡一笑）：'朕难得出来走走，你若无事，便陪朕在这园中走一段？'",
@@ -1186,9 +1818,10 @@ const npcs = {
               },
               {
                 minVisit: 2, maxVisit: 3,
+                stageImage: '/assets/stage_images/royal_emperor_s2.png',
                 subSceneDialogues: [
-                  "皇上（搁下御笔，抬头）：'你又来了。朕记得你上次说的那番话，回去想了许久。'",
-                  "皇上（起身踱步）：'朝中大臣说话，十句里有八句是废话。你倒不同，说的是真心话。'"
+                  { text: "皇上（搁下御笔，抬头）：'你又来了。朕记得你上次说的那番话，回去想了许久。'", image: "/assets/stage_images/royal_emperor_s2.png" },
+                  { text: "皇上（起身踱步）：'朝中大臣说话，十句里有八句是废话。你倒不同，说的是真心话。'", image: "/assets/stage_images/royal_emperor_s2.png" }
                 ],
                 subSceneChoices: {
                   text: "皇上（停步，侧目看向若雪）：'朕想听你说说，若你是朕，这江山该如何治？'",
@@ -1202,9 +1835,10 @@ const npcs = {
               },
               {
                 minVisit: 4, maxVisit: 4,
+                stageImage: '/assets/stage_images/royal_emperor_s3.png',
                 subSceneDialogues: [
-                  "皇上（于御花园梅树下等候，见若雪来，唇角微扬）：'朕今日特意早退了朝，就是想在这里等你。'",
-                  "皇上（轻声）：'朕见过许多聪慧的女子，但像你这样——既有才学，又有风骨，还不失温柔——朕只见过你一个。'"
+                  { text: "皇上（于御花园梅树下等候，见若雪来，唇角微扬）：'朕今日特意早退了朝，就是想在这里等你。'", image: "/assets/stage_images/royal_emperor_s3.png" },
+                  { text: "皇上（轻声）：'朕见过许多聪慧的女子，但像你这样——既有才学，又有风骨，还不失温柔——朕只见过你一个。'", image: "/assets/stage_images/royal_emperor_s3.png" }
                 ],
                 subSceneChoices: {
                   text: "皇上（从袖中取出一枚凤钗，托于掌心）：'这是太后当年的旧物，朕一直留着。今日……朕想亲手为你簪上。'",
@@ -1218,9 +1852,10 @@ const npcs = {
               },
               {
                 minVisit: 5, maxVisit: 999,
+                stageImage: '/assets/stage_images/royal_emperor_s4.png',
                 subSceneDialogues: [
-                  "皇上（屏退左右，御书房内只剩二人）：'朕已下旨，命礼部着手准备大婚事宜。'",
-                  "皇上（走近，目光深沉而温柔）：'朕不需要一个只会低头的皇后。朕要的，是能与朕并肩的人——若雪，你可愿意？'"
+                  { text: "皇上（屏退左右，御书房内只剩二人）：'朕已下旨，命礼部着手准备大婚事宜。'", image: "/assets/stage_images/royal_emperor_s4.png" },
+                  { text: "皇上（走近，目光深沉而温柔）：'朕不需要一个只会低头的皇后。朕要的，是能与朕并肩的人——若雪，你可愿意？'", image: "/assets/stage_images/royal_emperor_s4.png" }
                 ],
                 subSceneChoices: {
                   text: "皇上（单膝跪地，将一枚龙凤玉佩双手呈上）：'朕在等你的答案。'",
@@ -1400,14 +2035,20 @@ const npcs = {
     description: "当今圣上，英明神武，治国有方，偶尔微服出行于御花园，与入宫觐见的贵女有数面之缘",
     emoji: "👑",
     avatar: "/assets/npc_avatars/royal_emperor.png",
+    isSubSceneNpc: true,
+    subSceneChoiceId: "visit_emperor",
+    subSceneIntroducerNpc: "royal_lady",
+    image: "/assets/npc_avatars/royal_emperor.png",
+    imageClose: "/assets/npc_avatars/royal_emperor.png",
     sceneAvatar: { scene: "/assets/scenes_active/royal_court.jpg", cx: 47.5, cy: 67.5, imgW: 1408, imgH: 768 },
     storyStages: [
       // 第1阶段：御前初见（第1次）
       {
         minVisit: 1, maxVisit: 1,
+        stageImage: '/assets/stage_images/royal_emperor_s1.png',
         subSceneDialogues: [
-          "御花园中，一位身着常服的男子负手而立，望着池中锦鲤出神。映月轻声道：'小姐，这便是皇上。'",
-          "皇上（转身，目光沉静地打量若雪片刻）：'将军府的女儿？朕听说过你，今日一见，倒比传言更……从容。'"
+          { text: "御花园中，一位身着常服的男子负手而立，望着池中锦鲤出神。映月轻声道：'小姐，这便是皇上。'", image: "/assets/stage_images/royal_emperor_s1.png" },
+          { text: "皇上（转身，目光沉静地打量若雪片刻）：'将军府的女儿？朕听说过你，今日一见，倒比传言更……从容。'", image: "/assets/stage_images/royal_emperor_s1.png" }
         ],
         subSceneChoices: {
           text: "皇上（淡淡一笑）：'朕难得出来走走，你若无事，便陪朕在这园中走一段？'",
@@ -1432,9 +2073,10 @@ const npcs = {
       // 第2阶段：御前论道（第2-3次）
       {
         minVisit: 2, maxVisit: 3,
+        stageImage: '/assets/stage_images/royal_emperor_s2.png',
         subSceneDialogues: [
-          "皇上（搁下御笔，抬头）：'你又来了。朕记得你上次说的那番话，回去想了许久。'",
-          "皇上（起身踱步）：'朝中大臣说话，十句里有八句是废话。你倒不同，说的是真心话。'"
+          { text: "皇上（搁下御笔，抬头）：'你又来了。朕记得你上次说的那番话，回去想了许久。'", image: "/assets/stage_images/royal_emperor_s2.png" },
+          { text: "皇上（起身踱步）：'朝中大臣说话，十句里有八句是废话。你倒不同，说的是真心话。'", image: "/assets/stage_images/royal_emperor_s2.png" }
         ],
         subSceneChoices: {
           text: "皇上（停步，侧目看向若雪）：'朕想听你说说，若你是朕，这江山该如何治？'",
@@ -1459,9 +2101,10 @@ const npcs = {
       // 第3阶段：圣心独宠（第4次）
       {
         minVisit: 4, maxVisit: 4,
+        stageImage: '/assets/stage_images/royal_emperor_s3.png',
         subSceneDialogues: [
-          "皇上（于御花园梅树下等候，见若雪来，唇角微扬）：'朕今日特意早退了朝，就是想在这里等你。'",
-          "皇上（轻声）：'朕见过许多聪慧的女子，但像你这样——既有才学，又有风骨，还不失温柔——朕只见过你一个。'"
+          { text: "皇上（于御花园梅树下等候，见若雪来，唇角微扬）：'朕今日特意早退了朝，就是想在这里等你。'", image: "/assets/stage_images/royal_emperor_s3.png" },
+          { text: "皇上（轻声）：'朕见过许多聪慧的女子，但像你这样——既有才学，又有风骨，还不失温柔——朕只见过你一个。'", image: "/assets/stage_images/royal_emperor_s3.png" }
         ],
         subSceneChoices: {
           text: "皇上（从袖中取出一枚凤钗，托于掌心）：'这是太后当年的旧物，朕一直留着。今日……朕想亲手为你簪上。'",
@@ -1486,9 +2129,10 @@ const npcs = {
       // 第4阶段：情定中宫（第5次及以上）
       {
         minVisit: 5, maxVisit: 999,
+        stageImage: '/assets/stage_images/royal_emperor_s4.png',
         subSceneDialogues: [
-          "皇上（屏退左右，御书房内只剩二人）：'朕已下旨，命礼部着手准备大婚事宜。'",
-          "皇上（走近，目光深沉而温柔）：'朕不需要一个只会低头的皇后。朕要的，是能与朕并肩的人——若雪，你可愿意？'"
+          { text: "皇上（屏退左右，御书房内只剩二人）：'朕已下旨，命礼部着手准备大婚事宜。'", image: "/assets/stage_images/royal_emperor_s4.png" },
+          { text: "皇上（走近，目光深沉而温柔）：'朕不需要一个只会低头的皇后。朕要的，是能与朕并肩的人——若雪，你可愿意？'", image: "/assets/stage_images/royal_emperor_s4.png" }
         ],
         subSceneChoices: {
           text: "皇上（单膝跪地，将一枚龙凤玉佩双手呈上——这是天子向人低头，千古仅此一次）：'朕在等你的答案。'",
@@ -1515,6 +2159,43 @@ const npcs = {
       "皇上日理万机，不轻易接见外臣女眷。或许可以先与映月姑娘攀谈，请她从中引荐？",
       "（御前侍卫拦住去路）：'皇上正在议事，还请小姐稍候。若有意觐见，不妨请映月姑娘代为通传。'"
     ],
+    // Feature 2 Chain 2: 宇文拓信物玉佩 → 皇上特殊对话
+    dialogueSets: [
+      {
+        condition: { hasItem: "general_jade" },
+        stageImage: '/assets/stage_images/royal_emperor_s2.png',
+        dialogues: [
+          { text: "皇上（目光落在玉佩上，神色微变）：'这是……宇文拓的信物？他把这个给你了？'", image: "/assets/npc_avatars/royal_emperor.png" },
+          { text: "皇上：'此物是朕赐给他的，能让他转赠于人，可见你在他心中分量不轻。'", image: "/assets/npc_avatars/royal_emperor.png" },
+          { text: "皇上（目光深沉）：'宇文拓此人，朕了解。他看中的人，必有过人之处。'", image: "/assets/npc_avatars/royal_emperor.png" },
+        ],
+        dialogueWithChoice: {
+          question: "皇上（沉吟片刻，抬眸看你）：'你与宇文拓……关系如何？'",
+          options: [
+            { id: "emp_jade_a", text: "「将军待若雪如挚友，若雪心存感激。」", positive: true },
+            { id: "emp_jade_b", text: "「只是普通相识，并无特殊。」", positive: false },
+          ],
+          consequences: {
+            emp_jade_a: {
+              type: "dialogue",
+              text: "皇上微微点头，神情稍松：'宇文拓识人向来准。你既得他信任，朕也多看你一眼。'他从袖中取出一枚玉牌，'这是进入御书房的令牌，留着。'",
+              favorability: 10,
+              skillBonus: { statecraft: 3 },
+              npcId: "royal_emperor",
+              characterImage: "/assets/npc_avatars/royal_emperor.png",
+            },
+            emp_jade_b: {
+              type: "dialogue",
+              text: "皇上淡淡一笑：'是吗。'他没有再追问，只是目光在玉佩上多停留了一瞬，'普通相识，他不会把这个送出去的。'",
+              favorability: 3,
+              skillBonus: {},
+              npcId: "royal_emperor",
+              characterImage: "/assets/npc_avatars/royal_emperor.png",
+            },
+          },
+        },
+      },
+    ],
     location: ["royal_court"]
   },
 
@@ -1526,53 +2207,107 @@ const npcs = {
     description: "赵伯伯的儿子，与若雪同龄，活泼好动，虽顽皮但心地善良，对若雪暗自钦佩",
     emoji: "🌿",
     avatar: "/assets/npc_avatars/outdoor_son.png",
+    image: "/assets/character/outfits/npc_outdoor_son_s1.jpg",
+    imageClose: "/assets/character/outfits/npc_outdoor_son_s2.jpg",
     dialogueSets: [
+      // Chain 3: 王文玉传家玉佩 → 赵公子特殊对话
       {
+        condition: { hasItem: "ww_jade" },
         dialogues: [
-          "若雪姐！没想到在这里遇到你！你也是来踏青的吗？",
-          "我父亲总说我顽劣，让我向你多学学，其实……我觉得你确实挺厉害的。"
+          { text: "赵公子（看见玉佩，眼睛一亮）：'这是王文玉的传家玉佩？！你们……'", image: "/assets/character/outfits/npc_outdoor_son_s1.jpg" },
+          { text: "（压低声音，兴奋地）'幕风公子昨天还问起你呢，他说能让王文玉动心的姑娘，一定不简单！'", image: "/assets/character/outfits/npc_outdoor_son_s2.jpg" },
         ],
         dialogueWithChoice: {
-          text: "对了，前面草原深处有位很有名的骑手，他叫幕风公子。我和他是好友，他一直听我说起你，特别想认识你。你要不要一起去见见他？",
-          choices: [
-            {
-              id: "meet_mufengongzi_intro",
-              text: "好啊，一起去见识一下",
-              consequence: { type: "dialogue", nextDialogue: "赵公子拍手道：'太好了！跟我来，幕风公子就在前面不远处！'" }
+          question: "赵公子（凑近，压低声音）：'若雪姐，你和王文玉……是什么关系啊？'",
+          options: [
+            { id: "os_wwjade_a", text: "「只是朋友，你别乱说。」", positive: true },
+            { id: "os_wwjade_b", text: "（笑而不答）", positive: false },
+          ],
+          consequences: {
+            os_wwjade_a: {
+              type: "dialogue",
+              text: "赵公子（撇嘴）：'就知道你不说实话！不过没关系，幕风公子说了，若雪姐你厉害，他要亲自来拜访！'",
+              favorability: 5,
+              skillBonus: { mufengongzi: 5 },
+              npcId: "outdoor_son",
+              characterImage: "/assets/character/outfits/npc_outdoor_son_s1.jpg",
             },
-            {
-              id: "decline_mufengongzi_intro",
-              text: "今日不便，改日再说",
-              consequence: { type: "dialogue", nextDialogue: "赵公子点点头：'好，那你下次来草原，我再带你去！'" }
-            }
-          ]
-        }
+            os_wwjade_b: {
+              type: "dialogue",
+              text: "赵公子（眼睛更亮了）：'哇！若雪姐你这个笑容……幕风公子要是看见，肯定更着迷！我去给他传话！'",
+              favorability: 5,
+              skillBonus: { mufengongzi: 5 },
+              npcId: "outdoor_son",
+              characterImage: "/assets/character/outfits/npc_outdoor_son_s2.jpg",
+            },
+          },
+        },
+      },
+      // Chain 8: 西域蓝宝戒 → 赵公子特殊对话
+      {
+        condition: { hasItem: "sapphire_ring" },
+        dialogues: [
+          { text: "赵公子（看见戒指，倒吸一口冷气）：'这是……西域蓝宝戒？！沐风把这个给你了？！'", image: "/assets/character/outfits/npc_outdoor_son_s1.jpg" },
+          { text: "'这戒指是他家传的宝贝，他连我都没让摸过！'", image: "/assets/character/outfits/npc_outdoor_son_s2.jpg" },
+          { text: "'幕风公子知道了不得嫉妒死……哈哈，若雪姐，你真厉害！'", image: "/assets/character/outfits/npc_outdoor_son_s1.jpg" },
+        ],
+        dialogueWithChoice: {
+          question: "赵公子（激动地搓手）：'若雪姐，你要不要我去给幕风公子说一声？他肯定想知道！'",
+          options: [
+            { id: "os_sapphire_a", text: "「好啊，去说吧。」", positive: true },
+            { id: "os_sapphire_b", text: "「先别说，等我想好了再说。」", positive: false },
+          ],
+          consequences: {
+            os_sapphire_a: {
+              type: "dialogue",
+              text: "赵公子（兴奋地跑开）：'好！我这就去！幕风公子一定高兴坏了！'他一溜烟跑远，留下你在原地哭笑不得。",
+              favorability: 8,
+              skillBonus: { mufengongzi: 8, spirit: 5 },
+              npcId: "outdoor_son",
+              characterImage: "/assets/character/outfits/npc_outdoor_son_s1.jpg",
+            },
+            os_sapphire_b: {
+              type: "dialogue",
+              text: "赵公子（勉强忍住，但眼睛已经在发光）：'好好好，我不说……但若雪姐，你真的太厉害了！'",
+              favorability: 4,
+              skillBonus: { spirit: 3 },
+              npcId: "outdoor_son",
+              characterImage: "/assets/character/outfits/npc_outdoor_son_s2.jpg",
+            },
+          },
+        },
       },
       {
         dialogues: [
-          "若雪姐，在草原骑马可以增加体力和野性，你要不要试试？我来教你！",
-          "幕风公子说了，体力好的人骑术才能学得快，你平时多来草原走走！"
+          { text: "若雪姐！没想到在这里遇到你！你也是来踏青的吗？", image: "/assets/character/outfits/npc_outdoor_son_s1.jpg" },
+          { text: "我父亲总说我顽劣，让我向你多学学，其实……我觉得你确实挺厉害的。", image: "/assets/character/outfits/npc_outdoor_son_s2.jpg" }
         ]
       },
       {
         dialogues: [
-          "若雪姐，你知道吗，去书画院学画艺能增加画艺值，去礼仪院学礼仪能增加魅力！",
-          "我父亲让我多学习，但我就是坐不住……若雪姐你是怎么做到的？"
+          { text: "若雪姐，在草原骑马可以增加体力和野性，你要不要试试？我来教你！", image: "/assets/character/outfits/npc_outdoor_son_s1.jpg" },
+          { text: "幕风公子说了，体力好的人骑术才能学得快，你平时多来草原走走！", image: "/assets/character/outfits/npc_outdoor_son_s1.jpg" }
+        ]
+      },
+      {
+        dialogues: [
+          { text: "若雪姐，你知道吗，去书画院学画艺能增加画艺值，去礼仪院学礼仪能增加魅力！", image: "/assets/character/outfits/npc_outdoor_son_s1.jpg" },
+          { text: "我父亲让我多学习，但我就是坐不住……若雪姐你是怎么做到的？", image: "/assets/character/outfits/npc_outdoor_son_s2.jpg" }
         ]
       },
       // 若雪与幕风公子有交集后
       {
         condition: { minFav: { mufengongzi: 20 } },
         dialogues: [
-          "若雪姐！幕风公子昨天还跟我提起你，说你骑马进步很快，他很欣赏你！",
-          "我就说嘛，你们两个肯定合得来！幕风公子可不是轻易夸人的！"
+          { text: "若雪姐！幕风公子昨天还跟我提起你，说你骑马进步很快，他很欣赏你！", image: "/assets/character/outfits/npc_outdoor_son_s1.jpg" },
+          { text: "我就说嘛，你们两个肯定合得来！幕风公子可不是轻易夸人的！", image: "/assets/character/outfits/npc_outdoor_son_s1.jpg" }
         ]
       },
       {
         condition: { minFav: { mufengongzi: 50 }, minVisits: { mufengongzi: 2 } },
         dialogues: [
-          "哈哈，若雪姐，你和幕风公子的事，我早看出来了！你们俩在一起，我最高兴！",
-          "幕风公子说，他从来没有为一个人停下脚步……若雪姐，你是第一个！"
+          { text: "哈哈，若雪姐，你和幕风公子的事，我早看出来了！你们俩在一起，我最高兴！", image: "/assets/character/outfits/npc_outdoor_son_s1.jpg" },
+          { text: "幕风公子说，他从来没有为一个人停下脚步……若雪姐，你是第一个！", image: "/assets/character/outfits/npc_outdoor_son_s2.jpg" }
         ]
       },
     ],
@@ -1593,6 +2328,7 @@ const npcs = {
               // 第1阶段：初次相遇（第1次）
               {
                 minVisit: 1, maxVisit: 1,
+                stageImage: '/assets/stage_images/mufengongzi_s1.png',
                 subSceneDialogues: [
                   { text: "幕风公子（骑马而来，洒脱如风）：'凌若雪？久闻大名。你的故事在草原上也传开了。不如一起骑马如何？'他笑容自信而神秘。", image: "/assets/character/outfits/npc_mufeng_s1.png" },
                   { text: "幕风公子（翻身下马，随手将缰绳递给你）：'别怕，这匹马性子温顺，跟着我的节奏就好。'他靠得很近，带着草原特有的风沙气息。", image: "/assets/character/outfits/npc_mufeng_s1.png" }
@@ -1602,14 +2338,17 @@ const npcs = {
                   options: [
                     {
                       id: "mf_a", label: "A", text: "后退一步，婉拒好意",
+                      recallText: "后退了一步，婉拒了我",
                       responseDialogue: "幕风公子（站起身，拍拍膝上的草屑，笑得毫不在意）：'没事，草原上的风不会等人，但我会等。'他翻身上马，回头看了你一眼。"
                     },
                     {
                       id: "mf_b", label: "B", text: "愣在原地，不知所措",
+                      recallText: "愣在原地，不知所措地看着我",
                       responseDialogue: "幕风公子（见你发愣，噗嗤一笑，站起来）：'第一次有人这样看我。'他把缰绳往你手里一塞，'不用答，先骑马，边走边想。'"
                     },
                     {
                       id: "mf_c", label: "C", text: "伸出手，让他起来",
+                      recallText: "伸出手拉了我起来",
                       giftItem: { id: "steppe_jade", name: "草原碧玉坠", emoji: "🍃", category: "妆饰",
                         description: "幕风公子亲手打磨的草原碧玉，带着北地风沙的气息，是他的信物。",
                         effect: { wildness: 2, charm: 2 }, rarity: "rare" },
@@ -1621,6 +2360,7 @@ const npcs = {
                     },
                     {
                       id: "mf_d", label: "D", text: "低声说：'……我也是这样想的。'",
+                      recallText: "低声说'我也是这样想的'",
                       giftItem: { id: "steppe_jade", name: "草原碧玉坠", emoji: "🍃", category: "妆饰",
                         description: "幕风公子亲手打磨的草原碧玉，带着北地风沙的气息，是他的信物。",
                         effect: { wildness: 2, charm: 2 }, rarity: "rare" },
@@ -1636,6 +2376,12 @@ const npcs = {
               // 第2阶段：并肩驰骋（第2-4次）
               {
                 minVisit: 2, maxVisit: 4,
+                stageImage: '/assets/stage_images/mufengongzi_s2.png',
+                outfitTagDialogue: {
+                  civilian: { text: "幕风公子扫了一眼你的衣裳，轻声说：'这身穿着……在草原上骑马正合适，不碍事。'他说完，自己先翻身上马。", image: "/assets/character/outfits/npc_mufeng_s2.png" },
+                  noble:    { text: "幕风公子挑了挑眉：'这身打扮……是要去宫里？'他顿了顿，'穿着这个来草原，胆子不小。'", image: "/assets/character/outfits/npc_mufeng_s2.png" },
+                  scholar:  { text: "幕风公子看了你一眼，若有所思：'读书人的衣裳。'他低声道，'草原上从没见过这样骑马的。'他说完，嘴角有一丝笑。", image: "/assets/character/outfits/npc_mufeng_s2.png" },
+                },
                 subSceneDialogues: [
                   { text: "幕风公子（远远看到你，勒马而立，嘴角带笑）：'你又来了。我就知道草原会把你召回来的。'", image: "/assets/character/outfits/npc_mufeng_s2.png" },
                   { text: "幕风公子（策马与你并行，侧头打量你）：'上次骑马，你进步不小。但那眼神……比骑术更让我在意。'", image: "/assets/character/outfits/npc_mufeng_s2.png" }
@@ -1659,14 +2405,17 @@ const npcs = {
                   options: [
                     {
                       id: "mf2_a", label: "A", text: "笑着摇头：'我从未想过这些。'",
+                      recallText: "笑着摇头，说从未想过这些",
                       responseDialogue: "幕风公子（侧头看你，眼神里有一丝说不清的东西）：'没想过……'他低声重复，'那就从今天开始想。'他夹马前行，没再说话。"
                     },
                     {
                       id: "mf2_b", label: "B", text: "沉默片刻，目光望向远方",
+                      recallText: "沉默了片刻，只是望向远方",
                       responseDialogue: "幕风公子（没有催你，就那样陪着你沉默，望着同一片天）：'不用说，我懂。'他轻声道，'有些答案，只有自己知道就够了。'"
                     },
                     {
                       id: "mf2_c", label: "C", text: "轻声说：'也许……像你一样，自由地走。'",
+                      recallText: "轻声说，也许想像我一样自由地走",
                       giftItem: { id: "steppe_feather", name: "草原鹰羽", emoji: "🪶", category: "信物",
                         description: "幕风公子猎鹰翅上的一根羽毛，象征草原上的自由与豪情。",
                         effect: { wildness: 3, courage: 3 }, rarity: "rare" },
@@ -1678,6 +2427,7 @@ const npcs = {
                     },
                     {
                       id: "mf2_d", label: "D", text: "回视他：'你说的自由，是什么感觉？'",
+                      recallText: "回问我，自由是什么感觉",
                       giftItem: { id: "steppe_feather", name: "草原鹰羽", emoji: "🪶", category: "信物",
                         description: "幕风公子猎鹰翅上的一根羽毛，象征草原上的自由与豪情。",
                         effect: { wildness: 3, courage: 3 }, rarity: "rare" },
@@ -1693,6 +2443,7 @@ const npcs = {
               // 第3阶段：草原盟约（第5次，最后一次）
               {
                 minVisit: 5, maxVisit: 5,
+                stageImage: '/assets/stage_images/mufengongzi_s3.png',
                 subSceneDialogues: [
                   { text: "幕风公子（下马走近，眼神深邃而专注，今天没有笑）：'若雪，上次你「[[lastChoice]]」——我知道，这是最后一次见面了。所以我要把话说清楚。'", image: "/assets/character/outfits/npc_mufeng_s3.png" },
                   { text: "幕风公子（低声，带着草原特有的直接）：'我走遍了北地，从没有一个人让我想停下来。直到遇见你。我不想让你就这样离开。'", image: "/assets/character/outfits/npc_mufeng_s3.png" }
@@ -1702,14 +2453,17 @@ const npcs = {
                   options: [
                     {
                       id: "mf3_a", label: "A", text: "轻轻推开：'我不能收这个。'",
+                      recallText: "轻轻推开了那枚图腾，说不能收",
                       responseDialogue: "幕风公子（看着你推回图腾，静了片刻，然后重新挂回腰间）：'好。'他只说了一个字，但眼神里有什么没有散去，'那我就一直带着它，等你改变主意。'"
                     },
                     {
                       id: "mf3_b", label: "B", text: "怔在原地，说不出话来",
+                      recallText: "怔在原地，说不出话来",
                       responseDialogue: "幕风公子（见你怔着，没有催促，只是把图腾轻轻放在你手边的草地上）：'不用现在决定。它会在这里，我也会在这里。'"
                     },
                     {
                       id: "mf3_c", label: "C", text: "双手接过，认真地看着他",
+                      recallText: "双手接过了那枚图腾，认真地看着我",
                       giftItem: { id: "steppe_totem", name: "草原图腾挂坠", emoji: "🌀", category: "信物",
                         description: "北地部族赠予英雄的银制图腾，幕风公子将它交给了你，是最重的承诺。",
                         effect: { wildness: 5, courage: 4, vitality: 3 }, rarity: "epic" },
@@ -1721,6 +2475,7 @@ const npcs = {
                     },
                     {
                       id: "mf3_d", label: "D", text: "笑着接过，说：'那我也给你留一样东西。'",
+                      recallText: "笑着接过，说也要留一样东西给我",
                       giftItem: { id: "steppe_totem", name: "草原图腾挂坠", emoji: "🌀", category: "信物",
                         description: "北地部族赠予英雄的银制图腾，幕风公子将它交给了你，是最重的承诺。",
                         effect: { wildness: 5, courage: 4, vitality: 3 }, rarity: "epic" },
@@ -1759,13 +2514,72 @@ const npcs = {
     description: "博学严谨的礼仪先生，出身宫廷礼部，对礼仪规范要求极为严格",
     emoji: "🎓",
     avatar: "/assets/npc_avatars/class_teacher.png",
+    image: "/assets/character/outfits/npc_class_teacher_s1.png",
+    imageClose: "/assets/character/outfits/npc_class_teacher_s2.png",
     dialogues: [
-      "凌小姐，今日课程是宫廷行礼规范，万不可马虎，此乃立身之本！",
-      "坐姿端正，目光平视，举手投足间尽显大家风范，这才是闺中女子应有的仪态。",
-      "今日功课布置：将三品诰命的觐见礼仪默写三遍，明日检查。",
-      "你的进步令老夫欣慰，但切莫骄傲，礼仪之道博大精深，学无止境。",
-      "茶道也是礼仪的重要组成，下周我们学习正式的宫廷茶道，请做好准备。"
+      { text: "凌小姐，今日课程是宫廷行礼规范，万不可马虎，此乃立身之本！", image: "/assets/character/outfits/npc_class_teacher_s1.png" },
+      { text: "坐姿端正，目光平视，举手投足间尽显大家风范，这才是闺中女子应有的仪态。", image: "/assets/character/outfits/npc_class_teacher_s1.png" },
+      { text: "今日功课布置：将三品诰命的觐见礼仪默写三遍，明日检查。", image: "/assets/character/outfits/npc_class_teacher_s2.png" },
+      { text: "你的进步令老夫欣慰，但切莫骄傲，礼仪之道博大精深，学无止境。", image: "/assets/character/outfits/npc_class_teacher_s2.png" },
+      { text: "茶道也是礼仪的重要组成，下周我们学习正式的宫廷茶道，请做好准备。", image: "/assets/character/outfits/npc_class_teacher_s1.png" }
     ],
+    dialogueSets: [
+      {
+        stageImage: '/assets/character/outfits/npc_class_teacher_s1.png',
+        dialogues: [
+          { text: "凌小姐，今日课程乃宫廷行礼之道。所谓礼者，天地之序也，万不可等闲视之。", image: "/assets/character/outfits/npc_class_teacher_s1.png" },
+          { text: "你看这步伐——迈步须平稳如流水，目光须平视而不旁顾，此乃大家闺秀应有的仪态。", image: "/assets/character/outfits/npc_class_teacher_s1.png" }
+        ]
+      },
+      {
+        stageImage: '/assets/character/outfits/npc_class_teacher_s2.png',
+        dialogues: [
+          { text: "今日学琴，古人云'移风易俗，莫善于乐'。音律不仅悦耳，更能陶冶性情，修身养德。", image: "/assets/character/outfits/npc_class_teacher_s1.png" },
+          { text: "你指法虽已进益，然心境尚需沉淀。弹琴之道，在于以心御指，而非以指弄弦。", image: "/assets/character/outfits/npc_class_teacher_s2.png" },
+          { text: "老夫年轻时曾在宫中为太后抚琴，那时才明白——乐音入心，方为真正的乐艺。", image: "/assets/character/outfits/npc_class_teacher_s2.png" }
+        ]
+      },
+      {
+        stageImage: '/assets/character/outfits/npc_class_teacher_s2.png',
+        dialogues: [
+          { text: "凌小姐，你近来进益甚快，老夫颇感欣慰。礼仪之道，非一朝一夕可成，贵在持之以恒。", image: "/assets/character/outfits/npc_class_teacher_s2.png" },
+          { text: "你可知宫廷中有一句话：'礼失而求诸野'。世道纷乱时，唯有知礼之人方能自处。", image: "/assets/character/outfits/npc_class_teacher_s1.png" },
+          { text: "老夫有一事相告——下月宫中有一场礼仪展示，你若有意，老夫可为你举荐。", image: "/assets/character/outfits/npc_class_teacher_s2.png" }
+        ]
+      }
+    ],
+    dialogueWithChoice: {
+      text: "严夫子正在讲授茶道礼仪，忽然停下来问你：'凌小姐，你以为，献茶之时，茶杯应当如何呈递，方为合礼？'",
+      choices: [
+        {
+          id: "tea_both_hands",
+          text: "双手捧杯，微微欠身，目光平和",
+          consequence: {
+            type: "dialogue",
+            nextDialogue: "严夫子点头微笑：'正是如此。双手奉茶，示以敬重；欠身行礼，示以谦逊。凌小姐举一反三，孺子可教。'你感到礼仪修养又精进了几分。",
+            reward: { charm: 3, morality: 1 }
+          }
+        },
+        {
+          id: "tea_one_hand",
+          text: "单手递上，面带微笑",
+          consequence: {
+            type: "dialogue",
+            nextDialogue: "严夫子轻轻摇头：'微笑固然好，然单手递茶，于礼不合。宫廷之中，细节之处最见分晓。下次当以双手奉茶。'你默默记下，心中有所领悟。",
+            reward: { charm: 1 }
+          }
+        },
+        {
+          id: "tea_ask",
+          text: "先请教夫子，此礼有何深意",
+          consequence: {
+            type: "dialogue",
+            nextDialogue: "严夫子眼中闪过一丝赞赏：'好！知其然，更要知其所以然。茶道礼仪源自周礼，双手奉茶乃示敬之本……'他细细讲来，你听得如痴如醉，才学大增。",
+            reward: { wisdom: 3, affinity: 2 }
+          }
+        }
+      ]
+    },
     location: ["etiquette_hall"]
    },
   class_student: {
@@ -1775,11 +2589,13 @@ const npcs = {
     description: "家世良好的闺秀，与若雪同在礼仪课堂学习，开朗活泼，总爱和若雪比较进度",
     emoji: "💎",
     avatar: "/assets/npc_avatars/class_student.png",
+    image: "/assets/character/outfits/npc_class_student_s1.jpg",
+    imageClose: "/assets/character/outfits/npc_class_student_s2.jpg",
     dialogues: [
-      "若雪，你今天的行礼姿势真好看，夫子都夸你了！我好羡慕！",
-      "今天的茶道课你学会了吗？我总是把水温掌握不好，倒出来的茶不好喝……",
-      "听说月底有一场诗会，好多名门闺秀都会参加，你去不去？",
-      "若雪，你帮我看看这个手势对不对？夫子说我端茶的手腕角度有问题。"
+      { text: "若雪，你今天的行礼姿势真好看，夫子都夸你了！我好羡慕！", image: "/assets/character/outfits/npc_class_student_s2.jpg" },
+      { text: "今天的茶道课你学会了吗？我总是把水温掌握不好，倒出来的茶不好喝……", image: "/assets/character/outfits/npc_class_student_s1.jpg" },
+      { text: "听说月底有一场诗会，好多名门闺秀都会参加，你去不去？", image: "/assets/character/outfits/npc_class_student_s1.jpg" },
+      { text: "若雪，你帮我看看这个手势对不对？夫子说我端茶的手腕角度有问题。", image: "/assets/character/outfits/npc_class_student_s2.jpg" }
     ],
     location: ["etiquette_hall"]
   },
@@ -1792,6 +2608,8 @@ const npcs = {
     description: "须发皆白的老神医，行医五十余年，医术精湛，悬壶济世，德高望重",
     emoji: "⚕️",
     avatar: "/assets/npc_avatars/med_doctor.png",
+    image: "/assets/character/outfits/npc_med_doctor_s1.png",
+    imageClose: "/assets/character/outfits/npc_med_doctor_s2.png",
     dialogues: [
       "凌小姐，你来得巧，这株年份极好的何首乌刚刚送到，你来看看？",
       "医者仁心，治病救人是天职，但医术之道深如大海，老夫学了一辈子也不敢说精通。",
@@ -1799,6 +2617,133 @@ const npcs = {
       "这里有一本医书，是老夫年轻时的笔记，你若有兴趣，借你一阅。",
       "身体是根本，小姐平日要注重养生，切莫熬夜，也要多食五谷杂粮。"
     ],
+    dialogueSets: [
+      // Chain 5: 贡品龙井茶 → 白老大夫特殊对话
+      {
+        condition: { hasItem: "longjing_tea" },
+        stageImage: '/assets/character/outfits/npc_med_doctor_s1.png',
+        dialogues: [
+          { text: "白老大夫（接过茶，凑近闻了闻）：'贡品龙井……宫里的东西，老夫几十年没见过了。'", image: "/assets/character/outfits/npc_med_doctor_s1.png" },
+          { text: "'这茶性凉，清热解毒，配上我这里的菊花，正好。你有心了，凌小姐。'", image: "/assets/character/outfits/npc_med_doctor_s1.png" },
+          { text: "'来，老夫教你一个用茶入药的秘方，比单喝强多了。'", image: "/assets/character/outfits/npc_med_doctor_s2.png" },
+        ],
+        dialogueWithChoice: {
+          question: "白老大夫（展开手中的方子，抬头看你）：'这秘方你可愿意学？'",
+          options: [
+            { id: "md_tea_a", text: "「若雪愿意，请大夫赐教。」", positive: true },
+            { id: "md_tea_b", text: "「大夫的秘方，若雪不敢轻受。」", positive: false },
+          ],
+          consequences: {
+            md_tea_a: {
+              type: "dialogue",
+              text: "白老大夫（欣然点头，将方子递给你）：'孺子可教。这方子用好了，能治暑热、清心神，比单喝茶强多了。好好研习。'",
+              favorability: 5,
+              skillBonus: { medical: 6, morality: 3 },
+              npcId: "med_doctor",
+              characterImage: "/assets/character/outfits/npc_med_doctor_s2.png",
+            },
+            md_tea_b: {
+              type: "dialogue",
+              text: "白老大夫（摆手笑道）：'医术本就是用来传承的，有什么不敢受的？你既有心学，老夫自然愿意教。'他将方子塞入你手中。",
+              favorability: 3,
+              skillBonus: { medical: 3, morality: 2 },
+              npcId: "med_doctor",
+              characterImage: "/assets/character/outfits/npc_med_doctor_s1.png",
+            },
+          },
+        },
+      },
+      // Chain 6: 本草图鉴 → 白老大夫特殊对话
+      {
+        condition: { hasItem: "book_medicine" },
+        stageImage: '/assets/character/outfits/npc_med_doctor_s2.png',
+        dialogues: [
+          { text: "白老大夫（翻开图鉴，眉头微皱）：'嗯……第三十七页，这里写错了。半夏的炮制法应当是姜汁制，不是水制。'", image: "/assets/character/outfits/npc_med_doctor_s2.png" },
+          { text: "'书是好书，但书终究是死的，医术是活的。来，老夫给你讲讲这里头的门道。'", image: "/assets/character/outfits/npc_med_doctor_s2.png" },
+          { text: "'记住：书中所载是前人经验，临证时还需自己判断。这才是真正的医道。'", image: "/assets/character/outfits/npc_med_doctor_s2.png" },
+        ],
+        dialogueWithChoice: {
+          question: "白老大夫（放下图鉴，看向你）：'你觉得，读书与临证，哪个更重要？'",
+          options: [
+            { id: "md_book_a", text: "「二者相辅相成，缺一不可。」", positive: true },
+            { id: "md_book_b", text: "「书中自有黄金屋，多读书总是好的。」", positive: false },
+          ],
+          consequences: {
+            md_book_a: {
+              type: "dialogue",
+              text: "白老大夫（拍掌称善）：'说得好！书是根基，临证是磨砺。二者兼修，方能成为真正的医者。'他当即又讲了两个典型病例，你受益匪浅。",
+              favorability: 5,
+              skillBonus: { medical: 10, wisdom: 3 },
+              npcId: "med_doctor",
+              characterImage: "/assets/character/outfits/npc_med_doctor_s2.png",
+            },
+            md_book_b: {
+              type: "dialogue",
+              text: "白老大夫（摇头）：'读书是必要的，但若只知书本，遇到真正的病人便会手足无措。来，老夫今日让你亲手把脉，感受一下。'",
+              favorability: 2,
+              skillBonus: { medical: 5, wisdom: 1 },
+              npcId: "med_doctor",
+              characterImage: "/assets/character/outfits/npc_med_doctor_s1.png",
+            },
+          },
+        },
+      },
+      {
+        stageImage: '/assets/character/outfits/npc_med_doctor_s1.png',
+        dialogues: [
+          "凌小姐，你来得正好。老夫正在辨认一株新采的草药，你来瞧瞧，可认得出这是何物？",
+          "医者之道，首在识药。草木皆有灵性，能救人于危难，亦能伤人于不察，不可不慎。"
+        ]
+      },
+      {
+        stageImage: '/assets/character/outfits/npc_med_doctor_s2.png',
+        dialogues: [
+          "老夫行医五十余年，见过无数病患。最令老夫动容的，不是药到病除，而是病人眼中重燃的希望之光。",
+          "你可知，上好的医者，须有三分医术、三分仁心、还有四分耐心。缺一不可啊。",
+          "凌小姐，你对草药颇有悟性，若肯潜心研习，日后必能悬壶济世，造福乡里。"
+        ]
+      },
+      {
+        stageImage: '/assets/character/outfits/npc_med_doctor_s2.png',
+        dialogues: [
+          "凌小姐，你近来学得认真，老夫甚是欣慰。有件事想问你——你学医，究竟是为了什么？",
+          "老夫年轻时也曾迷茫过。后来亲眼目睹一位母亲因无钱就医而离世，才明白医者的责任有多重。",
+          "这里有一本老夫年轻时的手记，你若有心，借你一读。其中有老夫多年行医的心得体会。"
+        ]
+      }
+    ],
+    dialogueWithChoice: {
+      text: "白老大夫正在为一位贫苦老翁诊治，诊毕，老翁掏出一把铜钱，颤巍巍地递来，却明显不够诊金。老大夫回头望了你一眼，似在征询你的意见……",
+      choices: [
+        {
+          id: "med_free",
+          text: "悄悄为老翁补上诊金，让大夫免费诊治",
+          consequence: {
+            type: "dialogue",
+            nextDialogue: "白老大夫见状，眼中满是欣慰：'凌小姐，老夫行医数十年，最盼的就是看到这样的善心。'他轻声对老翁说：'今日诊金全免。'老翁感激涕零，你心中也暖洋洋的。",
+            reward: { morality: 5, affinity: 3, medical: 1 }
+          }
+        },
+        {
+          id: "med_half",
+          text: "建议大夫收下现有的铜钱，余下的日后再说",
+          consequence: {
+            type: "dialogue",
+            nextDialogue: "白老大夫点头：'凌小姐说得有理，行事须留有余地。'他收下铜钱，温声对老翁道：'余下的，等你身体好了再说。'老翁千恩万谢地离去，你也从中学到了处世之道。",
+            reward: { morality: 2, wisdom: 2 }
+          }
+        },
+        {
+          id: "med_ask",
+          text: "问大夫：行医多年，这样的情况如何处置",
+          consequence: {
+            type: "dialogue",
+            nextDialogue: "白老大夫沉吟片刻，缓缓道：'老夫的师父曾说——医者仁心，钱财乃身外之物。遇到真正贫苦之人，分文不取也无妨。'他亲手为老翁免了诊金，你若有所悟，医术与仁心都有所增长。",
+            reward: { medical: 3, wisdom: 3 }
+          }
+        }
+      ]
+    },
     sickDialogues: [
       "唉，凌小姐，你这面色憔悴，眼下青黑，乃是过度操劳、气血两亏之症。",
       "老夫把脉……嗯，脉象细弱无力，确是积劳成疾。你近来是否夜不能寐、食欲不振？",
@@ -1832,12 +2777,14 @@ const npcs = {
     description: "享誉一方的著名画师，擅长山水和人物，曾为宫廷作画，品格清高",
     emoji: "🖌️",
     avatar: "/assets/npc_avatars/art_master.png",
+    image: "/assets/character/outfits/npc_art_master_s1.jpg",
+    imageClose: "/assets/character/outfits/npc_art_master_s2.jpg",
     dialogues: [
-      "凌小姐，你今日来得正好，老夫正在研究一种新的墨法，你来看看？",
-      "绘画如人生，起笔需果敢，行笔需沉稳，收笔需从容，万不可犹豫。",
-      "你看这幅《松间听泉图》，老夫用了七层渲染，才有这种山水的气韵，你体会到了吗？",
-      "书画同源，你若是诗词练得好，画作的意境也会随之提升，两者相辅相成。",
-      "老夫给你留了个任务：用三种不同的笔触，各画一棵竹子，下次带来给我看。"
+      { text: "凌小姐，你今日来得正好，老夫正在研究一种新的墨法，你来看看？", image: "/assets/character/outfits/npc_art_master_s1.jpg" },
+      { text: "绘画如人生，起笔需果敢，行笔需沉稳，收笔需从容，万不可犹豫。", image: "/assets/character/outfits/npc_art_master_s1.jpg" },
+      { text: "你看这幅《松间听泉图》，老夫用了七层渲染，才有这种山水的气韵，你体会到了吗？", image: "/assets/character/outfits/npc_art_master_s1.jpg" },
+      { text: "书画同源，你若是诗词练得好，画作的意境也会随之提升，两者相辅相成。", image: "/assets/character/outfits/npc_art_master_s2.jpg" },
+      { text: "老夫给你留了个任务：用三种不同的笔触，各画一棵竹子，下次带来给我看。", image: "/assets/character/outfits/npc_art_master_s2.jpg" }
     ],
     location: ["art_studio"]
   },
@@ -1870,6 +2817,7 @@ const npcs = {
               // 第1阶段：初次相识（第1次）
               {
                 minVisit: 1, maxVisit: 1,
+                stageImage: '/assets/stage_images/sitouqian_s1.png',
                 subSceneDialogues: [
                   { text: "司徒仟（抬头，眼神清亮）：'凌若雪姑娘，久仰大名。我观你的画作，笔力不凡，意境深远，实乃难得的才女。'", image: "/assets/character/outfits/npc_sitouqian_s1.png" },
                   { text: "司徒仟（起身，引你到画架旁）：'你看这幅《芙蓉出水》，我画了三遍都不满意。总觉得少了一点……说不清的灵气。'他停顿片刻，转头看你。", image: "/assets/character/outfits/npc_sitouqian_s1.png" }
@@ -1879,14 +2827,17 @@ const npcs = {
                   options: [
                     {
                       id: "st_a", label: "A", text: "摇头婉拒，告辞离去",
+                      recallText: "摇头婉拒了，转身离开了画室",
                       responseDialogue: "司徒仟（微微一怔，随即点头，神情平和）：'无妨，画缘这种事，强求不来。'他目送你离去，重新拿起了笔，却久久没有落墨。"
                     },
                     {
                       id: "st_b", label: "B", text: "沉默片刻，轻声说不必了",
+                      recallText: "沉默了片刻，轻声说不必了",
                       responseDialogue: "司徒仟（听到你的回答，低头看了看手中的笔）：'是我唐突了。'他轻声道，'不过……若你哪天改变主意，我的画室随时为你开着。'"
                     },
                     {
                       id: "st_c", label: "C", text: "微笑颔首，欣然答应",
+                      recallText: "微笑着答应了，让我为你作画",
                       responseDialogue: "司徒仟（眼中闪过一丝惊喜，随即恢复平静，郑重地拱手）：'多谢凌小姐。'他引你到窗边最好的光线处，'就站在这里，不必摆姿势，自然就好。'",
                       followUpDialogues: [
                         "他作画时很安静，只有笔触纸的声音。偶尔他会抬头看你一眼，眼神专注而温柔，像是在记住什么很重要的东西。",
@@ -1895,6 +2846,7 @@ const npcs = {
                     },
                     {
                       id: "st_d", label: "D", text: "主动提笔，说要为他画一幅",
+                      recallText: "主动提笔，说要为我画一幅",
                       responseDialogue: "司徒仟（愣了一瞬，随即大笑）：'哈，凌小姐果然不同凡响！'他把最好的那支笔递给你，'好，那我们互画，看谁画得更像。'眼神里全是期待。",
                       followUpDialogues: [
                         "你们各自作画，偶尔偷看对方，又迅速别开眼。画室里充满了压抑的笑声，气氛比平时轻松了许多。",
@@ -1907,6 +2859,12 @@ const npcs = {
               // 第2阶段：以画传情（第2-4次）
               {
                 minVisit: 2, maxVisit: 4,
+                stageImage: '/assets/stage_images/sitouqian_s2.png',
+                outfitTagDialogue: {
+                  scholar: { text: "司徒仟放下笔，认真打量你：'这身绿色……适合入画。书香气和墨香气在一处，倒是难得。'他停顿，'你今天穿这个来，是特意的？'", image: "/assets/character/outfits/npc_sitouqian_s2.png" },
+                  mystical: { text: "司徒仟凝视你片刻，提起笔又放下：'这颜色……我想画，但又怕画出来不如眼前的好看。'他低声道，'你今天这身，让我想起一幅古画。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" },
+                  noble:   { text: "司徒仟轻声道：'这身打扮……有点不像你平时的风格。'他顿了顿，'但也好看。换了衣裳，眼神还是你的眼神。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" },
+                },
                 subSceneDialogues: [
                   { text: "司徒仟（放下画笔，眼中有一丝惊喜）：'你又来了。我一直在想，上次的那幅肖像……我觉得还差一点，想重新画。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" },
                   { text: "司徒仟（将一张未完成的画轻轻展开）：'你看，这是你的眼睛。我画了很多次，但总觉得没能画出……那种感觉。'他顿了顿，低声说：'也许是因为我太在意了。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" }
@@ -1930,14 +2888,17 @@ const npcs = {
                   options: [
                     {
                       id: "st2_a", label: "A", text: "摇头：'画得再好也不必送给我。'",
+                      recallText: "摇头，说画得再好也不必送给你",
                       responseDialogue: "司徒仟（愣了一下，将画轴收回，低头看着它）：'……好。'他轻声说，'那我就自己留着。'他把画放回书架最显眼的位置。"
                     },
                     {
                       id: "st2_b", label: "B", text: "犹豫片刻，没有伸手",
+                      recallText: "犹豫了片刻，没有伸手去接",
                       responseDialogue: "司徒仟（见你犹豫，没有强求，将画轴轻轻卷起）：'不急，等你想要的时候，它一直在这里。'他把画放在书案角落，像是特意留给你的位置。"
                     },
                     {
                       id: "st2_c", label: "C", text: "轻轻接过，展开来细细看",
+                      recallText: "轻轻接过那幅画，展开来细细看",
                       giftItem: { id: "st_portrait", name: "司徒仟亲绘肖像", emoji: "🖼️", category: "信物",
                         description: "司徒仟为你亲绘的第二幅肖像，笔墨间流露出他不曾言说的情意。",
                         effect: { painting: 3, charm: 2 }, rarity: "rare" },
@@ -1949,6 +2910,7 @@ const npcs = {
                     },
                     {
                       id: "st2_d", label: "D", text: "接过画，微笑说：'那我也画一幅回赠你。'",
+                      recallText: "接过画，笑着说也要画一幅回赠我",
                       giftItem: { id: "st_portrait", name: "司徒仟亲绘肖像", emoji: "🖼️", category: "信物",
                         description: "司徒仟为你亲绘的第二幅肖像，笔墨间流露出他不曾言说的情意。",
                         effect: { painting: 3, charm: 2 }, rarity: "rare" },
@@ -1964,6 +2926,7 @@ const npcs = {
               // 第3阶段：丹青定情（第5次，最后一次）
               {
                 minVisit: 5, maxVisit: 5,
+                stageImage: '/assets/stage_images/sitouqian_s3.png',
                 subSceneDialogues: [
                   { text: "司徒仟（放下画笔，长久地看着你，今天的神情比任何一次都要认真）：'若雪，上次你「[[lastChoice]]」——我知道，这是最后一次见面了。我有话想说。'", image: "/assets/character/outfits/npc_sitouqian_s3.png" },
                   { text: "司徒仟（轻声，带着一点颤抖）：'我画了这么多年的画，从来没有一个人，让我觉得——无论画多少遍，都想再画一次。你是我的例外，也是我最后的遗憾。'", image: "/assets/character/outfits/npc_sitouqian_s3.png" }
@@ -1973,14 +2936,17 @@ const npcs = {
                   options: [
                     {
                       id: "st3_a", label: "A", text: "轻轻摇头：'这是你最重要的东西，我不能收。'",
+                      recallText: "轻轻摇头，说那是我最重要的东西，不能收",
                       responseDialogue: "司徒仟（静静看着你，没有勉强，将砚台放回书案）：'那就放在这里。'他轻声说，'它还是我的，但我心里，已经是你的了。'"
                     },
                     {
                       id: "st3_b", label: "B", text: "望着砚台，沉默了很久",
+                      recallText: "望着那方砚台，沉默了很久",
                       responseDialogue: "司徒仟（陪着你沉默，没有催促）：'不用说话。'他轻声道，'你愿意看着它，对我来说已经够了。'他把砚台推近了一点。"
                     },
                     {
                       id: "st3_c", label: "C", text: "双手接过，低声说：'我会好好珍惜的。'",
+                      recallText: "双手接过砚台，低声说会好好珍惜",
                       giftItem: { id: "st_inkstone", name: "司徒仟传世砚台", emoji: "🪨", category: "信物",
                         description: "司徒仟用了十年的旧砚，刻有他的名字，承载着他全部的心意。",
                         effect: { painting: 6, poetry: 4, wisdom: 3 }, rarity: "epic" },
@@ -1992,6 +2958,7 @@ const npcs = {
                     },
                     {
                       id: "st3_d", label: "D", text: "接过砚台，取出自己的毛笔放入他手中",
+                      recallText: "接过砚台，又把自己的毛笔放入我手中",
                       giftItem: { id: "st_inkstone", name: "司徒仟传世砚台", emoji: "🪨", category: "信物",
                         description: "司徒仟用了十年的旧砚，刻有他的名字，承载着他全部的心意。",
                         effect: { painting: 6, poetry: 4, wisdom: 3 }, rarity: "epic" },
@@ -2038,6 +3005,202 @@ const npcs = {
     location: ["art_studio"]
   },
 
+  // ───── 司徒仟（书画院独立NPC，支持道具触发对话 & 跨NPC提及）─────
+  sitouqian: {
+    id: "sitouqian",
+    name: "司徒仟",
+    role: "丹青才子",
+    description: "书画院中才华横溢的丹青才子，笔下山水意境深远，性情清高而温柔，对凌若雪颇为欣赏",
+    emoji: "🖌️",
+    avatar: "/assets/npc_avatars/npc_sitouqian_avatar.png",
+    isSubSceneNpc: true,
+    subSceneChoiceId: "visit_sitouqian",
+    subSceneIntroducerNpc: "art_friend",
+    image: "/assets/character/outfits/npc_sitouqian_s1.png",
+    imageClose: "/assets/character/outfits/npc_sitouqian_s2.png",
+    favorabilityKey: "sitouqian",
+    dialogueSets: [
+      // Feature 2 Chain 1: 王文玉手书 → 司徒仟特殊对话（优先级最高，放最前）
+      {
+        condition: { hasItem: "ww_letter" },
+        stageImage: '/assets/stage_images/sitouqian_s2.png',
+        dialogues: [
+          { text: "司徒仟（接过信纸，仔细辨认笔迹）：'这是……王文玉的字？你认识他？'", image: "/assets/character/outfits/npc_sitouqian_s1.png" },
+          { text: "司徒仟：'我与他少时同窗，后来各奔东西。他……还好吗？'", image: "/assets/character/outfits/npc_sitouqian_s2.png" },
+          { text: "司徒仟（神情温和，带着一丝旧日情谊）：'你既与他相识，想必也是性情中人。来，我给你看样东西。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" },
+        ],
+        dialogueWithChoice: {
+          question: "司徒仟从书案深处取出一卷泛黄的旧卷轴，轻轻展开：'这是我与王文玉少时一同记录的同窗往事，你愿意收下吗？'",
+          options: [
+            { id: "stq_ww_a", text: "「司徒先生，这是你们珍贵的回忆，我怎能收？」", positive: true },
+            { id: "stq_ww_b", text: "「多谢先生，我会好好珍藏。」", positive: true },
+          ],
+          consequences: {
+            stq_ww_a: {
+              type: "dialogue",
+              text: "司徒仟（微微一笑）：'收下吧。你认识王文玉，这卷轴交给你，比锁在我书案里要好。'他将卷轴轻轻放入你手中，'替我问候他。'",
+              favorability: 8,
+              skillBonus: {},
+              npcId: "sitouqian",
+              characterImage: "/assets/character/outfits/npc_sitouqian_s2.png",
+              giftItem: { id: "shared_memory_scroll", name: "同窗旧事卷", emoji: "📜", category: "信物", desc: "记录了王文玉与司徒仟少时同窗的往事" },
+            },
+            stq_ww_b: {
+              type: "dialogue",
+              text: "司徒仟（点了点头，眼中有淡淡的感慨）：'好。你与王文玉相识，是缘分。这卷轴里有我们少时的故事，希望你有空翻一翻。'",
+              favorability: 8,
+              skillBonus: {},
+              npcId: "sitouqian",
+              characterImage: "/assets/character/outfits/npc_sitouqian_s2.png",
+              giftItem: { id: "shared_memory_scroll", name: "同窗旧事卷", emoji: "📜", category: "信物", desc: "记录了王文玉与司徒仟少时同窗的往事" },
+            },
+          },
+        },
+      },
+      // Feature 5b: 司徒仟提及幕风公子（当玩家与幕风公子好感>=30时）
+      {
+        condition: { minFav: { mufengongzi: 30 } },
+        stageImage: '/assets/stage_images/sitouqian_s1.png',
+        dialogues: [
+          { text: "司徒仟（搁下笔，淡淡道）：'幕风公子？草原来的那位？'", image: "/assets/character/outfits/npc_sitouqian_s1.png" },
+          { text: "司徒仟：'我曾为他画过一幅马上英姿图，他说画得不像——大概是嫌我笔下少了几分野气。'", image: "/assets/character/outfits/npc_sitouqian_s1.png" },
+          { text: "司徒仟（嘴角微扬）：'你与他相识，倒是有趣。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" },
+        ],
+      },
+      // 默认对话组
+      {
+        dialogues: [
+          { text: "司徒仟（抬头，眼神清亮）：'凌小姐，今日又来书画院了？正好，我新起了一幅山水，想听听你的意见。'", image: "/assets/character/outfits/npc_sitouqian_s1.png" },
+          { text: "司徒仟：'画如其人，笔墨之间最见性情。你每次来，我都能从你身上找到新的灵感。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" },
+        ],
+      },
+    ],
+    location: ["art_studio"]
+  },
+
+  // ───── 幕风公子（草原子场景NPC，认识后直接出现在父场景）─────
+  mufengongzi: {
+    id: "mufengongzi",
+    name: "幕风公子",
+    role: "草原骑手",
+    description: "来自北地草原的自由骑手，豪爽洒脱，策马驰骋，令人心生向往",
+    emoji: "🐎",
+    avatar: "/assets/npc_avatars/npc_mufeng_avatar.png",
+    isSubSceneNpc: true,
+    subSceneChoiceId: "meet_mufengongzi",
+    subSceneIntroducerNpc: "outdoor_son",
+    dialogues: [
+      "幕风公子（远远看见你，勒马等你走近）：'又来了。草原今天风很好。'",
+      "幕风公子（嘴角微扬）：'你每次来，我都在这里。'",
+      "幕风公子（望向远处）：'有些人，见过一次就忘不了。'",
+    ],
+  },
+
+  // ───── 王文玉（古街独立NPC，支持道具触发对话 & 跨NPC提及）─────
+  wangwenyu: {
+    id: "wangwenyu",
+    name: "王文玉",
+    role: "江南才子",
+    description: "从江南来京的风流才子，经营香粉铺，眼光独到，对凌若雪颇有心意，温柔多情而不失风骨",
+    emoji: "🌸",
+    avatar: "/assets/npc_avatars/npc_wangwenyu_avatar.png",
+    isSubSceneNpc: true,
+    subSceneChoiceId: "meet_wangwenyu",
+    subSceneIntroducerNpc: "street_cloth",
+    image: "/assets/character/outfits/npc_wangwenyu_s1.png",
+    imageClose: "/assets/character/outfits/npc_wangwenyu_s2.png",
+    favorabilityKey: "wangwenyu",
+    dialogueSets: [
+      // Chain 2: 司徒仟画像 → 王文玉特殊对话（优先级最高，放最前）
+      {
+        condition: { hasItem: "st_portrait" },
+        stageImage: '/assets/stage_images/wangwenyu_s1.png',
+        dialogues: [
+          { text: "王文玉（眼神落在画像上，停顿了一下）：'这是……司徒仟的笔法。'", image: "/assets/character/outfits/npc_wangwenyu_s1.png" },
+          { text: "（轻声）'他画你，比画山水用心多了。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" },
+          { text: "（转过身，语气淡然）'他是个好画师。你们……关系不错？'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" },
+        ],
+        dialogueWithChoice: {
+          question: "王文玉（别开视线，轻描淡写地问）：'你与司徒仟……走得近吗？'",
+          options: [
+            { id: "wwy_portrait_a", text: "「只是偶尔往来，谈不上亲近。」", positive: true },
+            { id: "wwy_portrait_b", text: "「他是难得的知己。」", positive: false },
+          ],
+          consequences: {
+            wwy_portrait_a: {
+              type: "dialogue",
+              text: "王文玉（松了口气，随即掩饰地轻咳）：'嗯。'他将画像仔细端详片刻，'他的画技确实好，只是……'他没说完，将画像轻轻还给你，'好好保存。'",
+              favorability: 6,
+              skillBonus: { charm: 3 },
+              npcId: "wangwenyu",
+              characterImage: "/assets/character/outfits/npc_wangwenyu_s2.png",
+            },
+            wwy_portrait_b: {
+              type: "dialogue",
+              text: "王文玉（沉默了一下，嘴角扯出一个笑）：'好。'他将画像还给你，转身整理货架，声音平静，'能得司徒仟用心相待，是你的福气。'",
+              favorability: 2,
+              skillBonus: { charm: 1 },
+              npcId: "wangwenyu",
+              characterImage: "/assets/character/outfits/npc_wangwenyu_s1.png",
+            },
+          },
+        },
+      },
+      // Feature 2 Chain 3: 御苑桂花枝 → 王文玉特殊对话（优先级最高，放最前）
+      {
+        condition: { hasItem: "imperial_osmanthus" },
+        stageImage: '/assets/stage_images/wangwenyu_s2.png',
+        dialogues: [
+          { text: "王文玉（看见桂花枝，眼神微微一动）：'御苑的桂花？你……去过宫里？'", image: "/assets/character/outfits/npc_wangwenyu_s1.png" },
+          { text: "王文玉：'皇上的御苑，寻常人哪能进得去。凌小姐，你果然不简单。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" },
+          { text: "王文玉（低声，带着一丝不易察觉的酸意）：'不知皇上……待你如何？'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" },
+        ],
+        dialogueWithChoice: {
+          question: "王文玉（别开眼，语气尽量平静）：'你与皇上……走得近吗？'",
+          options: [
+            { id: "wwy_osm_a", text: "「只是偶然相遇，并无特殊。」", positive: true },
+            { id: "wwy_osm_b", text: "「皇上待我很好，你不必担心。」", positive: true },
+          ],
+          consequences: {
+            wwy_osm_a: {
+              type: "dialogue",
+              text: "王文玉（松了口气，随即掩饰地轻咳一声）：'那就好。'他将视线移回你身上，'凌小姐，你身上这桂花香……很好闻。'",
+              favorability: 5,
+              skillBonus: { charm: 2 },
+              npcId: "wangwenyu",
+              characterImage: "/assets/character/outfits/npc_wangwenyu_s2.png",
+            },
+            wwy_osm_b: {
+              type: "dialogue",
+              text: "王文玉（沉默了一下，嘴角勉强扯出一个笑）：'好。'他轻声说，'皇上待你好，那是你的福气。'他转过身去整理货架，背影有些落寞。",
+              favorability: 5,
+              skillBonus: { charm: 2 },
+              npcId: "wangwenyu",
+              characterImage: "/assets/character/outfits/npc_wangwenyu_s1.png",
+            },
+          },
+        },
+      },
+      // Feature 5a: 王文玉提及司徒仟（当玩家与司徒仟好感>=30时）
+      {
+        condition: { minFav: { sitouqian: 30 } },
+        stageImage: '/assets/stage_images/wangwenyu_s2.png',
+        dialogues: [
+          { text: "王文玉（若有所思）：'听说你最近常去翰墨苑？司徒仟那个人……画是极好的，只是性子太清高。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" },
+          { text: "王文玉：'他若肯收你为友，倒是难得。我与他少时有些交情，如今各走各路了。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" },
+        ],
+      },
+      // 默认对话组
+      {
+        dialogues: [
+          { text: "王文玉（见你走来，微微一笑）：'凌小姐，今日又来了。我刚到了一批新货，有几样觉得你会喜欢。'", image: "/assets/character/outfits/npc_wangwenyu_s1.png" },
+          { text: "王文玉（轻声）：'凌小姐，你每次来，这条街都比平时好看几分。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" },
+        ],
+      },
+    ],
+    location: ["ancient_street"]
+  },
+
   // ───── 呜沙沟专属 NPC ─────
   desert_friend: {
     id: "desert_friend",
@@ -2046,6 +3209,41 @@ const npcs = {
     description: "来自西域的神秘游侠，行走于丝路之上，见多识广，性情豪迈，以一把长刀守护着呜沙沟绿洲的往来旅人",
     emoji: "🏜️",
     avatar: "/assets/npc_avatars/desert_friend.png",
+    favorabilityKey: "desert_friend",
+    dialogueSets: [
+      // Chain 1: 草原碧玉 → 沐风特殊对话
+      {
+        condition: { hasItem: "steppe_jade" },
+        stageImage: '/assets/stage_images/desert_friend_s1.png',
+        dialogues: [
+          { text: "沐风（目光落在玉坠上，神色微变）：'这是……草原碧玉？幕风公子给你的？'", image: "/assets/character/outfits/npc_desert_friend_s1.png" },
+          { text: "（沉默片刻）'他把这个给你了……他不轻易把部族信物赠人的。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" },
+          { text: "'幕风和我，在草原上是过命的兄弟。他看中的人，我也信得过。'", image: "/assets/character/outfits/npc_desert_friend_s3.png" },
+        ],
+        dialogueWithChoice: {
+          text: "沐风（直视着你，语气真诚）：'你……是认真待他的吗？'",
+          choices: [
+            {
+              id: "df_jade_a", text: "「若雪对幕风公子，一向真心相待。」",
+              consequence: { type: "dialogue", text: "沐风（点头，神情放松下来）：'好。'他拍了拍你的肩，'草原上的人，最重情义。你若真心，他也会用真心回报。'", favorability: 8, skillBonus: { wildness: 5, spirit: 3 }, npcId: "desert_friend", characterImage: "/assets/character/outfits/npc_desert_friend_s3.png" }
+            },
+            {
+              id: "df_jade_b", text: "「我们只是普通朋友。」",
+              consequence: { type: "dialogue", text: "沐风（沉默片刻，点了点头）：'随你。'他没有再追问，转身望向远处的沙丘，'普通朋友也好，他能把这个给你，说明你在他心里不普通。'", favorability: 3, skillBonus: { wildness: 2 }, npcId: "desert_friend", characterImage: "/assets/character/outfits/npc_desert_friend_s1.png" }
+            },
+          ],
+        },
+      },
+      // Feature 5c: 沐风提及幕风公子
+      {
+        condition: { minFav: { mufengongzi: 40 } },
+        dialogues: [
+          { text: "沐风（眯起眼）：'幕风公子……我知道他。草原上的人，都听说过那个名字。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" },
+          { text: "沐风：'他是个有本事的人。你同时认识我们两个，'", image: "/assets/character/outfits/npc_desert_friend_s2.png" },
+          { text: "沐风（停顿，嘴角微扬）：'京城的姑娘，倒是眼光不错。'", image: "/assets/character/outfits/npc_desert_friend_s3.png" },
+        ],
+      },
+    ],
     dialogues: [
       "沙漠的风沙会磨砺人，也会沉淀人。你来这里，是为了什么？",
       "我在这条路上走了十年，见过无数人来了又走，但像你这样的，倒是少见。",
@@ -2062,10 +3260,11 @@ const npcs = {
             npcId: "desert_friend",
             npcName: "沐风",
             scene: "desert_oasis",
-            characterImage: "/assets/character/outfits/npc_desert_friend.png",
+            characterImage: "/assets/character/outfits/npc_desert_friend_s1.png",
             storyStages: [
               {
                 minVisit: 1, maxVisit: 1,
+                stageImage: '/assets/stage_images/desert_friend_s1.png',
                 subSceneDialogues: [
                   { text: "沐风（踏上沙丘，回首一笑）：'来，跟上。沙漠的日落只有一瞬，错过了就要再等一天。'", image: "/assets/character/outfits/npc_desert_friend_s1.png" },
                   { text: "夕阳将沙丘染成金红色，沐风站在最高处，衣袂飘扬，像是这片沙漠的主人。他说：'你是第一个陪我看这个的人。'", image: "/assets/character/outfits/npc_desert_friend_s1.png" }
@@ -2075,14 +3274,17 @@ const npcs = {
                   options: [
                     {
                       id: "df_a", label: "A", text: "婉拒：'这是你的，我不能要。'",
+                      recallText: "婉拒了，说那是我的东西，不能要",
                       responseDialogue: "沐风（将护符重新挂回腰间，点了点头）：'随你。'他转身望向远处沙丘，'但这片沙漠记住你了，我也是。'"
                     },
                     {
                       id: "df_b", label: "B", text: "犹豫着，没有接",
+                      recallText: "犹豫了很久，没有伸手去接",
                       responseDialogue: "沐风（没有催你，把护符放在沙地上，站起来）：'先放这里。等你想要了，它会在。'他背对着你，望着夕阳，'沙漠里的东西不会走的。'"
                     },
                     {
                       id: "df_c", label: "C", text: "接过，郑重道谢",
+                      recallText: "接过了护符，郑重道了谢",
                       giftItem: { id: "desert_amulet", name: "西域铜护符", emoji: "🔱", category: "信物",
                         description: "沐风随身多年的西域平安护符，历经千里风沙，承载着守护之意。",
                         effect: { courage: 4, wildness: 3 }, rarity: "uncommon" },
@@ -2094,6 +3296,7 @@ const npcs = {
                     },
                     {
                       id: "df_d", label: "D", text: "接过，轻声说：'我会好好保管的。'",
+                      recallText: "接过护符，轻声说会好好保管",
                       giftItem: { id: "desert_amulet", name: "西域铜护符", emoji: "🔱", category: "信物",
                         description: "沐风随身多年的西域平安护符，历经千里风沙，承载着守护之意。",
                         effect: { courage: 4, wildness: 3 }, rarity: "uncommon" },
@@ -2108,6 +3311,12 @@ const npcs = {
               },
               {
                 minVisit: 2, maxVisit: 4,
+                stageImage: '/assets/stage_images/desert_friend_s2.png',
+                outfitTagDialogue: {
+                  civilian: { text: "沐风扫了一眼你的衣裳：'这身颜色……在大漠里不显眼。'他顿了顿，'不过你这个人，不管穿什么都让人注意。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" },
+                  noble:    { text: "沐风皱了皱眉：'这身打扮……沙子会弄脏的。'他说完，从腰间解下一块布，'垫着坐，别弄脏了。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" },
+                  mystical: { text: "沐风盯着你的衣裳看了一会儿，轻声道：'西域的商队里有人说，这颜色能辟沙漠里的邪风。'他停顿，'你是故意穿的？'", image: "/assets/character/outfits/npc_desert_friend_s2.png" },
+                },
                 subSceneDialogues: [
                   { text: "沐风（见你再来，眼中闪过一丝意外的惊喜）：'你回来了。我以为你不会再来这片沙漠了。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" },
                   { text: "沐风（在篝火旁坐下，声音低沉）：'我走过西域三十六国，从没有一个地方让我想停下来。直到在这里遇见了你。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" }
@@ -2131,14 +3340,17 @@ const npcs = {
                   options: [
                     {
                       id: "df2_a", label: "A", text: "推回：'我们还不够熟。'",
+                      recallText: "把星图推了回来，说我们还不够熟",
                       responseDialogue: "沐风（愣了一下，随即点头，将星图叠好）：'说得对。'他收回丝绸，'那就等我们够熟了，我再拿出来。'他说得很认真，像是真的在等。"
                     },
                     {
                       id: "df2_b", label: "B", text: "沉默，不知如何回应",
+                      recallText: "沉默着，不知如何回应",
                       responseDialogue: "沐风（见你沉默，没有尴尬，只是把星图轻轻放在你膝上）：'不用说话。'他望着篝火，'沙漠里的人习惯了沉默，但不习惯孤独。'他说这话，眼神很深。"
                     },
                     {
                       id: "df2_c", label: "C", text: "接过，细细端详那星图",
+                      recallText: "接过星图，细细端详了很久",
                       giftItem: { id: "silk_starmap", name: "西域星图绸", emoji: "🌌", category: "信物",
                         description: "来自撒马尔罕的蓝色丝绸，绣着西域夜空的星图，异域风情浓郁。",
                         effect: { spirit: 5, wisdom: 3 }, rarity: "rare" },
@@ -2150,6 +3362,7 @@ const npcs = {
                     },
                     {
                       id: "df2_d", label: "D", text: "接过，抬头问他：'你是如何认识这些星的？'",
+                      recallText: "接过星图，抬头问我是如何认识这些星的",
                       giftItem: { id: "silk_starmap", name: "西域星图绸", emoji: "🌌", category: "信物",
                         description: "来自撒马尔罕的蓝色丝绸，绣着西域夜空的星图，异域风情浓郁。",
                         effect: { spirit: 5, wisdom: 3 }, rarity: "rare" },
@@ -2164,6 +3377,7 @@ const npcs = {
               },
               {
                 minVisit: 5, maxVisit: 5,
+                stageImage: '/assets/stage_images/desert_friend_s3.png',
                 subSceneDialogues: [
                   { text: "沐风（今天在绿洲边等候，没有骆驼，没有篝火，只是静静地站着。见你来了，走近，低声）：'上次你「[[lastChoice]]」——我知道，这是最后一次了。'", image: "/assets/character/outfits/npc_desert_friend_s3.png" },
                   { text: "沐风（望着你，声音罕见地柔和）：'我这辈子走过千山万水，从不曾为任何人停留。但若雪，我愿意为你，在这片沙漠扎根。'", image: "/assets/character/outfits/npc_desert_friend_s3.png" }
@@ -2173,14 +3387,17 @@ const npcs = {
                   options: [
                     {
                       id: "df3_a", label: "A", text: "轻轻摇头：'我还没想好。'",
+                      recallText: "轻轻摇了摇头，说还没想好",
                       responseDialogue: "沐风（静静看着你，将戒指重新握入掌心）：'好。'他低声道，'沙漠等过千年的风，我等得起你。'"
                     },
                     {
                       id: "df3_b", label: "B", text: "沉默地看着他，久久说不出话",
+                      recallText: "沉默地看着我，久久说不出话",
                       responseDialogue: "沐风（陪着你沉默，月光照着他的侧脸）：'不用说话。'他把戒指放在你掌心，'先拿着，什么时候想通了，再告诉我。'"
                     },
                     {
                       id: "df3_c", label: "C", text: "伸出手，让他为你戴上",
+                      recallText: "伸出手，让我为你戴上那枚戒指",
                       giftItem: { id: "sapphire_ring", name: "西域蓝宝传家戒", emoji: "💎", category: "信物",
                         description: "沐风家族传承的蓝宝石戒指，象征着西域游侠对你最深的承诺。",
                         effect: { charm: 6, courage: 5, spirit: 3 }, rarity: "epic" },
@@ -2192,6 +3409,7 @@ const npcs = {
                     },
                     {
                       id: "df3_d", label: "D", text: "握住他的手，连同戒指一起",
+                      recallText: "握住了我的手，连同那枚戒指",
                       giftItem: { id: "sapphire_ring", name: "西域蓝宝传家戒", emoji: "💎", category: "信物",
                         description: "沐风家族传承的蓝宝石戒指，象征着西域游侠对你最深的承诺。",
                         effect: { charm: 6, courage: 5, spirit: 3 }, rarity: "epic" },
@@ -2219,6 +3437,7 @@ const npcs = {
         }
       ]
     },
+    // Feature 5c: 沐风提及幕风公子（追加到已有dialogueSets，通过第一个dialogueSets处理）
     location: ["desert_oasis"]
   },
 
@@ -2230,35 +3449,37 @@ const npcs = {
     description: "从小服侍若雪的贴身丫鬟，忠心可靠，心思细腻，是若雪最信任的人",
     emoji: "🌷",
     avatar: "/assets/npc_avatars/bedroom_maid.png",
+    image: "/assets/character/outfits/npc_bedroom_maid_s1.jpg",
+    imageClose: "/assets/character/outfits/npc_bedroom_maid_s2.jpg",
     dialogueSets: [
       {
         dialogues: [
-          "小姐，您今日要换哪套衣裳出门？奴婢已经把几套都熨好了！",
-          "对了，奴婢听说古街那边的锦绣坊进了新款衣料，小姐若想添置行头，出门前换套好看的，气质更出众！"
+          { text: "小姐，您今日要换哪套衣裳出门？奴婢已经把几套都熨好了！", image: "/assets/character/outfits/npc_bedroom_maid_s1.jpg" },
+          { text: "对了，奴婢听说古街那边的锦绣坊进了新款衣料，小姐若想添置行头，出门前换套好看的，气质更出众！", image: "/assets/character/outfits/npc_bedroom_maid_s1.jpg" }
         ]
       },
       {
         dialogues: [
-          "今儿一早，老爷特地让厨房给小姐炖了燕窝粥，说是养颜的，小姐快趁热喝！",
-          "小姐，奴婢提醒您，疲惫度高了要记得休息，不然去哪里都没精神，什么都学不进去！"
+          { text: "今儿一早，老爷特地让厨房给小姐炖了燕窝粥，说是养颜的，小姐快趁热喝！", image: "/assets/character/outfits/npc_bedroom_maid_s1.jpg" },
+          { text: "小姐，奴婢提醒您，疲惫度高了要记得休息，不然去哪里都没精神，什么都学不进去！", image: "/assets/character/outfits/npc_bedroom_maid_s2.jpg" }
         ]
       },
       {
         dialogues: [
-          "小姐，碧瑶姑娘昨日托人带话说，街上新开了家香粉铺，问您有没有空同去？",
-          "奴婢听说，去礼仪院上课能增加魅力和礼仪，小姐若想在宫廷里更受欢迎，礼仪课可不能落下！"
+          { text: "小姐，碧瑶姑娘昨日托人带话说，街上新开了家香粉铺，问您有没有空同去？", image: "/assets/character/outfits/npc_bedroom_maid_s1.jpg" },
+          { text: "奴婢听说，去礼仪院上课能增加魅力和礼仪，小姐若想在宫廷里更受欢迎，礼仪课可不能落下！", image: "/assets/character/outfits/npc_bedroom_maid_s1.jpg" }
         ]
       },
       {
         dialogues: [
-          "小姐您最近练字练得很勤，奴婢看着都替您高兴，字写得越来越好了！",
-          "奴婢还听说，去书画院多走动，才学和画艺都会提升，小姐若想更有学识，不妨多去那边！"
+          { text: "小姐您最近练字练得很勤，奴婢看着都替您高兴，字写得越来越好了！", image: "/assets/character/outfits/npc_bedroom_maid_s1.jpg" },
+          { text: "奴婢还听说，去书画院多走动，才学和画艺都会提升，小姐若想更有学识，不妨多去那边！", image: "/assets/character/outfits/npc_bedroom_maid_s1.jpg" }
         ]
       },
       {
         dialogues: [
-          "小姐，夜深了，您早些歇息吧，明日还有礼仪课，精神好才学得进去。",
-          "奴婢提醒小姐，每个月都要劳作挣金币，不然学费都交不起呢！去古街摆摊或者做点手工活，都是好法子！"
+          { text: "小姐，夜深了，您早些歇息吧，明日还有礼仪课，精神好才学得进去。", image: "/assets/character/outfits/npc_bedroom_maid_s2.jpg" },
+          { text: "奴婢提醒小姐，每个月都要劳作挣金币，不然学费都交不起呢！去古街摆摊或者做点手工活，都是好法子！", image: "/assets/character/outfits/npc_bedroom_maid_s1.jpg" }
         ]
       },
       // 根据与王文玉的关系
@@ -2319,6 +3540,7 @@ const npcs = {
     description: "统领御前侍卫，铁面无私，武艺超群，忠心护主。寻常贵女难以接近，但偶尔也会对有礼有节之人多说几句。",
     emoji: "⚔️",
     avatar: "/assets/npc_avatars/royal_guard_captain.png",
+    sceneAvatar: { scene: "/assets/scenes_active/royal_court.jpg", cx: 47.5, cy: 67.5, imgW: 1408, imgH: 768 },
     dialogues: [
       "（侍卫总领冷眼扫来）：'宫中重地，闲杂人等不得擅入。小姐若无要事，还请速速离开。'",
       "（侍卫总领微微颔首）：'小姐举止有礼，倒是少见。宫规森严，还望自重。'",
@@ -2330,7 +3552,7 @@ const npcs = {
 
 // 课程/活动数据
 const courses = [
-  // 跑马场课程
+  // 跑马场
   {
     id: "horse_riding",
     name: "骑马课",
@@ -2343,59 +3565,6 @@ const courses = [
     requiredSkills: {},
     emoji: "🐎",
     storyText: "你骑上骏马，感受着风驰电掣的畅快，心中豪情万丈！"
-  },
-  {
-    id: "archery",
-    name: "射箭课",
-    scene: "horse_ranch",
-    description: "学习古代弓箭射击技艺，培养专注力与臂力",
-    duration: 45,
-    cost: { gold: 22 },
-    skillGains: { wildness: 14, vitality: 10, courage: 15, wisdom: 6, martial: 10 },
-    exp: 12,
-    requiredSkills: {},
-    emoji: "🏹",
-    storyText: "弓弦一响，箭矢破空，你的心神高度集中，感受到了武者的境界！"
-  },
-  {
-    id: "racing",
-    name: "马场竞速",
-    scene: "horse_ranch",
-    description: "参加跑马场的竞速比赛，与其他骑手一较高下",
-    duration: 90,
-    cost: { gold: 45 },
-    skillGains: { wildness: 28, vitality: 20, courage: 18, command: 10 },
-    exp: 25,
-    requiredSkills: { wildness: 20 },
-    emoji: "🏇",
-    storyText: "马蹄声声，你策马扬鞭，超越一个又一个对手，最终冲过终点线！"
-  },
-  {
-    id: "hunting",
-    name: "狩猎",
-    scene: "horse_ranch",
-    description: "骑马驰骋于猎场，弯弓搭箭猎取猎物，展现骑射技艺",
-    duration: 90,
-    cost: { gold: 30 },
-    skillGains: { wildness: 24, vitality: 18, courage: 22, wisdom: 6, martial: 12, command: 8 },
-    exp: 28,
-    requiredSkills: {},
-    emoji: "🏹",
-    storyText: "你策马奔驰，弯弓瞄准，箭矢破空，猎物应声而倒，一日收获颇丰！",
-    miniGame: "hunting"
-  },
-  {
-    id: "martial_arts",
-    name: "武术训练",
-    scene: "horse_ranch",
-    description: "系统学习拳脚功夫与兵器技艺，强身健体，以武制敌",
-    duration: 90,
-    cost: { gold: 35 },
-    skillGains: { martial: 30, vitality: 18, courage: 15, wildness: 10 },
-    exp: 22,
-    requiredSkills: {},
-    emoji: "🥊",
-    storyText: "拳风呼呼，你在沙场上挥洒汗水，武艺渐渐精进，身手愈发矫健！"
   },
   {
     id: "military_drill",
@@ -2411,20 +3580,7 @@ const courses = [
     storyText: "旌旗猎猎，你指挥若定，一声令下，队伍整齐划一，统帅之气初显！"
   },
 
-  // 草原课程
-  {
-    id: "nature_study",
-    name: "自然感悟",
-    scene: "grassland",
-    description: "在广阔草原上感悟自然，培养灵气与感知力",
-    duration: 120,
-    cost: { gold: 0 },
-    skillGains: { spirit: 24, vitality: 12, wisdom: 8 },
-    exp: 18,
-    requiredSkills: {},
-    emoji: "🌿",
-    storyText: "天高云淡，草长莺飞，你感受到了自然的呼吸，灵气在心中流淌！"
-  },
+  // 草原
   {
     id: "herb_picking",
     name: "采药识草",
@@ -2451,21 +3607,8 @@ const courses = [
     emoji: "⭐",
     storyText: "繁星如织，你仰望苍穹，感受到了前所未有的渺小与壮阔！"
   },
-  {
-    id: "animal_care",
-    name: "喂养动物",
-    scene: "grassland",
-    description: "在草原上喂养流浪动物，与自然生灵建立深厚情感",
-    duration: 60,
-    cost: { gold: 0 },
-    skillGains: { spirit: 18, affinity: 15, vitality: 8 },
-    exp: 12,
-    requiredSkills: {},
-    emoji: "🐾",
-    storyText: "小动物们围绕在你身旁，你喂食、抚摸，感受到了纯粹的生命温度！"
-  },
 
-  // 幼学馆课程
+  // 幼学馆
   {
     id: "teach_children",
     name: "执教幼学",
@@ -2479,61 +3622,8 @@ const courses = [
     emoji: "📖",
     storyText: "孩子们围坐在你身边，用稚嫩的声音跟着你朗读，你感到无比温暖！"
   },
-  {
-    id: "storytelling",
-    name: "讲故事",
-    scene: "kindergarten",
-    description: "给孩子们讲述精彩的故事，锻炼表达能力",
-    duration: 45,
-    cost: { gold: 0 },
-    skillGains: { affinity: 20, charm: 12, poetry: 8 },
-    exp: 12,
-    requiredSkills: {},
-    emoji: "📚",
-    storyText: "孩子们睁大眼睛听你讲故事，你的叙述越来越生动，赢得了阵阵掌声！"
-  },
-  {
-    id: "play_with_kids",
-    name: "游戏同乐",
-    scene: "kindergarten",
-    description: "和孩子们一起游戏，保持童心，增加亲和力",
-    duration: 60,
-    cost: { gold: 0 },
-    skillGains: { affinity: 35, vitality: 12 },
-    exp: 10,
-    requiredSkills: {},
-    emoji: "🎮",
-    storyText: "你和孩子们一起捉迷藏，笑声传遍整个幼学馆，心情格外愉快！"
-  },
 
-  // 舞坊课程
-  {
-    id: "dance_class",
-    name: "舞蹈课",
-    scene: "etiquette_hall",
-    description: "跟随宫廷舞师学习古典舞蹈，水袖翩翩，步步生莲，展现东方韵律之美",
-    duration: 120,
-    cost: { gold: 38 },
-    skillGains: { charm: 28, affinity: 12, vitality: 10 },
-    exp: 22,
-    requiredSkills: {},
-    emoji: "💃",
-    storyText: "丝竹声中你随舞师翩翩起舞，水袖轻扬，举手投足间尽显古典韵味！",
-    miniGame: "dance"
-  },
-  {
-    id: "tea_ceremony",
-    name: "茶道课",
-    scene: "etiquette_hall",
-    description: "学习茶道文化，在煮茶品茗中感受东方雅趣",
-    duration: 90,
-    cost: { gold: 30 },
-    skillGains: { charm: 20, wisdom: 15, spirit: 10 },
-    exp: 18,
-    requiredSkills: {},
-    emoji: "🍵",
-    storyText: "你轻轻将茶汤倒入杯中，茶香袅袅，举止间尽显东方典雅！"
-  },
+  // 礼仪堂
   {
     id: "flower_arrangement",
     name: "花道插花",
@@ -2547,8 +3637,21 @@ const courses = [
     emoji: "💐",
     storyText: "你将各色花卉巧妙搭配，一束雅致的插花作品令众人赞叹不已！"
   },
+  {
+    id: "embroidery",
+    name: "刺绣技艺",
+    scene: "etiquette_hall",
+    description: "跟随绣娘学习刺绣技艺，在一针一线中修心养性",
+    duration: 90,
+    cost: { gold: 25 },
+    skillGains: { painting: 20, crafting: 15, charm: 8 },
+    exp: 18,
+    requiredSkills: {},
+    emoji: "🧵",
+    storyText: "针线穿梭间，一幅精美绣品渐渐成形，你的心境也随之沉静下来。"
+  },
 
-  // 医馆课程
+  // 百草堂
   {
     id: "learn_medicine",
     name: "学习岐黄",
@@ -2563,33 +3666,20 @@ const courses = [
     storyText: "老大夫耐心讲解药理，你认真记录，医术渐渐精进，能够救治一些简单病症！"
   },
   {
-    id: "herb_study",
-    name: "研习本草",
+    id: "treat_patient",
+    name: "义诊施药",
     scene: "medicine_hall",
-    description: "研读本草纲目，深入了解各类草药功效",
-    duration: 90,
-    cost: { gold: 22 },
-    skillGains: { medical: 25, wisdom: 18, spirit: 8 },
-    exp: 20,
-    requiredSkills: {},
-    emoji: "📜",
-    storyText: "你翻开厚厚的本草典籍，一字一句细细研读，医学知识日渐丰富！"
+    description: "为贫苦百姓免费诊病施药，积累医术与道德",
+    duration: 120,
+    cost: { gold: 20 },
+    skillGains: { medical: 18, morality: 15, affinity: 8, reputation: 5 },
+    exp: 28,
+    requiredSkills: { medical: 20 },
+    emoji: "💊",
+    storyText: "你为贫苦百姓悉心诊治，分文不取，百姓感恩戴德，医名远播！"
   },
 
-  // 书画院课程
-  {
-    id: "calligraphy",
-    name: "书法课",
-    scene: "art_studio",
-    description: "练习毛笔书法，在笔墨挥洒间感受汉字之美",
-    duration: 90,
-    cost: { gold: 15 },
-    skillGains: { wisdom: 20, painting: 12, charm: 10 },
-    exp: 18,
-    requiredSkills: {},
-    emoji: "✒️",
-    storyText: "笔走龙蛇，你的字迹越发遒劲有力，先生夸赞不已！"
-  },
+  // 翰墨苑
   {
     id: "ink_painting",
     name: "水墨丹青",
@@ -2617,7 +3707,7 @@ const courses = [
     storyText: "灵感突现，你提笔写下一首绝妙好诗，先生击节叫好！"
   },
 
-  // 客栈课程
+  // 悦来客栈
   {
     id: "culinary_lesson",
     name: "厨艺学习",
@@ -2632,20 +3722,7 @@ const courses = [
     storyText: "你按照掌柜的指导，精心烹制了一道美食，香气扑鼻，客人们赞不绝口！"
   },
 
-  // 宫廷课程
-  {
-    id: "court_dance",
-    name: "宫廷舞蹈",
-    scene: "royal_court",
-    description: "学习宫廷舞蹈，在音乐中翩翩起舞，展现优雅风姿",
-    duration: 90,
-    cost: { gold: 75 },
-    skillGains: { charm: 35, affinity: 18, wildness: 8, vitality: 10, reputation: 10 },
-    exp: 30,
-    requiredSkills: { charm: 40 },
-    emoji: "💃",
-    storyText: "你随着宫廷乐曲翩然起舞，衣袂飘飘，美丽动人，令在场所有人叹为观止！"
-  },
+  // 宫廷
   {
     id: "poetry_contest",
     name: "诗词比试",
@@ -2672,19 +3749,8 @@ const courses = [
     emoji: "📋",
     storyText: "你在朝堂上侃侃而谈，论点鞭辟入里，大臣们刮目相看，声望大增！"
   },
-  {
-    id: "street_perform",
-    name: "街头卖艺",
-    scene: "ancient_street",
-    description: "在街头表演才艺，锻炼口才与表演能力，赚取打赏",
-    duration: 60,
-    cost: { gold: 0 },
-    skillGains: { rhetoric: 14, charm: 8, affinity: 6, reputation: 3 },
-    exp: 15,
-    requiredSkills: {},
-    emoji: "🎭",
-    storyText: "你在街头一展才艺，引来围观叫好，掌声雷动，口才与魅力大增！"
-  },
+
+  // 古街
   {
     id: "fortune_telling",
     name: "街头算命",
@@ -2698,105 +3764,63 @@ const courses = [
     emoji: "🔮",
     storyText: "你煞有介事地为路人算命，说得头头是道，路人连连点头，打赏颇丰！"
   },
+
+  // 将军府
   {
-    id: "treat_patient",
-    name: "义诊施药",
-    scene: "medicine_hall",
-    description: "为贫苦百姓免费诊病施药，积累医术与道德",
+    id: "military_strategy",
+    name: "兵法韬略",
+    scene: "general_mansion",
+    description: "在将军府跟随宇文拓学习兵法韬略，排兵布阵",
     duration: 120,
-    cost: { gold: 20 },
-    skillGains: { medical: 18, morality: 15, affinity: 8, reputation: 5 },
-    exp: 28,
-    requiredSkills: { medical: 20 },
-    emoji: "💊",
-    storyText: "你为贫苦百姓悉心诊治，分文不取，百姓感恩戴德，医名远播！"
+    cost: { gold: 55 },
+    skillGains: { command: 30, statecraft: 15, wisdom: 12 },
+    exp: 30,
+    requiredSkills: { courage: 20 },
+    emoji: "🗺️",
+    storyText: "宇文拓将军铺开沙盘，为你讲解兵法阵图，你听得如痴如醉，眼界大开。"
   },
   {
-    id: "mining",
-    name: "挖矿采石",
-    scene: "grassland",
-    description: "在山野间挖掘矿石，偶尔能发现陨铁、灵石等奇异材料",
+    id: "sword_dance",
+    name: "剑舞练习",
+    scene: "general_mansion",
+    description: "习练古典剑舞，将武艺之美与身姿之韵融合，刚柔相济",
     duration: 90,
-    cost: { gold: 0 },
-    skillGains: { vitality: 10, crafting: 8, arithmetic: 4 },
-    exp: 18,
-    requiredSkills: {},
-    emoji: "⛏️",
-    storyText: "你挥动锄头，在石缝中挖掘，偶然发现了一块奇异的金属，隐隐散发光泽！",
-    rocketPartChance: 0.25  // 25%概率获得火箭零件
-  },
-  {
-    id: "workshop",
-    name: "手工制作",
-    scene: "medicine_hall",
-    description: "在工坊中研究机关器械，将各种材料组装成精巧的装置",
-    duration: 90,
-    cost: { gold: 15 },
-    skillGains: { crafting: 18, arithmetic: 10, wisdom: 5 },
+    cost: { gold: 40 },
+    skillGains: { martial: 22, charm: 12, courage: 10 },
     exp: 22,
     requiredSkills: {},
-    emoji: "🔧",
-    storyText: "你专注地拼装零件，机关运转时发出悦耳的声响，成就感油然而生！",
-    rocketPartChance: 0.2   // 20%概率获得火箭零件
-  },
-
-  // 武艺比试（草原）
-  {
-    id: "combat_trial",
-    name: "武艺比试",
-    scene: "grassland",
-    description: "在草原上与游侠切磋武艺，以武会友，磨砺实战技巧",
-    duration: 90,
-    cost: { gold: 0 },
-    skillGains: { martial: 20, courage: 15, wildness: 10 },
-    exp: 22,
-    requiredSkills: { martial: 20 },
     emoji: "⚔️",
-    storyText: "你与草原游侠过招，拳拳到肉，酣畅淋漓，武艺又精进一分！",
-    triggerCombat: true  // 前端收到此标记后上报 combat_won 事件
+    storyText: "剑光如练，身形矫健，你将武艺与舞蹈融为一体，宇文拓在一旁颔首称赞。"
   },
 
-  // 音乐练习
+  // 碧波亭
   {
-    id: "music_practice",
-    name: "琴瑟和鸣",
-    scene: "bedroom",
-    description: "在闺房中练习古琴，抒发心中情感",
-    duration: 60,
-    cost: { gold: 0 },
-    skillGains: { music: 16, charm: 6, spirit: 5 },
-    exp: 15,
+    id: "guqin_recital",
+    name: "古琴雅奏",
+    scene: "lakeside_pavilion",
+    description: "在碧波亭向白鹭先生学习古琴，以琴会友，以音传情",
+    duration: 90,
+    cost: { gold: 35 },
+    skillGains: { music: 25, spirit: 15, poetry: 8 },
+    exp: 22,
     requiredSkills: {},
     emoji: "🎵",
-    storyText: "琴声悠扬，你的指法越发娴熟，一曲高山流水，令人心旷神怡！"
+    storyText: "月色如水，琴声悠扬，白鹭先生指点你拨弦，指尖流出的不只是音符，更是心境。"
   },
 
-  // 闺房活动
+  // 云顶禅院
   {
-    id: "reading",
-    name: "博览群书",
-    scene: "bedroom",
-    description: "在书房研读各类典籍，增长见识才学",
+    id: "zen_tea",
+    name: "品茗论禅",
+    scene: "mountain_monastery",
+    description: "在云顶禅院与了尘禅师品茗论禅，洗涤心灵",
     duration: 90,
     cost: { gold: 0 },
-    skillGains: { wisdom: 14, poetry: 5, medical: 3 },
-    exp: 15,
+    skillGains: { spirit: 22, morality: 15, wisdom: 10 },
+    exp: 20,
     requiredSkills: {},
-    emoji: "📚",
-    storyText: "你沉浸在书香世界中，广博的知识令你思路开阔，智慧日增！"
-  },
-  {
-    id: "painting",
-    name: "丹青习画",
-    scene: "bedroom",
-    description: "在闺房中习画，以丹青记录美好生活",
-    duration: 60,
-    cost: { gold: 0 },
-    skillGains: { painting: 11, wisdom: 5, charm: 3 },
-    exp: 12,
-    requiredSkills: {},
-    emoji: "🎨",
-    storyText: "你提笔作画，笔下的山水花鸟栩栩如生，画艺又有精进！"
+    emoji: "🍵",
+    storyText: "了尘禅师为你点茶，一盏清茶入喉，禅意随之涌上心头，万念俱空。"
   }
 ];
 
@@ -3148,6 +4172,78 @@ const shopItems = [
   }
 ];
 
+// ==================== 剧情道具（不在商店出售，通过特定剧情获得） ====================
+// isStoryItem: true → 持有即影响剧情，不消耗
+const storyItems = [
+  {
+    id: "general_token",
+    name: "将军令牌",
+    emoji: "🪖",
+    category: "剧情",
+    description: "父亲赐予的将军府令牌，持有者可进入军营，边关将士对你另眼相看。",
+    rarity: "epic",
+    isStoryItem: true,
+    persistent: true,
+    // 获取条件：父亲好感≥80 且 年龄≥16，在卧室与父亲对话时触发
+    acquireCondition: { npcId: "father", favorability: 80, age: 16 },
+    effect: { courage: 5, command: 3 },
+    // 持有时解锁的活动/场景（在 server.js 里判断）
+    sceneUnlock: ["military_camp"],
+    npcDialogueTrigger: {
+      mufengongzi: "general_token_reaction",
+    }
+  },
+  {
+    id: "court_invitation",
+    name: "宫廷请柬",
+    emoji: "📋",
+    category: "剧情",
+    description: "宫廷贵人赐下的请柬，持有者可进入宫廷内院，皇帝得以相见。",
+    rarity: "epic",
+    isStoryItem: true,
+    persistent: true,
+    // 获取条件：宫廷活动≥3次，由映月赠予
+    acquireCondition: { activityCount: "court_activity", minCount: 3 },
+    effect: { charm: 3, statecraft: 2 },
+    sceneUnlock: ["royal_inner_court"],
+    npcDialogueTrigger: {
+      royal_emperor: "court_invitation_reaction",
+    }
+  },
+  {
+    id: "ancient_star_map",
+    name: "破旧星图",
+    emoji: "🗺️",
+    category: "剧情",
+    description: "一张残破的古代星图，标注着奇异的天象符号，观星时随机获得。",
+    rarity: "secret",
+    isStoryItem: true,
+    persistent: true,
+    // 获取条件：观星≥4次后随机触发
+    acquireCondition: { activityCount: "sky_gazing", minCount: 4, random: 0.4 },
+    effect: { arithmetic: 5, spirit: 3 },
+    // 持有时解锁秘密天文台子场景
+    sceneUnlock: ["secret_observatory"],
+  },
+  {
+    id: "recommendation_letter",
+    name: "名师推荐信",
+    emoji: "📜",
+    category: "剧情",
+    description: "诗才大会获奖后，名师亲笔写就的推荐信，持有者受到文人雅士的礼遇。",
+    rarity: "rare",
+    isStoryItem: true,
+    persistent: true,
+    // 获取条件：诗才大会获奖（poetry_contest_won 事件标记）
+    acquireCondition: { eventFlag: "poetry_contest_won" },
+    effect: { poetry: 3, wisdom: 2 },
+    npcDialogueTrigger: {
+      sitouqian: "recommendation_letter_reaction",
+      wangwenyu: "recommendation_letter_ww_reaction",
+    }
+  },
+];
+
 // ==================== 猜谜题库 ====================
 const riddleQuestions = [
   // ── 谜语·植物 ──
@@ -3307,6 +4403,19 @@ const earnActivities = [
   }
 ];
 
+// ==================== 结局辅助函数 ====================
+// 统计特定 storyTag 的服装总穿戴次数
+function countOutfitTagWears(s, tag) {
+  const history = s.outfitHistory || {};
+  return wardrobe.dresses
+    .filter(d => d.storyTag === tag)
+    .reduce((sum, d) => sum + (history[d.id] || 0), 0);
+}
+// 检查是否持有特定剧情道具
+function hasItem(s, itemId) {
+  return !!(s.inventory?.some(i => i.id === itemId));
+}
+
 // ==================== 结局定义 ====================
 // 优先级从高到低排列，第一个满足条件的结局胜出
 const ENDINGS = [
@@ -3379,13 +4488,12 @@ const ENDINGS = [
     check: (s) => {
       const sk = s.skills;
       const fav = s.favorability;
-      const ac = s.activityCounts || {};
-      // 皇上：好感≥80 + 见面≥3次 + 主动互动≥2次 + 五项技能≥80
+      // 皇上：好感≥80 + 见面≥3次 + 三项核心技能≥75 + 穿过贵族服装≥5次 + 持有宫廷请柬
       return (fav.royal_emperor || 0) >= 80
         && (s.subSceneVisits?.royal_emperor || 0) >= 3
-        && (ac.active_royal_emperor || 0) >= 2
-        && sk.charm >= 80 && sk.wisdom >= 80
-        && sk.reputation >= 80 && sk.statecraft >= 80 && sk.morality >= 80;
+        && sk.charm >= 75 && sk.wisdom >= 75 && sk.statecraft >= 75
+        && countOutfitTagWears(s, 'noble') >= 5
+        && hasItem(s, 'court_invitation');
     },
     priority: 92,
   },
@@ -3399,11 +4507,7 @@ const ENDINGS = [
     flavor: '巾帼不让须眉，青史留名，千古传颂。',
     check: (s) => {
       const sk = s.skills;
-      const fav = s.favorability;
-      const ac = s.activityCounts || {};
-      return sk.wisdom >= 70 && sk.statecraft >= 55 && sk.rhetoric >= 50
-        && (ac.court_activity || 0) >= 5
-        && !(fav.wangwenyu >= 80 || fav.mufengongzi >= 80 || fav.sitouqian >= 80);
+      return sk.wisdom >= 65 && sk.statecraft >= 50 && sk.rhetoric >= 45;
     },
     priority: 85,
   },
@@ -3417,10 +4521,9 @@ const ENDINGS = [
     flavor: '铁马冰河，金戈铁马，此生无悔。',
     check: (s) => {
       const sk = s.skills;
-      const ac = s.activityCounts || {};
-      return sk.martial >= 65 && sk.command >= 50 && sk.wildness >= 60 && sk.courage >= 60
-        && (ac.combat_won || 0) >= 3
-        && s.eventFlags?.border_merit === true;
+      // 护国女将：武术+统帅+胆识 + 持有将军令牌
+      return sk.martial >= 65 && sk.command >= 50 && sk.courage >= 55
+        && hasItem(s, 'general_token');
     },
     priority: 80,
   },
@@ -3434,9 +4537,7 @@ const ENDINGS = [
     flavor: '仁心仁术，悬壶济世，此乃大道。',
     check: (s) => {
       const sk = s.skills;
-      const ac = s.activityCounts || {};
-      return sk.medical >= 65 && sk.morality >= 55
-        && (ac.herb_picking || 0) >= 5 && (ac.treat_patient || 0) >= 3;
+      return sk.medical >= 65 && sk.morality >= 55;
     },
     priority: 75,
   },
@@ -3451,8 +4552,10 @@ const ENDINGS = [
     check: (s) => {
       const sk = s.skills;
       const ac = s.activityCounts || {};
+      // 升外星：算数+手工+观星 + 持有破旧星图
       return sk.arithmetic >= 55 && sk.crafting >= 55
-        && (ac.workshop || 0) >= 6;
+        && (ac.workshop || 0) >= 6
+        && hasItem(s, 'ancient_star_map');
     },
     priority: 95,  // 秘密结局，优先级极高
   },
@@ -3539,13 +4642,14 @@ const ENDINGS = [
       const sk = s.skills;
       const fav = s.favorability;
       const ac = s.activityCounts || {};
-      // 与某位NPC有情缘（好感≥60，见面≥5次，主动互动≥2次），但未达到婚恋结局条件
-      const mufengOk  = fav.mufengongzi >= 60  && (s.subSceneVisits?.mufengongzi  || 0) >= 5 && (ac.active_mufengongzi  || 0) >= 2;
-      const wangOk    = fav.wangwenyu >= 60    && (s.subSceneVisits?.wangwenyu    || 0) >= 5 && (ac.active_wangwenyu    || 0) >= 2;
-      const sitouOk   = fav.sitouqian >= 60    && (s.subSceneVisits?.sitouqian    || 0) >= 5 && (ac.active_sitouqian    || 0) >= 2;
-      const desertOk  = fav.desert_friend >= 60 && (s.subSceneVisits?.desert_friend || 0) >= 5 && (ac.active_desert_friend || 0) >= 2;
+      // 与某位NPC有情缘（好感≥60，见面≥3次；好感≥75见面≥2次）
+      const romanceOk = (id) => {
+        const f = fav[id] || 0;
+        const v = s.subSceneVisits?.[id] || 0;
+        return f >= 75 ? v >= 2 : (f >= 60 && v >= 3);
+      };
       return sk.wildness >= 50 && sk.courage >= 45
-        && (mufengOk || wangOk || sitouOk || desertOk);
+        && (romanceOk('mufengongzi') || romanceOk('wangwenyu') || romanceOk('sitouqian') || romanceOk('desert_friend'));
     },
     priority: 60,
   },
@@ -3578,11 +4682,79 @@ const ENDINGS = [
     flavor: '一舞倾城，千古留名，此乃艺术的永恒。',
     check: (s) => {
       const sk = s.skills;
-      const ac = s.activityCounts || {};
-      return sk.music >= 60 && sk.charm >= 55 && sk.painting >= 45
-        && (ac.performance || 0) >= 8;
+      // 梨园大家：音乐+魅力+画艺+诗才 + 穿过 civilian 或 mystical 服装≥5次（舞台感）
+      return sk.music >= 60 && sk.charm >= 55 && sk.painting >= 40 && sk.poetry >= 40
+        && (countOutfitTagWears(s, 'civilian') + countOutfitTagWears(s, 'mystical')) >= 5;
     },
     priority: 65,
+  },
+  {
+    id: 'talented_scholar',
+    title: '才冠京华',
+    emoji: '📖',
+    rarity: 'epic',
+    image: '/assets/endings/talented_scholar.png',
+    description: '你的诗才与才学在京城广为流传。18岁那年，你的诗集被皇家文学院收录，才子佳人争相传阅。文人雅士以与你论诗为荣，你成为了大明最负盛名的才女，名字与李清照并列，千古流芳。',
+    flavor: '腹有诗书气自华，才名千古不凋零。',
+    check: (s) => {
+      const sk = s.skills;
+      // 才冠京华：诗才+才学+声望 + 穿过才女服装≥5次 + 持有名师推荐信
+      return sk.poetry >= 70 && sk.wisdom >= 60 && sk.reputation >= 50
+        && countOutfitTagWears(s, 'scholar') >= 5
+        && hasItem(s, 'recommendation_letter');
+    },
+    priority: 63,
+  },
+  // ── 新增结局：厨艺方向 ──
+  {
+    id: 'culinary_legend',
+    title: '食神传奇',
+    emoji: '🍜',
+    rarity: 'epic',
+    image: '/assets/endings/culinary_legend.jpeg',
+    description: '你的厨艺早已超越了寻常厨娘的境界。18岁那年，你在京城开设了一家小食肆，凭借一手绝世厨艺，令王公贵族、文人墨客趋之若鹜。皇帝亲赐"御膳传人"匾额，你的食谱被载入史册，成为流传百世的美食经典。',
+    flavor: '民以食为天，以食暖人心，此乃最朴素的大道。',
+    check: (s) => {
+      const sk = s.skills;
+      const ac = s.activityCounts || {};
+      return sk.culinary >= 70 && sk.morality >= 40 && sk.affinity >= 45
+        && (ac.labor_total || 0) >= 8;
+    },
+    priority: 62,
+  },
+  // ── 新增结局：手工/算数方向 ──
+  {
+    id: 'master_artisan',
+    title: '巧手千秋',
+    emoji: '🧵',
+    rarity: 'epic',
+    image: '/assets/endings/master_artisan.jpeg',
+    description: '你的双手仿佛有魔法，绣出的图案栩栩如生，制出的器物精巧绝伦。18岁那年，你的绣品被选入宫廷，皇后爱不释手。此后，你开设了京城最负盛名的绣坊，招收学徒无数，将这门手艺传承了下去，留名于工匠史册。',
+    flavor: '匠心独运，一针一线皆是心血，千秋万代留芳名。',
+    check: (s) => {
+      const sk = s.skills;
+      const ac = s.activityCounts || {};
+      return sk.crafting >= 65 && sk.arithmetic >= 45 && sk.painting >= 35
+        && (ac.workshop || 0) >= 8;
+    },
+    priority: 61,
+  },
+  // ── 新增结局：亲和/道德方向 ──
+  {
+    id: 'beloved_benefactor',
+    title: '万家生佛',
+    emoji: '🕊️',
+    rarity: 'rare',
+    image: '/assets/endings/beloved_benefactor.jpeg',
+    description: '你没有选择名利场，而是用温柔和善意，悄悄改变了身边的每一个人。18岁那年，你创办了京城第一所女子学堂，收留无家可归的孤儿，教她们读书识字、习得一技之长。百姓们自发为你立了牌坊，称你为"凌善人"，这个名字，比任何功名都更让你心安。',
+    flavor: '上善若水，利万物而不争，此乃最长久的力量。',
+    check: (s) => {
+      const sk = s.skills;
+      const ac = s.activityCounts || {};
+      return sk.morality >= 70 && sk.affinity >= 60 && sk.wisdom >= 45
+        && (ac.treat_patient || 0) + (ac.labor_total || 0) >= 10;
+    },
+    priority: 58,
   },
   {
     id: 'ordinary',
@@ -3590,7 +4762,8 @@ const ENDINGS = [
     emoji: '🌾',
     rarity: 'common',
     image: '/assets/endings/ordinary.jpeg',
-    description: '18岁后，你经人介绍嫁给了镇上的普通青年。你的一生都在为生计奔波，虽然没有大富大贵，但也算安稳度日，儿孙满堂。',
+    husbandImage: '/assets/endings/ordinary_husband.png',
+    description: '18岁后，你经人介绍嫁给了镇上的普通青年。他虽不是什么达官显贵，却踏实勤恳，待你温柔体贴。你的一生平淡而充实，儿孙满堂，岁月静好。',
     flavor: '平淡是真，岁月静好，此乃普通人的幸福。',
     check: (s) => {
       // 兜底结局：无姻缘（所有NPC好感<60）才走平淡是真
@@ -3612,6 +4785,7 @@ module.exports = {
   courses,
   skillConfig,
   shopItems,
+  storyItems,
   riddleQuestions,
   earnActivities,
   ENDINGS

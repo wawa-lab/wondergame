@@ -3,7 +3,7 @@ import axios from 'axios';
 import riddleBg from './pic/猜灯谜.jpg';
 import culinaryBg from './pic/厨艺大赛.jpg';
 
-const API_BASE = 'https://confident-bravery-production-6854.up.railway.app/api';
+const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:3001/api';
 
 // ─────────────────────────────────────────
 // 基础积分小游戏 —— 点击金币积分
@@ -17,7 +17,7 @@ function ClickGame({ onEarn, character }) {
   const timerRef = useRef(null);
   const containerRef = useRef(null);
 
-  const GAME_DURATION = 15; // 秒
+  const GAME_DURATION = 30; // 秒
   const REWARD_PER_POINT = 0.5; // 每分兑换金币
 
   const startGame = () => {
@@ -1444,8 +1444,8 @@ function FruitSlashGame({ onEarn, showToast }) {
   const [claimed, setClaimed] = useState(false);
   const [domFruits, setDomFruits] = useState([]); // DOM层水果，用于清晰emoji渲染
 
-  const W = 600, H = 480;
-  const GAME_TIME = 15;
+  const W = 760, H = 560;
+  const GAME_TIME = 30;
 
   const FRUITS = [
     { emoji: '🍉', color: '#FF4466', pts: 3, size: 60 },
@@ -1468,7 +1468,7 @@ function FruitSlashGame({ onEarn, showToast }) {
       lives: 3,
       timeLeft: GAME_TIME,
       lastSpawn: 0,
-      spawnInterval: 900,
+      spawnInterval: 550,
       gameOver: false,
       startTime: null,
       lastFrameTime: null,
@@ -1483,12 +1483,12 @@ function FruitSlashGame({ onEarn, showToast }) {
     const ft = FRUITS[Math.floor(Math.random() * (FRUITS.length - 1 + (gs.timeLeft < 8 ? 1 : 0)))];
     const x = 40 + Math.random() * (W - 80);
     const targetX = W/2 + (Math.random()-0.5)*160;
-    const vx = (targetX - x) / 45;
+    const vx = (targetX - x) / 50;
     gs.fruits.push({
       id: Date.now() + Math.random(),
       x, y: H + 20,
       vx,
-      vy: -(9.5 + Math.random() * 4.5),
+      vy: -(9 + Math.random() * 3),
       rotation: Math.random() * Math.PI * 2,
       rotSpeed: (Math.random()-0.5) * 0.12,
       ...ft,
@@ -1511,7 +1511,7 @@ function FruitSlashGame({ onEarn, showToast }) {
 
     // 星星背景
     ctx.fillStyle = 'rgba(255,255,255,0.4)';
-    [[30,20],[90,60],[150,15],[230,45],[310,25],[400,70],[460,30],[60,130],[200,100],[280,150],[380,200],[480,120],[120,280],[340,300],[500,250]].forEach(([sx,sy])=>{
+    [[30,20],[90,60],[150,15],[230,45],[310,25],[400,70],[460,30],[550,50],[650,20],[720,80],[60,130],[200,100],[280,150],[380,200],[480,120],[580,160],[700,110],[120,280],[340,300],[500,250],[620,300],[740,240],[80,400],[250,420],[430,380],[600,440],[720,390],[150,500],[380,480],[560,520],[700,470]].forEach(([sx,sy])=>{
       ctx.beginPath(); ctx.arc(sx,sy,1,0,Math.PI*2); ctx.fill();
     });
 
@@ -1608,7 +1608,7 @@ function FruitSlashGame({ onEarn, showToast }) {
     if (timestamp - gs.lastSpawn > gs.spawnInterval) {
       spawnFruit();
       gs.lastSpawn = timestamp;
-      gs.spawnInterval = Math.max(500, gs.spawnInterval - 12);
+      gs.spawnInterval = Math.max(280, gs.spawnInterval - 20);
     }
 
     // 更新水果位置
@@ -1618,16 +1618,11 @@ function FruitSlashGame({ onEarn, showToast }) {
         if (f.halfB) { f.halfB.x+=f.halfB.vx; f.halfB.y+=f.halfB.vy; f.halfB.vy+=0.3; f.halfB.rotation+=f.halfB.rotSpeed; f.halfB.life-=0.025; }
         return (f.halfA?.life||0) > 0 || (f.halfB?.life||0) > 0;
       }
-      f.vy += 0.16; f.x += f.vx; f.y += f.vy;
+      f.vy += 0.14; f.x += f.vx; f.y += f.vy;
       f.rotation += f.rotSpeed;
       // 掉出屏幕
       if (f.y > H + 30) {
-        if (!f.bomb) {
-          gs.lives = Math.max(0, gs.lives - 1);
-          setDisplayLives(gs.lives);
-          if (gs.lives <= 0) { gs.gameOver = true; setPhase('result'); }
-        }
-        return false;
+        return false; // 水果掉落不扣命，只计时结束
       }
       return true;
     });
@@ -1848,7 +1843,7 @@ function FruitSlashGame({ onEarn, showToast }) {
             <div style={{ fontSize:'48px' }}>🍉🍊🍎</div>
             <div style={{ fontSize:'18px', fontWeight:'900', color:'#CC88FF' }}>水果忍者</div>
             <div style={{ fontSize:'12px', color:'rgba(200,180,255,0.7)', textAlign:'center', lineHeight:'1.8' }}>
-              划过水果即可切开<br/>切到💣炸弹会扣命<br/>15秒内得分越高，金币越多
+              划过水果即可切开<br/>切到💣炸弹会扣命<br/>30秒内得分越高，金币越多
             </div>
           </div>
         )}
@@ -1912,7 +1907,7 @@ function GoldMinerGame({ onEarn, showToast }) {
   const HOOK_X = W / 2;
   const HOOK_Y = 50;
   // 每关限时（秒）
-  const LEVEL_TIME = 25;
+  const LEVEL_TIME = 30;
 
   const [phase, setPhase]       = useState('idle');   // idle | playing | result
   const [displayScore, setDisplayScore] = useState(0);
@@ -2415,17 +2410,49 @@ export default function EarnPanel({ character, earnActivities = [], onCharacterU
     }
   }, [onCharacterUpdate]);
 
-  const handleClickEarn = async (reward, logText) => {
+  const NPC_OBSERVER_LINES = React.useMemo(() => ({
+    miner: [
+      '王文玉路过，瞥了一眼你的操作，轻笑道：「手挺稳的，做生意不错。」',
+      '司徒仟停下脚步，若有所思地说：「这种专注的眼神……值得入画。」',
+    ],
+    birds: [
+      '幕风公子探头看了看，点头道：「准头不错，比我草原上的弓箭手差不了多少。」',
+      '宇文拓从旁经过，淡淡说：「臂力和判断力都有，可以练练真功夫。」',
+    ],
+    fruit: [
+      '沐风靠在门边，悠悠道：「这反应速度，在沙漠里活得下去。」',
+      '幕风公子鼓了鼓掌：「爽快！」',
+    ],
+    riddle: [
+      '司徒仟微微颔首：「博闻强识，不愧是将军府的千金。」',
+      '王文玉含笑：「这道题我也答对了——看来咱们想法相近。」',
+    ],
+    culinary: [
+      '沐风凑过来闻了闻：「香，比驿站的饭好多了。」',
+      '客栈老板探头：「姑娘这手艺，来我店里掌勺，月钱翻倍！」',
+    ],
+    click: [
+      '路过的小贩好奇地看着你：「姑娘，你这手气真好！」',
+    ],
+  }), []);
+
+  const handleClickEarn = React.useCallback(async (reward, logText) => {
+    // NPC 观看台词（20%概率）
+    if (Math.random() < 0.2) {
+      const gameKey = activeGame in NPC_OBSERVER_LINES ? activeGame : 'click';
+      const lines = NPC_OBSERVER_LINES[gameKey];
+      const line = lines[Math.floor(Math.random() * lines.length)];
+      setTimeout(() => showToast(`💬 ${line}`, 'info'), 800);
+    }
     try {
       const res = await axios.post(`${API_BASE}/earn/claim`, { amount: reward, source: logText });
       onCharacterUpdate(res.data.data.character);
       showToast(`💰 积分兑换成功！+${reward}金币`, 'success');
     } catch (err) {
-      // 降级：本地更新（后端若没有此接口时）
       onCharacterUpdate(prev => ({ ...prev, gold: (prev?.gold || 0) + reward }));
       showToast(`💰 积分兑换成功！+${reward}金币`, 'success');
     }
-  };
+  }, [activeGame, NPC_OBSERVER_LINES, onCharacterUpdate, showToast]);
 
   // 水果忍者独立模式（街道场景触发）
   if (fruitNinjaOnly) {

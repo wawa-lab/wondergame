@@ -499,7 +499,7 @@ function RanchGame({ onComplete, onExit }) {
   const gameRef   = useRef(null);
 
   const [score,     setScore]     = useState(0);
-  const [timeLeft,  setTimeLeft]  = useState(90);
+  const [timeLeft,  setTimeLeft]  = useState(30);
   const [gameState, setGameState] = useState('playing');
 
   // initialise game state once
@@ -643,7 +643,7 @@ function RanchGame({ onComplete, onExit }) {
       const p = g.player;
 
       // player movement with smooth velocity
-      const accel = 0.4, friction = 0.82, speed = 3.5;
+      const accel = 1.0, friction = 0.82, speed = 7;
       if (k.arrowleft  || k.a) p.vx -= accel;
       if (k.arrowright || k.d) p.vx += accel;
       if (k.arrowup    || k.w) p.vy -= accel;

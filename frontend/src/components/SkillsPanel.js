@@ -106,7 +106,18 @@ function SkillCard({ skillKey, config, value }) {
   );
 }
 
+const EXP_THRESHOLDS = [0, 100, 250, 450, 700, 1000, 1400, 1900, 2500, 3200, 4000];
+
 export default function SkillsPanel({ character, skillConfig }) {
+  const level = character.level || 1;
+  const exp = character.exp || 0;
+  const nextLevelExp = EXP_THRESHOLDS[level + 1] || EXP_THRESHOLDS[EXP_THRESHOLDS.length - 1];
+  const currentLevelExp = EXP_THRESHOLDS[level] || 0;
+  const expProgress = nextLevelExp > currentLevelExp
+    ? Math.min(100, Math.round(((exp - currentLevelExp) / (nextLevelExp - currentLevelExp)) * 100))
+    : 100;
+  const isMaxLevel = level >= EXP_THRESHOLDS.length - 1;
+
   return (
     <div>
       {/* 技能标题卡 */}
@@ -130,13 +141,23 @@ export default function SkillsPanel({ character, skillConfig }) {
             琴棋书画 · 文武双全 · 一展芳华
           </p>
         </div>
-        <div style={{ marginLeft: 'auto', textAlign: 'right' }}>
-          <div style={{ fontSize: '13px', color: '#A78BFA', fontWeight: '700' }}>
-            🏆 Lv.{character.level}
+        <div style={{ marginLeft: 'auto', textAlign: 'right', minWidth: '120px' }}>
+          <div style={{ fontSize: '13px', color: '#A78BFA', fontWeight: '700', marginBottom: '4px' }}>
+            🏆 Lv.{level}{isMaxLevel ? ' (满级)' : ''}
           </div>
-          <div style={{ fontSize: '11px', color: 'rgba(245,230,236,0.4)' }}>
-            EXP: {character.exp}
+          <div style={{ fontSize: '11px', color: 'rgba(245,230,236,0.4)', marginBottom: '4px' }}>
+            EXP: {exp}{!isMaxLevel ? ` / ${nextLevelExp}` : ''}
           </div>
+          {!isMaxLevel && (
+            <>
+              <div style={{ height: '4px', background: 'rgba(167,139,250,0.15)', borderRadius: '2px', overflow: 'hidden', marginBottom: '3px' }}>
+                <div style={{ height: '100%', width: `${expProgress}%`, background: 'linear-gradient(90deg, #A78BFA, #C4B5FD)', borderRadius: '2px', transition: 'width 0.8s ease' }} />
+              </div>
+              <div style={{ fontSize: '9px', color: 'rgba(167,139,250,0.5)' }}>
+                完成课程可获得经验值
+              </div>
+            </>
+          )}
         </div>
       </div>
 

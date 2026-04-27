@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "skills": {
+    "ai-image-generation": {
+      "source": "infsh-skills/skills",
+      "sourceType": "github",
+      "computedHash": "19eafab7e57b1ee5a3dd9b69cdce428be9cbf4a6239d53d38559d1a5352b903e"
+    },
+    "ai-music-generation": {
+      "source": "inference-sh/skills",
+      "sourceType": "github",
+      "computedHash": "025126bda08ca23f26a3256495d70e82ae4fdc16013c8f90ada0e8852f5abb5f"
+    },
+    "nano-banana-pro": {
+      "source": "intellectronica/agent-skills",
+      "sourceType": "github",
+      "computedHash": "eacaa3b7f0512e9c4793b38be0e2242dc81071e61d51e333ac114148d1a9422b"
+    },
+    "suno-music-creator": {
+      "source": "schwepps/skills",
+      "sourceType": "github",
+      "computedHash": "4b2c603c8641457f0d1adf803ba4b9544f0b531943a115c2d5288aa05921136b"
+    }
+  }
+}

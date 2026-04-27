@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import ITEM_HINTS from '../itemHints';
 
 // 稀有度配置（和 ShopPanel 一致）
 const rarityConfig = {
@@ -18,6 +19,7 @@ const sourceLabel = {
 function InventoryItem({ item, skillConfig }) {
   const rarity = rarityConfig[item.rarity] || rarityConfig.common;
   const src = sourceLabel[item.source] || { label: '背包物品', color: '#888' };
+  const hints = ITEM_HINTS[item.id] || [];
 
   return (
     <div style={{
@@ -111,6 +113,7 @@ function InventoryItem({ item, skillConfig }) {
       <div style={{
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         fontSize: '10px', color: 'rgba(245,230,236,0.3)',
+        marginBottom: hints.length > 0 ? '8px' : '0',
       }}>
         <span style={{ color: src.color, fontWeight: '600' }}>
           ✦ {src.label}
@@ -119,6 +122,27 @@ function InventoryItem({ item, skillConfig }) {
           {item.acquiredAt ? new Date(item.acquiredAt).toLocaleDateString('zh-CN') : ''}
         </span>
       </div>
+
+      {/* 用途提示 */}
+      {hints.length > 0 && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+          {hints.map((h, i) => (
+            <div key={i} style={{
+              display: 'flex', alignItems: 'flex-start', gap: '6px',
+              background: 'rgba(201,168,76,0.07)',
+              border: '1px solid rgba(201,168,76,0.18)',
+              borderRadius: '8px', padding: '5px 8px',
+            }}>
+              <span style={{ fontSize: '13px', flexShrink: 0, lineHeight: '1.4' }}>{h.icon}</span>
+              <span style={{ fontSize: '10px', color: 'rgba(245,230,236,0.6)', lineHeight: '1.5' }}>
+                {h.ending ? <><span style={{ color: '#C9A84C', fontWeight: '600' }}>结局加持</span>　{h.tip}</> :
+                 h.combo  ? <><span style={{ color: '#A78BFA', fontWeight: '600' }}>组合效果</span>　{h.tip}</> :
+                             <><span style={{ color: '#60A5FA', fontWeight: '600' }}>去哪里用</span>　{h.tip}</>}
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

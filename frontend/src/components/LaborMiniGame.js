@@ -18,7 +18,7 @@ const MODE_INFO = {
 };
 
 const GAME_DURATION = 30;
-const LONG_DURATION = 60; // 舞蹈/狩猎/锻造游戏时间
+const LONG_DURATION = 30; // 舞蹈/狩猎/锻造游戏时间
 
 function clamp(v, min, max) {
   return Math.max(min, Math.min(max, v));
@@ -38,7 +38,7 @@ function LaborMiniGame({ laborType, onComplete }) {
   const completedRef = useRef(false);
 
   const addScore = useCallback((v) => {
-    scoreRef.current = Math.max(0, scoreRef.current + v);
+    scoreRef.current = scoreRef.current + v;
     setScore(scoreRef.current);
   }, []);
 
@@ -52,7 +52,7 @@ function LaborMiniGame({ laborType, onComplete }) {
     if (completedRef.current) return;
     completedRef.current = true;
     setEnded(true);
-    setTimeout(() => onComplete?.(laborType, scoreRef.current), 260);
+    setTimeout(() => onComplete?.(laborType, Math.max(0, scoreRef.current)), 260);
   }, [laborType, onComplete]);
 
   useEffect(() => {
