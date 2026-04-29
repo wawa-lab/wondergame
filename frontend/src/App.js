@@ -1099,11 +1099,8 @@ export default function App() {
           return { ...prev, skills: newSkills };
         });
         setSceneEntryBonus(bonus);
-        if (sceneInfo.entryImagePrompt) {
-          axios.post(`${API_BASE}/event/generate-image`, { prompt: sceneInfo.entryImagePrompt })
-            .then(r => { if (r.data?.data?.imageUrl) setSceneEntryImage(r.data.data.imageUrl); })
-            .catch(() => {});
-        }
+        // AI图片生成已禁用，使用场景静态bgImage
+        setSceneEntryImage(sceneInfo.bgImage || null);
       }
       if (visitedScenesRef.current.has(sceneId)) {
         // 本月已来过 → 显示提示弹窗
@@ -7965,16 +7962,8 @@ function RareEventModal({ event, onClose, onConfirm }) {
 
   React.useEffect(() => {
     setImageUrl(null);
-    setImgLoading(true);
-    if (!event?.imagePrompt) {
-      setImageUrl(event?.fallbackImage || null);
-      setImgLoading(false);
-      return;
-    }
-    axios.post(`${API_BASE}/event/generate-image`, { prompt: event.imagePrompt })
-      .then(r => { setImageUrl(r.data?.data?.imageUrl || event?.fallbackImage || null); })
-      .catch(() => { setImageUrl(event?.fallbackImage || null); })
-      .finally(() => setImgLoading(false));
+    setImageUrl(event?.fallbackImage || null);
+    setImgLoading(false);
   }, [event?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!event) return null;
