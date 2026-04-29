@@ -6303,10 +6303,10 @@ function AdventureDialogue({ scene, visitCount, character, onClose, onForceClose
 
   const handleChoice = (choice) => {
     if (choice.type === 'combat') {
-      // 战斗判定：遇到危险被迫退出概率50%（属性可小幅加成，上限65%）
+      // 战斗判定：遇到危险被迫退出概率30%（属性可小幅加成，上限85%）
       const skills = character?.skills || {};
       const power = (skills.wildness || 0) + (skills.vitality || 0) + (skills.courage || 0) + (skills.martial || 0) * 0.5;
-      const winChance = Math.min(0.65, 0.5 + power / 1000);
+      const winChance = Math.min(0.85, 0.7 + power / 1000);
       const won = Math.random() < winChance;
       setChoiceMade(choice.id);
       setCombatOutcome(won ? 'win' : 'lose');
@@ -6620,7 +6620,7 @@ const PEACH_ISLAND_SCENE = {
     {
       id: 'peach_bandit',
       name: '劫道歹人',
-      probability: 0.3,
+      probability: 0.2,
       image: peachStreetImage,
       overlay: 'rgba(15,5,10,0.6)',
       dialogues: [
@@ -6671,7 +6671,7 @@ const PEACH_ISLAND_SCENE = {
     {
       id: 'peach_cliff',
       name: '悬崖失足',
-      probability: 0.3,
+      probability: 0.2,
       image: peachFullImage,
       overlay: 'rgba(5,0,15,0.65)',
       dialogues: [
@@ -6827,7 +6827,7 @@ const DEEP_FOREST_SCENE = {
     {
       id: 'thief',
       name: '暗中跟踪',
-      probability: 0.3,
+      probability: 0.2,
       image: deepForestNpcImage,
       overlay: 'rgba(0,8,0,0.5)',
       dialogues: [
@@ -6878,7 +6878,7 @@ const DEEP_FOREST_SCENE = {
     {
       id: 'poison_fog',
       name: '毒雾迷林',
-      probability: 0.3,
+      probability: 0.2,
       image: deepForestImage,
       overlay: 'rgba(0,20,5,0.65)',
       dialogues: [
@@ -6929,7 +6929,7 @@ const DEEP_FOREST_SCENE = {
     {
       id: 'cliff_fall',
       name: '山崖险情',
-      probability: 0.3,
+      probability: 0.2,
       image: deepForestImage,
       overlay: 'rgba(5,0,10,0.6)',
       dialogues: [
@@ -7085,7 +7085,7 @@ const WAILING_SAND_SCENE = {
     {
       id: 'sand_danger',
       name: '沙漠危机',
-      probability: 0.3,
+      probability: 0.2,
       image: wailingSandImage,
       overlay: 'rgba(30,15,0,0.55)',
       dialogues: [
@@ -7136,7 +7136,7 @@ const WAILING_SAND_SCENE = {
     {
       id: 'npc_encounter',
       name: '沙漠奇遇',
-      probability: 0.3,
+      probability: 0.2,
       trackKey: 'shayun_meets',
       image: wailingSandNpcImage,
       images: [
@@ -7330,7 +7330,7 @@ const WAILING_SAND_SCENE = {
     {
       id: 'sandstorm',
       name: '黑色沙暴',
-      probability: 0.3,
+      probability: 0.2,
       image: wailingSandImage,
       overlay: 'rgba(40,20,0,0.75)',
       dialogues: [
@@ -7381,7 +7381,7 @@ const WAILING_SAND_SCENE = {
     {
       id: 'viper',
       name: '毒蛇突袭',
-      probability: 0.3,
+      probability: 0.2,
       image: wailingSandImage,
       overlay: 'rgba(10,25,0,0.6)',
       dialogues: [
