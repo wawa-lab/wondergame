@@ -818,11 +818,15 @@ function computeEnding(gameState) {
 app.use(cors({
   origin: [
     'http://localhost:3000',
+    'http://cynspace.com',
     'https://cynspace.com',
+    'http://www.cynspace.com',
     'https://www.cynspace.com',
+    'http://47.102.45.161',
     /\.cynspace\.com$/,
     /\.railway\.app$/,
     /\.up\.railway\.app$/,
+    /\.vercel\.app$/,
   ],
   credentials: true,
 }));
