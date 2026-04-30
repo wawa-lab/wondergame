@@ -1270,9 +1270,9 @@ const npcs = {
                   ]
                 }
               },
-              // 第2阶段：渐生情愫（第2-4次）
+              // 第2阶段：渐生情愫（第2次）
               {
-                minVisit: 2, maxVisit: 4,
+                minVisit: 2, maxVisit: 2,
                 stageImage: '/assets/stage_images/wangwenyu_s2.png',
                 outfitTagDialogue: {
                   scholar: { text: "王文玉目光在你身上停了一瞬：'今天这身……书卷气十足。'他顿了顿，'走南闯北见过许多人，像你这样的不多。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" },
@@ -1280,25 +1280,8 @@ const npcs = {
                   mystical: { text: "王文玉凝视你片刻，轻声道：'这颜色……像极了江南雨后的荷花。你是故意选的？'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" },
                 },
                 subSceneDialogues: [
-                  { text: "王文玉（眼中闪过一丝惊喜）：'凌小姐，没想到这么快又见到你。我还以为你不会再来了。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" },
-                  { text: "王文玉（低声，语气比上次亲近了几分）：'我最近一直在想，上次你离开时的眼神……说不清，但我觉得，你心里也有些什么。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" }
-                ],
-                dialogueVariants: [
-                  // visit 2：上次刚认识，提起上次的选择
-                  [
-                    { text: "王文玉（见你走来，眼中闪过一丝惊喜，随即收敛成从容的笑）：'凌小姐，没想到这么快又见到你。上次你「[[lastChoice]]」……我想了很久。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" },
-                    { text: "王文玉（低声，语气比上次亲近了几分）：'说实话，我以为你不会再来了。但你来了，我很高兴。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" }
-                  ],
-                  // visit 3：已经有了一定默契
-                  [
-                    { text: "王文玉（远远看见你，停下脚步等你走近，嘴角带着淡淡的笑）：'又来了。'他说得很自然，像是早就知道你会来。", image: "/assets/character/outfits/npc_wangwenyu_s2.png" },
-                    { text: "王文玉（轻声）：'上次你「[[lastChoice]]」——我一直记着。你知道吗，我在江南做生意那么多年，从来没有人让我这样在意过一句话。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" }
-                  ],
-                  // visit 4：情感已经明显加深
-                  [
-                    { text: "王文玉（见你推开铺子的门，放下手里的账册，眼神直接落在你身上）：'我就知道你今天会来。'他说完自己也笑了，'说出来有点奇怪，但我就是知道。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" },
-                    { text: "王文玉（走近一步，声音放低）：'上次你「[[lastChoice]]」，那之后我想了很多……若雪，你对我来说，已经不只是一个过客了。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" }
-                  ]
+                  { text: "王文玉（见你走来，眼中闪过一丝惊喜，随即收敛成从容的笑）：'凌小姐，没想到这么快又见到你。上次你「[[lastChoice]]」……我想了很久。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" },
+                  { text: "王文玉（低声，语气比上次亲近了几分）：'说实话，我以为你不会再来了。但你来了，我很高兴。'", image: "/assets/character/outfits/npc_wangwenyu_s2.png" }
                 ],
                 subSceneChoices: {
                   text: "王文玉从袖中取出一封信，递到你面前，字迹工整，墨香犹在：'这是我昨夜写的，本不打算给你……但还是想让你看看。'",
@@ -1340,7 +1323,113 @@ const npcs = {
                   ]
                 }
               },
-              // 第3阶段：情定（第5次，最后一次）
+              // 第3阶段：渐生情愫（第3次）
+              {
+                minVisit: 3, maxVisit: 3,
+                stageImage: '/assets/stage_images/wangwenyu_s2.png',
+                outfitTagDialogue: {
+                  scholar: { text: "王文玉目光在你身上停了一瞬：'今天这身……书卷气十足。'他顿了顿，'走南闯北见过许多人，像你这样的不多。'", image: "/assets/character/outfits/npc_wangwenyu_s3.png" },
+                  noble:   { text: "王文玉轻声道：'这身打扮……比上次更像京城的大家闺秀了。'他说完，自己先笑了，'但我还是觉得，你不只是这样。'", image: "/assets/character/outfits/npc_wangwenyu_s3.png" },
+                  mystical: { text: "王文玉凝视你片刻，轻声道：'这颜色……像极了江南雨后的荷花。你是故意选的？'", image: "/assets/character/outfits/npc_wangwenyu_s3.png" },
+                },
+                subSceneDialogues: [
+                  { text: "王文玉（远远看见你，停下脚步等你走近，嘴角带着淡淡的笑）：'又来了。'他说得很自然，像是早就知道你会来。", image: "/assets/character/outfits/npc_wangwenyu_s3.png" },
+                  { text: "王文玉（轻声）：'上次你「[[lastChoice]]」——我一直记着。你知道吗，我在江南做生意那么多年，从来没有人让我这样在意过一句话。'", image: "/assets/character/outfits/npc_wangwenyu_s3.png" }
+                ],
+                subSceneChoices: {
+                  text: "王文玉从袖中取出一封信，递到你面前，字迹工整，墨香犹在：'这是我昨夜写的，本不打算给你……但还是想让你看看。'",
+                  options: [
+                    {
+                      id: "ww2_a", label: "A", text: "将信推回：'此事不妥，请收回。'",
+                      recallText: "把我的信推了回来",
+                      responseDialogue: "王文玉（沉默片刻，收回信，神情平静）：'是我唐突了。'他低头将信折好，重新藏入袖中，却没有再说什么。"
+                    },
+                    {
+                      id: "ww2_b", label: "B", text: "犹豫片刻，没有接也没有拒绝",
+                      recallText: "对那封信犹豫了很久，既没有接，也没有拒绝",
+                      responseDialogue: "王文玉（看着你，轻轻笑了）：'不接也不拒……你这人，真是让我猜不透。'他将信收回，'那就先放着，等你想看的时候，再来找我。'"
+                    },
+                    {
+                      id: "ww2_c", label: "C", text: "接过信，轻轻打开来看",
+                      recallText: "接过了那封信，轻轻打开来看",
+                      giftItem: { id: "ww_letter", name: "王文玉手书", emoji: "📜", category: "信物",
+                        description: "王文玉亲笔手书，字里行间藏着说不出口的情意。",
+                        effect: { charm: 2, affinity: 2 }, rarity: "rare" },
+                      responseDialogue: "王文玉（屏住呼吸，看着你展开信笺，眼神里有一丝紧张）：'……写得不好，你别笑话我。'他难得地低下头，耳根有些红。",
+                      followUpDialogues: [
+                        "信上只有寥寥数行，却字字斟酌。他写：'凌小姐，我不善言辞，但有些话不说出来，我怕会后悔。'",
+                        "王文玉（等你看完，轻声问）：'你……觉得如何？'他的声音比平时低了许多，像是真的在等一个答案。"
+                      ]
+                    },
+                    {
+                      id: "ww2_d", label: "D", text: "微笑着接过，轻声说：'谢谢你告诉我。'",
+                      recallText: "微笑着接过，说了声谢谢",
+                      giftItem: { id: "ww_letter", name: "王文玉手书", emoji: "📜", category: "信物",
+                        description: "王文玉亲笔手书，字里行间藏着说不出口的情意。",
+                        effect: { charm: 2, affinity: 2 }, rarity: "rare" },
+                      responseDialogue: "王文玉（怔了一下，随即眼角漫出笑意）：'是我该谢谢你，愿意听。'他的声音里有什么松动了，像是一直绷着的弦，终于稍稍松了松。",
+                      followUpDialogues: [
+                        "信上写着他走南闯北见过的风景，最后一句是：'但我最想带你去看的，是江南三月的烟雨。'",
+                        "王文玉（抬头，直视你的眼睛）：'若雪，我说的是真的。'这是他第一次直呼你的名字，声音很轻，却清晰得让人心跳。"
+                      ]
+                    }
+                  ]
+                }
+              },
+              // 第4阶段：情感加深（第4次）
+              {
+                minVisit: 4, maxVisit: 4,
+                stageImage: '/assets/stage_images/wangwenyu_s2.png',
+                outfitTagDialogue: {
+                  scholar: { text: "王文玉目光在你身上停了一瞬：'今天这身……书卷气十足。'他顿了顿，'走南闯北见过许多人，像你这样的不多。'", image: "/assets/character/outfits/npc_wangwenyu_s4.png" },
+                  noble:   { text: "王文玉轻声道：'这身打扮……比上次更像京城的大家闺秀了。'他说完，自己先笑了，'但我还是觉得，你不只是这样。'", image: "/assets/character/outfits/npc_wangwenyu_s4.png" },
+                  mystical: { text: "王文玉凝视你片刻，轻声道：'这颜色……像极了江南雨后的荷花。你是故意选的？'", image: "/assets/character/outfits/npc_wangwenyu_s4.png" },
+                },
+                subSceneDialogues: [
+                  { text: "王文玉（见你推开铺子的门，放下手里的账册，眼神直接落在你身上）：'我就知道你今天会来。'他说完自己也笑了，'说出来有点奇怪，但我就是知道。'", image: "/assets/character/outfits/npc_wangwenyu_s4.png" },
+                  { text: "王文玉（走近一步，声音放低）：'上次你「[[lastChoice]]」，那之后我想了很多……若雪，你对我来说，已经不只是一个过客了。'", image: "/assets/character/outfits/npc_wangwenyu_s4.png" }
+                ],
+                subSceneChoices: {
+                  text: "王文玉从袖中取出一封信，递到你面前，字迹工整，墨香犹在：'这是我昨夜写的，本不打算给你……但还是想让你看看。'",
+                  options: [
+                    {
+                      id: "ww2_a", label: "A", text: "将信推回：'此事不妥，请收回。'",
+                      recallText: "把我的信推了回来",
+                      responseDialogue: "王文玉（沉默片刻，收回信，神情平静）：'是我唐突了。'他低头将信折好，重新藏入袖中，却没有再说什么。"
+                    },
+                    {
+                      id: "ww2_b", label: "B", text: "犹豫片刻，没有接也没有拒绝",
+                      recallText: "对那封信犹豫了很久，既没有接，也没有拒绝",
+                      responseDialogue: "王文玉（看着你，轻轻笑了）：'不接也不拒……你这人，真是让我猜不透。'他将信收回，'那就先放着，等你想看的时候，再来找我。'"
+                    },
+                    {
+                      id: "ww2_c", label: "C", text: "接过信，轻轻打开来看",
+                      recallText: "接过了那封信，轻轻打开来看",
+                      giftItem: { id: "ww_letter", name: "王文玉手书", emoji: "📜", category: "信物",
+                        description: "王文玉亲笔手书，字里行间藏着说不出口的情意。",
+                        effect: { charm: 2, affinity: 2 }, rarity: "rare" },
+                      responseDialogue: "王文玉（屏住呼吸，看着你展开信笺，眼神里有一丝紧张）：'……写得不好，你别笑话我。'他难得地低下头，耳根有些红。",
+                      followUpDialogues: [
+                        "信上只有寥寥数行，却字字斟酌。他写：'凌小姐，我不善言辞，但有些话不说出来，我怕会后悔。'",
+                        "王文玉（等你看完，轻声问）：'你……觉得如何？'他的声音比平时低了许多，像是真的在等一个答案。"
+                      ]
+                    },
+                    {
+                      id: "ww2_d", label: "D", text: "微笑着接过，轻声说：'谢谢你告诉我。'",
+                      recallText: "微笑着接过，说了声谢谢",
+                      giftItem: { id: "ww_letter", name: "王文玉手书", emoji: "📜", category: "信物",
+                        description: "王文玉亲笔手书，字里行间藏着说不出口的情意。",
+                        effect: { charm: 2, affinity: 2 }, rarity: "rare" },
+                      responseDialogue: "王文玉（怔了一下，随即眼角漫出笑意）：'是我该谢谢你，愿意听。'他的声音里有什么松动了，像是一直绷着的弦，终于稍稍松了松。",
+                      followUpDialogues: [
+                        "信上写着他走南闯北见过的风景，最后一句是：'但我最想带你去看的，是江南三月的烟雨。'",
+                        "王文玉（抬头，直视你的眼睛）：'若雪，我说的是真的。'这是他第一次直呼你的名字，声音很轻，却清晰得让人心跳。"
+                      ]
+                    }
+                  ]
+                }
+              },
+              // 第5阶段：情定（第5次，最后一次）
               {
                 minVisit: 5, maxVisit: 5,
                 stageImage: '/assets/stage_images/wangwenyu_s3.png',
@@ -2373,9 +2462,9 @@ const npcs = {
                   ]
                 }
               },
-              // 第2阶段：并肩驰骋（第2-4次）
+              // 第2阶段：再度相遇（第2次）
               {
-                minVisit: 2, maxVisit: 4,
+                minVisit: 2, maxVisit: 2,
                 stageImage: '/assets/stage_images/mufengongzi_s2.png',
                 outfitTagDialogue: {
                   civilian: { text: "幕风公子扫了一眼你的衣裳，轻声说：'这身穿着……在草原上骑马正合适，不碍事。'他说完，自己先翻身上马。", image: "/assets/character/outfits/npc_mufeng_s2.png" },
@@ -2383,22 +2472,8 @@ const npcs = {
                   scholar:  { text: "幕风公子看了你一眼，若有所思：'读书人的衣裳。'他低声道，'草原上从没见过这样骑马的。'他说完，嘴角有一丝笑。", image: "/assets/character/outfits/npc_mufeng_s2.png" },
                 },
                 subSceneDialogues: [
-                  { text: "幕风公子（远远看到你，勒马而立，嘴角带笑）：'你又来了。我就知道草原会把你召回来的。'", image: "/assets/character/outfits/npc_mufeng_s2.png" },
-                  { text: "幕风公子（策马与你并行，侧头打量你）：'上次骑马，你进步不小。但那眼神……比骑术更让我在意。'", image: "/assets/character/outfits/npc_mufeng_s2.png" }
-                ],
-                dialogueVariants: [
-                  [
-                    { text: "幕风公子（远远看见你，勒马等你走近，嘴角带着一丝笑）：'来了。'他说，'上次你「[[lastChoice]]」——我骑马回去之后想了很久，你这人，真的不一样。'", image: "/assets/character/outfits/npc_mufeng_s2.png" },
-                    { text: "幕风公子（策马与你并行，侧头看你）：'草原上的风今天很好，适合骑马。跟上我。'", image: "/assets/character/outfits/npc_mufeng_s2.png" }
-                  ],
-                  [
-                    { text: "幕风公子（见你来了，从马背上跳下，大步走来）：'若雪，上次你「[[lastChoice]]」——我那之后，一直在想这件事。'", image: "/assets/character/outfits/npc_mufeng_s2.png" },
-                    { text: "幕风公子（停下，认真地看着你）：'你知道吗，草原上的人说，能让游侠停下来想的人，就是值得停下来的人。'", image: "/assets/character/outfits/npc_mufeng_s2.png" }
-                  ],
-                  [
-                    { text: "幕风公子（今天没有骑马，就站在草原上等你，远远看见你来，眼神亮了一下）：'我昨天就想，你今天会不会来。'", image: "/assets/character/outfits/npc_mufeng_s2.png" },
-                    { text: "幕风公子（低声）：'上次你「[[lastChoice]]」……我没说，但我记着。若雪，你每次来，我都记着。'", image: "/assets/character/outfits/npc_mufeng_s2.png" }
-                  ]
+                  { text: "幕风公子（远远看见你，勒马等你走近，嘴角带着一丝笑）：'来了。'他说，'上次你「[[lastChoice]]」——我骑马回去之后想了很久，你这人，真的不一样。'", image: "/assets/character/outfits/npc_mufeng_s2.png" },
+                  { text: "幕风公子（策马与你并行，侧头看你）：'草原上的风今天很好，适合骑马。跟上我。'", image: "/assets/character/outfits/npc_mufeng_s2.png" }
                 ],
                 subSceneChoices: {
                   text: "幕风公子忽然停马，望向远处天际，语气罕见地平静：'凌若雪，你有没有想过，如果没有那些规矩束缚，你会选择什么样的生活？'",
@@ -2440,7 +2515,113 @@ const npcs = {
                   ]
                 }
               },
-              // 第3阶段：草原盟约（第5次，最后一次）
+              // 第3阶段：并肩驰骋（第3次）
+              {
+                minVisit: 3, maxVisit: 3,
+                stageImage: '/assets/stage_images/mufengongzi_s2.png',
+                outfitTagDialogue: {
+                  civilian: { text: "幕风公子扫了一眼你的衣裳，轻声说：'这身穿着……在草原上骑马正合适，不碍事。'他说完，自己先翻身上马。", image: "/assets/character/outfits/npc_mufeng_s3.png" },
+                  noble:    { text: "幕风公子挑了挑眉：'这身打扮……是要去宫里？'他顿了顿，'穿着这个来草原，胆子不小。'", image: "/assets/character/outfits/npc_mufeng_s3.png" },
+                  scholar:  { text: "幕风公子看了你一眼，若有所思：'读书人的衣裳。'他低声道，'草原上从没见过这样骑马的。'他说完，嘴角有一丝笑。", image: "/assets/character/outfits/npc_mufeng_s3.png" },
+                },
+                subSceneDialogues: [
+                  { text: "幕风公子（见你来了，从马背上跳下，大步走来）：'若雪，上次你「[[lastChoice]]」——我那之后，一直在想这件事。'", image: "/assets/character/outfits/npc_mufeng_s3.png" },
+                  { text: "幕风公子（停下，认真地看着你）：'你知道吗，草原上的人说，能让游侠停下来想的人，就是值得停下来的人。'", image: "/assets/character/outfits/npc_mufeng_s3.png" }
+                ],
+                subSceneChoices: {
+                  text: "幕风公子忽然停马，望向远处天际，语气罕见地平静：'凌若雪，你有没有想过，如果没有那些规矩束缚，你会选择什么样的生活？'",
+                  options: [
+                    {
+                      id: "mf2_a", label: "A", text: "笑着摇头：'我从未想过这些。'",
+                      recallText: "笑着摇头，说从未想过这些",
+                      responseDialogue: "幕风公子（侧头看你，眼神里有一丝说不清的东西）：'没想过……'他低声重复，'那就从今天开始想。'他夹马前行，没再说话。"
+                    },
+                    {
+                      id: "mf2_b", label: "B", text: "沉默片刻，目光望向远方",
+                      recallText: "沉默了片刻，只是望向远方",
+                      responseDialogue: "幕风公子（没有催你，就那样陪着你沉默，望着同一片天）：'不用说，我懂。'他轻声道，'有些答案，只有自己知道就够了。'"
+                    },
+                    {
+                      id: "mf2_c", label: "C", text: "轻声说：'也许……像你一样，自由地走。'",
+                      recallText: "轻声说，也许想像我一样自由地走",
+                      giftItem: { id: "steppe_feather", name: "草原鹰羽", emoji: "🪶", category: "信物",
+                        description: "幕风公子猎鹰翅上的一根羽毛，象征草原上的自由与豪情。",
+                        effect: { wildness: 3, courage: 3 }, rarity: "rare" },
+                      responseDialogue: "幕风公子（愣了一下，随即笑开了）：'像我一样？'他从鞍袋里取出一根鹰羽，递给你，'那就先拿着这个，这是草原给自由人的礼物。'",
+                      followUpDialogues: [
+                        "他说，这根羽毛来自他养了三年的猎鹰，那只鹰最终飞走了，他没有追。'放开的，才是真的属于过你。'",
+                        "幕风公子（回头，认真地看你）：'若雪，你身上有一种东西，让我觉得……你本来就该在草原上。'风吹过，他的眼神很亮。"
+                      ]
+                    },
+                    {
+                      id: "mf2_d", label: "D", text: "回视他：'你说的自由，是什么感觉？'",
+                      recallText: "回问我，自由是什么感觉",
+                      giftItem: { id: "steppe_feather", name: "草原鹰羽", emoji: "🪶", category: "信物",
+                        description: "幕风公子猎鹰翅上的一根羽毛，象征草原上的自由与豪情。",
+                        effect: { wildness: 3, courage: 3 }, rarity: "rare" },
+                      responseDialogue: "幕风公子（被你问住了，沉默片刻）：'自由……'他想了想，忽然笑，'就是现在这样，和你并排骑马，什么都不想，什么都不怕。'他把鹰羽插在你发间。",
+                      followUpDialogues: [
+                        "夕阳把草原染成金色，他们就那样骑着马，谁也没有说话，却谁也不想先离开。",
+                        "幕风公子（最后，在分别时）：'若雪，下次来，我带你去看草原的日出。'他说得很随意，却像是一个郑重的约定。"
+                      ]
+                    }
+                  ]
+                }
+              },
+              // 第4阶段：草原深情（第4次）
+              {
+                minVisit: 4, maxVisit: 4,
+                stageImage: '/assets/stage_images/mufengongzi_s1.png',
+                outfitTagDialogue: {
+                  civilian: { text: "幕风公子扫了一眼你的衣裳，轻声说：'这身穿着……在草原上骑马正合适，不碍事。'他说完，自己先翻身上马。", image: "/assets/stage_images/mufengongzi_s1.png" },
+                  noble:    { text: "幕风公子挑了挑眉：'这身打扮……是要去宫里？'他顿了顿，'穿着这个来草原，胆子不小。'", image: "/assets/stage_images/mufengongzi_s1.png" },
+                  scholar:  { text: "幕风公子看了你一眼，若有所思：'读书人的衣裳。'他低声道，'草原上从没见过这样骑马的。'他说完，嘴角有一丝笑。", image: "/assets/stage_images/mufengongzi_s1.png" },
+                },
+                subSceneDialogues: [
+                  { text: "幕风公子（今天没有骑马，就站在草原上等你，远远看见你来，眼神亮了一下）：'我昨天就想，你今天会不会来。'", image: "/assets/stage_images/mufengongzi_s1.png" },
+                  { text: "幕风公子（低声）：'上次你「[[lastChoice]]」……我没说，但我记着。若雪，你每次来，我都记着。'", image: "/assets/stage_images/mufengongzi_s1.png" }
+                ],
+                subSceneChoices: {
+                  text: "幕风公子忽然停马，望向远处天际，语气罕见地平静：'凌若雪，你有没有想过，如果没有那些规矩束缚，你会选择什么样的生活？'",
+                  options: [
+                    {
+                      id: "mf2_a", label: "A", text: "笑着摇头：'我从未想过这些。'",
+                      recallText: "笑着摇头，说从未想过这些",
+                      responseDialogue: "幕风公子（侧头看你，眼神里有一丝说不清的东西）：'没想过……'他低声重复，'那就从今天开始想。'他夹马前行，没再说话。"
+                    },
+                    {
+                      id: "mf2_b", label: "B", text: "沉默片刻，目光望向远方",
+                      recallText: "沉默了片刻，只是望向远方",
+                      responseDialogue: "幕风公子（没有催你，就那样陪着你沉默，望着同一片天）：'不用说，我懂。'他轻声道，'有些答案，只有自己知道就够了。'"
+                    },
+                    {
+                      id: "mf2_c", label: "C", text: "轻声说：'也许……像你一样，自由地走。'",
+                      recallText: "轻声说，也许想像我一样自由地走",
+                      giftItem: { id: "steppe_feather", name: "草原鹰羽", emoji: "🪶", category: "信物",
+                        description: "幕风公子猎鹰翅上的一根羽毛，象征草原上的自由与豪情。",
+                        effect: { wildness: 3, courage: 3 }, rarity: "rare" },
+                      responseDialogue: "幕风公子（愣了一下，随即笑开了）：'像我一样？'他从鞍袋里取出一根鹰羽，递给你，'那就先拿着这个，这是草原给自由人的礼物。'",
+                      followUpDialogues: [
+                        "他说，这根羽毛来自他养了三年的猎鹰，那只鹰最终飞走了，他没有追。'放开的，才是真的属于过你。'",
+                        "幕风公子（回头，认真地看你）：'若雪，你身上有一种东西，让我觉得……你本来就该在草原上。'风吹过，他的眼神很亮。"
+                      ]
+                    },
+                    {
+                      id: "mf2_d", label: "D", text: "回视他：'你说的自由，是什么感觉？'",
+                      recallText: "回问我，自由是什么感觉",
+                      giftItem: { id: "steppe_feather", name: "草原鹰羽", emoji: "🪶", category: "信物",
+                        description: "幕风公子猎鹰翅上的一根羽毛，象征草原上的自由与豪情。",
+                        effect: { wildness: 3, courage: 3 }, rarity: "rare" },
+                      responseDialogue: "幕风公子（被你问住了，沉默片刻）：'自由……'他想了想，忽然笑，'就是现在这样，和你并排骑马，什么都不想，什么都不怕。'他把鹰羽插在你发间。",
+                      followUpDialogues: [
+                        "夕阳把草原染成金色，他们就那样骑着马，谁也没有说话，却谁也不想先离开。",
+                        "幕风公子（最后，在分别时）：'若雪，下次来，我带你去看草原的日出。'他说得很随意，却像是一个郑重的约定。"
+                      ]
+                    }
+                  ]
+                }
+              },
+              // 第5阶段：草原盟约（第5次，最后一次）
               {
                 minVisit: 5, maxVisit: 5,
                 stageImage: '/assets/stage_images/mufengongzi_s3.png',
@@ -2856,9 +3037,9 @@ const npcs = {
                   ]
                 }
               },
-              // 第2阶段：以画传情（第2-4次）
+              // 第2阶段：以画传情（第2次）
               {
-                minVisit: 2, maxVisit: 4,
+                minVisit: 2, maxVisit: 2,
                 stageImage: '/assets/stage_images/sitouqian_s2.png',
                 outfitTagDialogue: {
                   scholar: { text: "司徒仟放下笔，认真打量你：'这身绿色……适合入画。书香气和墨香气在一处，倒是难得。'他停顿，'你今天穿这个来，是特意的？'", image: "/assets/character/outfits/npc_sitouqian_s2.png" },
@@ -2866,22 +3047,8 @@ const npcs = {
                   noble:   { text: "司徒仟轻声道：'这身打扮……有点不像你平时的风格。'他顿了顿，'但也好看。换了衣裳，眼神还是你的眼神。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" },
                 },
                 subSceneDialogues: [
-                  { text: "司徒仟（放下画笔，眼中有一丝惊喜）：'你又来了。我一直在想，上次的那幅肖像……我觉得还差一点，想重新画。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" },
-                  { text: "司徒仟（将一张未完成的画轻轻展开）：'你看，这是你的眼睛。我画了很多次，但总觉得没能画出……那种感觉。'他顿了顿，低声说：'也许是因为我太在意了。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" }
-                ],
-                dialogueVariants: [
-                  [
-                    { text: "司徒仟（见你推开画室的门，放下笔，眼中闪过一丝惊喜）：'你来了。'他顿了顿，'上次你「[[lastChoice]]」……我那之后，把那幅画又改了三遍。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" },
-                    { text: "司徒仟（将一张未完成的画展开）：'你看，这是你的眼睛。我一直觉得没画出来那种感觉，现在我知道是为什么了。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" }
-                  ],
-                  [
-                    { text: "司徒仟（今天没有在画画，只是坐在窗边发呆，见你来了，有些不好意思）：'在想上次的事。你「[[lastChoice]]」——我一直在想，你当时心里是什么感受。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" },
-                    { text: "司徒仟（低声）：'画画的人有个习惯，总想把看不懂的东西画出来。你，是我最想画、也最画不出来的。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" }
-                  ],
-                  [
-                    { text: "司徒仟（今天在画一幅新画，见你来了，把画挡住）：'别看，还没画完。'他停顿，'上次你「[[lastChoice]]」，那之后我一直想给你看这幅。等画完了。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" },
-                    { text: "司徒仟（放下笔，认真地看你）：'若雪，你每次来，我都会画一幅。你不知道，但我的画里，有你的每一次。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" }
-                  ]
+                  { text: "司徒仟（见你推开画室的门，放下笔，眼中闪过一丝惊喜）：'你来了。'他顿了顿，'上次你「[[lastChoice]]」……我那之后，把那幅画又改了三遍。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" },
+                  { text: "司徒仟（将一张未完成的画展开）：'你看，这是你的眼睛。我一直觉得没画出来那种感觉，现在我知道是为什么了。'", image: "/assets/character/outfits/npc_sitouqian_s2.png" }
                 ],
                 subSceneChoices: {
                   text: "司徒仟忽然转身，将一卷画轴递到你面前，眼神专注而温柔：'这是我为你画的第二幅，比上次好很多。你愿意收下吗？'",
@@ -2923,7 +3090,113 @@ const npcs = {
                   ]
                 }
               },
-              // 第3阶段：丹青定情（第5次，最后一次）
+              // 第3阶段：以画传情（第3次）
+              {
+                minVisit: 3, maxVisit: 3,
+                stageImage: '/assets/stage_images/sitouqian_s2.png',
+                outfitTagDialogue: {
+                  scholar: { text: "司徒仟放下笔，认真打量你：'这身绿色……适合入画。书香气和墨香气在一处，倒是难得。'他停顿，'你今天穿这个来，是特意的？'", image: "/assets/character/outfits/npc_sitouqian_s3.png" },
+                  mystical: { text: "司徒仟凝视你片刻，提起笔又放下：'这颜色……我想画，但又怕画出来不如眼前的好看。'他低声道，'你今天这身，让我想起一幅古画。'", image: "/assets/character/outfits/npc_sitouqian_s3.png" },
+                  noble:   { text: "司徒仟轻声道：'这身打扮……有点不像你平时的风格。'他顿了顿，'但也好看。换了衣裳，眼神还是你的眼神。'", image: "/assets/character/outfits/npc_sitouqian_s3.png" },
+                },
+                subSceneDialogues: [
+                  { text: "司徒仟（今天没有在画画，只是坐在窗边发呆，见你来了，有些不好意思）：'在想上次的事。你「[[lastChoice]]」——我一直在想，你当时心里是什么感受。'", image: "/assets/character/outfits/npc_sitouqian_s3.png" },
+                  { text: "司徒仟（低声）：'画画的人有个习惯，总想把看不懂的东西画出来。你，是我最想画、也最画不出来的。'", image: "/assets/character/outfits/npc_sitouqian_s3.png" }
+                ],
+                subSceneChoices: {
+                  text: "司徒仟忽然转身，将一卷画轴递到你面前，眼神专注而温柔：'这是我为你画的第二幅，比上次好很多。你愿意收下吗？'",
+                  options: [
+                    {
+                      id: "st2_a", label: "A", text: "摇头：'画得再好也不必送给我。'",
+                      recallText: "摇头，说画得再好也不必送给你",
+                      responseDialogue: "司徒仟（愣了一下，将画轴收回，低头看着它）：'……好。'他轻声说，'那我就自己留着。'他把画放回书架最显眼的位置。"
+                    },
+                    {
+                      id: "st2_b", label: "B", text: "犹豫片刻，没有伸手",
+                      recallText: "犹豫了片刻，没有伸手去接",
+                      responseDialogue: "司徒仟（见你犹豫，没有强求，将画轴轻轻卷起）：'不急，等你想要的时候，它一直在这里。'他把画放在书案角落，像是特意留给你的位置。"
+                    },
+                    {
+                      id: "st2_c", label: "C", text: "轻轻接过，展开来细细看",
+                      recallText: "轻轻接过那幅画，展开来细细看",
+                      giftItem: { id: "st_portrait", name: "司徒仟亲绘肖像", emoji: "🖼️", category: "信物",
+                        description: "司徒仟为你亲绘的第二幅肖像，笔墨间流露出他不曾言说的情意。",
+                        effect: { painting: 3, charm: 2 }, rarity: "rare" },
+                      responseDialogue: "司徒仟（屏息看你展开画轴，眼神里有一丝紧张）：'这次……画的是你看窗外的侧脸。我觉得那个角度，最像你。'他声音很轻，像是在说一个秘密。",
+                      followUpDialogues: [
+                        "画上的人侧着脸，目光望向远处，神情里有一种说不清的东西——专注，又有点忧郁。你不知道自己看起来是这样的。",
+                        "司徒仟（低声问）：'你觉得……像吗？'他其实不是在问画像不像你，他在问，你有没有看见他眼里的你。"
+                      ]
+                    },
+                    {
+                      id: "st2_d", label: "D", text: "接过画，微笑说：'那我也画一幅回赠你。'",
+                      recallText: "接过画，笑着说也要画一幅回赠我",
+                      giftItem: { id: "st_portrait", name: "司徒仟亲绘肖像", emoji: "🖼️", category: "信物",
+                        description: "司徒仟为你亲绘的第二幅肖像，笔墨间流露出他不曾言说的情意。",
+                        effect: { painting: 3, charm: 2 }, rarity: "rare" },
+                      responseDialogue: "司徒仟（被你说得一怔，随即眼睛亮了）：'当真？'他立刻腾出画案，把最好的纸铺上，'那我就在这里等，不许偷看。'他背过身，却忍不住侧耳听你的动静。",
+                      followUpDialogues: [
+                        "你画他，他背对着你，但你能看见他耳朵悄悄红了。画室里安静极了，只有笔触纸的细声。",
+                        "司徒仟（接过你画的他，久久没有说话，最后轻声）：'若雪，你画的我……比我自己想象的要好看。'他把画贴心地收好，'我会挂在最显眼的地方。'"
+                      ]
+                    }
+                  ]
+                }
+              },
+              // 第4阶段：以画传情（第4次）
+              {
+                minVisit: 4, maxVisit: 4,
+                stageImage: '/assets/stage_images/sitouqian_s1.png',
+                outfitTagDialogue: {
+                  scholar: { text: "司徒仟放下笔，认真打量你：'这身绿色……适合入画。书香气和墨香气在一处，倒是难得。'他停顿，'你今天穿这个来，是特意的？'", image: "/assets/stage_images/sitouqian_s1.png" },
+                  mystical: { text: "司徒仟凝视你片刻，提起笔又放下：'这颜色……我想画，但又怕画出来不如眼前的好看。'他低声道，'你今天这身，让我想起一幅古画。'", image: "/assets/stage_images/sitouqian_s1.png" },
+                  noble:   { text: "司徒仟轻声道：'这身打扮……有点不像你平时的风格。'他顿了顿，'但也好看。换了衣裳，眼神还是你的眼神。'", image: "/assets/stage_images/sitouqian_s1.png" },
+                },
+                subSceneDialogues: [
+                  { text: "司徒仟（今天在画一幅新画，见你来了，把画挡住）：'别看，还没画完。'他停顿，'上次你「[[lastChoice]]」，那之后我一直想给你看这幅。等画完了。'", image: "/assets/stage_images/sitouqian_s1.png" },
+                  { text: "司徒仟（放下笔，认真地看你）：'若雪，你每次来，我都会画一幅。你不知道，但我的画里，有你的每一次。'", image: "/assets/stage_images/sitouqian_s1.png" }
+                ],
+                subSceneChoices: {
+                  text: "司徒仟忽然转身，将一卷画轴递到你面前，眼神专注而温柔：'这是我为你画的第二幅，比上次好很多。你愿意收下吗？'",
+                  options: [
+                    {
+                      id: "st2_a", label: "A", text: "摇头：'画得再好也不必送给我。'",
+                      recallText: "摇头，说画得再好也不必送给你",
+                      responseDialogue: "司徒仟（愣了一下，将画轴收回，低头看着它）：'……好。'他轻声说，'那我就自己留着。'他把画放回书架最显眼的位置。"
+                    },
+                    {
+                      id: "st2_b", label: "B", text: "犹豫片刻，没有伸手",
+                      recallText: "犹豫了片刻，没有伸手去接",
+                      responseDialogue: "司徒仟（见你犹豫，没有强求，将画轴轻轻卷起）：'不急，等你想要的时候，它一直在这里。'他把画放在书案角落，像是特意留给你的位置。"
+                    },
+                    {
+                      id: "st2_c", label: "C", text: "轻轻接过，展开来细细看",
+                      recallText: "轻轻接过那幅画，展开来细细看",
+                      giftItem: { id: "st_portrait", name: "司徒仟亲绘肖像", emoji: "🖼️", category: "信物",
+                        description: "司徒仟为你亲绘的第二幅肖像，笔墨间流露出他不曾言说的情意。",
+                        effect: { painting: 3, charm: 2 }, rarity: "rare" },
+                      responseDialogue: "司徒仟（屏息看你展开画轴，眼神里有一丝紧张）：'这次……画的是你看窗外的侧脸。我觉得那个角度，最像你。'他声音很轻，像是在说一个秘密。",
+                      followUpDialogues: [
+                        "画上的人侧着脸，目光望向远处，神情里有一种说不清的东西——专注，又有点忧郁。你不知道自己看起来是这样的。",
+                        "司徒仟（低声问）：'你觉得……像吗？'他其实不是在问画像不像你，他在问，你有没有看见他眼里的你。"
+                      ]
+                    },
+                    {
+                      id: "st2_d", label: "D", text: "接过画，微笑说：'那我也画一幅回赠你。'",
+                      recallText: "接过画，笑着说也要画一幅回赠我",
+                      giftItem: { id: "st_portrait", name: "司徒仟亲绘肖像", emoji: "🖼️", category: "信物",
+                        description: "司徒仟为你亲绘的第二幅肖像，笔墨间流露出他不曾言说的情意。",
+                        effect: { painting: 3, charm: 2 }, rarity: "rare" },
+                      responseDialogue: "司徒仟（被你说得一怔，随即眼睛亮了）：'当真？'他立刻腾出画案，把最好的纸铺上，'那我就在这里等，不许偷看。'他背过身，却忍不住侧耳听你的动静。",
+                      followUpDialogues: [
+                        "你画他，他背对着你，但你能看见他耳朵悄悄红了。画室里安静极了，只有笔触纸的细声。",
+                        "司徒仟（接过你画的他，久久没有说话，最后轻声）：'若雪，你画的我……比我自己想象的要好看。'他把画贴心地收好，'我会挂在最显眼的地方。'"
+                      ]
+                    }
+                  ]
+                }
+              },
+              // 第5阶段：丹青定情（第5次，最后一次）
               {
                 minVisit: 5, maxVisit: 5,
                 stageImage: '/assets/stage_images/sitouqian_s3.png',
@@ -3310,7 +3583,7 @@ const npcs = {
                 }
               },
               {
-                minVisit: 2, maxVisit: 4,
+                minVisit: 2, maxVisit: 2,
                 stageImage: '/assets/stage_images/desert_friend_s2.png',
                 outfitTagDialogue: {
                   civilian: { text: "沐风扫了一眼你的衣裳：'这身颜色……在大漠里不显眼。'他顿了顿，'不过你这个人，不管穿什么都让人注意。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" },
@@ -3318,22 +3591,112 @@ const npcs = {
                   mystical: { text: "沐风盯着你的衣裳看了一会儿，轻声道：'西域的商队里有人说，这颜色能辟沙漠里的邪风。'他停顿，'你是故意穿的？'", image: "/assets/character/outfits/npc_desert_friend_s2.png" },
                 },
                 subSceneDialogues: [
-                  { text: "沐风（见你再来，眼中闪过一丝意外的惊喜）：'你回来了。我以为你不会再来这片沙漠了。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" },
-                  { text: "沐风（在篝火旁坐下，声音低沉）：'我走过西域三十六国，从没有一个地方让我想停下来。直到在这里遇见了你。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" }
+                  { text: "沐风（见你走来，从沙丘上站起身，眼神里有一丝意外的惊喜）：'你回来了。'他说，'上次你「[[lastChoice]]」——我以为你不会再来了。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" },
+                  { text: "沐风（在篝火旁坐下，声音低沉）：'沙漠里的人说，走过一次的路，不会再走第二遍。但你来了，我很高兴你来了。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" }
                 ],
-                dialogueVariants: [
-                  [
-                    { text: "沐风（见你走来，从沙丘上站起身，眼神里有一丝意外的惊喜）：'你回来了。'他说，'上次你「[[lastChoice]]」——我以为你不会再来了。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" },
-                    { text: "沐风（在篝火旁坐下，声音低沉）：'沙漠里的人说，走过一次的路，不会再走第二遍。但你来了，我很高兴你来了。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" }
-                  ],
-                  [
-                    { text: "沐风（今天在绿洲边磨刀，见你来了，把刀收起来）：'若雪。'他直接叫你的名字，'上次你「[[lastChoice]]」，那之后我想了很久。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" },
-                    { text: "沐风（抬头看你）：'沙漠里有句话——回头的人，心里有东西放不下。你放不下什么？'", image: "/assets/character/outfits/npc_desert_friend_s2.png" }
-                  ],
-                  [
-                    { text: "沐风（今天没有生篝火，就坐在沙地上看星星，见你来了，拍拍旁边的沙地）：'坐。'他说，'上次你「[[lastChoice]]」……我一直在想，你是什么样的人。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" },
-                    { text: "沐风（低声）：'走遍西域，我见过很多人。但像你这样的，只有一个。'", image: "/assets/character/outfits/npc_desert_friend_s2.png" }
+                subSceneChoices: {
+                  text: "沐风从行囊中取出一块蓝色的丝绸，上面绣着西域的星图：'这是我在撒马尔罕买的，一直没找到合适的人送。'",
+                  options: [
+                    {
+                      id: "df2_a", label: "A", text: "推回：'我们还不够熟。'",
+                      recallText: "把星图推了回来，说我们还不够熟",
+                      responseDialogue: "沐风（愣了一下，随即点头，将星图叠好）：'说得对。'他收回丝绸，'那就等我们够熟了，我再拿出来。'他说得很认真，像是真的在等。"
+                    },
+                    {
+                      id: "df2_b", label: "B", text: "沉默，不知如何回应",
+                      recallText: "沉默着，不知如何回应",
+                      responseDialogue: "沐风（见你沉默，没有尴尬，只是把星图轻轻放在你膝上）：'不用说话。'他望着篝火，'沙漠里的人习惯了沉默，但不习惯孤独。'他说这话，眼神很深。"
+                    },
+                    {
+                      id: "df2_c", label: "C", text: "接过，细细端详那星图",
+                      recallText: "接过星图，细细端详了很久",
+                      giftItem: { id: "silk_starmap", name: "西域星图绸", emoji: "🌌", category: "信物",
+                        description: "来自撒马尔罕的蓝色丝绸，绣着西域夜空的星图，异域风情浓郁。",
+                        effect: { spirit: 5, wisdom: 3 }, rarity: "rare" },
+                      responseDialogue: "沐风（看你专注地看着星图，嘴角微微上扬）：'这颗是北极星，走迷路了就找它。'他俯身靠近，指着丝绸上的一点，声音很低，'还有这颗，西域人叫它守望星。'",
+                      followUpDialogues: [
+                        "他说，守望星只在特定的季节出现，游侠们相信——看见它的人，心里一定有什么在等待。",
+                        "沐风（抬头，直视你的眼睛）：'若雪，你心里在等什么？'篝火噼啪作响，他的眼神里有一种沙漠才有的深邃。"
+                      ]
+                    },
+                    {
+                      id: "df2_d", label: "D", text: "接过，抬头问他：'你是如何认识这些星的？'",
+                      recallText: "接过星图，抬头问我是如何认识这些星的",
+                      giftItem: { id: "silk_starmap", name: "西域星图绸", emoji: "🌌", category: "信物",
+                        description: "来自撒马尔罕的蓝色丝绸，绣着西域夜空的星图，异域风情浓郁。",
+                        effect: { spirit: 5, wisdom: 3 }, rarity: "rare" },
+                      responseDialogue: "沐风（被你问住，笑了）：'是一个老向导教我的，他说——认识星星，就不会在沙漠里迷路。'他停顿，'但我觉得，认识了你，才算真的不迷路。'",
+                      followUpDialogues: [
+                        "他讲了很久，讲撒马尔罕的集市，讲西域商队的歌，讲他第一次独自穿越沙漠时仰望星空的感受。",
+                        "沐风（最后，轻声）：'若雪，你愿意听我讲这些……我很高兴。'他把篝火拨旺了一些，'再讲一段，不急着走。'"
+                      ]
+                    }
                   ]
+                }
+              },
+              {
+                minVisit: 3, maxVisit: 3,
+                stageImage: '/assets/stage_images/desert_friend_s2.png',
+                outfitTagDialogue: {
+                  civilian: { text: "沐风扫了一眼你的衣裳：'这身颜色……在大漠里不显眼。'他顿了顿，'不过你这个人，不管穿什么都让人注意。'", image: "/assets/character/outfits/npc_desert_friend_s3.png" },
+                  noble:    { text: "沐风皱了皱眉：'这身打扮……沙子会弄脏的。'他说完，从腰间解下一块布，'垫着坐，别弄脏了。'", image: "/assets/character/outfits/npc_desert_friend_s3.png" },
+                  mystical: { text: "沐风盯着你的衣裳看了一会儿，轻声道：'西域的商队里有人说，这颜色能辟沙漠里的邪风。'他停顿，'你是故意穿的？'", image: "/assets/character/outfits/npc_desert_friend_s3.png" },
+                },
+                subSceneDialogues: [
+                  { text: "沐风（今天在绿洲边磨刀，见你来了，把刀收起来）：'若雪。'他直接叫你的名字，'上次你「[[lastChoice]]」，那之后我想了很久。'", image: "/assets/character/outfits/npc_desert_friend_s3.png" },
+                  { text: "沐风（抬头看你）：'沙漠里有句话——回头的人，心里有东西放不下。你放不下什么？'", image: "/assets/character/outfits/npc_desert_friend_s3.png" }
+                ],
+                subSceneChoices: {
+                  text: "沐风从行囊中取出一块蓝色的丝绸，上面绣着西域的星图：'这是我在撒马尔罕买的，一直没找到合适的人送。'",
+                  options: [
+                    {
+                      id: "df2_a", label: "A", text: "推回：'我们还不够熟。'",
+                      recallText: "把星图推了回来，说我们还不够熟",
+                      responseDialogue: "沐风（愣了一下，随即点头，将星图叠好）：'说得对。'他收回丝绸，'那就等我们够熟了，我再拿出来。'他说得很认真，像是真的在等。"
+                    },
+                    {
+                      id: "df2_b", label: "B", text: "沉默，不知如何回应",
+                      recallText: "沉默着，不知如何回应",
+                      responseDialogue: "沐风（见你沉默，没有尴尬，只是把星图轻轻放在你膝上）：'不用说话。'他望着篝火，'沙漠里的人习惯了沉默，但不习惯孤独。'他说这话，眼神很深。"
+                    },
+                    {
+                      id: "df2_c", label: "C", text: "接过，细细端详那星图",
+                      recallText: "接过星图，细细端详了很久",
+                      giftItem: { id: "silk_starmap", name: "西域星图绸", emoji: "🌌", category: "信物",
+                        description: "来自撒马尔罕的蓝色丝绸，绣着西域夜空的星图，异域风情浓郁。",
+                        effect: { spirit: 5, wisdom: 3 }, rarity: "rare" },
+                      responseDialogue: "沐风（看你专注地看着星图，嘴角微微上扬）：'这颗是北极星，走迷路了就找它。'他俯身靠近，指着丝绸上的一点，声音很低，'还有这颗，西域人叫它守望星。'",
+                      followUpDialogues: [
+                        "他说，守望星只在特定的季节出现，游侠们相信——看见它的人，心里一定有什么在等待。",
+                        "沐风（抬头，直视你的眼睛）：'若雪，你心里在等什么？'篝火噼啪作响，他的眼神里有一种沙漠才有的深邃。"
+                      ]
+                    },
+                    {
+                      id: "df2_d", label: "D", text: "接过，抬头问他：'你是如何认识这些星的？'",
+                      recallText: "接过星图，抬头问我是如何认识这些星的",
+                      giftItem: { id: "silk_starmap", name: "西域星图绸", emoji: "🌌", category: "信物",
+                        description: "来自撒马尔罕的蓝色丝绸，绣着西域夜空的星图，异域风情浓郁。",
+                        effect: { spirit: 5, wisdom: 3 }, rarity: "rare" },
+                      responseDialogue: "沐风（被你问住，笑了）：'是一个老向导教我的，他说——认识星星，就不会在沙漠里迷路。'他停顿，'但我觉得，认识了你，才算真的不迷路。'",
+                      followUpDialogues: [
+                        "他讲了很久，讲撒马尔罕的集市，讲西域商队的歌，讲他第一次独自穿越沙漠时仰望星空的感受。",
+                        "沐风（最后，轻声）：'若雪，你愿意听我讲这些……我很高兴。'他把篝火拨旺了一些，'再讲一段，不急着走。'"
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                minVisit: 4, maxVisit: 4,
+                stageImage: '/assets/stage_images/desert_friend_s1.png',
+                outfitTagDialogue: {
+                  civilian: { text: "沐风扫了一眼你的衣裳：'这身颜色……在大漠里不显眼。'他顿了顿，'不过你这个人，不管穿什么都让人注意。'", image: "/assets/stage_images/desert_friend_s1.png" },
+                  noble:    { text: "沐风皱了皱眉：'这身打扮……沙子会弄脏的。'他说完，从腰间解下一块布，'垫着坐，别弄脏了。'", image: "/assets/stage_images/desert_friend_s1.png" },
+                  mystical: { text: "沐风盯着你的衣裳看了一会儿，轻声道：'西域的商队里有人说，这颜色能辟沙漠里的邪风。'他停顿，'你是故意穿的？'", image: "/assets/stage_images/desert_friend_s1.png" },
+                },
+                subSceneDialogues: [
+                  { text: "沐风（今天没有生篝火，就坐在沙地上看星星，见你来了，拍拍旁边的沙地）：'坐。'他说，'上次你「[[lastChoice]]」……我一直在想，你是什么样的人。'", image: "/assets/stage_images/desert_friend_s1.png" },
+                  { text: "沐风（低声）：'走遍西域，我见过很多人。但像你这样的，只有一个。'", image: "/assets/stage_images/desert_friend_s1.png" }
                 ],
                 subSceneChoices: {
                   text: "沐风从行囊中取出一块蓝色的丝绸，上面绣着西域的星图：'这是我在撒马尔罕买的，一直没找到合适的人送。'",

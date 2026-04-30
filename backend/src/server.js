@@ -2,6 +2,7 @@ try { require('dotenv').config(); } catch(e) {}
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const compression = require('compression');
 const { v4: uuidv4 } = require('uuid');
 const { createClient } = require('@supabase/supabase-js');
 const bcrypt = require('bcryptjs');
@@ -12,6 +13,8 @@ const JWT_SECRET = process.env.JWT_SECRET || 'wondergame_dev_secret';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+app.use(compression());
 
 // ==================== Supabase 客户端 ====================
 const supabase = createClient(
@@ -831,7 +834,8 @@ app.use(cors({
   credentials: true,
 }));
 app.use(bodyParser.json());
-app.use((req, res, next) => { res.set('Cache-Control', 'no-store'); next(); });
+// API 接口禁缓存；静态资源走独立缓存策略（由 express.static 的 maxAge 控制）
+app.use('/api', (req, res, next) => { res.set('Cache-Control', 'no-store'); next(); });
 
 // ==================== JWT 认证中间件 ====================
 const PUBLIC_PATHS = ['/api/health', '/api/game-config', '/api/scenes', '/api/shop', '/api/auth/register', '/api/auth/login'];
@@ -2626,7 +2630,15 @@ const path = require('path');
 const fs = require('fs');
 const frontendBuild = path.join(__dirname, '../../frontend/build');
 if (fs.existsSync(frontendBuild)) {
-  app.use(express.static(frontendBuild));
+  app.use(express.static(frontendBuild, {
+    maxAge: '7d',
+    setHeaders: (res, filePath) => {
+      if (filePath.endsWith('.html')) {
+        // HTML 不缓存，保证版本更新后立即生效
+        res.set('Cache-Control', 'no-cache');
+      }
+    },
+  }));
   app.get('*', (req, res) => {
     res.sendFile(path.join(frontendBuild, 'index.html'));
   });

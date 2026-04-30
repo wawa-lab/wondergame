@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import axios from 'axios';
-import riddleBg from './pic/猜灯谜.jpg';
-import culinaryBg from './pic/厨艺大赛.jpg';
+const riddleBg = '/assets/scenes/riddle_bg.jpg';
+const culinaryBg = '/assets/scenes/culinary_bg.jpg';
 
 const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:3001/api';
 

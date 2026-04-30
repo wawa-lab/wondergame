@@ -17,16 +17,16 @@ import ShopPanel from './components/ShopPanel';
 import RanchGame from './components/RanchGame';
 import IntroSlides from './components/IntroSlides';
 import LaborMiniGame from './components/LaborMiniGame';
-import streetImage from './components/pic/街道.jpg';
 import ITEM_HINTS_DATA from './itemHints';
 
-import adventureMapImage from './components/pic/探险地图.jpg';
-import peachFullImage from './components/pic/桃花岛-全景.jpg';
-import peachStreetImage from './components/pic/桃花岛-街道.jpg';
-import deepForestImage from './components/pic/深林.jpg';
-import deepForestNpcImage from './components/pic/深林-npc.jpg';
-import wailingSandImage from './components/pic/呜沙沟.jpg';
-import wailingSandNpcImage from './components/pic/呜沙沟-npc.jpg';
+const streetImage = '/assets/scenes/street_scene.jpg';
+const adventureMapImage = '/assets/scenes/adventure_map.jpg';
+const peachFullImage = '/assets/scenes/peach_island_full.jpg';
+const peachStreetImage = '/assets/scenes/peach_island_street.jpg';
+const deepForestImage = '/assets/scenes/deep_forest_scene.jpg';
+const deepForestNpcImage = '/assets/scenes/deep_forest_npc.jpg';
+const wailingSandImage = '/assets/scenes/wailing_sand_scene.jpg';
+const wailingSandNpcImage = '/assets/scenes/wailing_sand_npc.jpg';
 
 const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:3001/api';
 
@@ -4826,7 +4826,7 @@ function CourseScheduleModal({ courseModal, character, onClose, onAdvanceMonth, 
                   display: 'flex', alignItems: 'flex-start', gap: '10px',
                   animation: 'npcSlideIn 0.55s ease 0.3s both',
                 }}>
-                  <img src={npcInfo.avatar} alt={npcInfo.name} style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0, border: `2px solid ${npcInfo.color || '#F4A0C0'}66` }} onError={e => { e.target.style.display='none'; }} />
+                  <img src={npcInfo.avatar} alt={npcInfo.name} loading="lazy" style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0, border: `2px solid ${npcInfo.color || '#F4A0C0'}66` }} onError={e => { e.target.style.display='none'; }} />
                   <div>
                     <div style={{ fontSize: '11px', color: npcInfo.color || '#F4A0C0', fontWeight: '700', marginBottom: '4px' }}>{npcInfo.name}</div>
                     <div style={{ fontSize: '12px', color: 'rgba(245,230,236,0.7)', lineHeight: 1.6 }}>{courseModal.npcComment.text}</div>
@@ -6118,7 +6118,7 @@ function LaborScheduleModal({ laborModal, character, onClose }) {
                   display: 'flex', alignItems: 'flex-start', gap: '10px',
                   animation: 'laborNpcSlide 0.55s ease 0.3s both',
                 }}>
-                  <img src={npcInfo.avatar} alt={npcInfo.name} style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0, border: `2px solid ${npcInfo.color || '#34D399'}66` }} onError={e => { e.target.style.display='none'; }} />
+                  <img src={npcInfo.avatar} alt={npcInfo.name} loading="lazy" style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0, border: `2px solid ${npcInfo.color || '#34D399'}66` }} onError={e => { e.target.style.display='none'; }} />
                   <div>
                     <div style={{ fontSize: '11px', color: npcInfo.color || '#34D399', fontWeight: '700', marginBottom: '4px' }}>{npcInfo.name}</div>
                     <div style={{ fontSize: '12px', color: 'rgba(245,230,236,0.7)', lineHeight: 1.6 }}>{laborModal.npcComment.text}</div>
@@ -6620,7 +6620,7 @@ const PEACH_ISLAND_SCENE = {
     {
       id: 'peach_bandit',
       name: '劫道歹人',
-      probability: 0.2,
+      probability: 0.3,
       image: peachStreetImage,
       overlay: 'rgba(15,5,10,0.6)',
       dialogues: [
@@ -6827,7 +6827,7 @@ const DEEP_FOREST_SCENE = {
     {
       id: 'thief',
       name: '暗中跟踪',
-      probability: 0.2,
+      probability: 0.1,
       image: deepForestNpcImage,
       overlay: 'rgba(0,8,0,0.5)',
       dialogues: [
@@ -6878,7 +6878,7 @@ const DEEP_FOREST_SCENE = {
     {
       id: 'poison_fog',
       name: '毒雾迷林',
-      probability: 0.2,
+      probability: 0.1,
       image: deepForestImage,
       overlay: 'rgba(0,20,5,0.65)',
       dialogues: [
@@ -6929,7 +6929,7 @@ const DEEP_FOREST_SCENE = {
     {
       id: 'cliff_fall',
       name: '山崖险情',
-      probability: 0.2,
+      probability: 0.1,
       image: deepForestImage,
       overlay: 'rgba(5,0,10,0.6)',
       dialogues: [
@@ -7085,7 +7085,7 @@ const WAILING_SAND_SCENE = {
     {
       id: 'sand_danger',
       name: '沙漠危机',
-      probability: 0.2,
+      probability: 0.1,
       image: wailingSandImage,
       overlay: 'rgba(30,15,0,0.55)',
       dialogues: [
@@ -7330,7 +7330,7 @@ const WAILING_SAND_SCENE = {
     {
       id: 'sandstorm',
       name: '黑色沙暴',
-      probability: 0.2,
+      probability: 0.1,
       image: wailingSandImage,
       overlay: 'rgba(40,20,0,0.75)',
       dialogues: [
@@ -7381,7 +7381,7 @@ const WAILING_SAND_SCENE = {
     {
       id: 'viper',
       name: '毒蛇突袭',
-      probability: 0.2,
+      probability: 0.1,
       image: wailingSandImage,
       overlay: 'rgba(10,25,0,0.6)',
       dialogues: [
@@ -8509,7 +8509,7 @@ function TalentRankModal({ rank, onClose }) {
       <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.8)', zIndex: 9100, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
         <div style={{ background: 'linear-gradient(145deg, rgba(15,8,20,0.99), rgba(30,15,35,0.99))', border: '2px solid rgba(148,103,189,0.5)', borderRadius: '20px', maxWidth: '400px', width: '100%', overflow: 'hidden', boxShadow: '0 0 50px rgba(148,103,189,0.2)' }}>
           <div style={{ width: '100%', height: '160px', overflow: 'hidden', position: 'relative' }}>
-            <img src="/assets/events/talent_ranking.png" alt="才女榜" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(0.5) brightness(0.7)' }} onError={e => e.currentTarget.parentElement.style.display='none'} />
+            <img src="/assets/events/talent_ranking.png" alt="才女榜" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(0.5) brightness(0.7)' }} onError={e => e.currentTarget.parentElement.style.display='none'} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 30%, rgba(15,8,20,0.95))' }} />
             <div style={{ position: 'absolute', bottom: '12px', left: '50%', transform: 'translateX(-50%)', textAlign: 'center' }}>
               <div style={{ fontSize: '11px', color: 'rgba(148,103,189,0.9)', letterSpacing: '4px', fontWeight: '700' }}>京城才女榜 · {age}岁</div>
@@ -8552,7 +8552,7 @@ function TalentRankModal({ rank, onClose }) {
     <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.8)', zIndex: 9100, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
       <div style={{ background: 'linear-gradient(145deg, rgba(20,10,5,0.99), rgba(40,20,10,0.99))', border: `2px solid ${rankColor}80`, borderRadius: '20px', maxWidth: '400px', width: '100%', overflow: 'hidden', boxShadow: `0 0 50px ${rankColor}30` }}>
         <div style={{ width: '100%', height: '160px', overflow: 'hidden', position: 'relative' }}>
-          <img src="/assets/events/talent_ranking.png" alt="才女榜" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => e.currentTarget.parentElement.style.display='none'} />
+          <img src="/assets/events/talent_ranking.png" alt="才女榜" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => e.currentTarget.parentElement.style.display='none'} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 40%, rgba(20,10,5,0.9))' }} />
           <div style={{ position: 'absolute', bottom: '12px', left: '50%', transform: 'translateX(-50%)', textAlign: 'center' }}>
             <div style={{ fontSize: '11px', color: rankColor, letterSpacing: '4px', fontWeight: '700' }}>京城才女榜 · {ageLabel}</div>

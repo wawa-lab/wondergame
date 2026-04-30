@@ -722,7 +722,7 @@ function NpcBubble({ npc, position, onClose, onChoice, containerRef, onSceneChan
               {npc.sceneAvatar ? (
                 <SceneAvatarCircle sceneAvatar={npc.sceneAvatar} size={38} />
               ) : hasAvatar ? (
-                <img src={`${npc.avatar}?v=2`} alt={npc.name} onError={() => setAvatarErr(true)}
+                <img src={`${npc.avatar}?v=2`} alt={npc.name} loading="lazy" onError={() => setAvatarErr(true)}
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               ) : (
                 <span style={{ fontSize: '20px' }}>{npc.emoji}</span>
@@ -835,7 +835,7 @@ function NpcBubble({ npc, position, onClose, onChoice, containerRef, onSceneChan
               {npc.sceneAvatar ? (
                 <SceneAvatarCircle sceneAvatar={npc.sceneAvatar} size={34} />
               ) : hasAvatar ? (
-                <img src={`${npc.avatar}?v=2`} alt={npc.name} onError={() => setAvatarErr(true)}
+                <img src={`${npc.avatar}?v=2`} alt={npc.name} loading="lazy" onError={() => setAvatarErr(true)}
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               ) : (
                 <span style={{ fontSize: '18px' }}>{npc.emoji}</span>
