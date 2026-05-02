@@ -5,6 +5,193 @@ import ITEM_HINTS from '../itemHints';
 const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:3001/api';
 
 // ─────────────────────────────────────────
+// 月份场景描述（6场景 × 12月）
+// ─────────────────────────────────────────
+const MONTHLY_SCENE_DESC = {
+  inn: [
+    '正月新春，悦来居栈张灯结彩，爆竹声声中客旅如织，茶香与欢声交织一室。',
+    '二月春寒未退，居栈炉火通红，窗外细雨淅沥，堂内暖意融融，说书先生正起了新一段故事。',
+    '三月春光正好，悦来居栈门前桃花初绽，客人们谈论着城中的春日游乐，气氛格外轻松。',
+    '四月暖风习习，居栈庭院里燕子筑巢，掌柜忙着迎来送往，新茶的清香飘满整条街。',
+    '五月端阳将至，居栈挂起了艾草和菖蒲，厨房里粽香四溢，四方游客汇聚于此。',
+    '六月骄阳似火，居栈井水冰凉，消暑的酸梅汤供不应求，大堂里谈天说地的客人比往日更多。',
+    '七月乞巧节近，居栈里女客们谈论着穿针引线，窗外月色如水，银河隐约可见。',
+    '八月中秋将至，居栈已备下月饼与桂花酒，月光洒进大堂，旅人们各怀思念之情。',
+    '九月金秋，居栈院中菊花盛放，重阳登高的游客途经此地，带来了远方山野的气息。',
+    '十月寒意渐浓，居栈火盆燃起，旅客们围炉夜话，掌柜备下了新酿的黄酒暖身。',
+    '十一月霜降，居栈门帘厚重，窗纸映着摇曳的灯火，堂内暖声低语，外面北风呼啸。',
+    '腊月将尽，居栈年货备齐，掌柜掸去灰尘迎新春，客旅匆匆都在赶路回家。',
+  ],
+  medicine_hall: [
+    '正月里草木初醒，百草堂已备下新年第一批药材，药香清新，大夫们喜迎开春。',
+    '二月春雨润物，百草堂新到了一批嫩芽药草，大夫正伏案研读新来的医书。',
+    '三月百草生发，堂内药香尤浓，前来问诊的病人络绎不绝，大夫忙而有序。',
+    '四月春意盎然，百草堂门前草药飘香，学徒们忙着晾晒新采的药材，一派生机。',
+    '五月端阳采药时节，百草堂大夫亲自出山采集，堂内药材格外新鲜充足。',
+    '六月暑气蒸腾，百草堂清热解暑的药方需求大增，大夫日夜不辍，忙而从容。',
+    '七月伏天，各类晒制草药铺满院落，药香随热风飘散，堂内一片忙碌景象。',
+    '八月秋燥，百草堂润肺养阴的药材备受青睐，大夫为入秋进补的病人耐心问诊。',
+    '九月霜降将至，百草堂收下今年最后一批秋药，整理归档，以备冬季所需。',
+    '十月入冬，百草堂温补的药方大行其道，炉上药锅咕噜咕噜，驱散四周寒意。',
+    '十一月严冬，百草堂炉火不熄，温暖的药香安抚着每一位前来问诊的病人。',
+    '腊月封冬，百草堂大夫忙着盘点药材、为来年开春做准备，堂内药香依旧悠长。',
+  ],
+  street: [
+    '正月十五灯节刚过，琳琅繁街彩灯未撤，摊贩们热情叫卖，街头热闹非凡。',
+    '二月春寒，繁街上行人裹紧披风，卖热汤的小贩生意最旺，吆喝声此起彼伏。',
+    '三月踏青季，繁街上花灯、风筝、胭脂水粉应有尽有，少女们结伴挑选春装。',
+    '四月春深，繁街上杏花落了一地，小贩们摆出应季的新鲜果蔬，人来人往。',
+    '五月端阳，繁街两侧悬挂艾草，香包摊前人群密集，到处是节日的喜庆气息。',
+    '六月盛夏，繁街上冰碗、凉粉摊生意爆满，孩子们追着卖糖葫芦的小贩奔跑。',
+    '七月乞巧节，繁街彩线飘扬，绣坊、针线铺格外热闹，姑娘们细心挑选丝线。',
+    '八月中秋前夕，繁街饼铺飘出月饼香，各色灯笼高悬，街道装点得格外喜庆。',
+    '九月重阳，繁街上菊花香气弥漫，茶摊、糕点铺热闹非凡，秋风送来丰收气息。',
+    '十月深秋，繁街落叶铺路，行人脚步匆匆，布庄厚料上市，街头添了几分萧瑟之美。',
+    '十一月初冬，繁街上皮货、炭火铺生意兴隆，街角炭火盆冒出暖暖白烟。',
+    '腊月岁末，繁街年货铺子摆满门口，人潮涌动，处处是采买年货的欢声笑语。',
+  ],
+  general_mansion: [
+    '正月里将军府张灯结彩，府内高朋满座，父亲正陪着贵客把酒言欢。',
+    '二月春来，将军府内梅花正盛，父亲在书房审阅军情，府内一片肃穆。',
+    '三月春暖，将军府后院的海棠开了，父亲难得心情舒朗，在庭院中习剑。',
+    '四月清明，将军府内祭祖告慰先人，气氛庄重，府内上下皆换了素净装束。',
+    '五月端阳，将军府赛龙舟的彩头已备下，父亲邀了旧部一同观赛，笑声朗朗。',
+    '六月暑热，将军府庭院中植满芭蕉，父亲在凉亭中批阅文书，茶烟袅袅。',
+    '七月，将军府夜凉如水，父亲与幕僚在书房秉烛夜谈，烛火摇曳间透着紧迫。',
+    '八月中秋，将军府摆下家宴，月光如练，父亲举杯凝望，似有万千心事。',
+    '九月重阳，将军府遍插茱萸，父亲登高远眺，沙场旧事涌上心头。',
+    '十月霜降，将军府演武场上刀光剑影，父亲亲自督练府兵，秋风猎猎。',
+    '十一月北风渐紧，将军府内加厚了门帘，父亲夜里仍在灯下研究舆图。',
+    '腊月年关，将军府内上下忙碌张罗，父亲难得放下公务，笑着督促府内备年货。',
+  ],
+  lakeside_pavilion: [
+    '正月湖面薄冰初融，碧波亭外芦苇残雪未化，偶有野雁低飞，一派清冷之美。',
+    '二月春水初涨，碧波亭畔柳条吐绿，渔船荡漾，湖面映着淡淡春光。',
+    '三月湖上春风拂面，碧波亭周围桃花盛开倒映水中，游船穿梭，如诗如画。',
+    '四月湖水碧透，碧波亭四周花香弥漫，才子佳人在此吟诗作对，好不风雅。',
+    '五月荷叶初展，碧波亭外绿意连天，虫鸣鸟叫，湖风携来阵阵清凉。',
+    '六月荷花盛放，碧波亭掩映于满湖粉白之间，蜻蜓点水，美不胜收。',
+    '七月夜凉如水，碧波亭月色如练，湖面星光倒映，远处传来笛声悠扬。',
+    '八月中秋，碧波亭是赏月最佳之所，月光洒满湖面，游客络绎，灯火与星辰交辉。',
+    '九月秋风乍起，碧波亭周围芦苇金黄，水面泛起涟漪，一派萧瑟秋意。',
+    '十月霜降，碧波亭外荷叶枯残，湖面清冷，却别有一番寂静之美。',
+    '十一月初冬，碧波亭四周水雾弥漫，湖面寂静，偶有寒鸦掠过天际。',
+    '腊月湖面薄冰，碧波亭在冬日阳光下静默如画，雪后的湖景分外清旷。',
+  ],
+  art_studio: [
+    '正月里丹青阁的学生们带着新年祈愿作画，笔墨飘香中多了几分喜庆气象。',
+    '二月春意入画，丹青阁中梅竹为题，先生说春天是练笔最好的时节。',
+    '三月百花盛开，丹青阁学生们对着窗外写生，明媚春光成了最好的老师。',
+    '四月新雨初晴，丹青阁墨香与泥土气息相融，先生正为一幅山水图添最后一笔。',
+    '五月端阳，丹青阁以龙舟为题赋画，笔触劲健，先生赞道今年的习作颇见长进。',
+    '六月酷暑，丹青阁窗前摆着消暑的薄荷茶，学生们挥汗泼墨，热情丝毫不减。',
+    '七月夏夜，丹青阁以银河为题绘夜景，细腻的笔触描摹出满天星斗。',
+    '八月中秋，丹青阁以月为题，先生亲自示范月光的晕染技法，众人屏息凝神。',
+    '九月金秋，丹青阁以红叶为题，学生们争相描摹窗外的秋色，笔墨淋漓。',
+    '十月寒露，丹青阁炉火微温，先生说冬日的枯枝残荷最见笔骨，学生们若有所悟。',
+    '十一月初冬，丹青阁中墨香与炉香交织，先生正在整理一年来的佳作准备结集。',
+    '腊月岁末，丹青阁以岁寒三友为题封笔，先生感慨一年光阴，学生们依依不舍。',
+  ],
+};
+
+// 主要NPC引导文字（每月3条，随机取1条）
+const MONTHLY_NPC_INTRO = {
+  inn_keeper: [
+    ['掌柜迎上来，笑得眼睛眯成一条缝：「哟，正月里还来逛，欢迎欢迎！」', '掌柜正在张罗年节的酒菜，见你来了，擦了擦手：「过年好，来坐！」', '掌柜笑呵呵地端来一碗热茶：「正月里的茶，暖心暖身，喝！」'],
+    ['掌柜缩着脖子道：「这二月的风啊，刮得人骨头都疼，姑娘你快进来暖和暖和。」', '掌柜正在盘账，抬眼见是你，放下算盘笑道：「来得巧，今日有新茶。」', '掌柜拨了拨炉火，招呼道：「二月天最难熬，多喝点热的。」'],
+    ['掌柜打量了一眼门外的桃花，笑着招呼：「三月好天气，姑娘今日心情如何？」', '掌柜端着茶盘走来：「春茶新到，您来得正是时候。」', '掌柜笑眯眯地说：「三月花开，我这居栈也比往常热闹了许多，坐吧坐吧。」'],
+    ['掌柜拍了拍手：「四月天，燕子都回来了，姑娘也来了，今日定要喝一杯。」', '掌柜正在擦茶杯，见你来了：「暖和天好，生意也好，坐！」', '掌柜指着院中燕巢笑道：「你看那燕子，每年都来，像老相识一样，姑娘你也是。」'],
+    ['掌柜压低声音：「端阳快到了，我这里备了上好的雄黄酒，姑娘要不要尝尝？」', '掌柜擦着粽叶上的露水：「今年的粽子比往年香，姑娘来得巧。」', '掌柜笑道：「端阳节，老规矩，喝菖蒲酒保平安，姑娘你喝吗？」'],
+    ['掌柜扇着蒲扇：「六月天！热死个人，姑娘你快坐，井水镇的梅子汤备好了。」', '掌柜递来一碗冷饮：「暑天生意反而更好，大家都想来乘个凉，你说是不是？」', '掌柜笑道：「这天气，只有我这店里最凉快，坐下来说说话。」'],
+    ['掌柜仰头看看天：「七月初七快到了，姑娘你有什么愿望要许？」', '掌柜擦着桌子：「七月夜里清凉，来一盏好茶，比什么都舒服。」', '掌柜神秘兮兮地说：「七夕前后，总有些奇异的客人路过，今晚说不定也有。」'],
+    ['掌柜摆好月饼道：「中秋将至，今年的桂花月饼还没吃过吧，来，尝一块。」', '掌柜望着门外月色：「八月十五，你也来赏月？我这里窗景最好。」', '掌柜笑道：「中秋月圆，人也要团圆，姑娘家里都好吧？」'],
+    ['掌柜嗅了嗅空气：「九月菊花香，重阳登高好时节，姑娘你去了吗？」', '掌柜倒了杯菊花茶：「重阳节喝这个，去寒延年，老规矩。」', '掌柜笑道：「秋高气爽，客旅最多，今日生意忙得我腿都酸了。」'],
+    ['掌柜往炉里添了炭：「十月寒了，姑娘你要不要来碗驱寒的羊肉汤？」', '掌柜搓了搓手：「这天气，只有烈酒才能暖身，要不要来一壶？」', '掌柜低声道：「十月里总有些南下避寒的贵客，今日你也见到了几位。」'],
+    ['掌柜缩着身子：「十一月了，最冷的时候要到了，多穿点啊姑娘。」', '掌柜端来热汤：「霜降了，今日特备了暖胃汤，快喝！」', '掌柜叹道：「这季节生意倒也稳，大家都在赶路，居栈里总是满的。」'],
+    ['掌柜喜气洋洋：「腊月了！年关将至，姑娘你今年过得怎么样？」', '掌柜正在贴福字：「腊八粥已备好，姑娘来一碗？」', '掌柜叹道：「腊月最忙，每年到这时候，我都盼着年快点过，又舍不得。」'],
+  ],
+  med_doctor: [
+    ['大夫正在研磨新药，抬头见你来了：「正月里来百草堂，想必不是闲逛，有何贵干？」', '大夫捻着胡须：「正月阳气渐升，正是调养身体的好时节，姑娘可有什么不适？」', '大夫放下药典：「新年头一天来百草堂，难得，有缘。」'],
+    ['大夫搓了搓手：「二月还冷，姑娘脸色有些苍白，要不要把把脉？」', '大夫正在整理药柜：「春天到了，药草也新了，来，我给你讲讲新到的药材。」', '大夫看了看你：「二月多风，风寒易侵，今日来得正好。」'],
+    ['大夫拿起一把新草药：「三月草药最鲜，今日刚到的金银花，你闻闻？」', '大夫示意你坐下：「春暖花开，百草生发，正是学习识药的好时节。」', '大夫温和地说：「三月里气候多变，保重身体才是第一要务。」'],
+    ['大夫正在晾晒药材：「四月阳光好，药材晒起来格外香，你来得巧。」', '大夫放下镊子：「春深了，百草堂的药材比冬天丰富许多，慢慢看。」', '大夫点点头：「四月里养肝最佳，姑娘日常饮食可注意了？」'],
+    ['大夫正在包扎端阳用的香包：「端阳采药，百草堂今年的药最好，姑娘要学什么？」', '大夫说：「五月五，端阳节，艾草菖蒲都是好药，你可知道它们的用处？」', '大夫拿出一株草药：「这是今早上山采的，端阳的草药灵气最足。」'],
+    ['大夫摇着扇子：「暑气重，今日来了好几位中暑的病人，你没事吧？」', '大夫递来一杯凉茶：「自制的清热茶，六月必备，来喝一杯。」', '大夫说：「夏天最忌贪凉，姑娘你要记住，冰水喝多了伤脾胃。」'],
+    ['大夫端来一碗汤药：「伏天已过大半，今日来百草堂，有什么想学的？」', '大夫翻着医书：「七月暑热，我正在研究一个新的祛湿方子，姑娘想不想看看？」', '大夫说：「夏末的草药最有劲，今日正好多备一些。」'],
+    ['大夫望着窗外：「八月中秋，百草堂也备了月饼，你来得正好。」', '大夫放下医书：「秋天是补气养阴的时节，姑娘有空要多来学学。」', '大夫说：「秋燥伤肺，百合、麦冬这两味药现在用最合适，记住了。」'],
+    ['大夫整理着药箱：「九月秋凉，今年药材收成不错，你来学什么？」', '大夫说：「重阳节喝菊花茶好，我们百草堂的菊花刚晒干，你来得巧。」', '大夫翻出一份药方：「秋天最适合温补，这个方子你拿去参考。」'],
+    ['大夫围着炉火坐下：「十月寒了，冬病夏治的方子该收效了，你怎么样？」', '大夫招手：「天冷了，多学几个驱寒的方子，以后用得着。」', '大夫叹道：「十月里，来问诊的老人多，我这里每天都很忙。」'],
+    ['大夫点着炉火：「十一月，百草堂最暖和的地方就是这里，来，坐下。」', '大夫整理药柜：「冬天补药最受欢迎，人参、鹿茸、黄芪……都备足了。」', '大夫轻声道：「深冬了，学一些养肾暖身的药理，对你有好处。」'],
+    ['大夫掰着手指：「腊月了，明年的药单子我得开始拟了，姑娘今日来有何事？」', '大夫擦着药罐：「年关将至，百草堂要盘库了，你来得正好，帮我看看这几味药。」', '大夫说：「腊月里人容易犯冷病，多吃些温补的，别等病了再来找我。」'],
+  ],
+  bestFriend: [
+    ['阿蕊跑过来拉住你的手：「正月里没什么事，我们去逛灯市吧！」', '阿蕊笑嘻嘻地递来一包糖：「新年贺礼，甜甜的，你要不要？」', '阿蕊拉着你的袖子：「新年新气象，今天我们一定要做点特别的事！」'],
+    ['阿蕊缩着脖子：「二月还这么冷，你怎么出来了？」', '阿蕊悄悄凑过来：「我新学了一个发髻的梳法，等会儿帮你试试？」', '阿蕊拉你进屋：「外面冷，我给你讲讲最近街上的新鲜事。」'],
+    ['阿蕊一蹦三跳地过来：「三月了！我们去踏青好不好！」', '阿蕊手上捧着一束野花：「春天来了，你看，我摘的，送给你。」', '阿蕊拉着你走到窗边：「你听，那是布谷鸟，春天真的来了。」'],
+    ['阿蕊兴奋地说：「四月燕子回来了，我数了数，今年比去年多两只！」', '阿蕊递来一块点心：「春天最适合做青团，我特意学了，你尝尝。」', '阿蕊歪头想了想：「四月也没什么节日，不如我们自己找个乐子玩吧？」'],
+    ['阿蕊凑过来小声说：「端阳节快到了，我们偷偷去看赛龙舟吧！」', '阿蕊拿出一个精美香包：「我自己绣的端阳香包，送给你驱邪。」', '阿蕊皱眉道：「端阳的雄黄酒好苦，你喜欢喝吗？」'],
+    ['阿蕊用扇子扇着风：「好热！你知道哪里有冰窖可以买冰吗？」', '阿蕊拉着你找荫凉：「六月真是太热了，我们找个凉快的地方说话。」', '阿蕊突然笑起来：「你知道吗，我今天路上遇见了一件超级有趣的事！」'],
+    ['阿蕊若有所思：「七夕快到了……你有没有……想要许的愿望？」', '阿蕊凑过来小声说：「我偷听到一个秘密，只告诉你一个人。」', '阿蕊扑闪着眼睛：「七月的夜晚最美，你有没有想和谁一起看星星？」'],
+    ['阿蕊捧着月饼：「中秋节快到了，你们家准备了什么馅儿的月饼？」', '阿蕊感叹道：「八月月圆人团圆，我们的友情也要天长地久！」', '阿蕊牵着你的手：「今晚月色一定好，我们约好了一起赏月啊！」'],
+    ['阿蕊摘了朵菊花插在你发间：「重阳节，赏菊花！你好看！」', '阿蕊叹道：「九月了，好像一年就快过完了，有点舍不得。」', '阿蕊精神抖擞：「秋天正好爬山，走，我们去登高去！」'],
+    ['阿蕊裹着披风：「十月天凉了，你多穿点，别冻着了。」', '阿蕊凑近你：「秋冬更换，最近流行的新发式你知道吗？」', '阿蕊叹气道：「天越来越冷，以后出门玩就没那么方便了……」'],
+    ['阿蕊搓着手：「好冷好冷！你穿暖了吗？」', '阿蕊悄声道：「快过年了，我准备送你一个惊喜，你别猜！」', '阿蕊偎着你坐下：「冬天就该这样，缩在一起说悄悄话。」'],
+    ['阿蕊兴高采烈：「腊月了！要过年了！你今年的愿望都实现了吗？」', '阿蕊拿着礼物：「年前给你准备了一份心意，你看看喜不喜欢。」', '阿蕊感叹：「又是一年啊，感觉我们认识了好久好久了。」'],
+  ],
+  guard: [
+    ['护卫笔直地站着，见你靠近，微微欠身：「正月里万事顺意，小姐。」', '护卫压低声音：「新年头一天，将军特别嘱咐了，让我护送小姐出行。」', '护卫平静地说：「正月里宵禁稍松，但小姐还是早些回府为好。」'],
+    ['护卫眉头微皱：「二月风大，小姐出行需注意。」', '护卫拱手：「有何吩咐，属下随行。」', '护卫低声道：「近日街上有些不安分的人，小姐尽量少去偏僻之处。」'],
+    ['护卫平静如常：「三月出行，属下陪同。」', '护卫说：「春日踏青的人多，小姐小心人群拥挤。」', '护卫微微颔首：「小姐有何要事，属下听候差遣。」'],
+    ['护卫直视前方：「四月里京城来了不少外地商贾，小姐留意。」', '护卫拱手：「属下已踩好点，今日出行安全。」', '护卫说：「将军特意嘱咐，小姐若有要事，叫上属下。」'],
+    ['护卫低声道：「端阳节人多，小姐别走散了。」', '护卫拱手道：「端阳安康，小姐有何指示？」', '护卫说：「节日里人多眼杂，属下会寸步不离。」'],
+    ['护卫擦了擦额头的汗：「暑天辛苦，属下无碍，小姐别担心。」', '护卫道：「六月路上中暑的人多，属下随身带了药，请放心。」', '护卫平静道：「暑热难耐，小姐若不舒适，随时告知。」'],
+    ['护卫说：「七月夜间凉快，若小姐要出行，早些告知属下。」', '护卫低头：「属下最近得到一个消息，不知是否该禀告小姐……」', '护卫郑重道：「七月里将军有些军务，小姐行动要注意。」'],
+    ['护卫说：「中秋夜热闹，属下已安排好护行。」', '护卫低声道：「月圆夜人多，属下一直在附近，小姐安心。」', '护卫拱手：「中秋节好，小姐可有什么吩咐？」'],
+    ['护卫说：「九月秋高，若小姐要去郊外赏景，请提前告知。」', '护卫道：「属下注意到最近有几个陌生人在将军府附近转悠……」', '护卫拱手：「重阳节，属下护小姐登高，路上当心。」'],
+    ['护卫说：「十月入冬，小姐出行路滑，属下会多加注意。」', '护卫道：「属下昨日巡查了一遍，府内一切安好。」', '护卫低声：「将军近日有些心事，小姐可以去陪陪将军。」'],
+    ['护卫道：「十一月了，天寒地冻，小姐少出门为好。」', '护卫拱手：「属下已备好冬日巡查路线，小姐安心。」', '护卫说：「若小姐有急事要出行，务必知会属下，莫要独自行动。」'],
+    ['护卫道：「腊月里年关将近，宵小作乱的多，属下寸步不离。」', '护卫拱手：「腊月里将军事务繁忙，小姐多担待。」', '护卫说：「岁末了，一年辛苦，小姐多保重。」'],
+  ],
+  wangwenyu: [
+    ['王文玉正翻着一本诗集，见你来了，轻轻放下书：「正月里，你也来了。」', '王文玉抬起头，嘴角微扬：「新年好，今日的你，比平日多了几分喜气。」', '王文玉淡淡地说：「正月里，诗也写得顺了些。见你来，倒是意外之喜。」'],
+    ['王文玉整了整衣袖：「二月春寒，你今日穿得可够？」', '王文玉放下笔：「春日初到，倒是写了几首新诗，你想看吗？」', '王文玉若有所思地望着窗外：「二月的风，吹得人心里有些乱。」'],
+    ['王文玉难得地笑了：「三月桃花开了，你也来了，倒是应景。」', '王文玉递来一张纸：「昨夜做了一首关于春天的词，你帮我看看？」', '王文玉凝视着窗外：「春日一年只有一次，来，我们好好说说话。」'],
+    ['王文玉放下书，直视你：「四月里，你今日来，可是有话要说？」', '王文玉低声道：「春深了，燕子都回来了，你来得也正是时候。」', '王文玉微微皱眉：「四月了，有些事我一直想……算了，你先坐。」'],
+    ['王文玉说：「端阳节，你是来看我，还是来赏龙舟的？」', '王文玉拿出一个香包：「这是我亲手编的，端阳节驱邪的，给你。」', '王文玉低声：「五月了，一年过了快一半，你的事情，都还顺利吗？」'],
+    ['王文玉皱了皱眉：「六月暑热，你怎么还出来？」', '王文玉递来一杯凉茶：「我自己晒的菊花茶，消暑用，你尝尝。」', '王文玉看着你：「暑天里，我倒是写了不少诗，你想听哪首？」'],
+    ['王文玉说：「七月夜长，你此刻来，有什么事吗？」', '王文玉仰望着天空：「七夕将至，你说，天下有情人能否终成眷属？」', '王文玉微微一笑：「七月里，你来了，我这里就没那么闷了。」'],
+    ['王文玉放下笔：「八月中秋，你来得好，我正想找人说说话。」', '王文玉望着月亮：「月圆人团圆……你身边，都有谁陪着你？」', '王文玉说：「中秋的诗最难写，月亮千古不变，心思却各有不同。」'],
+    ['王文玉摘下一片红叶递给你：「九月来了，送你一片秋意。」', '王文玉说：「秋天最宜读书、写字，你来得好，我们一起。」', '王文玉叹道：「九月了，一年的事，你都经历过了，感受如何？」'],
+    ['王文玉说：「十月寒了，你还是这么爱出门。」', '王文玉微微颔首：「秋冬之交，心里总有些说不清的感觉，你呢？」', '王文玉放下书：「冬天要来了，有些事，是不是该有个结果了？」'],
+    ['王文玉说：「十一月，冷了，你怎么来了？」', '王文玉递来一杯热茶：「天寒，喝口热的，别客气。」', '王文玉看着你：「霜降了，我近来写了一首诗，想请你指正。」'],
+    ['王文玉叹了口气：「腊月了，一年又要过去了。」', '王文玉说：「年关将至，你今年过得好吗？」', '王文玉轻声：「腊月里，我常想起很多事……见你来了，倒是好些了。」'],
+  ],
+  mushfeng: [
+    ['沐风微微一怔，随即回神：「正月里？你怎么来了这里……」', '沐风负手而立，见你来，神色复杂：「新年好……我以为你不会来。」', '沐风轻哼一声：「正月里的风，和别处不一样，你来，是有事吗？」'],
+    ['沐风看着漫天黄沙：「二月还是这么冷，你一个人来的？」', '沐风低声：「春还没到，这里的风就不曾停歇过。」', '沐风回头看了你一眼：「二月……你来这里，不担心？」'],
+    ['沐风扬起嘴角：「三月了，春风终于吹到这里了，你来了……」', '沐风若有所思：「南边三月桃花盛开，这里却还是黄沙漫漫，你说，哪里更好？」', '沐风低声说：「春天……幕风公子曾说，他最喜欢春天。」'],
+    ['沐风斜眼看你：「四月了，你还记得找我，不容易。」', '沐风摸了摸腰间的佩玉：「春深，总有些旧事想起来……」', '沐风说：「四月里风沙小了些，难得，说吧，来找我什么事。」'],
+    ['沐风扫了一眼你：「端阳节也出来？中原的节日，你们倒是讲究。」', '沐风拿出一样东西：「你带了信物来吗？有些事，我只对持信物的人说。」', '沐风低声：「五月……是他离开的月份。你知道吗？」'],
+    ['沐风擦了擦剑：「六月暑热，你跑这么远来，不嫌热？」', '沐风淡淡说：「夏天的风沙最烈，很多人不来，你来了，算有胆气。」', '沐风说：「你来找我，有什么想问的，直接说。」'],
+    ['沐风望着天际：「七月……你来了。」', '沐风低声说：「七夕，南边一定很热闹，你不去那里，来这里做什么？」', '沐风转过身来：「七月夜里，我偶尔会想起一些事……你来得刚好。」'],
+    ['沐风说：「中秋了，月亮在哪里都是圆的，但感觉……不一样。」', '沐风瞥了你一眼：「八月月圆，你特意来看我，是有话说？」', '沐风望着月亮：「这月色……幕风公子在的时候，我们也看过。」'],
+    ['沐风说：「九月秋高，最适合赶路，你来这里，反其道而行？」', '沐风扫了一眼：「秋天了，你今年有没有长进？」', '沐风说：「重阳……中原人登高，我们在这里也是一样，只是看的风景不同。」'],
+    ['沐风拢了拢身上的外袍：「十月寒了，你还来，胆子不小。」', '沐风低声：「冬天来了，很多事该有了定论，你准备好了吗？」', '沐风说：「十月里，幕风公子曾托我一件事，我一直没有完成……」'],
+    ['沐风说：「十一月了，你来这里，不怕冷？」', '沐风望着远处：「深冬了，有些人就此再也回不来了……你珍重。」', '沐风低声道：「这个季节，有些话，你或许该听了。」'],
+    ['沐风叹了口气：「腊月，快过年了，你还记得来……」', '沐风说：「年关了，很多事都该有个了结，你说呢？」', '沐风望着远方：「腊月里，我总想着那些没说完的话……你能听我说一说吗？」'],
+  ],
+};
+
+// 根据月份和NPC id获取随机引导文字
+function getMonthlyNpcIntro(npcId, month) {
+  const intros = MONTHLY_NPC_INTRO[npcId];
+  if (!intros) return null;
+  const monthIntros = intros[(month - 1) % 12];
+  if (!monthIntros || !monthIntros.length) return null;
+  return monthIntros[Math.floor(Math.random() * monthIntros.length)];
+}
+
+// ─────────────────────────────────────────
 // 时间/天气滤镜系统
 // ─────────────────────────────────────────
 
@@ -560,7 +747,7 @@ function useTypewriter(text, speed = 38, skip = false) {
   return Math.min(count, text?.length || 0);
 }
 
-function NpcBubble({ npc, position, onClose, onChoice, containerRef, onSceneChange, onItemGift, onDialogueImage, currentSceneId }) {
+function NpcBubble({ npc, position, onClose, onChoice, containerRef, onSceneChange, onItemGift, onDialogueImage, currentSceneId, month, onMiniGame }) {
   const [phase, setPhase] = useState('dialogues'); // 'dialogues' | 'choice' | 'consequence'
   const [dialogueIdx, setDialogueIdx] = useState(0);
   const [avatarErr, setAvatarErr] = useState(false);
@@ -606,9 +793,21 @@ function NpcBubble({ npc, position, onClose, onChoice, containerRef, onSceneChan
         const img = getDialogueImage(npc.dialogues[nextIdx]);
         if (img) onDialogueImage?.(img);
       } else if (hasChoice) {
-        setPhase('choice');
+        // 百草堂大夫：对话结束后直接触发游戏，跳过选项
+        if (currentSceneId === 'medicine_hall' && npc.id === 'med_doctor' && onMiniGame) {
+          onClose();
+          onMiniGame('herb_match');
+        } else {
+          setPhase('choice');
+        }
       } else {
-        onClose();
+        // 悦来居栈掌柜：对话结束后直接触发跑堂游戏
+        if (currentSceneId === 'inn' && npc.id === 'inn_keeper' && onMiniGame) {
+          onClose();
+          onMiniGame('serving_game');
+        } else {
+          onClose();
+        }
       }
     } else if (phase === 'consequence') {
       onClose();
@@ -854,6 +1053,16 @@ function NpcBubble({ npc, position, onClose, onChoice, containerRef, onSceneChan
               }}
             >✕</button>
           </div>
+
+          {/* 月份引导文字 */}
+          {(() => {
+            const intro = month ? getMonthlyNpcIntro(npc.id, month) : (text || null);
+            return intro ? (
+              <div style={{ fontSize: '12px', color: 'rgba(245,230,236,0.7)', lineHeight: '1.7', marginBottom: '10px', fontStyle: 'italic', borderLeft: '2px solid rgba(212,81,122,0.4)', paddingLeft: '8px' }}>
+                {intro}
+              </div>
+            ) : null;
+          })()}
 
           {/* 选项按钮 */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -1416,7 +1625,7 @@ function cellToAvatarStyle(cells) {
 // ─────────────────────────────────────────
 // 活动场景大图视图（含 NPC 热点 + 气泡）
 // ─────────────────────────────────────────
-function ActiveSceneView({ scene, npcsMap, character, wardrobe, onNpcChoice, onSceneChange, onItemGift, fullWidth, onInteractionEnd, onNpcActivate, onNpcBubbleClose, sceneEntryImage, sceneEntryBonus }) {
+function ActiveSceneView({ scene, npcsMap, character, wardrobe, onNpcChoice, onSceneChange, onItemGift, fullWidth, onInteractionEnd, onNpcActivate, onNpcBubbleClose, sceneEntryImage, sceneEntryBonus, onMiniGame }) {
   const [activeBubble, setActiveBubble] = useState(null); // npc.id
   const [activeNpcData, setActiveNpcData] = useState(null); // 随机选取后的 npc 数据
   const [bgError, setBgError] = useState(false);
@@ -1925,6 +2134,8 @@ function ActiveSceneView({ scene, npcsMap, character, wardrobe, onNpcChoice, onS
             onItemGift={onItemGift}
             onDialogueImage={img => { if (img) setBubbleOverrideImg(img); }}
             currentSceneId={scene.id}
+            month={character?.monthInfo?.monthInYear}
+            onMiniGame={onMiniGame}
           />
         );
       })()}
@@ -2505,7 +2716,7 @@ function CourtNpcCard({ npc, unlocked, metThisMonth, onClick }) {
 // ─────────────────────────────────────────
 // 宫廷见面结果对话框
 // ─────────────────────────────────────────
-function CourtMeetResultDialogue({ result, onClose, onSceneHint }) {
+function CourtMeetResultDialogue({ result, onClose, onSceneHint, hideStageImage }) {
   const { npc, success, alreadyMet, dialogue, gift, emperorVisitCount } = result;
 
   // 皇上立绘：按累计见面次数（0-based）顺序展示4张
@@ -2548,8 +2759,8 @@ function CourtMeetResultDialogue({ result, onClose, onSceneHint }) {
       boxShadow: '0 4px 24px rgba(0,0,0,0.5)',
       animation: 'dialogueFadeUp 0.3s ease both',
     }}>
-      {/* 皇上立绘（按见面次数顺序显示） */}
-      {emperorStageImage && (
+      {/* 皇上立绘（已在场景大图区显示时隐藏） */}
+      {emperorStageImage && !hideStageImage && (
         <div style={{
           width: '100%', borderRadius: '10px', overflow: 'hidden',
           marginBottom: '14px',
@@ -2669,9 +2880,12 @@ function CourtMeetResultDialogue({ result, onClose, onSceneHint }) {
 // ─────────────────────────────────────────
 // 场景横幅（选择场景时用 bgImage）
 // ─────────────────────────────────────────
-function SceneBanner({ scene }) {
+function SceneBanner({ scene, month }) {
   const [bgError, setBgError] = useState(false);
   useEffect(() => { setBgError(false); }, [scene.id]);
+  const monthlyDesc = month && MONTHLY_SCENE_DESC[scene.id]
+    ? MONTHLY_SCENE_DESC[scene.id][(month - 1) % 12]
+    : null;
   const hasBg = scene.bgImage && !bgError;
 
   return (
@@ -2732,7 +2946,7 @@ function SceneBanner({ scene }) {
           lineHeight: '1.65', maxWidth: '360px',
           textShadow: '0 1px 4px rgba(0,0,0,0.5)'
         }}>
-          {scene.description}
+          {monthlyDesc || scene.description}
         </p>
       </div>
     </div>
@@ -3174,6 +3388,7 @@ const SCENE_RANDOM_ACTIVITIES = {
     { id: 'chess_game', icon: '♟️', title: '棋局观战', desc: '两位老者正在下棋，棋局颇为精妙。', type: 'choice', options: [{ label: '旁观学习', result: '你看出了一步妙棋，默默记下，才学+2', skill: 'wisdom', jade: 2, delta: 2 }, { label: '挑战一局', result: '虽然落败，但老者指点了你几招，才学+1', skill: 'wisdom', jade: 1, delta: 1 }] },
     { id: 'traveler_tale', icon: '🗺️', title: '旅人见闻', desc: '一位从远方来的旅人正在讲述异乡见闻。', type: 'observe', result: '旅人的故事让你对远方充满向往，胆识+1灵气+1', skill: 'courage', jade: 1, delta: 1 },
     { id: 'culinary_secret', icon: '🍜', title: '厨艺秘诀', desc: '掌柜的正在指点厨娘改进菜肴，你在旁听了个大概。', type: 'observe', result: '学到了一个调味小技巧，厨艺+2', skill: 'culinary', jade: 2, delta: 2 },
+    { id: 'serving_game', icon: '🍽️', title: '端菜跑堂', desc: '掌柜人手不足，邀你帮忙跑堂！60秒内靠近桌位用J键放菜、K键收钱，每完成一个奖励1玉。', type: 'mini_game', gameId: 'serving_game' },
   ],
   royal_court: [
     { id: 'court_etiquette', icon: '👑', title: '宫廷礼仪', desc: '一位老嬷嬷正在纠正宫女的礼仪，你也在旁学习。', type: 'observe', result: '宫廷礼仪精妙，你记下了几个要点，亲和+1魅力+1', skill: 'affinity', jade: 1, delta: 1 },
@@ -3192,7 +3407,7 @@ const SCENE_RANDOM_ACTIVITIES = {
     { id: 'flower_arrangement', icon: '🌺', title: '插花艺术', desc: '礼仪堂的老师正在教授插花技艺。', type: 'observe', result: '学习了插花的意境，魅力+1灵气+1', skill: 'charm', jade: 1, delta: 1 },
   ],
   medicine_hall: [
-    { id: 'herb_study', icon: '🌿', title: '草药研究', desc: '药房里摆满了各种草药，散发着清香。', type: 'choice', options: [{ label: '认真研读', result: '你翻阅了几本药典，医术+2才学+1', skill: 'medical', jade: 2, delta: 2 }, { label: '闻香辨药', result: '通过气味辨认出了几种草药，医术+1', skill: 'medical', jade: 1, delta: 1 }] },
+    { id: 'herb_study', icon: '🌿', title: '识药消消乐', desc: '大夫说：认识草药，先从图辨名、名辨效开始。来，试试这个识药游戏？', type: 'mini_game', gameId: 'herb_match' },
     { id: 'patient_care', icon: '💊', title: '协助诊治', desc: '有病人前来就诊，大夫正在忙碌。', type: 'choice', options: [{ label: '主动协助', result: '你帮忙递送药材，学到了不少，医术+2道德+1', skill: 'medical', jade: 2, delta: 2 }, { label: '旁观学习', result: '观察大夫的诊治方法，医术+1', skill: 'medical', jade: 1, delta: 1 }] },
     { id: 'meditation', icon: '🧘', title: '静心调息', desc: '药堂一角有人在打坐调息，气氛宁静。', type: 'observe', result: '你也静坐片刻，灵气+2', skill: 'spirit', jade: 2, delta: 2 },
   ],
@@ -3287,7 +3502,16 @@ function SceneActivityCard({ activity, onComplete }) {
           <div style={{ fontSize: '13px', color: 'rgba(245,230,236,0.75)', lineHeight: '1.7', marginBottom: '10px' }}>
             {activity.desc}
           </div>
-          {activity.type === 'observe' ? (
+          {activity.type === 'mini_game' ? (
+            <button onClick={() => onComplete && onComplete(activity.gameId, 0, 0)} style={{
+              width: '100%', padding: '8px', background: 'linear-gradient(135deg, rgba(50,120,60,0.3), rgba(30,80,40,0.3))',
+              border: '1px solid rgba(100,200,120,0.4)', borderRadius: '8px',
+              color: '#90EE90', fontSize: '12px', fontWeight: '700', cursor: 'pointer',
+              fontFamily: 'inherit', letterSpacing: '2px',
+            }}>
+              🌿 开始识药游戏
+            </button>
+          ) : activity.type === 'observe' ? (
             <button onClick={handleObserve} style={{
               width: '100%', padding: '8px', background: 'rgba(212,81,122,0.15)',
               border: '1px solid rgba(212,81,122,0.35)', borderRadius: '8px',
@@ -3336,7 +3560,7 @@ export default function SceneView({
   sceneData, scenes, character, wardrobe, courseResult, skillConfig,
   onAttendCourse, onTalkToNpc, onNpcChoice, onSceneChange,
   onItemGift, currentScene, fullWidth, onInteractionEnd, onNpcActivate, onNpcBubbleClose,
-  onSceneActivityComplete, sceneEntryImage, sceneEntryBonus
+  onSceneActivityComplete, sceneEntryImage, sceneEntryBonus, onMiniGame
 }) {
   const { scene, npcs, courses } = sceneData;
   const [showCourtModal, setShowCourtModal] = useState(false);
@@ -3359,10 +3583,25 @@ export default function SceneView({
     onSceneChange(sceneId);
   };
 
+  // 宫廷见面结果时的皇上立绘图
+  const EMPEROR_STAGE_IMAGES = [
+    '/assets/stage_images/royal_emperor_s1.png',
+    '/assets/stage_images/royal_emperor_s2.png',
+    '/assets/stage_images/royal_emperor_s3.png',
+    '/assets/stage_images/royal_emperor_s4.png',
+  ];
+  const emperorStageImg = scene.id === 'royal_court' && courtMeetResult?.success && courtMeetResult?.npc?.id === 'emperor'
+    ? EMPEROR_STAGE_IMAGES[Math.min((courtMeetResult.emperorVisitCount || 0), 3)]
+    : null;
+
   return (
     <div>
-      {/* 场景大图区 */}
-      {hasActiveImg ? (
+      {/* 场景大图区：宫廷见面时替换为皇上立绘 */}
+      {emperorStageImg ? (
+        <div style={{ width: '100%', borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(201,168,76,0.3)', boxShadow: '0 0 30px rgba(201,168,76,0.12)', animation: 'overlayFadeIn 0.5s ease' }}>
+          <img src={emperorStageImg} alt="皇上" style={{ width: '100%', display: 'block', objectFit: 'cover', maxHeight: '420px' }} onError={e => { e.currentTarget.parentElement.style.display='none'; }} />
+        </div>
+      ) : hasActiveImg ? (
         <ActiveSceneView
           scene={scene}
           npcsMap={npcsMap}
@@ -3377,9 +3616,10 @@ export default function SceneView({
           onNpcBubbleClose={onNpcBubbleClose}
           sceneEntryImage={sceneEntryImage}
           sceneEntryBonus={sceneEntryBonus}
+          onMiniGame={onMiniGame}
         />
       ) : (
-        <SceneBanner scene={scene} />
+        <SceneBanner scene={scene} month={character?.monthInfo?.monthInYear} />
       )}
 
       {/* 宫廷场景专属：今天要见谁呢？（见过一次后不再显示） */}
@@ -3387,12 +3627,13 @@ export default function SceneView({
         <CourtDepartureBar onDepart={() => setShowCourtModal(true)} />
       )}
 
-      {/* 宫廷场景：见面结果对话框 */}
+      {/* 宫廷场景：见面结果对话框（立绘已在上方，这里只保留对话文字部分） */}
       {scene.id === 'royal_court' && courtMeetResult && (
         <CourtMeetResultDialogue
           result={courtMeetResult}
           onClose={() => setCourtMeetResult(null)}
           onSceneHint={handleCourtSceneHint}
+          hideStageImage={!!emperorStageImg}
         />
       )}
 

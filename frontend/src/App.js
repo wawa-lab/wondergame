@@ -17,6 +17,8 @@ import ShopPanel from './components/ShopPanel';
 import RanchGame from './components/RanchGame';
 import IntroSlides from './components/IntroSlides';
 import LaborMiniGame from './components/LaborMiniGame';
+import HerbMatchGame from './components/HerbMatchGame';
+import InnServingGame from './components/InnServingGame';
 import ITEM_HINTS_DATA from './itemHints';
 
 const streetImage = '/assets/scenes/street_scene.jpg';
@@ -600,6 +602,8 @@ export default function App() {
   const [pendingCourses, setPendingCourses] = useState(null);
   // 劳动/课程小游戏状态
   const [showRanchGame, setShowRanchGame] = useState(false);
+  const [showHerbMatch, setShowHerbMatch] = useState(false);
+  const [showInnServing, setShowInnServing] = useState(false);
   const [activeLaborGame, setActiveLaborGame] = useState(null);
   const [pendingCourseGames, setPendingCourseGames] = useState(null); // { queue: ['舞蹈','狩猎'], courses: [...], done: [] }
   const pendingCourseGamesRef = useRef(null);
@@ -1878,7 +1882,7 @@ export default function App() {
       {/* 音效按钮 */}
       <SfxToggleButton />
       <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0, background: 'radial-gradient(ellipse at 10% 20%, rgba(212,81,122,0.08) 0%, transparent 40%)' }} />
-      <TopBar character={character} onReset={handleResetGame} onResetNpcVisits={handleResetNpcVisits} onLogout={handleLogout} username={username} />
+      <TopBar character={character} jadeCoins={jadeCoins} onReset={handleResetGame} onResetNpcVisits={handleResetNpcVisits} onLogout={handleLogout} username={username} />
       <div style={{ paddingTop: '65px', position: 'relative', zIndex: 1 }}>
         {homeSubTab === 'outdoor' && !sceneData && !showStreet ? (
           <div style={{ margin: '0 auto', padding: '20px 16px 100px' }}>
@@ -1944,6 +1948,8 @@ export default function App() {
                   })()}
                   scenes={gameConfig.scenes} character={character} wardrobe={gameConfig.wardrobe} courseResult={courseResult} skillConfig={gameConfig.skillConfig} shopItems={gameConfig.shopItems || []} onAttendCourse={handleAttendCourse} onTalkToNpc={handleTalkToNpc} onNpcChoice={handleNpcChoice} onSceneChange={handleSceneChange} onBuyItem={handleBuyShopItem} onItemGift={handleItemGift} currentScene={currentScene} onInteractionEnd={() => {}} onNpcActivate={handleNpcActivate} onNpcBubbleClose={handleNpcBubbleClose} sceneEntryImage={sceneEntryImage} sceneEntryBonus={sceneEntryBonus}
                   onSceneActivityComplete={async (skill, delta, jade = 0) => {
+                    if (skill === 'herb_match') { setShowHerbMatch(true); return; }
+                    if (skill === 'serving_game') { setShowInnServing(true); return; }
                     try {
                       await axios.post(`${API_BASE}/game/event`, { eventType: 'skill_bonus', payload: { skill, value: delta } });
                       setCharacter(prev => prev ? { ...prev, skills: { ...prev.skills, [skill]: Math.min(100, (prev.skills?.[skill] || 0) + delta) } } : prev);
@@ -1955,6 +1961,10 @@ export default function App() {
                         showToast(`✨ ${SKILL_NAMES_MAP[skill] || skill} +${delta}`, 'success');
                       }
                     } catch {}
+                  }}
+                  onMiniGame={(gameId) => {
+                    if (gameId === 'herb_match' || gameId === undefined) setShowHerbMatch(true);
+                    else if (gameId === 'serving_game') setShowInnServing(true);
                   }}
                 />
               </div>
@@ -2136,6 +2146,28 @@ export default function App() {
       )}
       {showRanchGame && (
         <RanchGame key="牧羊放牛" onComplete={(score) => handleLaborGameComplete('牧羊放牛', score)} onExit={() => handleLaborGameComplete('牧羊放牛', 0)} />
+      )}
+      {showHerbMatch && (
+        <HerbMatchGame
+          onClose={() => setShowHerbMatch(false)}
+          onJadeEarned={(amount) => {
+            setJadeCoins(prev => { const n = prev + amount; localStorage.setItem('jadeCoins', String(n)); scheduleSyncLocalState(); return n; });
+            showToast(`🌿 识药成功！💎 +${amount}玉`, 'success');
+            setShowHerbMatch(false);
+          }}
+        />
+      )}
+      {showInnServing && (
+        <InnServingGame
+          onClose={() => setShowInnServing(false)}
+          onJadeEarned={(amount) => {
+            if (amount > 0) {
+              setJadeCoins(prev => { const n = prev + amount; localStorage.setItem('jadeCoins', String(n)); scheduleSyncLocalState(); return n; });
+              showToast(`🍽️ 服务完成！💎 +${amount}玉`, 'success');
+            }
+            setShowInnServing(false);
+          }}
+        />
       )}
       {activeLaborGame && (
         <LaborMiniGame
@@ -7952,223 +7984,124 @@ function SceneEntryModal_UNUSED({ data, onClose }) {
 }
 
 function RareEventModal({ event, onClose, onConfirm }) {
-  const [imageUrl, setImageUrl] = React.useState(null);
-  const [imgLoading, setImgLoading] = React.useState(true);
-  const [phase, setPhase] = React.useState('story'); // story | interact | result
-  const [clickedSpot, setClickedSpot] = React.useState(null);
-  const [wrongFlash, setWrongFlash] = React.useState(null);
-  const [ripples, setRipples] = React.useState([]);
+  const [phase, setPhase] = React.useState('story'); // story | result
+  const [chosenChoice, setChosenChoice] = React.useState(null);
   const [confirmed, setConfirmed] = React.useState(false);
-
-  React.useEffect(() => {
-    setImageUrl(null);
-    setImageUrl(event?.fallbackImage || null);
-    setImgLoading(false);
-  }, [event?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!event) return null;
 
-  const spots = event.interactiveSpots || [];
-  const skillGains = event.skillGains || {};
-  const skillNames = { medical:'医术', morality:'道德', music:'乐艺', poetry:'诗才', charm:'魅力', martial:'武术', command:'统帅', courage:'胆识', affinity:'亲和', reputation:'声望', wisdom:'才学', rhetoric:'口才' };
+  const choices = event.choices || [];
+  const skillNames = { medical:'医术', morality:'道德', music:'乐艺', poetry:'诗才', charm:'魅力', martial:'武术', command:'统帅', courage:'胆识', affinity:'亲和', reputation:'声望', wisdom:'才学', rhetoric:'口才', evil:'邪恶', wildness:'野性', vitality:'体力', spirit:'灵气', statecraft:'政治', arithmetic:'算数', crafting:'手工', painting:'画艺' };
 
-  const handleSpotClick = (spot) => {
-    if (clickedSpot) return;
-    const id = Date.now();
-    setRipples(r => [...r, { id, x: spot.x + spot.w / 2, y: spot.y + spot.h / 2 }]);
-    setTimeout(() => setRipples(r => r.filter(x => x.id !== id)), 700);
-    if (spot.correct) {
-      setClickedSpot(spot);
-      setPhase('result');
-    } else {
-      setWrongFlash(spot.id);
-      setTimeout(() => setWrongFlash(null), 800);
-    }
+  const choiceColors = {
+    positive: { bg: 'rgba(52,211,153,0.15)', border: 'rgba(52,211,153,0.5)', color: '#34D399', tag: '积极', tagBg: 'rgba(52,211,153,0.2)' },
+    neutral:  { bg: 'rgba(168,85,247,0.12)', border: 'rgba(168,85,247,0.4)', color: '#C084FC', tag: '中性', tagBg: 'rgba(168,85,247,0.15)' },
+    negative: { bg: 'rgba(239,68,68,0.12)',  border: 'rgba(239,68,68,0.4)',  color: '#F87171', tag: '消极', tagBg: 'rgba(239,68,68,0.15)' },
+  };
+
+  const handleChoiceClick = (choice) => {
+    if (phase !== 'story') return;
+    setChosenChoice(choice);
+    setPhase('result');
   };
 
   const handleConfirm = async () => {
-    if (confirmed) return;
+    if (confirmed || !chosenChoice) return;
     setConfirmed(true);
     try {
-      const res = await axios.post(`${API_BASE}/event/confirm`, { eventId: event.id });
+      const res = await axios.post(`${API_BASE}/event/confirm`, { eventId: event.id, choiceId: chosenChoice.id });
       if (onConfirm) onConfirm(res.data?.data?.character);
     } catch {}
     onClose();
   };
 
   return (
-    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.92)', zIndex: 9000, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.92)', zIndex: 9000, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
       <style>{`
-        @keyframes rareRipple { 0% { transform:translate(-50%,-50%) scale(0); opacity:0.9; } 100% { transform:translate(-50%,-50%) scale(3.5); opacity:0; } }
         @keyframes rareFadeIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
-        @keyframes rareWrong { 0%,100% { transform:translateX(0); } 25% { transform:translateX(-6px); } 75% { transform:translateX(6px); } }
-        @keyframes rareCorrect { 0% { box-shadow:0 0 0 0 rgba(52,211,153,0.8); } 100% { box-shadow:0 0 0 24px rgba(52,211,153,0); } }
-        @keyframes rareGainFloat { 0% { opacity:1; transform:translateY(0) scale(1); } 100% { opacity:0; transform:translateY(-50px) scale(1.2); } }
         @keyframes rarePulse { 0%,100% { opacity:0.6; transform:scale(1); } 50% { opacity:1; transform:scale(1.06); } }
+        @keyframes rareChoiceHover { to { transform:translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); } }
       `}</style>
 
-      {/* 顶部标题栏 */}
-      <div style={{ width: '100%', maxWidth: '900px', display: 'flex', alignItems: 'center', gap: '12px', padding: '0 20px 14px', animation: 'rareFadeIn 0.4s ease' }}>
-        <span style={{ fontSize: '22px', filter: 'drop-shadow(0 0 8px rgba(168,85,247,0.8))' }}>✨</span>
-        <span style={{ fontSize: '11px', color: 'rgba(192,132,252,0.7)', letterSpacing: '4px', fontWeight: '700' }}>奇遇降临</span>
-        <span style={{ fontSize: '20px', fontWeight: '800', color: '#E9D5FF', letterSpacing: '2px', marginLeft: '4px' }}>{event.title}</span>
-        <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, rgba(168,85,247,0.4), transparent)', marginLeft: '8px' }} />
-      </div>
+      {/* 主体弹窗 */}
+      <div style={{ width: '100%', maxWidth: '620px', maxHeight: '90vh', display: 'flex', flexDirection: 'column', background: 'linear-gradient(145deg, rgba(10,4,22,0.99), rgba(20,8,40,0.99))', border: '2px solid rgba(168,85,247,0.35)', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 0 60px rgba(168,85,247,0.2)', animation: 'rareFadeIn 0.4s ease' }}>
 
-      {/* 主体：横图区域 */}
-      <div style={{ width: '100%', maxWidth: '900px', position: 'relative', borderRadius: '16px', overflow: 'hidden', border: '2px solid rgba(168,85,247,0.35)', boxShadow: '0 0 60px rgba(168,85,247,0.25)', animation: 'rareFadeIn 0.5s ease 0.1s both' }}>
-        {/* 图片 / 加载占位 */}
-        <div style={{ width: '100%', aspectRatio: '16/9', background: 'linear-gradient(135deg, #0d0520, #1a0a35)', position: 'relative', overflow: 'hidden' }}>
-          {imgLoading && (
-            <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '14px' }}>
-              <div style={{ width: '48px', height: '48px', border: '3px solid rgba(168,85,247,0.3)', borderTop: '3px solid #A855F7', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
-              <span style={{ fontSize: '12px', color: 'rgba(192,132,252,0.6)', letterSpacing: '2px' }}>正在绘制场景…</span>
-            </div>
-          )}
-          {imageUrl && (
-            <img src={imageUrl} alt={event.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', animation: 'rareFadeIn 0.6s ease' }} />
-          )}
-          {!imgLoading && !imageUrl && (
-            <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <span style={{ fontSize: '60px', opacity: 0.15 }}>✨</span>
-            </div>
-          )}
-
-          {/* interact 阶段：可点击热区 */}
-          {phase === 'interact' && spots.map(spot => (
-            <div key={spot.id} onClick={() => handleSpotClick(spot)} style={{
-              position: 'absolute',
-              left: `${spot.x}%`, top: `${spot.y}%`,
-              width: `${spot.w}%`, height: `${spot.h}%`,
-              cursor: 'pointer',
-              border: wrongFlash === spot.id ? '2px solid rgba(239,68,68,0.8)' : '2px solid rgba(168,85,247,0.0)',
-              borderRadius: '8px',
-              background: wrongFlash === spot.id ? 'rgba(239,68,68,0.15)' : 'rgba(168,85,247,0.0)',
-              transition: 'all 0.2s',
-              animation: wrongFlash === spot.id ? 'rareWrong 0.4s ease' : 'rarePulse 2.5s ease-in-out infinite',
-              zIndex: 10,
-            }}>
-              {/* 悬停提示标签 */}
-              <div className="rare-spot-label" style={{
-                position: 'absolute', bottom: '-28px', left: '50%', transform: 'translateX(-50%)',
-                background: 'rgba(10,5,20,0.9)', border: '1px solid rgba(168,85,247,0.4)',
-                borderRadius: '6px', padding: '3px 8px', whiteSpace: 'nowrap',
-                fontSize: '11px', color: 'rgba(220,200,255,0.9)', fontWeight: '600',
-                pointerEvents: 'none', opacity: 0, transition: 'opacity 0.2s',
-              }}>{spot.label}</div>
-              {/* 脉冲圆点 */}
-              <div style={{
-                position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)',
-                width: '10px', height: '10px', borderRadius: '50%',
-                background: wrongFlash === spot.id ? '#EF4444' : 'rgba(168,85,247,0.7)',
-                boxShadow: `0 0 12px ${wrongFlash === spot.id ? '#EF4444' : '#A855F7'}`,
-                animation: 'rarePulse 1.5s ease-in-out infinite',
-              }} />
-            </div>
-          ))}
-
-          {/* 点击涟漪 */}
-          {ripples.map(r => (
-            <div key={r.id} style={{
-              position: 'absolute', left: `${r.x}%`, top: `${r.y}%`,
-              width: '60px', height: '60px', borderRadius: '50%',
-              border: '2px solid rgba(168,85,247,0.8)',
-              animation: 'rareRipple 0.7s ease forwards',
-              pointerEvents: 'none', zIndex: 20,
-            }} />
-          ))}
-
-          {/* result 阶段：正确高亮 + 属性浮字 */}
-          {phase === 'result' && clickedSpot && (
-            <>
-              <div style={{
-                position: 'absolute',
-                left: `${clickedSpot.x}%`, top: `${clickedSpot.y}%`,
-                width: `${clickedSpot.w}%`, height: `${clickedSpot.h}%`,
-                border: '2px solid rgba(52,211,153,0.9)',
-                borderRadius: '8px',
-                background: 'rgba(52,211,153,0.12)',
-                animation: 'rareCorrect 0.8s ease forwards',
-                zIndex: 10,
-              }} />
-              <div style={{
-                position: 'absolute',
-                left: `${clickedSpot.x + clickedSpot.w / 2}%`,
-                top: `${Math.max(5, clickedSpot.y - 10)}%`,
-                transform: 'translateX(-50%)',
-                display: 'flex', gap: '6px', flexWrap: 'wrap', justifyContent: 'center',
-                zIndex: 20, animation: 'rareGainFloat 2.5s ease forwards',
-              }}>
-                {Object.entries(skillGains).map(([k, v]) => (
-                  <span key={k} style={{
-                    background: 'rgba(52,211,153,0.9)', color: '#fff',
-                    fontSize: '13px', fontWeight: '800',
-                    padding: '3px 10px', borderRadius: '20px',
-                    boxShadow: '0 2px 12px rgba(52,211,153,0.6)',
-                    whiteSpace: 'nowrap',
-                  }}>{skillNames[k] || k} +{v}</span>
-                ))}
-              </div>
-            </>
-          )}
-
-          {/* story 阶段遮罩：点击进入互动 */}
-          {phase === 'story' && !imgLoading && (
-            <div onClick={() => setPhase('interact')} style={{
-              position: 'absolute', inset: 0,
-              background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 60%, transparent 100%)',
-              display: 'flex', alignItems: 'flex-end', justifyContent: 'center',
-              paddingBottom: '20px', cursor: 'pointer', zIndex: 5,
-            }}>
-              <div style={{
-                fontSize: '12px', color: 'rgba(220,200,255,0.8)', letterSpacing: '3px',
-                border: '1px solid rgba(168,85,247,0.4)', padding: '6px 18px', borderRadius: '20px',
-                background: 'rgba(10,5,20,0.6)', animation: 'rarePulse 2s ease-in-out infinite',
-              }}>点击画面进入场景</div>
-            </div>
-          )}
+        {/* 标题栏（固定） */}
+        <div style={{ flexShrink: 0, background: 'linear-gradient(90deg, rgba(168,85,247,0.25), rgba(168,85,247,0.05))', padding: '14px 20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <span style={{ fontSize: '18px' }}>✨</span>
+          <span style={{ fontSize: '11px', color: 'rgba(192,132,252,0.7)', letterSpacing: '4px', fontWeight: '700' }}>奇遇降临</span>
+          <span style={{ fontSize: '16px', fontWeight: '800', color: '#E9D5FF', marginLeft: '4px' }}>{event.title}</span>
+          <button onClick={onClose} style={{ marginLeft: 'auto', background: 'none', border: 'none', color: 'rgba(255,255,255,0.3)', fontSize: '16px', cursor: 'pointer', padding: '2px 6px' }}>✕</button>
         </div>
 
-        {/* 底部信息栏 */}
-        <div style={{ padding: '16px 20px', background: 'linear-gradient(135deg, rgba(15,5,25,0.98), rgba(25,10,40,0.98))' }}>
+        {/* 滚动区域 */}
+        <div style={{ flex: 1, overflowY: 'auto', padding: '20px' }}>
+          {/* 场景图（限制高度） */}
+          {event.fallbackImage && (
+            <img src={event.fallbackImage} alt={event.title} style={{ width: '100%', borderRadius: '12px', marginBottom: '16px', objectFit: 'cover', maxHeight: '160px' }} />
+          )}
+
+          {/* 故事文字 */}
+          <p style={{ fontSize: '14px', color: 'rgba(230,210,255,0.85)', lineHeight: '1.9', fontStyle: 'italic', marginBottom: '20px' }}>
+            「{event.text}」
+          </p>
+
+          {/* story 阶段：三个选项 */}
           {phase === 'story' && (
-            <p style={{ margin: 0, fontSize: '13px', color: 'rgba(230,210,255,0.85)', lineHeight: '1.8', fontStyle: 'italic', animation: 'rareFadeIn 0.4s ease' }}>
-              「{event.text}」
-            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <div style={{ fontSize: '11px', color: 'rgba(192,132,252,0.6)', letterSpacing: '2px', marginBottom: '4px' }}>✦ 你会怎么做？</div>
+              {choices.map(choice => {
+                const c = choiceColors[choice.type] || choiceColors.neutral;
+                return (
+                  <button key={choice.id} onClick={() => handleChoiceClick(choice)} style={{
+                    background: c.bg, border: `1.5px solid ${c.border}`, borderRadius: '12px',
+                    padding: '12px 16px', cursor: 'pointer', fontFamily: 'inherit',
+                    textAlign: 'left', transition: 'all 0.2s ease',
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = `0 6px 20px rgba(0,0,0,0.4)`; }}
+                  onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                      <span style={{ fontSize: '10px', fontWeight: '700', padding: '2px 8px', borderRadius: '10px', background: c.tagBg, color: c.color, letterSpacing: '1px' }}>{c.tag}</span>
+                      <span style={{ fontSize: '14px', fontWeight: '700', color: c.color }}>{choice.label}</span>
+                    </div>
+                    <div style={{ fontSize: '12px', color: 'rgba(230,210,255,0.7)', lineHeight: '1.6' }}>{choice.desc}</div>
+                  </button>
+                );
+              })}
+            </div>
           )}
-          {phase === 'interact' && (
-            <p style={{ margin: 0, fontSize: '13px', color: 'rgba(192,132,252,0.9)', lineHeight: '1.7', animation: 'rareFadeIn 0.3s ease' }}>
-              ✦ 在画面中找到正确的人物，点击与其互动
-            </p>
-          )}
-          {phase === 'result' && (
-            <div style={{ animation: 'rareFadeIn 0.4s ease' }}>
-              <p style={{ margin: '0 0 12px', fontSize: '13px', color: 'rgba(52,211,153,0.95)', lineHeight: '1.8', fontStyle: 'italic' }}>
-                「{event.interactivePrompt || event.gainText}」
-              </p>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
-                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                  {Object.entries(skillGains).map(([k, v]) => (
-                    <span key={k} style={{ fontSize: '12px', padding: '3px 10px', background: 'rgba(52,211,153,0.12)', border: '1px solid rgba(52,211,153,0.3)', borderRadius: '12px', color: '#34D399', fontWeight: '700' }}>
-                      {skillNames[k] || k} +{v}
-                    </span>
+
+          {/* result 阶段：结果展示 */}
+          {phase === 'result' && chosenChoice && (() => {
+            const c = choiceColors[chosenChoice.type] || choiceColors.neutral;
+            return (
+              <div style={{ animation: 'rareFadeIn 0.4s ease' }}>
+                <div style={{ background: c.bg, border: `1px solid ${c.border}`, borderRadius: '12px', padding: '14px 16px', marginBottom: '14px' }}>
+                  <p style={{ margin: 0, fontSize: '13px', color: c.color, lineHeight: '1.8', fontStyle: 'italic' }}>
+                    「{chosenChoice.result}」
+                  </p>
+                </div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '16px' }}>
+                  {Object.entries(chosenChoice.skillGains || {}).map(([k, v]) => (
+                    <span key={k} style={{
+                      fontSize: '12px', padding: '3px 10px', borderRadius: '12px', fontWeight: '700',
+                      background: v > 0 ? 'rgba(52,211,153,0.12)' : 'rgba(239,68,68,0.12)',
+                      border: `1px solid ${v > 0 ? 'rgba(52,211,153,0.3)' : 'rgba(239,68,68,0.3)'}`,
+                      color: k === 'evil' ? '#F87171' : (v > 0 ? '#34D399' : '#F87171'),
+                    }}>{skillNames[k] || k} {v > 0 ? '+' : ''}{v}</span>
                   ))}
                 </div>
                 <button onClick={handleConfirm} disabled={confirmed} style={{
-                  padding: '10px 24px', background: 'linear-gradient(135deg, #059669, #10B981)',
-                  border: 'none', borderRadius: '10px', color: '#fff',
+                  width: '100%', padding: '12px', background: `linear-gradient(135deg, ${c.color}88, ${c.color}55)`,
+                  border: `1px solid ${c.border}`, borderRadius: '12px', color: '#fff',
                   fontSize: '13px', fontWeight: '700', cursor: confirmed ? 'default' : 'pointer',
-                  fontFamily: 'inherit', whiteSpace: 'nowrap', flexShrink: 0,
-                  opacity: confirmed ? 0.6 : 1,
-                }}>感谢奇遇 ✦</button>
+                  fontFamily: 'inherit', opacity: confirmed ? 0.6 : 1,
+                }}>命运已定 ✦</button>
               </div>
-            </div>
-          )}
+            );
+          })()}
         </div>
       </div>
-
-      {/* 热区悬停CSS */}
-      <style>{`.rare-spot-label { opacity: 0 !important; } div:hover > .rare-spot-label { opacity: 1 !important; }`}</style>
     </div>
   );
 }

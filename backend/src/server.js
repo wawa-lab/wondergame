@@ -249,24 +249,55 @@ const RARE_EVENTS = [
   {
     id: 'rare_doctor_mentor',
     title: '妙手传承',
-    text: '行至百草堂附近，一位须发皆白的老大夫突然晕倒在街边。四周百姓围观却无人施救，你上前查看，发现是中暑昏厥。你取出随身药囊，施以针灸急救……',
+    text: '行至百草堂附近，一位须发皆白的老大夫突然晕倒在街边。四周百姓围观却无人施救，你上前查看，发现是中暑昏厥。老大夫手边的药箱散落一地……',
     condition: (gs) => !(gs.eventFlags?.rare_doctor_mentor),
     scene: 'medicine_hall',
     fallbackImage: '/assets/events/rare_event_doctor.png',
-    imagePrompt: 'Ancient Chinese medicine hall street scene, an elderly white-bearded doctor collapsed on the ground, concerned bystanders watching, a young woman in hanfu kneeling to help, traditional Chinese medicine shop background, warm afternoon light, detailed ink wash painting style, ultra-wide 16:9 horizontal composition, cinematic',
-    interactiveSpots: [
-      { id: 'correct', label: '老大夫', hint: '须发皆白、手持药箱的老者', x: 38, y: 62, w: 18, h: 22, correct: true },
-      { id: 'wrong1', label: '围观路人', hint: '这只是普通路人', x: 68, y: 55, w: 14, h: 20, correct: false },
-      { id: 'wrong2', label: '药铺掌柜', hint: '掌柜正忙着招揽生意', x: 15, y: 45, w: 16, h: 25, correct: false },
+    choices: [
+      {
+        id: 'positive',
+        label: '立即施救',
+        desc: '取出随身药囊，施以针灸急救，守在老大夫身边直到他苏醒。',
+        type: 'positive',
+        effect: (gs) => {
+          gs.skills.medical = Math.min(100, (gs.skills.medical || 0) + 10);
+          gs.skills.morality = Math.min(100, (gs.skills.morality || 0) + 5);
+        },
+        result: '老大夫苏醒，凝视着你说：「丫头，你有仁心。老夫行医五十年，这套针法传给你。」',
+        gainText: '医术+10，道德+5',
+        skillGains: { medical: 10, morality: 5 },
+      },
+      {
+        id: 'neutral',
+        label: '去找大夫',
+        desc: '不擅医术，跑去附近的铺子叫来掌柜的帮忙。',
+        type: 'neutral',
+        effect: (gs) => {
+          gs.skills.affinity = Math.min(100, (gs.skills.affinity || 0) + 3);
+        },
+        result: '老大夫得救了，虽未亲自施救，你的热心肠也得到众人称赞。',
+        gainText: '亲和+3',
+        skillGains: { affinity: 3 },
+      },
+      {
+        id: 'negative',
+        label: '趁机取走药箱',
+        desc: '四下无人注意，顺手将老大夫散落的珍贵药材收入囊中。',
+        type: 'negative',
+        effect: (gs) => {
+          gs.skills.evil = Math.min(100, (gs.skills.evil || 0) + 20);
+          gs.skills.morality = Math.max(0, (gs.skills.morality || 0) - 8);
+        },
+        result: '你拿走了药材，却留下了一个无人相救的老人。心中有些说不清的滋味。',
+        gainText: '道德-8，邪恶+20',
+        skillGains: { evil: 20, morality: -8 },
+      },
     ],
-    interactivePrompt: '老大夫苏醒，凝视着你说：「丫头，你有仁心。老夫行医五十年，这套针法传给你。」',
-    effect: (gs) => {
-      gs.skills.medical = Math.min(100, (gs.skills.medical || 0) + 10);
-      gs.skills.morality = Math.min(100, (gs.skills.morality || 0) + 5);
+    effect: (gs, choiceId) => {
+      const choice = RARE_EVENTS.find(e => e.id === 'rare_doctor_mentor')?.choices.find(c => c.id === choiceId);
+      if (choice) choice.effect(gs);
       gs.eventFlags.rare_doctor_mentor = true;
     },
-    gainText: '医术+10，道德+5',
-    skillGains: { medical: 10, morality: 5 },
   },
   {
     id: 'rare_performance_talent',
@@ -275,21 +306,54 @@ const RARE_EVENTS = [
     condition: (gs) => !(gs.eventFlags?.rare_performance_talent),
     scene: 'art_studio',
     fallbackImage: '/assets/events/rare_event_performance.png',
-    imagePrompt: 'Ancient Chinese art studio gathering scene, scholars and artists seated around listening in amazement, a young woman in elegant hanfu standing performing, an old theater master in the crowd bowing respectfully, lanterns and ink paintings as background, golden evening light, ultra-wide 16:9 horizontal cinematic composition, detailed traditional Chinese painting style',
-    interactiveSpots: [
-      { id: 'correct', label: '梨园班主', hint: '身着戏服、向你行礼的老者', x: 55, y: 50, w: 16, h: 28, correct: true },
-      { id: 'wrong1', label: '文人雅士', hint: '这是普通的文人听众', x: 22, y: 52, w: 15, h: 22, correct: false },
-      { id: 'wrong2', label: '侍女', hint: '侍女正在斟酒', x: 78, y: 60, w: 12, h: 20, correct: false },
+    choices: [
+      {
+        id: 'positive',
+        label: '谦逊拜师',
+        desc: '向班主行礼，诚心拜师，愿意跟随学习梨园技艺。',
+        type: 'positive',
+        effect: (gs) => {
+          gs.skills.music = Math.min(100, (gs.skills.music || 0) + 8);
+          gs.skills.poetry = Math.min(100, (gs.skills.poetry || 0) + 8);
+          gs.skills.charm = Math.min(100, (gs.skills.charm || 0) + 5);
+        },
+        result: '班主抬起头，眼中满是赏识：「姑娘天赋异禀，老朽愿倾囊相授！」',
+        gainText: '乐艺+8，诗才+8，魅力+5',
+        skillGains: { music: 8, poetry: 8, charm: 5 },
+      },
+      {
+        id: 'neutral',
+        label: '客气推辞',
+        desc: '道谢后婉言谢绝，只取了班主赠送的一本曲谱。',
+        type: 'neutral',
+        effect: (gs) => {
+          gs.skills.music = Math.min(100, (gs.skills.music || 0) + 4);
+          gs.skills.charm = Math.min(100, (gs.skills.charm || 0) + 3);
+        },
+        result: '班主点头微笑，赠你一本珍贵曲谱：「有缘再会。」',
+        gainText: '乐艺+4，魅力+3',
+        skillGains: { music: 4, charm: 3 },
+      },
+      {
+        id: 'negative',
+        label: '索要报酬',
+        desc: '趁热打铁，向班主提出演出报酬，以才艺换取金银。',
+        type: 'negative',
+        effect: (gs) => {
+          gs.skills.evil = Math.min(100, (gs.skills.evil || 0) + 20);
+          gs.skills.charm = Math.max(0, (gs.skills.charm || 0) - 5);
+          gs.skills.rhetoric = Math.min(100, (gs.skills.rhetoric || 0) + 3);
+        },
+        result: '班主面色一沉，勉强付了些许赏钱后拂袖而去。在场文人皆摇头叹息。',
+        gainText: '魅力-5，口才+3，邪恶+20',
+        skillGains: { evil: 20, charm: -5, rhetoric: 3 },
+      },
     ],
-    interactivePrompt: '班主抬起头，眼中满是赏识：「姑娘天赋异禀，老朽愿倾囊相授！」',
-    effect: (gs) => {
-      gs.skills.music = Math.min(100, (gs.skills.music || 0) + 8);
-      gs.skills.poetry = Math.min(100, (gs.skills.poetry || 0) + 8);
-      gs.skills.charm = Math.min(100, (gs.skills.charm || 0) + 5);
+    effect: (gs, choiceId) => {
+      const choice = RARE_EVENTS.find(e => e.id === 'rare_performance_talent')?.choices.find(c => c.id === choiceId);
+      if (choice) choice.effect(gs);
       gs.eventFlags.rare_performance_talent = true;
     },
-    gainText: '乐艺+8，诗才+8，魅力+5',
-    skillGains: { music: 8, poetry: 8, charm: 5 },
   },
   {
     id: 'rare_general_recognition',
@@ -298,23 +362,56 @@ const RARE_EVENTS = [
     condition: (gs) => !(gs.eventFlags?.rare_general_recognition) && ((gs.skills.courage || 0) >= 50 || (gs.skills.martial || 0) >= 50),
     scene: 'royal_court',
     fallbackImage: '/assets/events/rare_event_general.png',
-    imagePrompt: 'Ancient Chinese military mansion training ground, a tall warrior general in armor approaching with intense gaze, a young woman in hanfu standing confidently before a battle formation diagram on the wall, soldiers training in background, dramatic afternoon sunlight, ultra-wide 16:9 horizontal cinematic composition, detailed ink wash style',
-    interactiveSpots: [
-      { id: 'correct', label: '宇文拓将军', hint: '身着铠甲、目光炯炯的将军', x: 52, y: 30, w: 20, h: 45, correct: true },
-      { id: 'wrong1', label: '普通侍卫', hint: '这是寻常的守卫士兵', x: 18, y: 40, w: 14, h: 35, correct: false },
-      { id: 'wrong2', label: '兵法图', hint: '这是墙上的阵图，不是人', x: 75, y: 25, w: 18, h: 30, correct: false },
+    choices: [
+      {
+        id: 'positive',
+        label: '坦然承认',
+        desc: '直视将军，坦然说出自己对兵法的见解，表示愿意切磋。',
+        type: 'positive',
+        effect: (gs) => {
+          gs.skills.martial = Math.min(100, (gs.skills.martial || 0) + 10);
+          gs.skills.command = Math.min(100, (gs.skills.command || 0) + 8);
+          gs.skills.courage = Math.min(100, (gs.skills.courage || 0) + 5);
+          if (gs.favorability?.yuwentuo !== undefined)
+            gs.favorability.yuwentuo = Math.min(100, gs.favorability.yuwentuo + 15);
+        },
+        result: '宇文拓停在你面前，沉声道：「凌将军的女儿，果然不凡。这套刀法，你若肯学，我亲自教你。」',
+        gainText: '武术+10，统帅+8，胆识+5，宇文拓好感+15',
+        skillGains: { martial: 10, command: 8, courage: 5 },
+      },
+      {
+        id: 'neutral',
+        label: '谦虚回应',
+        desc: '说只是随口一说，不敢班门弄斧，向将军请教正确之法。',
+        type: 'neutral',
+        effect: (gs) => {
+          gs.skills.wisdom = Math.min(100, (gs.skills.wisdom || 0) + 5);
+          gs.skills.courage = Math.min(100, (gs.skills.courage || 0) + 3);
+        },
+        result: '将军点头，指点了几处要领，你受益匪浅。',
+        gainText: '才学+5，胆识+3',
+        skillGains: { wisdom: 5, courage: 3 },
+      },
+      {
+        id: 'negative',
+        label: '趁乱窃取阵图',
+        desc: '将军被你问题分心时，悄悄将墙上的机密阵图描摹下来带走。',
+        type: 'negative',
+        effect: (gs) => {
+          gs.skills.evil = Math.min(100, (gs.skills.evil || 0) + 20);
+          gs.skills.command = Math.min(100, (gs.skills.command || 0) + 5);
+          gs.skills.morality = Math.max(0, (gs.skills.morality || 0) - 10);
+        },
+        result: '你带走了阵图，却也埋下了祸根。将军府的侍卫开始暗中盯梢。',
+        gainText: '统帅+5，道德-10，邪恶+20',
+        skillGains: { evil: 20, command: 5, morality: -10 },
+      },
     ],
-    interactivePrompt: '宇文拓停在你面前，沉声道：「凌将军的女儿，果然不凡。这套刀法，你若肯学，我亲自教你。」',
-    effect: (gs) => {
-      gs.skills.martial = Math.min(100, (gs.skills.martial || 0) + 10);
-      gs.skills.command = Math.min(100, (gs.skills.command || 0) + 8);
-      gs.skills.courage = Math.min(100, (gs.skills.courage || 0) + 5);
+    effect: (gs, choiceId) => {
+      const choice = RARE_EVENTS.find(e => e.id === 'rare_general_recognition')?.choices.find(c => c.id === choiceId);
+      if (choice) choice.effect(gs);
       gs.eventFlags.rare_general_recognition = true;
-      const yuwenFav = gs.favorability?.yuwentuo;
-      if (yuwenFav !== undefined) gs.favorability.yuwentuo = Math.min(100, yuwenFav + 15);
     },
-    gainText: '武术+10，统帅+8，胆识+5，宇文拓好感+15',
-    skillGains: { martial: 10, command: 8, courage: 5 },
   },
   {
     id: 'rare_lost_child',
@@ -323,21 +420,53 @@ const RARE_EVENTS = [
     condition: (gs) => !(gs.eventFlags?.rare_lost_child),
     scene: 'ancient_street',
     fallbackImage: '/assets/events/rare_event_lost_child.jpg',
-    imagePrompt: 'Ancient Chinese busy market street scene, a small crying child in traditional clothes sitting alone near a market stall, crowded street with merchants and passersby, a worried mother figure visible in the background crowd searching, warm golden hour light, ultra-wide 16:9 horizontal cinematic composition, detailed traditional Chinese painting style',
-    interactiveSpots: [
-      { id: 'correct', label: '孩童的母亲', hint: '正在焦急张望的妇人', x: 62, y: 35, w: 16, h: 32, correct: true },
-      { id: 'wrong1', label: '摊贩', hint: '摊贩只顾着叫卖', x: 20, y: 38, w: 14, h: 30, correct: false },
-      { id: 'wrong2', label: '路人甲', hint: '这个路人行色匆匆', x: 80, y: 42, w: 12, h: 28, correct: false },
+    choices: [
+      {
+        id: 'positive',
+        label: '耐心寻亲',
+        desc: '蹲下来安慰孩子，花时间在人群中寻找孩子的母亲。',
+        type: 'positive',
+        effect: (gs) => {
+          gs.skills.morality = Math.min(100, (gs.skills.morality || 0) + 8);
+          gs.skills.affinity = Math.min(100, (gs.skills.affinity || 0) + 5);
+          gs.skills.reputation = Math.min(100, (gs.skills.reputation || 0) + 3);
+        },
+        result: '妇人扑过来抱住孩子，泪流满面：「多谢姑娘！」街坊邻里纷纷称赞，你的善名悄悄传开。',
+        gainText: '道德+8，亲和+5，声望+3',
+        skillGains: { morality: 8, affinity: 5, reputation: 3 },
+      },
+      {
+        id: 'neutral',
+        label: '告知官差',
+        desc: '领孩子到最近的官差处，请官差协助寻找家人。',
+        type: 'neutral',
+        effect: (gs) => {
+          gs.skills.morality = Math.min(100, (gs.skills.morality || 0) + 3);
+          gs.skills.rhetoric = Math.min(100, (gs.skills.rhetoric || 0) + 2);
+        },
+        result: '官差接手了孩子，你继续赶路。只是不知孩子最后是否找到了娘亲。',
+        gainText: '道德+3，口才+2',
+        skillGains: { morality: 3, rhetoric: 2 },
+      },
+      {
+        id: 'negative',
+        label: '哄骗孩子财物',
+        desc: '见孩子脖子上戴着玉饰，哄说帮他找娘亲，借机摘走玉坠。',
+        type: 'negative',
+        effect: (gs) => {
+          gs.skills.evil = Math.min(100, (gs.skills.evil || 0) + 20);
+          gs.skills.morality = Math.max(0, (gs.skills.morality || 0) - 12);
+        },
+        result: '孩子懵懂地看着你离去，哭声更响了。那块玉坠在你手中，却沉甸甸的。',
+        gainText: '道德-12，邪恶+20',
+        skillGains: { evil: 20, morality: -12 },
+      },
     ],
-    interactivePrompt: '妇人扑过来抱住孩子，泪流满面地向你道谢：「多谢姑娘！孩子找到了，找到了！」街坊邻里纷纷称赞，你的善名悄悄传开。',
-    effect: (gs) => {
-      gs.skills.morality = Math.min(100, (gs.skills.morality || 0) + 8);
-      gs.skills.affinity = Math.min(100, (gs.skills.affinity || 0) + 5);
-      gs.skills.reputation = Math.min(100, (gs.skills.reputation || 0) + 3);
+    effect: (gs, choiceId) => {
+      const choice = RARE_EVENTS.find(e => e.id === 'rare_lost_child')?.choices.find(c => c.id === choiceId);
+      if (choice) choice.effect(gs);
       gs.eventFlags.rare_lost_child = true;
     },
-    gainText: '道德+8，亲和+5，声望+3',
-    skillGains: { morality: 8, affinity: 5, reputation: 3 },
   },
   {
     id: 'rare_inn_scholar',
@@ -346,21 +475,54 @@ const RARE_EVENTS = [
     condition: (gs) => !(gs.eventFlags?.rare_inn_scholar),
     scene: 'inn',
     fallbackImage: '/assets/events/rare_event_inn_scholar.jpg',
-    imagePrompt: 'Ancient Chinese inn interior, a young scholar in worn travel clothes sitting alone at a table looking dejected, empty bowl in front of him, inn owner whispering to a young woman in hanfu, other travelers in background, warm lantern light, ultra-wide 16:9 horizontal cinematic composition, detailed traditional Chinese painting style',
-    interactiveSpots: [
-      { id: 'correct', label: '落魄书生', hint: '衣衫褴褛、神情落寞的年轻人', x: 45, y: 38, w: 18, h: 35, correct: true },
-      { id: 'wrong1', label: '说书人', hint: '说书人正在讲故事', x: 15, y: 30, w: 16, h: 30, correct: false },
-      { id: 'wrong2', label: '商旅客人', hint: '这是普通的住店客人', x: 76, y: 40, w: 14, h: 28, correct: false },
+    choices: [
+      {
+        id: 'positive',
+        label: '慷慨相助',
+        desc: '为书生结了饭食的账，还另给了些盘缠，祝他金榜题名。',
+        type: 'positive',
+        effect: (gs) => {
+          gs.skills.morality = Math.min(100, (gs.skills.morality || 0) + 6);
+          gs.skills.wisdom = Math.min(100, (gs.skills.wisdom || 0) + 4);
+          gs.skills.rhetoric = Math.min(100, (gs.skills.rhetoric || 0) + 3);
+        },
+        result: '书生抬起头，眼中满是感激：「姑娘大恩，在下铭记于心。他日若得功名，必当涌泉相报！」',
+        gainText: '道德+6，才学+4，口才+3',
+        skillGains: { morality: 6, wisdom: 4, rhetoric: 3 },
+      },
+      {
+        id: 'neutral',
+        label: '借给盘缠',
+        desc: '借给书生一些路费，约定他日有成后归还，互留姓名。',
+        type: 'neutral',
+        effect: (gs) => {
+          gs.skills.morality = Math.min(100, (gs.skills.morality || 0) + 3);
+          gs.skills.affinity = Math.min(100, (gs.skills.affinity || 0) + 2);
+        },
+        result: '书生千恩万谢，郑重写下借据。你心想，也许他日真能还回来。',
+        gainText: '道德+3，亲和+2',
+        skillGains: { morality: 3, affinity: 2 },
+      },
+      {
+        id: 'negative',
+        label: '趁火打劫',
+        desc: '假装好心，实则诱骗书生签下卖身契，让他以劳役抵债。',
+        type: 'negative',
+        effect: (gs) => {
+          gs.skills.evil = Math.min(100, (gs.skills.evil || 0) + 20);
+          gs.skills.morality = Math.max(0, (gs.skills.morality || 0) - 10);
+          gs.skills.rhetoric = Math.min(100, (gs.skills.rhetoric || 0) + 2);
+        },
+        result: '书生在走投无路中颤抖着按下手印。他的眼神从感激变成了绝望，深深刺入你心底。',
+        gainText: '道德-10，口才+2，邪恶+20',
+        skillGains: { evil: 20, morality: -10, rhetoric: 2 },
+      },
     ],
-    interactivePrompt: '书生抬起头，眼中满是感激与惊喜：「姑娘大恩，在下铭记于心。他日若得功名，必当涌泉相报！」你摆摆手，心中却暖意融融。',
-    effect: (gs) => {
-      gs.skills.morality = Math.min(100, (gs.skills.morality || 0) + 6);
-      gs.skills.wisdom = Math.min(100, (gs.skills.wisdom || 0) + 4);
-      gs.skills.rhetoric = Math.min(100, (gs.skills.rhetoric || 0) + 3);
+    effect: (gs, choiceId) => {
+      const choice = RARE_EVENTS.find(e => e.id === 'rare_inn_scholar')?.choices.find(c => c.id === choiceId);
+      if (choice) choice.effect(gs);
       gs.eventFlags.rare_inn_scholar = true;
     },
-    gainText: '道德+6，才学+4，口才+3',
-    skillGains: { morality: 6, wisdom: 4, rhetoric: 3 },
   },
 ];
 
@@ -1178,7 +1340,7 @@ app.get('/api/scene/:sceneId', async (req, res) => {
     const unlockedConditionalActivities = (scene.conditionalActivities || []).filter(
       ca => inv.some(i => i.id === ca.requiredItem)
     );
-    res.json({ success: true, data: { scene, npcs: sceneNpcs, courses: sceneCourses, currentSkills: gameState.skills, entryBonus: appliedBonus, jadeGained, jade: gameState.jade || 0, rareEvent: rareEvent ? { id: rareEvent.id, title: rareEvent.title, text: rareEvent.text, gainText: rareEvent.gainText, imagePrompt: rareEvent.imagePrompt, fallbackImage: rareEvent.fallbackImage || null, interactiveSpots: rareEvent.interactiveSpots, interactivePrompt: rareEvent.interactivePrompt, skillGains: rareEvent.skillGains } : null, comboEvent, unlockedConditionalActivities } });
+    res.json({ success: true, data: { scene, npcs: sceneNpcs, courses: sceneCourses, currentSkills: gameState.skills, entryBonus: appliedBonus, jadeGained, jade: gameState.jade || 0, rareEvent: rareEvent ? { id: rareEvent.id, title: rareEvent.title, text: rareEvent.text, fallbackImage: rareEvent.fallbackImage || null, choices: (rareEvent.choices || []).map(c => ({ id: c.id, label: c.label, desc: c.desc, type: c.type, gainText: c.gainText, skillGains: c.skillGains })) } : null, comboEvent, unlockedConditionalActivities } });
   } catch (err) { res.status(500).json({ success: false, message: 'DB错误', error: err.message }); }
 });
 
@@ -2097,18 +2259,29 @@ app.post('/api/event/generate-image', async (req, res) => {
 
 app.post('/api/event/confirm', async (req, res) => {
   try {
-    const { eventId } = req.body;
+    const { eventId, choiceId } = req.body;
     const { gameState, activityLog } = await loadState(req.playerId);
     const event = RARE_EVENTS.find(e => e.id === eventId);
     if (!event) return res.status(404).json({ success: false, message: '事件不存在' });
     if (gameState.eventFlags?.[eventId]) return res.json({ success: true, data: { character: gameState }, message: '已处理' });
+    // 新版三选项事件
+    if (event.choices && choiceId) {
+      const choice = event.choices.find(c => c.id === choiceId);
+      if (!choice) return res.status(400).json({ success: false, message: '选项不存在' });
+      event.effect(gameState, choiceId);
+      gameState.exp = (gameState.exp || 0) + 20;
+      checkLevelUp(gameState);
+      addLogEntry(activityLog, `✨ 奇遇·${choice.type === 'negative' ? '黑暗选择' : ''}：${event.title}`, choice.result);
+      await saveState(req.playerId, gameState, activityLog);
+      return res.json({ success: true, data: { character: gameState, skillGains: choice.skillGains, gainText: choice.gainText, result: choice.result, expGain: 20 } });
+    }
+    // 兼容旧版
     event.effect(gameState);
-    // 奇遇 EXP +20
     gameState.exp = (gameState.exp || 0) + 20;
     checkLevelUp(gameState);
-    addLogEntry(activityLog, `✨ 奇遇：${event.title}`, event.interactivePrompt || event.text);
+    addLogEntry(activityLog, `✨ 奇遇：${event.title}`, event.text);
     await saveState(req.playerId, gameState, activityLog);
-    res.json({ success: true, data: { character: gameState, skillGains: event.skillGains, gainText: event.gainText, expGain: 20 } });
+    res.json({ success: true, data: { character: gameState, expGain: 20 } });
   } catch (err) { res.status(500).json({ success: false, message: 'DB错误', error: err.message }); }
 });
 
@@ -2124,26 +2297,20 @@ const POETRY_IMAGE_PROMPTS = [
   'ancient Chinese river at dusk, fishing boats, orange sky, mountains silhouette, traditional ink painting style, wide horizontal 16:9',
 ];
 
-app.post('/api/poetry/generate-image', async (req, res) => {
-  const { execFile } = require('child_process');
-  try {
-    const promptIdx = Math.floor(Math.random() * POETRY_IMAGE_PROMPTS.length);
-    const prompt = POETRY_IMAGE_PROMPTS[promptIdx];
-    const result = await new Promise((resolve, reject) => {
-      const infshPath = process.env.INFSH_PATH || '/Users/chenyinuo02/.local/bin/infsh';
-      execFile(infshPath, ['app', 'run', 'google/gemini-3-1-flash-image-preview', '--input', JSON.stringify({ prompt }), '--json'], { timeout: 90000 }, (err, stdout, stderr) => {
-        if (err) return reject(err);
-        try {
-          const jsonStart = stdout.indexOf('{');
-          resolve(jsonStart >= 0 ? JSON.parse(stdout.slice(jsonStart)) : {});
-        } catch { reject(new Error('解析图片结果失败')); }
-      });
-    });
-    const imageUrl = result?.images?.[0] || result?.output?.images?.[0] || result?.output?.image?.url || result?.output?.url || null;
-    res.json({ success: true, data: { imageUrl, promptIdx } });
-  } catch (err) {
-    res.json({ success: true, data: { imageUrl: null }, message: '图片生成跳过' });
-  }
+const LOCAL_POETRY_IMAGES = [
+  '/assets/scenes/riddle_bg.jpg',
+  '/assets/scenes/culinary_bg.jpg',
+  '/assets/scenes/adventure_map.jpg',
+  '/assets/scenes/peach_island_full.jpg',
+  '/assets/scenes/peach_island_street.jpg',
+  '/assets/scenes/deep_forest_scene.jpg',
+  '/assets/scenes/street_scene.jpg',
+  '/assets/scenes/wailing_sand_scene.jpg',
+];
+
+app.post('/api/poetry/generate-image', (req, res) => {
+  const promptIdx = Math.floor(Math.random() * LOCAL_POETRY_IMAGES.length);
+  res.json({ success: true, data: { imageUrl: LOCAL_POETRY_IMAGES[promptIdx], promptIdx } });
 });
 
 // ==================== 诗才大会：AI评分诗词 ====================

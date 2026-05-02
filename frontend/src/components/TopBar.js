@@ -35,7 +35,7 @@ function AnimatedValue({ value, color, format }) {
   );
 }
 
-export default function TopBar({ character, onReset, onResetNpcVisits, onLogout, username }) {
+export default function TopBar({ character, jadeCoins, onReset, onResetNpcVisits, onLogout, username }) {
   const [showMenu, setShowMenu] = useState(false);
 
   const levelProgress = () => {
@@ -155,9 +155,9 @@ export default function TopBar({ character, onReset, onResetNpcVisits, onLogout,
 
         {/* 玉 */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-          <span style={{ fontSize: '20px', filter: 'drop-shadow(0 0 4px rgba(52,211,153,0.5))' }}>💚</span>
+          <span style={{ fontSize: '20px', filter: 'drop-shadow(0 0 4px rgba(52,211,153,0.5))' }}>💎</span>
           <div>
-            <AnimatedValue value={character.jade} color="#34D399" />
+            <AnimatedValue value={jadeCoins ?? character.jade ?? 0} color="#34D399" />
             <div style={{ fontSize: '10px', color: 'rgba(245,230,236,0.35)' }}>玉</div>
           </div>
         </div>

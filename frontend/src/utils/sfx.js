@@ -198,3 +198,12 @@ export function sfxMonthAdvance() {
     setTimeout(() => playTone({ freq: f, type: 'sine', gain: 0.07 - i * 0.01, attack: 0.04, decay: 0.6, duration: 1.5, release: 1.0 }), i * 300);
   });
 }
+
+// 识药消消乐：消除一组，清亮上行五音
+export function sfxHerbMatch() {
+  duckBgm(600);
+  const freqs = [523, 659, 784, 1047, 1319];
+  freqs.forEach((f, i) => {
+    setTimeout(() => playPluck(f, 0.10 - i * 0.01, 0.5), i * 70);
+  });
+}
